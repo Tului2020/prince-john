@@ -1,0 +1,2 @@
+class UserStock < ApplicationRecord
+end
