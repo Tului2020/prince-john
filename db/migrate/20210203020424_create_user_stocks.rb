@@ -3,6 +3,7 @@ class CreateUserStocks < ActiveRecord::Migration[5.2]
     create_table :user_stocks do |t|
       t.integer :user_id, null: false
       t.integer :stock_id, null: false
+      t.float :amount, null: false
       t.timestamps
     end
     add_index :user_stocks, :user_id

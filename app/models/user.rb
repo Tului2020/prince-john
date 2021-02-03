@@ -36,6 +36,14 @@ class User < ApplicationRecord
     self.session_token ||= SecureRandom::urlsafe_base64
   end
   
-  
 
+  has_many :user_stock, 
+    class_name: :UserStock, 
+    foreign_key: :user_id
+
+
+  has_many :stocks,
+    through: :user_stock,
+    source: :stock
+    # has_many :objects, class_name: "object", foreign_key: "reference_id"
 end
