@@ -9,7 +9,7 @@ class User < ApplicationRecord
   def initialize(*args)
     super(*args)
     ensure_session_token
-    self.balance = calculate_balance
+    calculate_balance
   end
 
 
@@ -52,7 +52,8 @@ class User < ApplicationRecord
 
 
   def calculate_balance
-    user_stock.pluck(:amount, :unit_price).inject(0) { |sum, stock| sum + stock[0] * stock[1]}
+    self.balance = user_stock.pluck(:amount, :unit_price).inject(0) { |sum, stock| sum + stock[0] * stock[1]}
+    self.save!
   end
 
 end
