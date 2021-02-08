@@ -2,12 +2,14 @@ class User < ApplicationRecord
 
   validates :username, :session_token, presence: true, uniqueness: true
   validates :password, length: {minimum:6, allow_nil: true}
-  
+  validates :balance, presence: true
+
   attr_reader :password
 
   def initialize(*args)
     super(*args)
     ensure_session_token
+    self.balance = calculate_balance
   end
 
 
@@ -46,4 +48,11 @@ class User < ApplicationRecord
     through: :user_stock,
     source: :stock
     # has_many :objects, class_name: "object", foreign_key: "reference_id"
+
+
+
+  def calculate_balance
+    user_stock.pluck(:amount, :unit_price).inject(0) { |sum, stock| sum + stock[0] * stock[1]}
+  end
+
 end

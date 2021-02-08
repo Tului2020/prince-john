@@ -21,12 +21,12 @@ stock4 = Stock.create(ticker: "TWTR", description: "Twitter")
 
 
 UserStock.destroy_all
-user_stock11 = UserStock.create(user_id: user1.id, stock_id: stock1.id, amount: 11)
-user_stock12 = UserStock.create(user_id: user1.id, stock_id: stock2.id, amount: 12)
-user_stock13 = UserStock.create(user_id: user1.id, stock_id: stock3.id, amount: 13)
-user_stock14 = UserStock.create(user_id: user1.id, stock_id: stock4.id, amount: 14)
-user_stock21 = UserStock.create(user_id: user2.id, stock_id: stock1.id, amount: 21)
-user_stock24 = UserStock.create(user_id: user2.id, stock_id: stock4.id, amount: 24)
+user_stock11 = UserStock.create(user_id: user1.id, stock_id: stock1.id, amount: 11, unit_price: 10)
+user_stock12 = UserStock.create(user_id: user1.id, stock_id: stock2.id, amount: 12, unit_price: 10)
+user_stock13 = UserStock.create(user_id: user1.id, stock_id: stock3.id, amount: 13, unit_price: 10)
+user_stock14 = UserStock.create(user_id: user1.id, stock_id: stock4.id, amount: 14, unit_price: 10)
+user_stock21 = UserStock.create(user_id: user2.id, stock_id: stock1.id, amount: 21, unit_price: 10)
+user_stock24 = UserStock.create(user_id: user2.id, stock_id: stock4.id, amount: 24, unit_price: 10)
 
 
 

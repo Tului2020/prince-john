@@ -1780,3 +1780,1610 @@ Migrating to CreateUserStocks (20210203020424)
   [1m[36mStock Load (0.4ms)[0m  [1m[34mSELECT "stocks".* FROM "stocks" INNER JOIN "user_stocks" ON "stocks"."id" = "user_stocks"."stock_id" WHERE "user_stocks"."user_id" = $1[0m  [["user_id", 1]]
   [1m[36mStock Load (0.2ms)[0m  [1m[34mSELECT  "stocks".* FROM "stocks" ORDER BY "stocks"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
   [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "user_stocks" ON "users"."id" = "user_stocks"."user_id" WHERE "user_stocks"."stock_id" = $1[0m  [["stock_id", 1]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  ↳ bin/rails:9
+  [1m[35m (33.9ms)[0m  [1m[35mDROP DATABASE IF EXISTS "princejohn_development"[0m
+  ↳ bin/rails:9
+  [1m[35m (36.3ms)[0m  [1m[35mDROP DATABASE IF EXISTS "princejohn_test"[0m
+  ↳ bin/rails:9
+  [1m[35m (70.3ms)[0m  [1m[35mCREATE DATABASE "princejohn_development" ENCODING = 'unicode'[0m
+  ↳ bin/rails:9
+  [1m[35m (89.6ms)[0m  [1m[35mCREATE DATABASE "princejohn_test" ENCODING = 'unicode'[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE DATABASE "princejohn_development" ENCODING = 'unicode'[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE DATABASE "princejohn_test" ENCODING = 'unicode'[0m
+  ↳ bin/rails:9
+  [1m[35m (26.0ms)[0m  [1m[35mDROP DATABASE IF EXISTS "princejohn_development"[0m
+  ↳ bin/rails:9
+  [1m[35m (20.5ms)[0m  [1m[35mDROP DATABASE IF EXISTS "princejohn_test"[0m
+  ↳ bin/rails:9
+  [1m[35m (62.4ms)[0m  [1m[35mCREATE DATABASE "princejohn_development" ENCODING = 'unicode'[0m
+  ↳ bin/rails:9
+  [1m[35m (96.8ms)[0m  [1m[35mCREATE DATABASE "princejohn_test" ENCODING = 'unicode'[0m
+  ↳ bin/rails:9
+  [1m[35m (14.4ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  ↳ bin/rails:9
+  [1m[35m (7.3ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(3036389044469595885)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to CreateUsers (20210203020413)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (7.3ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "username" character varying NOT NULL, "email" character varying NOT NULL, "password_digest" character varying NOT NULL, "session_token" character varying NOT NULL, "balance" float NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20210203020413_create_users.rb:3
+  [1m[35m (3.2ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_username" ON "users"  ("username")[0m
+  ↳ db/migrate/20210203020413_create_users.rb:12
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210203020413"]]
+  ↳ bin/rails:9
+  [1m[35m (1.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+Migrating to CreateStocks (20210203020417)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (7.0ms)[0m  [1m[35mCREATE TABLE "stocks" ("id" bigserial primary key, "ticker" character varying NOT NULL, "description" character varying NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20210203020417_create_stocks.rb:3
+  [1m[35m (3.2ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_stocks_on_ticker" ON "stocks"  ("ticker")[0m
+  ↳ db/migrate/20210203020417_create_stocks.rb:8
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210203020417"]]
+  ↳ bin/rails:9
+  [1m[35m (1.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+Migrating to CreateUserStocks (20210203020424)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (3.6ms)[0m  [1m[35mCREATE TABLE "user_stocks" ("id" bigserial primary key, "user_id" integer NOT NULL, "stock_id" integer NOT NULL, "amount" float NOT NULL, "unit_prce" float NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20210203020424_create_user_stocks.rb:3
+  [1m[35m (3.1ms)[0m  [1m[35mCREATE  INDEX  "index_user_stocks_on_user_id" ON "user_stocks"  ("user_id")[0m
+  ↳ db/migrate/20210203020424_create_user_stocks.rb:10
+  [1m[35m (3.2ms)[0m  [1m[35mCREATE  INDEX  "index_user_stocks_on_stock_id" ON "user_stocks"  ("stock_id")[0m
+  ↳ db/migrate/20210203020424_create_user_stocks.rb:11
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210203020424"]]
+  ↳ bin/rails:9
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Create (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2021-02-08 20:30:59.919806"], ["updated_at", "2021-02-08 20:30:59.919806"]]
+  ↳ bin/rails:9
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_advisory_unlock(3036389044469595885)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:10
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "Tului1"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:10
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "69xEIr3j--twVUgNZv1feA"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:10
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("username", "email", "password_digest", "session_token", "balance", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["username", "Tului1"], ["email", "tului1@gmail.com"], ["password_digest", "$2a$12$/MEo3ykFMV1KFrNnFtoWmuK3ibTCZLPpm952lQDEHNnltmgJHVMyu"], ["session_token", "69xEIr3j--twVUgNZv1feA"], ["balance", 0.0], ["created_at", "2021-02-08 20:31:04.205529"], ["updated_at", "2021-02-08 20:31:04.205529"]]
+  ↳ db/seeds.rb:10
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:10
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:11
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "Tului2"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:11
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "N4D7VAmt0l_Xk14k2O2q-g"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:11
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("username", "email", "password_digest", "session_token", "balance", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["username", "Tului2"], ["email", "tului2@gmail.com"], ["password_digest", "$2a$12$KINH0KZ/qJY3FD7qnPRcJ.BWieQFS/Lp7JVGwCu4sXnfWWSmsywcC"], ["session_token", "N4D7VAmt0l_Xk14k2O2q-g"], ["balance", 0.0], ["created_at", "2021-02-08 20:31:04.377088"], ["updated_at", "2021-02-08 20:31:04.377088"]]
+  ↳ db/seeds.rb:11
+  [1m[35m (3.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:11
+  [1m[36mStock Load (0.3ms)[0m  [1m[34mSELECT "stocks".* FROM "stocks"[0m
+  ↳ db/seeds.rb:16
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:17
+  [1m[36mStock Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "stocks" WHERE "stocks"."ticker" = $1 LIMIT $2[0m  [["ticker", "QYLD"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:17
+  [1m[36mStock Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "stocks" WHERE "stocks"."description" = $1 LIMIT $2[0m  [["description", "ETF SP500"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:17
+  [1m[36mStock Create (0.2ms)[0m  [1m[32mINSERT INTO "stocks" ("ticker", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["ticker", "QYLD"], ["description", "ETF SP500"], ["created_at", "2021-02-08 20:31:04.388383"], ["updated_at", "2021-02-08 20:31:04.388383"]]
+  ↳ db/seeds.rb:17
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:17
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:18
+  [1m[36mStock Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "stocks" WHERE "stocks"."ticker" = $1 LIMIT $2[0m  [["ticker", "UAL"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:18
+  [1m[36mStock Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "stocks" WHERE "stocks"."description" = $1 LIMIT $2[0m  [["description", "United Airlines"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:18
+  [1m[36mStock Create (0.2ms)[0m  [1m[32mINSERT INTO "stocks" ("ticker", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["ticker", "UAL"], ["description", "United Airlines"], ["created_at", "2021-02-08 20:31:04.391019"], ["updated_at", "2021-02-08 20:31:04.391019"]]
+  ↳ db/seeds.rb:18
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:18
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:19
+  [1m[36mStock Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "stocks" WHERE "stocks"."ticker" = $1 LIMIT $2[0m  [["ticker", "TSLA"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:19
+  [1m[36mStock Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "stocks" WHERE "stocks"."description" = $1 LIMIT $2[0m  [["description", "Tesla"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:19
+  [1m[36mStock Create (0.2ms)[0m  [1m[32mINSERT INTO "stocks" ("ticker", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["ticker", "TSLA"], ["description", "Tesla"], ["created_at", "2021-02-08 20:31:04.393478"], ["updated_at", "2021-02-08 20:31:04.393478"]]
+  ↳ db/seeds.rb:19
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:19
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:20
+  [1m[36mStock Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "stocks" WHERE "stocks"."ticker" = $1 LIMIT $2[0m  [["ticker", "TWTR"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:20
+  [1m[36mStock Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "stocks" WHERE "stocks"."description" = $1 LIMIT $2[0m  [["description", "Twitter"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:20
+  [1m[36mStock Create (0.2ms)[0m  [1m[32mINSERT INTO "stocks" ("ticker", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["ticker", "TWTR"], ["description", "Twitter"], ["created_at", "2021-02-08 20:31:04.395978"], ["updated_at", "2021-02-08 20:31:04.395978"]]
+  ↳ db/seeds.rb:20
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:20
+  [1m[36mUserStock Load (0.2ms)[0m  [1m[34mSELECT "user_stocks".* FROM "user_stocks"[0m
+  ↳ db/seeds.rb:23
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:24
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ db/seeds.rb:24
+  [1m[36mStock Load (0.1ms)[0m  [1m[34mSELECT  "stocks".* FROM "stocks" WHERE "stocks"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ db/seeds.rb:24
+  [1m[36mUserStock Create (0.4ms)[0m  [1m[32mINSERT INTO "user_stocks" ("user_id", "stock_id", "amount", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_id", 1], ["stock_id", 1], ["amount", 11.0], ["created_at", "2021-02-08 20:31:04.410110"], ["updated_at", "2021-02-08 20:31:04.410110"]]
+  ↳ db/seeds.rb:24
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ db/seeds.rb:24
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:9
+  [1m[36mUser Destroy (0.2ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 1]]
+  ↳ db/seeds.rb:9
+  [1m[35m (7.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:9
+  [1m[36mUser Destroy (0.6ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 2]]
+  ↳ db/seeds.rb:9
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:10
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "Tului1"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:10
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "lVt1v2eN56OxlQ47U0SRig"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:10
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("username", "email", "password_digest", "session_token", "balance", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["username", "Tului1"], ["email", "tului1@gmail.com"], ["password_digest", "$2a$12$jjBqlNDHtvw2kXB2kMgW7.WhaRvoOhxdOPDq.HMp0/AoIhQc3LaPa"], ["session_token", "lVt1v2eN56OxlQ47U0SRig"], ["balance", 0.0], ["created_at", "2021-02-08 20:31:33.407470"], ["updated_at", "2021-02-08 20:31:33.407470"]]
+  ↳ db/seeds.rb:10
+  [1m[35m (3.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:10
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:11
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "Tului2"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:11
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "S2FB2jAhLSd7ZEaYLgvK9A"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:11
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("username", "email", "password_digest", "session_token", "balance", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["username", "Tului2"], ["email", "tului2@gmail.com"], ["password_digest", "$2a$12$zbqNqbzClexC/drwQoMbUeo/iJQU9DMiyQSwjGlMc9eRP05RRHy96"], ["session_token", "S2FB2jAhLSd7ZEaYLgvK9A"], ["balance", 0.0], ["created_at", "2021-02-08 20:31:33.580024"], ["updated_at", "2021-02-08 20:31:33.580024"]]
+  ↳ db/seeds.rb:11
+  [1m[35m (3.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:11
+  [1m[36mStock Load (0.3ms)[0m  [1m[34mSELECT "stocks".* FROM "stocks"[0m
+  ↳ db/seeds.rb:16
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:16
+  [1m[36mStock Destroy (0.2ms)[0m  [1m[31mDELETE FROM "stocks" WHERE "stocks"."id" = $1[0m  [["id", 1]]
+  ↳ db/seeds.rb:16
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:16
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:16
+  [1m[36mStock Destroy (0.2ms)[0m  [1m[31mDELETE FROM "stocks" WHERE "stocks"."id" = $1[0m  [["id", 2]]
+  ↳ db/seeds.rb:16
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:16
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:16
+  [1m[36mStock Destroy (0.2ms)[0m  [1m[31mDELETE FROM "stocks" WHERE "stocks"."id" = $1[0m  [["id", 3]]
+  ↳ db/seeds.rb:16
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:16
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:16
+  [1m[36mStock Destroy (0.2ms)[0m  [1m[31mDELETE FROM "stocks" WHERE "stocks"."id" = $1[0m  [["id", 4]]
+  ↳ db/seeds.rb:16
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:16
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:17
+  [1m[36mStock Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "stocks" WHERE "stocks"."ticker" = $1 LIMIT $2[0m  [["ticker", "QYLD"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:17
+  [1m[36mStock Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "stocks" WHERE "stocks"."description" = $1 LIMIT $2[0m  [["description", "ETF SP500"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:17
+  [1m[36mStock Create (0.2ms)[0m  [1m[32mINSERT INTO "stocks" ("ticker", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["ticker", "QYLD"], ["description", "ETF SP500"], ["created_at", "2021-02-08 20:31:33.597994"], ["updated_at", "2021-02-08 20:31:33.597994"]]
+  ↳ db/seeds.rb:17
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:17
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:18
+  [1m[36mStock Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "stocks" WHERE "stocks"."ticker" = $1 LIMIT $2[0m  [["ticker", "UAL"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:18
+  [1m[36mStock Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "stocks" WHERE "stocks"."description" = $1 LIMIT $2[0m  [["description", "United Airlines"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:18
+  [1m[36mStock Create (0.2ms)[0m  [1m[32mINSERT INTO "stocks" ("ticker", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["ticker", "UAL"], ["description", "United Airlines"], ["created_at", "2021-02-08 20:31:33.600608"], ["updated_at", "2021-02-08 20:31:33.600608"]]
+  ↳ db/seeds.rb:18
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:18
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:19
+  [1m[36mStock Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "stocks" WHERE "stocks"."ticker" = $1 LIMIT $2[0m  [["ticker", "TSLA"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:19
+  [1m[36mStock Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "stocks" WHERE "stocks"."description" = $1 LIMIT $2[0m  [["description", "Tesla"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:19
+  [1m[36mStock Create (0.1ms)[0m  [1m[32mINSERT INTO "stocks" ("ticker", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["ticker", "TSLA"], ["description", "Tesla"], ["created_at", "2021-02-08 20:31:33.603158"], ["updated_at", "2021-02-08 20:31:33.603158"]]
+  ↳ db/seeds.rb:19
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:19
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:20
+  [1m[36mStock Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "stocks" WHERE "stocks"."ticker" = $1 LIMIT $2[0m  [["ticker", "TWTR"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:20
+  [1m[36mStock Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "stocks" WHERE "stocks"."description" = $1 LIMIT $2[0m  [["description", "Twitter"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:20
+  [1m[36mStock Create (0.1ms)[0m  [1m[32mINSERT INTO "stocks" ("ticker", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["ticker", "TWTR"], ["description", "Twitter"], ["created_at", "2021-02-08 20:31:33.605729"], ["updated_at", "2021-02-08 20:31:33.605729"]]
+  ↳ db/seeds.rb:20
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:20
+  [1m[36mUserStock Load (0.3ms)[0m  [1m[34mSELECT "user_stocks".* FROM "user_stocks"[0m
+  ↳ db/seeds.rb:23
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  ↳ bin/rails:9
+  [1m[35m (33.8ms)[0m  [1m[35mDROP DATABASE IF EXISTS "princejohn_development"[0m
+  ↳ bin/rails:9
+  [1m[35m (20.3ms)[0m  [1m[35mDROP DATABASE IF EXISTS "princejohn_test"[0m
+  ↳ bin/rails:9
+  [1m[35m (60.4ms)[0m  [1m[35mCREATE DATABASE "princejohn_development" ENCODING = 'unicode'[0m
+  ↳ bin/rails:9
+  [1m[35m (60.6ms)[0m  [1m[35mCREATE DATABASE "princejohn_test" ENCODING = 'unicode'[0m
+  ↳ bin/rails:9
+  [1m[35m (10.8ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  ↳ bin/rails:9
+  [1m[35m (7.2ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(3036389044469595885)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to CreateUsers (20210203020413)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (7.1ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "username" character varying NOT NULL, "email" character varying NOT NULL, "password_digest" character varying NOT NULL, "session_token" character varying NOT NULL, "balance" float NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20210203020413_create_users.rb:3
+  [1m[35m (3.1ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_username" ON "users"  ("username")[0m
+  ↳ db/migrate/20210203020413_create_users.rb:12
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210203020413"]]
+  ↳ bin/rails:9
+  [1m[35m (1.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+Migrating to CreateStocks (20210203020417)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (8.2ms)[0m  [1m[35mCREATE TABLE "stocks" ("id" bigserial primary key, "ticker" character varying NOT NULL, "description" character varying NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20210203020417_create_stocks.rb:3
+  [1m[35m (3.1ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_stocks_on_ticker" ON "stocks"  ("ticker")[0m
+  ↳ db/migrate/20210203020417_create_stocks.rb:8
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210203020417"]]
+  ↳ bin/rails:9
+  [1m[35m (1.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+Migrating to CreateUserStocks (20210203020424)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (5.8ms)[0m  [1m[35mCREATE TABLE "user_stocks" ("id" bigserial primary key, "user_id" integer NOT NULL, "stock_id" integer NOT NULL, "amount" float NOT NULL, "unit_price" float NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20210203020424_create_user_stocks.rb:3
+  [1m[35m (4.3ms)[0m  [1m[35mCREATE  INDEX  "index_user_stocks_on_user_id" ON "user_stocks"  ("user_id")[0m
+  ↳ db/migrate/20210203020424_create_user_stocks.rb:10
+  [1m[35m (4.8ms)[0m  [1m[35mCREATE  INDEX  "index_user_stocks_on_stock_id" ON "user_stocks"  ("stock_id")[0m
+  ↳ db/migrate/20210203020424_create_user_stocks.rb:11
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210203020424"]]
+  ↳ bin/rails:9
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Create (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2021-02-08 20:32:07.695002"], ["updated_at", "2021-02-08 20:32:07.695002"]]
+  ↳ bin/rails:9
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(3036389044469595885)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:10
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "Tului1"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:10
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "Q7GL7e0KRtTtbLhuIUo7vg"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:10
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("username", "email", "password_digest", "session_token", "balance", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["username", "Tului1"], ["email", "tului1@gmail.com"], ["password_digest", "$2a$12$qGjdRbKst32axnNmCNUpI.jZMyFTH70SQg4Kpq9EZC6DNvZRp57o6"], ["session_token", "Q7GL7e0KRtTtbLhuIUo7vg"], ["balance", 0.0], ["created_at", "2021-02-08 20:32:11.277887"], ["updated_at", "2021-02-08 20:32:11.277887"]]
+  ↳ db/seeds.rb:10
+  [1m[35m (7.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:10
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:11
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "Tului2"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:11
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "nBQYMdxaH6FFchh6zwgKrw"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:11
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("username", "email", "password_digest", "session_token", "balance", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["username", "Tului2"], ["email", "tului2@gmail.com"], ["password_digest", "$2a$12$8IC4QTjmwziDjagWZlD3NO.Lq5Rr7xUkahPyBtUWyQ1T9QYOYFFNm"], ["session_token", "nBQYMdxaH6FFchh6zwgKrw"], ["balance", 0.0], ["created_at", "2021-02-08 20:32:11.455056"], ["updated_at", "2021-02-08 20:32:11.455056"]]
+  ↳ db/seeds.rb:11
+  [1m[35m (3.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:11
+  [1m[36mStock Load (0.5ms)[0m  [1m[34mSELECT "stocks".* FROM "stocks"[0m
+  ↳ db/seeds.rb:16
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:17
+  [1m[36mStock Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "stocks" WHERE "stocks"."ticker" = $1 LIMIT $2[0m  [["ticker", "QYLD"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:17
+  [1m[36mStock Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "stocks" WHERE "stocks"."description" = $1 LIMIT $2[0m  [["description", "ETF SP500"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:17
+  [1m[36mStock Create (0.2ms)[0m  [1m[32mINSERT INTO "stocks" ("ticker", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["ticker", "QYLD"], ["description", "ETF SP500"], ["created_at", "2021-02-08 20:32:11.466499"], ["updated_at", "2021-02-08 20:32:11.466499"]]
+  ↳ db/seeds.rb:17
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:17
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:18
+  [1m[36mStock Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "stocks" WHERE "stocks"."ticker" = $1 LIMIT $2[0m  [["ticker", "UAL"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:18
+  [1m[36mStock Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "stocks" WHERE "stocks"."description" = $1 LIMIT $2[0m  [["description", "United Airlines"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:18
+  [1m[36mStock Create (0.2ms)[0m  [1m[32mINSERT INTO "stocks" ("ticker", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["ticker", "UAL"], ["description", "United Airlines"], ["created_at", "2021-02-08 20:32:11.469378"], ["updated_at", "2021-02-08 20:32:11.469378"]]
+  ↳ db/seeds.rb:18
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:18
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:19
+  [1m[36mStock Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "stocks" WHERE "stocks"."ticker" = $1 LIMIT $2[0m  [["ticker", "TSLA"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:19
+  [1m[36mStock Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "stocks" WHERE "stocks"."description" = $1 LIMIT $2[0m  [["description", "Tesla"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:19
+  [1m[36mStock Create (0.1ms)[0m  [1m[32mINSERT INTO "stocks" ("ticker", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["ticker", "TSLA"], ["description", "Tesla"], ["created_at", "2021-02-08 20:32:11.471814"], ["updated_at", "2021-02-08 20:32:11.471814"]]
+  ↳ db/seeds.rb:19
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:19
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:20
+  [1m[36mStock Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "stocks" WHERE "stocks"."ticker" = $1 LIMIT $2[0m  [["ticker", "TWTR"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:20
+  [1m[36mStock Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "stocks" WHERE "stocks"."description" = $1 LIMIT $2[0m  [["description", "Twitter"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:20
+  [1m[36mStock Create (0.1ms)[0m  [1m[32mINSERT INTO "stocks" ("ticker", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["ticker", "TWTR"], ["description", "Twitter"], ["created_at", "2021-02-08 20:32:11.474504"], ["updated_at", "2021-02-08 20:32:11.474504"]]
+  ↳ db/seeds.rb:20
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:20
+  [1m[36mUserStock Load (0.3ms)[0m  [1m[34mSELECT "user_stocks".* FROM "user_stocks"[0m
+  ↳ db/seeds.rb:23
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:24
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ db/seeds.rb:24
+  [1m[36mStock Load (0.1ms)[0m  [1m[34mSELECT  "stocks".* FROM "stocks" WHERE "stocks"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ db/seeds.rb:24
+  [1m[36mUserStock Create (0.3ms)[0m  [1m[32mINSERT INTO "user_stocks" ("user_id", "stock_id", "amount", "unit_price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["user_id", 1], ["stock_id", 1], ["amount", 11.0], ["unit_price", 10.0], ["created_at", "2021-02-08 20:32:11.487841"], ["updated_at", "2021-02-08 20:32:11.487841"]]
+  ↳ db/seeds.rb:24
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:24
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:25
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ db/seeds.rb:25
+  [1m[36mStock Load (0.1ms)[0m  [1m[34mSELECT  "stocks".* FROM "stocks" WHERE "stocks"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ db/seeds.rb:25
+  [1m[36mUserStock Create (0.2ms)[0m  [1m[32mINSERT INTO "user_stocks" ("user_id", "stock_id", "amount", "unit_price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["user_id", 1], ["stock_id", 2], ["amount", 12.0], ["unit_price", 10.0], ["created_at", "2021-02-08 20:32:11.490935"], ["updated_at", "2021-02-08 20:32:11.490935"]]
+  ↳ db/seeds.rb:25
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:25
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:26
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ db/seeds.rb:26
+  [1m[36mStock Load (0.1ms)[0m  [1m[34mSELECT  "stocks".* FROM "stocks" WHERE "stocks"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ db/seeds.rb:26
+  [1m[36mUserStock Create (0.2ms)[0m  [1m[32mINSERT INTO "user_stocks" ("user_id", "stock_id", "amount", "unit_price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["user_id", 1], ["stock_id", 3], ["amount", 13.0], ["unit_price", 10.0], ["created_at", "2021-02-08 20:32:11.493744"], ["updated_at", "2021-02-08 20:32:11.493744"]]
+  ↳ db/seeds.rb:26
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:26
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:27
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ db/seeds.rb:27
+  [1m[36mStock Load (0.1ms)[0m  [1m[34mSELECT  "stocks".* FROM "stocks" WHERE "stocks"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ db/seeds.rb:27
+  [1m[36mUserStock Create (0.2ms)[0m  [1m[32mINSERT INTO "user_stocks" ("user_id", "stock_id", "amount", "unit_price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["user_id", 1], ["stock_id", 4], ["amount", 14.0], ["unit_price", 10.0], ["created_at", "2021-02-08 20:32:11.496477"], ["updated_at", "2021-02-08 20:32:11.496477"]]
+  ↳ db/seeds.rb:27
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:27
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:28
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ db/seeds.rb:28
+  [1m[36mStock Load (0.1ms)[0m  [1m[34mSELECT  "stocks".* FROM "stocks" WHERE "stocks"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ db/seeds.rb:28
+  [1m[36mUserStock Create (0.1ms)[0m  [1m[32mINSERT INTO "user_stocks" ("user_id", "stock_id", "amount", "unit_price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["user_id", 2], ["stock_id", 1], ["amount", 21.0], ["unit_price", 10.0], ["created_at", "2021-02-08 20:32:11.499153"], ["updated_at", "2021-02-08 20:32:11.499153"]]
+  ↳ db/seeds.rb:28
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:28
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:29
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ db/seeds.rb:29
+  [1m[36mStock Load (0.1ms)[0m  [1m[34mSELECT  "stocks".* FROM "stocks" WHERE "stocks"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ db/seeds.rb:29
+  [1m[36mUserStock Create (0.1ms)[0m  [1m[32mINSERT INTO "user_stocks" ("user_id", "stock_id", "amount", "unit_price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["user_id", 2], ["stock_id", 4], ["amount", 24.0], ["unit_price", 10.0], ["created_at", "2021-02-08 20:32:11.501770"], ["updated_at", "2021-02-08 20:32:11.501770"]]
+  ↳ db/seeds.rb:29
+  [1m[35m (4.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:29
+  [1m[36mStock Load (0.3ms)[0m  [1m[34mSELECT "stocks".* FROM "stocks"[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mStock Load (0.3ms)[0m  [1m[34mSELECT "stocks".* FROM "stocks" INNER JOIN "user_stocks" ON "stocks"."id" = "user_stocks"."stock_id" WHERE "user_stocks"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mStock Load (0.9ms)[0m  [1m[34mSELECT "stocks".* FROM "stocks" INNER JOIN "user_stocks" ON "stocks"."id" = "user_stocks"."stock_id" WHERE "user_stocks"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mStock Load (0.3ms)[0m  [1m[34mSELECT "stocks".* FROM "stocks" INNER JOIN "user_stocks" ON "stocks"."id" = "user_stocks"."stock_id" WHERE "user_stocks"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:9
+  [1m[36mUser Destroy (0.3ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 1]]
+  ↳ db/seeds.rb:9
+  [1m[35m (3.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:9
+  [1m[36mUser Destroy (0.1ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 2]]
+  ↳ db/seeds.rb:9
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:10
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "Tului1"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:10
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "A2HRqVMsyPVWlup4eLXsvQ"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:10
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("username", "email", "password_digest", "session_token", "balance", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["username", "Tului1"], ["email", "tului1@gmail.com"], ["password_digest", "$2a$12$HRwXwS91B.gi3JmtCkqWi.y3Yv1u33JEhTi34gTZwPMsI9Qoff8U."], ["session_token", "A2HRqVMsyPVWlup4eLXsvQ"], ["balance", 0.0], ["created_at", "2021-02-08 20:34:50.347760"], ["updated_at", "2021-02-08 20:34:50.347760"]]
+  ↳ db/seeds.rb:10
+  [1m[35m (3.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:10
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:11
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "Tului2"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:11
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "yGW9CE96KO4qIK8jdTXLlw"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:11
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("username", "email", "password_digest", "session_token", "balance", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["username", "Tului2"], ["email", "tului2@gmail.com"], ["password_digest", "$2a$12$ANa21CJ/YkKX6rg5xh3Gcewg4q4kNgJpbDMS0/pGdTl31KAA0LW0a"], ["session_token", "yGW9CE96KO4qIK8jdTXLlw"], ["balance", 0.0], ["created_at", "2021-02-08 20:34:50.520572"], ["updated_at", "2021-02-08 20:34:50.520572"]]
+  ↳ db/seeds.rb:11
+  [1m[35m (3.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:11
+  [1m[36mStock Load (0.3ms)[0m  [1m[34mSELECT "stocks".* FROM "stocks"[0m
+  ↳ db/seeds.rb:16
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:16
+  [1m[36mStock Destroy (0.2ms)[0m  [1m[31mDELETE FROM "stocks" WHERE "stocks"."id" = $1[0m  [["id", 1]]
+  ↳ db/seeds.rb:16
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:16
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:16
+  [1m[36mStock Destroy (0.1ms)[0m  [1m[31mDELETE FROM "stocks" WHERE "stocks"."id" = $1[0m  [["id", 2]]
+  ↳ db/seeds.rb:16
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:16
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:16
+  [1m[36mStock Destroy (0.1ms)[0m  [1m[31mDELETE FROM "stocks" WHERE "stocks"."id" = $1[0m  [["id", 3]]
+  ↳ db/seeds.rb:16
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:16
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:16
+  [1m[36mStock Destroy (0.2ms)[0m  [1m[31mDELETE FROM "stocks" WHERE "stocks"."id" = $1[0m  [["id", 4]]
+  ↳ db/seeds.rb:16
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:16
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:17
+  [1m[36mStock Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "stocks" WHERE "stocks"."ticker" = $1 LIMIT $2[0m  [["ticker", "QYLD"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:17
+  [1m[36mStock Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "stocks" WHERE "stocks"."description" = $1 LIMIT $2[0m  [["description", "ETF SP500"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:17
+  [1m[36mStock Create (0.2ms)[0m  [1m[32mINSERT INTO "stocks" ("ticker", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["ticker", "QYLD"], ["description", "ETF SP500"], ["created_at", "2021-02-08 20:34:50.537598"], ["updated_at", "2021-02-08 20:34:50.537598"]]
+  ↳ db/seeds.rb:17
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:17
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:18
+  [1m[36mStock Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "stocks" WHERE "stocks"."ticker" = $1 LIMIT $2[0m  [["ticker", "UAL"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:18
+  [1m[36mStock Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "stocks" WHERE "stocks"."description" = $1 LIMIT $2[0m  [["description", "United Airlines"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:18
+  [1m[36mStock Create (0.2ms)[0m  [1m[32mINSERT INTO "stocks" ("ticker", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["ticker", "UAL"], ["description", "United Airlines"], ["created_at", "2021-02-08 20:34:50.540112"], ["updated_at", "2021-02-08 20:34:50.540112"]]
+  ↳ db/seeds.rb:18
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:18
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:19
+  [1m[36mStock Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "stocks" WHERE "stocks"."ticker" = $1 LIMIT $2[0m  [["ticker", "TSLA"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:19
+  [1m[36mStock Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "stocks" WHERE "stocks"."description" = $1 LIMIT $2[0m  [["description", "Tesla"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:19
+  [1m[36mStock Create (0.1ms)[0m  [1m[32mINSERT INTO "stocks" ("ticker", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["ticker", "TSLA"], ["description", "Tesla"], ["created_at", "2021-02-08 20:34:50.542665"], ["updated_at", "2021-02-08 20:34:50.542665"]]
+  ↳ db/seeds.rb:19
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:19
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:20
+  [1m[36mStock Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "stocks" WHERE "stocks"."ticker" = $1 LIMIT $2[0m  [["ticker", "TWTR"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:20
+  [1m[36mStock Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "stocks" WHERE "stocks"."description" = $1 LIMIT $2[0m  [["description", "Twitter"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:20
+  [1m[36mStock Create (0.2ms)[0m  [1m[32mINSERT INTO "stocks" ("ticker", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["ticker", "TWTR"], ["description", "Twitter"], ["created_at", "2021-02-08 20:34:50.545016"], ["updated_at", "2021-02-08 20:34:50.545016"]]
+  ↳ db/seeds.rb:20
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:20
+  [1m[36mUserStock Load (0.3ms)[0m  [1m[34mSELECT "user_stocks".* FROM "user_stocks"[0m
+  ↳ db/seeds.rb:23
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:23
+  [1m[36mUserStock Destroy (0.2ms)[0m  [1m[31mDELETE FROM "user_stocks" WHERE "user_stocks"."id" = $1[0m  [["id", 1]]
+  ↳ db/seeds.rb:23
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:23
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:23
+  [1m[36mUserStock Destroy (0.2ms)[0m  [1m[31mDELETE FROM "user_stocks" WHERE "user_stocks"."id" = $1[0m  [["id", 2]]
+  ↳ db/seeds.rb:23
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:23
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:23
+  [1m[36mUserStock Destroy (0.2ms)[0m  [1m[31mDELETE FROM "user_stocks" WHERE "user_stocks"."id" = $1[0m  [["id", 3]]
+  ↳ db/seeds.rb:23
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:23
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:23
+  [1m[36mUserStock Destroy (0.2ms)[0m  [1m[31mDELETE FROM "user_stocks" WHERE "user_stocks"."id" = $1[0m  [["id", 4]]
+  ↳ db/seeds.rb:23
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:23
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:23
+  [1m[36mUserStock Destroy (0.2ms)[0m  [1m[31mDELETE FROM "user_stocks" WHERE "user_stocks"."id" = $1[0m  [["id", 5]]
+  ↳ db/seeds.rb:23
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:23
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:23
+  [1m[36mUserStock Destroy (0.2ms)[0m  [1m[31mDELETE FROM "user_stocks" WHERE "user_stocks"."id" = $1[0m  [["id", 6]]
+  ↳ db/seeds.rb:23
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:23
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:24
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ db/seeds.rb:24
+  [1m[36mStock Load (0.1ms)[0m  [1m[34mSELECT  "stocks".* FROM "stocks" WHERE "stocks"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ db/seeds.rb:24
+  [1m[36mUserStock Create (0.2ms)[0m  [1m[32mINSERT INTO "user_stocks" ("user_id", "stock_id", "amount", "unit_price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["user_id", 3], ["stock_id", 5], ["amount", 11.0], ["unit_price", 10.0], ["created_at", "2021-02-08 20:34:50.567154"], ["updated_at", "2021-02-08 20:34:50.567154"]]
+  ↳ db/seeds.rb:24
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:24
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:25
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ db/seeds.rb:25
+  [1m[36mStock Load (0.2ms)[0m  [1m[34mSELECT  "stocks".* FROM "stocks" WHERE "stocks"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ db/seeds.rb:25
+  [1m[36mUserStock Create (0.2ms)[0m  [1m[32mINSERT INTO "user_stocks" ("user_id", "stock_id", "amount", "unit_price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["user_id", 3], ["stock_id", 6], ["amount", 12.0], ["unit_price", 10.0], ["created_at", "2021-02-08 20:34:50.570587"], ["updated_at", "2021-02-08 20:34:50.570587"]]
+  ↳ db/seeds.rb:25
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:25
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:26
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ db/seeds.rb:26
+  [1m[36mStock Load (0.1ms)[0m  [1m[34mSELECT  "stocks".* FROM "stocks" WHERE "stocks"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ db/seeds.rb:26
+  [1m[36mUserStock Create (0.1ms)[0m  [1m[32mINSERT INTO "user_stocks" ("user_id", "stock_id", "amount", "unit_price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["user_id", 3], ["stock_id", 7], ["amount", 13.0], ["unit_price", 10.0], ["created_at", "2021-02-08 20:34:50.573758"], ["updated_at", "2021-02-08 20:34:50.573758"]]
+  ↳ db/seeds.rb:26
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:26
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:27
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ db/seeds.rb:27
+  [1m[36mStock Load (0.1ms)[0m  [1m[34mSELECT  "stocks".* FROM "stocks" WHERE "stocks"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ db/seeds.rb:27
+  [1m[36mUserStock Create (0.1ms)[0m  [1m[32mINSERT INTO "user_stocks" ("user_id", "stock_id", "amount", "unit_price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["user_id", 3], ["stock_id", 8], ["amount", 14.0], ["unit_price", 10.0], ["created_at", "2021-02-08 20:34:50.576300"], ["updated_at", "2021-02-08 20:34:50.576300"]]
+  ↳ db/seeds.rb:27
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:27
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:28
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ db/seeds.rb:28
+  [1m[36mStock Load (0.1ms)[0m  [1m[34mSELECT  "stocks".* FROM "stocks" WHERE "stocks"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ db/seeds.rb:28
+  [1m[36mUserStock Create (0.2ms)[0m  [1m[32mINSERT INTO "user_stocks" ("user_id", "stock_id", "amount", "unit_price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["user_id", 4], ["stock_id", 5], ["amount", 21.0], ["unit_price", 10.0], ["created_at", "2021-02-08 20:34:50.579038"], ["updated_at", "2021-02-08 20:34:50.579038"]]
+  ↳ db/seeds.rb:28
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:28
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:29
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ db/seeds.rb:29
+  [1m[36mStock Load (0.1ms)[0m  [1m[34mSELECT  "stocks".* FROM "stocks" WHERE "stocks"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ db/seeds.rb:29
+  [1m[36mUserStock Create (0.1ms)[0m  [1m[32mINSERT INTO "user_stocks" ("user_id", "stock_id", "amount", "unit_price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["user_id", 4], ["stock_id", 8], ["amount", 24.0], ["unit_price", 10.0], ["created_at", "2021-02-08 20:34:50.581619"], ["updated_at", "2021-02-08 20:34:50.581619"]]
+  ↳ db/seeds.rb:29
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:29
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mStock Load (1.1ms)[0m  [1m[34mSELECT "stocks".* FROM "stocks"[0m
+  [1m[36mStock Load (0.6ms)[0m  [1m[34mSELECT "stocks".* FROM "stocks"[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUserStock Load (0.5ms)[0m  [1m[34mSELECT "user_stocks".* FROM "user_stocks" WHERE "user_stocks"."user_id" = $1[0m  [["user_id", 3]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "user_stocks"."amount", "user_stocks"."unit_price" FROM "user_stocks" WHERE "user_stocks"."user_id" = $1[0m  [["user_id", 3]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "user_stocks"."amount", "user_stocks"."unit_price" FROM "user_stocks" WHERE "user_stocks"."user_id" = $1[0m  [["user_id", 3]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:9
+  [1m[36mUser Destroy (0.2ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 3]]
+  ↳ db/seeds.rb:9
+  [1m[35m (3.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:9
+  [1m[36mUser Destroy (0.2ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 4]]
+  ↳ db/seeds.rb:9
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:10
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "Tului1"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:10
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "X8kUIYrQMxau3_t1OC1S1A"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:10
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("username", "email", "password_digest", "session_token", "balance", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["username", "Tului1"], ["email", "tului1@gmail.com"], ["password_digest", "$2a$12$y9fYPiRY5WPQXXH0R.79XOAt8B3DrF55DJbKsiz.ZL0HkUhdkkWa2"], ["session_token", "X8kUIYrQMxau3_t1OC1S1A"], ["balance", 0.0], ["created_at", "2021-02-08 20:39:40.391951"], ["updated_at", "2021-02-08 20:39:40.391951"]]
+  ↳ db/seeds.rb:10
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:10
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:11
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "Tului2"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:11
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "ssrFaxV-yVega_jVLDUyhw"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:11
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("username", "email", "password_digest", "session_token", "balance", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["username", "Tului2"], ["email", "tului2@gmail.com"], ["password_digest", "$2a$12$Mvd3ZkfTsYQGAs/M9jqXU.l4TTcGUFUZSTPdnDAerxRnRA1fxZFXG"], ["session_token", "ssrFaxV-yVega_jVLDUyhw"], ["balance", 0.0], ["created_at", "2021-02-08 20:39:40.562374"], ["updated_at", "2021-02-08 20:39:40.562374"]]
+  ↳ db/seeds.rb:11
+  [1m[35m (3.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:11
+  [1m[36mStock Load (0.2ms)[0m  [1m[34mSELECT "stocks".* FROM "stocks"[0m
+  ↳ db/seeds.rb:16
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:16
+  [1m[36mStock Destroy (0.2ms)[0m  [1m[31mDELETE FROM "stocks" WHERE "stocks"."id" = $1[0m  [["id", 5]]
+  ↳ db/seeds.rb:16
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:16
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:16
+  [1m[36mStock Destroy (0.2ms)[0m  [1m[31mDELETE FROM "stocks" WHERE "stocks"."id" = $1[0m  [["id", 6]]
+  ↳ db/seeds.rb:16
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:16
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:16
+  [1m[36mStock Destroy (0.1ms)[0m  [1m[31mDELETE FROM "stocks" WHERE "stocks"."id" = $1[0m  [["id", 7]]
+  ↳ db/seeds.rb:16
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:16
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:16
+  [1m[36mStock Destroy (0.2ms)[0m  [1m[31mDELETE FROM "stocks" WHERE "stocks"."id" = $1[0m  [["id", 8]]
+  ↳ db/seeds.rb:16
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:16
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:17
+  [1m[36mStock Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "stocks" WHERE "stocks"."ticker" = $1 LIMIT $2[0m  [["ticker", "QYLD"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:17
+  [1m[36mStock Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "stocks" WHERE "stocks"."description" = $1 LIMIT $2[0m  [["description", "ETF SP500"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:17
+  [1m[36mStock Create (0.2ms)[0m  [1m[32mINSERT INTO "stocks" ("ticker", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["ticker", "QYLD"], ["description", "ETF SP500"], ["created_at", "2021-02-08 20:39:40.579780"], ["updated_at", "2021-02-08 20:39:40.579780"]]
+  ↳ db/seeds.rb:17
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:17
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:18
+  [1m[36mStock Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "stocks" WHERE "stocks"."ticker" = $1 LIMIT $2[0m  [["ticker", "UAL"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:18
+  [1m[36mStock Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "stocks" WHERE "stocks"."description" = $1 LIMIT $2[0m  [["description", "United Airlines"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:18
+  [1m[36mStock Create (0.1ms)[0m  [1m[32mINSERT INTO "stocks" ("ticker", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["ticker", "UAL"], ["description", "United Airlines"], ["created_at", "2021-02-08 20:39:40.582339"], ["updated_at", "2021-02-08 20:39:40.582339"]]
+  ↳ db/seeds.rb:18
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:18
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:19
+  [1m[36mStock Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "stocks" WHERE "stocks"."ticker" = $1 LIMIT $2[0m  [["ticker", "TSLA"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:19
+  [1m[36mStock Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "stocks" WHERE "stocks"."description" = $1 LIMIT $2[0m  [["description", "Tesla"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:19
+  [1m[36mStock Create (0.2ms)[0m  [1m[32mINSERT INTO "stocks" ("ticker", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["ticker", "TSLA"], ["description", "Tesla"], ["created_at", "2021-02-08 20:39:40.584965"], ["updated_at", "2021-02-08 20:39:40.584965"]]
+  ↳ db/seeds.rb:19
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:19
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:20
+  [1m[36mStock Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "stocks" WHERE "stocks"."ticker" = $1 LIMIT $2[0m  [["ticker", "TWTR"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:20
+  [1m[36mStock Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "stocks" WHERE "stocks"."description" = $1 LIMIT $2[0m  [["description", "Twitter"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:20
+  [1m[36mStock Create (0.1ms)[0m  [1m[32mINSERT INTO "stocks" ("ticker", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["ticker", "TWTR"], ["description", "Twitter"], ["created_at", "2021-02-08 20:39:40.587466"], ["updated_at", "2021-02-08 20:39:40.587466"]]
+  ↳ db/seeds.rb:20
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:20
+  [1m[36mUserStock Load (0.2ms)[0m  [1m[34mSELECT "user_stocks".* FROM "user_stocks"[0m
+  ↳ db/seeds.rb:23
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:23
+  [1m[36mUserStock Destroy (0.2ms)[0m  [1m[31mDELETE FROM "user_stocks" WHERE "user_stocks"."id" = $1[0m  [["id", 7]]
+  ↳ db/seeds.rb:23
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:23
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:23
+  [1m[36mUserStock Destroy (0.2ms)[0m  [1m[31mDELETE FROM "user_stocks" WHERE "user_stocks"."id" = $1[0m  [["id", 8]]
+  ↳ db/seeds.rb:23
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:23
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:23
+  [1m[36mUserStock Destroy (0.1ms)[0m  [1m[31mDELETE FROM "user_stocks" WHERE "user_stocks"."id" = $1[0m  [["id", 9]]
+  ↳ db/seeds.rb:23
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:23
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:23
+  [1m[36mUserStock Destroy (0.1ms)[0m  [1m[31mDELETE FROM "user_stocks" WHERE "user_stocks"."id" = $1[0m  [["id", 10]]
+  ↳ db/seeds.rb:23
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:23
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:23
+  [1m[36mUserStock Destroy (0.1ms)[0m  [1m[31mDELETE FROM "user_stocks" WHERE "user_stocks"."id" = $1[0m  [["id", 11]]
+  ↳ db/seeds.rb:23
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:23
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:23
+  [1m[36mUserStock Destroy (0.2ms)[0m  [1m[31mDELETE FROM "user_stocks" WHERE "user_stocks"."id" = $1[0m  [["id", 12]]
+  ↳ db/seeds.rb:23
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:23
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:24
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ db/seeds.rb:24
+  [1m[36mStock Load (0.1ms)[0m  [1m[34mSELECT  "stocks".* FROM "stocks" WHERE "stocks"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ db/seeds.rb:24
+  [1m[36mUserStock Create (0.2ms)[0m  [1m[32mINSERT INTO "user_stocks" ("user_id", "stock_id", "amount", "unit_price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["user_id", 5], ["stock_id", 9], ["amount", 11.0], ["unit_price", 10.0], ["created_at", "2021-02-08 20:39:40.605204"], ["updated_at", "2021-02-08 20:39:40.605204"]]
+  ↳ db/seeds.rb:24
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:24
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:25
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ db/seeds.rb:25
+  [1m[36mStock Load (0.1ms)[0m  [1m[34mSELECT  "stocks".* FROM "stocks" WHERE "stocks"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ db/seeds.rb:25
+  [1m[36mUserStock Create (0.2ms)[0m  [1m[32mINSERT INTO "user_stocks" ("user_id", "stock_id", "amount", "unit_price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["user_id", 5], ["stock_id", 10], ["amount", 12.0], ["unit_price", 10.0], ["created_at", "2021-02-08 20:39:40.608153"], ["updated_at", "2021-02-08 20:39:40.608153"]]
+  ↳ db/seeds.rb:25
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:25
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:26
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ db/seeds.rb:26
+  [1m[36mStock Load (0.1ms)[0m  [1m[34mSELECT  "stocks".* FROM "stocks" WHERE "stocks"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ db/seeds.rb:26
+  [1m[36mUserStock Create (0.2ms)[0m  [1m[32mINSERT INTO "user_stocks" ("user_id", "stock_id", "amount", "unit_price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["user_id", 5], ["stock_id", 11], ["amount", 13.0], ["unit_price", 10.0], ["created_at", "2021-02-08 20:39:40.611085"], ["updated_at", "2021-02-08 20:39:40.611085"]]
+  ↳ db/seeds.rb:26
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:26
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:27
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ db/seeds.rb:27
+  [1m[36mStock Load (0.1ms)[0m  [1m[34mSELECT  "stocks".* FROM "stocks" WHERE "stocks"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ db/seeds.rb:27
+  [1m[36mUserStock Create (0.1ms)[0m  [1m[32mINSERT INTO "user_stocks" ("user_id", "stock_id", "amount", "unit_price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["user_id", 5], ["stock_id", 12], ["amount", 14.0], ["unit_price", 10.0], ["created_at", "2021-02-08 20:39:40.614007"], ["updated_at", "2021-02-08 20:39:40.614007"]]
+  ↳ db/seeds.rb:27
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:27
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:28
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ db/seeds.rb:28
+  [1m[36mStock Load (0.1ms)[0m  [1m[34mSELECT  "stocks".* FROM "stocks" WHERE "stocks"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ db/seeds.rb:28
+  [1m[36mUserStock Create (0.2ms)[0m  [1m[32mINSERT INTO "user_stocks" ("user_id", "stock_id", "amount", "unit_price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["user_id", 6], ["stock_id", 9], ["amount", 21.0], ["unit_price", 10.0], ["created_at", "2021-02-08 20:39:40.616776"], ["updated_at", "2021-02-08 20:39:40.616776"]]
+  ↳ db/seeds.rb:28
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:28
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:29
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ db/seeds.rb:29
+  [1m[36mStock Load (0.1ms)[0m  [1m[34mSELECT  "stocks".* FROM "stocks" WHERE "stocks"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ db/seeds.rb:29
+  [1m[36mUserStock Create (0.2ms)[0m  [1m[32mINSERT INTO "user_stocks" ("user_id", "stock_id", "amount", "unit_price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["user_id", 6], ["stock_id", 12], ["amount", 24.0], ["unit_price", 10.0], ["created_at", "2021-02-08 20:39:40.619652"], ["updated_at", "2021-02-08 20:39:40.619652"]]
+  ↳ db/seeds.rb:29
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:29
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:9
+  [1m[36mUser Destroy (0.2ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 5]]
+  ↳ db/seeds.rb:9
+  [1m[35m (7.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:9
+  [1m[36mUser Destroy (0.2ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 6]]
+  ↳ db/seeds.rb:9
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:10
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "Tului1"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:10
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "Hlos_Szx74mRMtrsjq4cGQ"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:10
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("username", "email", "password_digest", "session_token", "balance", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["username", "Tului1"], ["email", "tului1@gmail.com"], ["password_digest", "$2a$12$R89O62ARtROWVymyK8KW7OTJ7EgDKIMWE9lnqgTlPYeDqrLGHpX7m"], ["session_token", "Hlos_Szx74mRMtrsjq4cGQ"], ["balance", 0.0], ["created_at", "2021-02-08 20:40:05.907788"], ["updated_at", "2021-02-08 20:40:05.907788"]]
+  ↳ db/seeds.rb:10
+  [1m[35m (3.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:10
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:11
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "Tului2"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:11
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "fizXF-U0BjFXBX9E8eDOxw"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:11
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("username", "email", "password_digest", "session_token", "balance", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["username", "Tului2"], ["email", "tului2@gmail.com"], ["password_digest", "$2a$12$VcCjb4LVidF5qpNakZT4DegPj1oe6gE/lbW3p.A0b8jXNBQyr6SL2"], ["session_token", "fizXF-U0BjFXBX9E8eDOxw"], ["balance", 0.0], ["created_at", "2021-02-08 20:40:06.080802"], ["updated_at", "2021-02-08 20:40:06.080802"]]
+  ↳ db/seeds.rb:11
+  [1m[35m (3.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:11
+  [1m[36mStock Load (0.2ms)[0m  [1m[34mSELECT "stocks".* FROM "stocks"[0m
+  ↳ db/seeds.rb:16
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:16
+  [1m[36mStock Destroy (0.2ms)[0m  [1m[31mDELETE FROM "stocks" WHERE "stocks"."id" = $1[0m  [["id", 9]]
+  ↳ db/seeds.rb:16
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:16
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:16
+  [1m[36mStock Destroy (0.2ms)[0m  [1m[31mDELETE FROM "stocks" WHERE "stocks"."id" = $1[0m  [["id", 10]]
+  ↳ db/seeds.rb:16
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:16
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:16
+  [1m[36mStock Destroy (0.1ms)[0m  [1m[31mDELETE FROM "stocks" WHERE "stocks"."id" = $1[0m  [["id", 11]]
+  ↳ db/seeds.rb:16
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:16
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:16
+  [1m[36mStock Destroy (0.2ms)[0m  [1m[31mDELETE FROM "stocks" WHERE "stocks"."id" = $1[0m  [["id", 12]]
+  ↳ db/seeds.rb:16
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:16
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:17
+  [1m[36mStock Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "stocks" WHERE "stocks"."ticker" = $1 LIMIT $2[0m  [["ticker", "QYLD"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:17
+  [1m[36mStock Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "stocks" WHERE "stocks"."description" = $1 LIMIT $2[0m  [["description", "ETF SP500"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:17
+  [1m[36mStock Create (0.2ms)[0m  [1m[32mINSERT INTO "stocks" ("ticker", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["ticker", "QYLD"], ["description", "ETF SP500"], ["created_at", "2021-02-08 20:40:06.098173"], ["updated_at", "2021-02-08 20:40:06.098173"]]
+  ↳ db/seeds.rb:17
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:17
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:18
+  [1m[36mStock Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "stocks" WHERE "stocks"."ticker" = $1 LIMIT $2[0m  [["ticker", "UAL"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:18
+  [1m[36mStock Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "stocks" WHERE "stocks"."description" = $1 LIMIT $2[0m  [["description", "United Airlines"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:18
+  [1m[36mStock Create (0.2ms)[0m  [1m[32mINSERT INTO "stocks" ("ticker", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["ticker", "UAL"], ["description", "United Airlines"], ["created_at", "2021-02-08 20:40:06.101277"], ["updated_at", "2021-02-08 20:40:06.101277"]]
+  ↳ db/seeds.rb:18
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:18
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:19
+  [1m[36mStock Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "stocks" WHERE "stocks"."ticker" = $1 LIMIT $2[0m  [["ticker", "TSLA"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:19
+  [1m[36mStock Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "stocks" WHERE "stocks"."description" = $1 LIMIT $2[0m  [["description", "Tesla"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:19
+  [1m[36mStock Create (0.2ms)[0m  [1m[32mINSERT INTO "stocks" ("ticker", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["ticker", "TSLA"], ["description", "Tesla"], ["created_at", "2021-02-08 20:40:06.104244"], ["updated_at", "2021-02-08 20:40:06.104244"]]
+  ↳ db/seeds.rb:19
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:19
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:20
+  [1m[36mStock Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "stocks" WHERE "stocks"."ticker" = $1 LIMIT $2[0m  [["ticker", "TWTR"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:20
+  [1m[36mStock Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "stocks" WHERE "stocks"."description" = $1 LIMIT $2[0m  [["description", "Twitter"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:20
+  [1m[36mStock Create (0.1ms)[0m  [1m[32mINSERT INTO "stocks" ("ticker", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["ticker", "TWTR"], ["description", "Twitter"], ["created_at", "2021-02-08 20:40:06.107019"], ["updated_at", "2021-02-08 20:40:06.107019"]]
+  ↳ db/seeds.rb:20
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:20
+  [1m[36mUserStock Load (0.2ms)[0m  [1m[34mSELECT "user_stocks".* FROM "user_stocks"[0m
+  ↳ db/seeds.rb:23
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:23
+  [1m[36mUserStock Destroy (0.2ms)[0m  [1m[31mDELETE FROM "user_stocks" WHERE "user_stocks"."id" = $1[0m  [["id", 13]]
+  ↳ db/seeds.rb:23
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:23
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:23
+  [1m[36mUserStock Destroy (0.1ms)[0m  [1m[31mDELETE FROM "user_stocks" WHERE "user_stocks"."id" = $1[0m  [["id", 14]]
+  ↳ db/seeds.rb:23
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:23
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:23
+  [1m[36mUserStock Destroy (0.1ms)[0m  [1m[31mDELETE FROM "user_stocks" WHERE "user_stocks"."id" = $1[0m  [["id", 15]]
+  ↳ db/seeds.rb:23
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:23
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:23
+  [1m[36mUserStock Destroy (0.1ms)[0m  [1m[31mDELETE FROM "user_stocks" WHERE "user_stocks"."id" = $1[0m  [["id", 16]]
+  ↳ db/seeds.rb:23
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:23
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:23
+  [1m[36mUserStock Destroy (0.1ms)[0m  [1m[31mDELETE FROM "user_stocks" WHERE "user_stocks"."id" = $1[0m  [["id", 17]]
+  ↳ db/seeds.rb:23
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:23
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:23
+  [1m[36mUserStock Destroy (0.1ms)[0m  [1m[31mDELETE FROM "user_stocks" WHERE "user_stocks"."id" = $1[0m  [["id", 18]]
+  ↳ db/seeds.rb:23
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:23
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:24
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ db/seeds.rb:24
+  [1m[36mStock Load (0.1ms)[0m  [1m[34mSELECT  "stocks".* FROM "stocks" WHERE "stocks"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ db/seeds.rb:24
+  [1m[36mUserStock Create (0.4ms)[0m  [1m[32mINSERT INTO "user_stocks" ("user_id", "stock_id", "amount", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_id", 7], ["stock_id", 13], ["amount", 11.0], ["created_at", "2021-02-08 20:40:06.124170"], ["updated_at", "2021-02-08 20:40:06.124170"]]
+  ↳ db/seeds.rb:24
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ db/seeds.rb:24
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:9
+  [1m[36mUser Destroy (0.2ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 7]]
+  ↳ db/seeds.rb:9
+  [1m[35m (7.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:9
+  [1m[36mUser Destroy (0.2ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 8]]
+  ↳ db/seeds.rb:9
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:10
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "Tului1"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:10
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "CohSOAN_KAaxKzefjs9Glw"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:10
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("username", "email", "password_digest", "session_token", "balance", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["username", "Tului1"], ["email", "tului1@gmail.com"], ["password_digest", "$2a$12$qG2owXNwSCFNlr/iwGcZOe2w9vV1ytU1uPF1yPKr4jyOjHI613kES"], ["session_token", "CohSOAN_KAaxKzefjs9Glw"], ["balance", 0.0], ["created_at", "2021-02-08 20:40:22.313651"], ["updated_at", "2021-02-08 20:40:22.313651"]]
+  ↳ db/seeds.rb:10
+  [1m[35m (3.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:10
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:11
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "Tului2"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:11
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "0P7V8CYBld3Sm2I_FcpSLA"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:11
+  [1m[36mUser Create (0.1ms)[0m  [1m[32mINSERT INTO "users" ("username", "email", "password_digest", "session_token", "balance", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["username", "Tului2"], ["email", "tului2@gmail.com"], ["password_digest", "$2a$12$12ZXMjW2dAOBobbAZQQDXOM23.Y46itRZYwPElOzD9Ji6LBSq1.6G"], ["session_token", "0P7V8CYBld3Sm2I_FcpSLA"], ["balance", 0.0], ["created_at", "2021-02-08 20:40:22.487606"], ["updated_at", "2021-02-08 20:40:22.487606"]]
+  ↳ db/seeds.rb:11
+  [1m[35m (3.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:11
+  [1m[36mStock Load (0.3ms)[0m  [1m[34mSELECT "stocks".* FROM "stocks"[0m
+  ↳ db/seeds.rb:16
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:16
+  [1m[36mStock Destroy (0.2ms)[0m  [1m[31mDELETE FROM "stocks" WHERE "stocks"."id" = $1[0m  [["id", 13]]
+  ↳ db/seeds.rb:16
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:16
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:16
+  [1m[36mStock Destroy (0.4ms)[0m  [1m[31mDELETE FROM "stocks" WHERE "stocks"."id" = $1[0m  [["id", 14]]
+  ↳ db/seeds.rb:16
+  [1m[35m (1.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:16
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:16
+  [1m[36mStock Destroy (0.5ms)[0m  [1m[31mDELETE FROM "stocks" WHERE "stocks"."id" = $1[0m  [["id", 15]]
+  ↳ db/seeds.rb:16
+  [1m[35m (1.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:16
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:16
+  [1m[36mStock Destroy (0.3ms)[0m  [1m[31mDELETE FROM "stocks" WHERE "stocks"."id" = $1[0m  [["id", 16]]
+  ↳ db/seeds.rb:16
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:16
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:17
+  [1m[36mStock Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "stocks" WHERE "stocks"."ticker" = $1 LIMIT $2[0m  [["ticker", "QYLD"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:17
+  [1m[36mStock Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "stocks" WHERE "stocks"."description" = $1 LIMIT $2[0m  [["description", "ETF SP500"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:17
+  [1m[36mStock Create (0.3ms)[0m  [1m[32mINSERT INTO "stocks" ("ticker", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["ticker", "QYLD"], ["description", "ETF SP500"], ["created_at", "2021-02-08 20:40:22.511101"], ["updated_at", "2021-02-08 20:40:22.511101"]]
+  ↳ db/seeds.rb:17
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:17
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:18
+  [1m[36mStock Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "stocks" WHERE "stocks"."ticker" = $1 LIMIT $2[0m  [["ticker", "UAL"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:18
+  [1m[36mStock Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "stocks" WHERE "stocks"."description" = $1 LIMIT $2[0m  [["description", "United Airlines"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:18
+  [1m[36mStock Create (0.2ms)[0m  [1m[32mINSERT INTO "stocks" ("ticker", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["ticker", "UAL"], ["description", "United Airlines"], ["created_at", "2021-02-08 20:40:22.515421"], ["updated_at", "2021-02-08 20:40:22.515421"]]
+  ↳ db/seeds.rb:18
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:18
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:19
+  [1m[36mStock Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "stocks" WHERE "stocks"."ticker" = $1 LIMIT $2[0m  [["ticker", "TSLA"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:19
+  [1m[36mStock Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "stocks" WHERE "stocks"."description" = $1 LIMIT $2[0m  [["description", "Tesla"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:19
+  [1m[36mStock Create (0.2ms)[0m  [1m[32mINSERT INTO "stocks" ("ticker", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["ticker", "TSLA"], ["description", "Tesla"], ["created_at", "2021-02-08 20:40:22.519130"], ["updated_at", "2021-02-08 20:40:22.519130"]]
+  ↳ db/seeds.rb:19
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:19
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:20
+  [1m[36mStock Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "stocks" WHERE "stocks"."ticker" = $1 LIMIT $2[0m  [["ticker", "TWTR"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:20
+  [1m[36mStock Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "stocks" WHERE "stocks"."description" = $1 LIMIT $2[0m  [["description", "Twitter"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:20
+  [1m[36mStock Create (0.2ms)[0m  [1m[32mINSERT INTO "stocks" ("ticker", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["ticker", "TWTR"], ["description", "Twitter"], ["created_at", "2021-02-08 20:40:22.522993"], ["updated_at", "2021-02-08 20:40:22.522993"]]
+  ↳ db/seeds.rb:20
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:20
+  [1m[36mUserStock Load (0.3ms)[0m  [1m[34mSELECT "user_stocks".* FROM "user_stocks"[0m
+  ↳ db/seeds.rb:23
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:24
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ db/seeds.rb:24
+  [1m[36mStock Load (0.2ms)[0m  [1m[34mSELECT  "stocks".* FROM "stocks" WHERE "stocks"."id" = $1 LIMIT $2[0m  [["id", 17], ["LIMIT", 1]]
+  ↳ db/seeds.rb:24
+  [1m[36mUserStock Create (0.3ms)[0m  [1m[32mINSERT INTO "user_stocks" ("user_id", "stock_id", "amount", "unit_price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["user_id", 9], ["stock_id", 17], ["amount", 11.0], ["unit_price", 10.0], ["created_at", "2021-02-08 20:40:22.536316"], ["updated_at", "2021-02-08 20:40:22.536316"]]
+  ↳ db/seeds.rb:24
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:24
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:25
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ db/seeds.rb:25
+  [1m[36mStock Load (0.2ms)[0m  [1m[34mSELECT  "stocks".* FROM "stocks" WHERE "stocks"."id" = $1 LIMIT $2[0m  [["id", 18], ["LIMIT", 1]]
+  ↳ db/seeds.rb:25
+  [1m[36mUserStock Create (0.3ms)[0m  [1m[32mINSERT INTO "user_stocks" ("user_id", "stock_id", "amount", "unit_price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["user_id", 9], ["stock_id", 18], ["amount", 12.0], ["unit_price", 10.0], ["created_at", "2021-02-08 20:40:22.541021"], ["updated_at", "2021-02-08 20:40:22.541021"]]
+  ↳ db/seeds.rb:25
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:25
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:26
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ db/seeds.rb:26
+  [1m[36mStock Load (0.2ms)[0m  [1m[34mSELECT  "stocks".* FROM "stocks" WHERE "stocks"."id" = $1 LIMIT $2[0m  [["id", 19], ["LIMIT", 1]]
+  ↳ db/seeds.rb:26
+  [1m[36mUserStock Create (0.3ms)[0m  [1m[32mINSERT INTO "user_stocks" ("user_id", "stock_id", "amount", "unit_price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["user_id", 9], ["stock_id", 19], ["amount", 13.0], ["unit_price", 10.0], ["created_at", "2021-02-08 20:40:22.545272"], ["updated_at", "2021-02-08 20:40:22.545272"]]
+  ↳ db/seeds.rb:26
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:26
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:27
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ db/seeds.rb:27
+  [1m[36mStock Load (0.2ms)[0m  [1m[34mSELECT  "stocks".* FROM "stocks" WHERE "stocks"."id" = $1 LIMIT $2[0m  [["id", 20], ["LIMIT", 1]]
+  ↳ db/seeds.rb:27
+  [1m[36mUserStock Create (0.2ms)[0m  [1m[32mINSERT INTO "user_stocks" ("user_id", "stock_id", "amount", "unit_price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["user_id", 9], ["stock_id", 20], ["amount", 14.0], ["unit_price", 10.0], ["created_at", "2021-02-08 20:40:22.549330"], ["updated_at", "2021-02-08 20:40:22.549330"]]
+  ↳ db/seeds.rb:27
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:27
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:28
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ db/seeds.rb:28
+  [1m[36mStock Load (0.2ms)[0m  [1m[34mSELECT  "stocks".* FROM "stocks" WHERE "stocks"."id" = $1 LIMIT $2[0m  [["id", 17], ["LIMIT", 1]]
+  ↳ db/seeds.rb:28
+  [1m[36mUserStock Create (0.3ms)[0m  [1m[32mINSERT INTO "user_stocks" ("user_id", "stock_id", "amount", "unit_price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["user_id", 10], ["stock_id", 17], ["amount", 21.0], ["unit_price", 10.0], ["created_at", "2021-02-08 20:40:22.553511"], ["updated_at", "2021-02-08 20:40:22.553511"]]
+  ↳ db/seeds.rb:28
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:28
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:29
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ db/seeds.rb:29
+  [1m[36mStock Load (0.2ms)[0m  [1m[34mSELECT  "stocks".* FROM "stocks" WHERE "stocks"."id" = $1 LIMIT $2[0m  [["id", 20], ["LIMIT", 1]]
+  ↳ db/seeds.rb:29
+  [1m[36mUserStock Create (0.3ms)[0m  [1m[32mINSERT INTO "user_stocks" ("user_id", "stock_id", "amount", "unit_price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["user_id", 10], ["stock_id", 20], ["amount", 24.0], ["unit_price", 10.0], ["created_at", "2021-02-08 20:40:22.557832"], ["updated_at", "2021-02-08 20:40:22.557832"]]
+  ↳ db/seeds.rb:29
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:29
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:9
+  [1m[36mUser Destroy (0.3ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 9]]
+  ↳ db/seeds.rb:9
+  [1m[35m (7.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:9
+  [1m[36mUser Destroy (0.5ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 10]]
+  ↳ db/seeds.rb:9
+  [1m[35m (1.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:10
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "Tului1"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:10
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "y4C1IJ6RbSM7RnYQhb8Iog"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:10
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("username", "email", "password_digest", "session_token", "balance", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["username", "Tului1"], ["email", "tului1@gmail.com"], ["password_digest", "$2a$12$qbWVlcxDC.IVUbZnbY4LNu0pXL5evD9bvPwUx7yIMT1EiBCZHP9PG"], ["session_token", "y4C1IJ6RbSM7RnYQhb8Iog"], ["balance", 0.0], ["created_at", "2021-02-08 20:40:35.741595"], ["updated_at", "2021-02-08 20:40:35.741595"]]
+  ↳ db/seeds.rb:10
+  [1m[35m (3.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:10
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:11
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "Tului2"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:11
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "CP_vWSf36p0jL_b042r1pg"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:11
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("username", "email", "password_digest", "session_token", "balance", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["username", "Tului2"], ["email", "tului2@gmail.com"], ["password_digest", "$2a$12$gVY5.uywYtUSeVGijhMxo.3EJQRDHNvJELE3Ac1YHjZmgeQFI7Pca"], ["session_token", "CP_vWSf36p0jL_b042r1pg"], ["balance", 0.0], ["created_at", "2021-02-08 20:40:35.916635"], ["updated_at", "2021-02-08 20:40:35.916635"]]
+  ↳ db/seeds.rb:11
+  [1m[35m (3.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:11
+  [1m[36mStock Load (0.3ms)[0m  [1m[34mSELECT "stocks".* FROM "stocks"[0m
+  ↳ db/seeds.rb:16
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:16
+  [1m[36mStock Destroy (0.2ms)[0m  [1m[31mDELETE FROM "stocks" WHERE "stocks"."id" = $1[0m  [["id", 17]]
+  ↳ db/seeds.rb:16
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:16
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:16
+  [1m[36mStock Destroy (0.1ms)[0m  [1m[31mDELETE FROM "stocks" WHERE "stocks"."id" = $1[0m  [["id", 18]]
+  ↳ db/seeds.rb:16
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:16
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:16
+  [1m[36mStock Destroy (0.2ms)[0m  [1m[31mDELETE FROM "stocks" WHERE "stocks"."id" = $1[0m  [["id", 19]]
+  ↳ db/seeds.rb:16
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:16
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:16
+  [1m[36mStock Destroy (0.1ms)[0m  [1m[31mDELETE FROM "stocks" WHERE "stocks"."id" = $1[0m  [["id", 20]]
+  ↳ db/seeds.rb:16
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:16
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:17
+  [1m[36mStock Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "stocks" WHERE "stocks"."ticker" = $1 LIMIT $2[0m  [["ticker", "QYLD"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:17
+  [1m[36mStock Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "stocks" WHERE "stocks"."description" = $1 LIMIT $2[0m  [["description", "ETF SP500"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:17
+  [1m[36mStock Create (0.3ms)[0m  [1m[32mINSERT INTO "stocks" ("ticker", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["ticker", "QYLD"], ["description", "ETF SP500"], ["created_at", "2021-02-08 20:40:35.934382"], ["updated_at", "2021-02-08 20:40:35.934382"]]
+  ↳ db/seeds.rb:17
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:17
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:18
+  [1m[36mStock Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "stocks" WHERE "stocks"."ticker" = $1 LIMIT $2[0m  [["ticker", "UAL"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:18
+  [1m[36mStock Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "stocks" WHERE "stocks"."description" = $1 LIMIT $2[0m  [["description", "United Airlines"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:18
+  [1m[36mStock Create (0.2ms)[0m  [1m[32mINSERT INTO "stocks" ("ticker", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["ticker", "UAL"], ["description", "United Airlines"], ["created_at", "2021-02-08 20:40:35.937288"], ["updated_at", "2021-02-08 20:40:35.937288"]]
+  ↳ db/seeds.rb:18
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:18
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:19
+  [1m[36mStock Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "stocks" WHERE "stocks"."ticker" = $1 LIMIT $2[0m  [["ticker", "TSLA"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:19
+  [1m[36mStock Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "stocks" WHERE "stocks"."description" = $1 LIMIT $2[0m  [["description", "Tesla"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:19
+  [1m[36mStock Create (0.2ms)[0m  [1m[32mINSERT INTO "stocks" ("ticker", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["ticker", "TSLA"], ["description", "Tesla"], ["created_at", "2021-02-08 20:40:35.939815"], ["updated_at", "2021-02-08 20:40:35.939815"]]
+  ↳ db/seeds.rb:19
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:19
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:20
+  [1m[36mStock Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "stocks" WHERE "stocks"."ticker" = $1 LIMIT $2[0m  [["ticker", "TWTR"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:20
+  [1m[36mStock Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "stocks" WHERE "stocks"."description" = $1 LIMIT $2[0m  [["description", "Twitter"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:20
+  [1m[36mStock Create (0.2ms)[0m  [1m[32mINSERT INTO "stocks" ("ticker", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["ticker", "TWTR"], ["description", "Twitter"], ["created_at", "2021-02-08 20:40:35.942440"], ["updated_at", "2021-02-08 20:40:35.942440"]]
+  ↳ db/seeds.rb:20
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:20
+  [1m[36mUserStock Load (0.2ms)[0m  [1m[34mSELECT "user_stocks".* FROM "user_stocks"[0m
+  ↳ db/seeds.rb:23
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:23
+  [1m[36mUserStock Destroy (0.2ms)[0m  [1m[31mDELETE FROM "user_stocks" WHERE "user_stocks"."id" = $1[0m  [["id", 20]]
+  ↳ db/seeds.rb:23
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:23
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:23
+  [1m[36mUserStock Destroy (0.2ms)[0m  [1m[31mDELETE FROM "user_stocks" WHERE "user_stocks"."id" = $1[0m  [["id", 21]]
+  ↳ db/seeds.rb:23
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:23
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:23
+  [1m[36mUserStock Destroy (0.2ms)[0m  [1m[31mDELETE FROM "user_stocks" WHERE "user_stocks"."id" = $1[0m  [["id", 22]]
+  ↳ db/seeds.rb:23
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:23
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:23
+  [1m[36mUserStock Destroy (0.2ms)[0m  [1m[31mDELETE FROM "user_stocks" WHERE "user_stocks"."id" = $1[0m  [["id", 23]]
+  ↳ db/seeds.rb:23
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:23
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:23
+  [1m[36mUserStock Destroy (0.1ms)[0m  [1m[31mDELETE FROM "user_stocks" WHERE "user_stocks"."id" = $1[0m  [["id", 24]]
+  ↳ db/seeds.rb:23
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:23
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:23
+  [1m[36mUserStock Destroy (0.1ms)[0m  [1m[31mDELETE FROM "user_stocks" WHERE "user_stocks"."id" = $1[0m  [["id", 25]]
+  ↳ db/seeds.rb:23
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:23
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:24
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ db/seeds.rb:24
+  [1m[36mStock Load (0.1ms)[0m  [1m[34mSELECT  "stocks".* FROM "stocks" WHERE "stocks"."id" = $1 LIMIT $2[0m  [["id", 21], ["LIMIT", 1]]
+  ↳ db/seeds.rb:24
+  [1m[36mUserStock Create (0.2ms)[0m  [1m[32mINSERT INTO "user_stocks" ("user_id", "stock_id", "amount", "unit_price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["user_id", 11], ["stock_id", 21], ["amount", 11.0], ["unit_price", 10.0], ["created_at", "2021-02-08 20:40:35.960649"], ["updated_at", "2021-02-08 20:40:35.960649"]]
+  ↳ db/seeds.rb:24
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:24
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:25
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ db/seeds.rb:25
+  [1m[36mStock Load (0.1ms)[0m  [1m[34mSELECT  "stocks".* FROM "stocks" WHERE "stocks"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ db/seeds.rb:25
+  [1m[36mUserStock Create (0.2ms)[0m  [1m[32mINSERT INTO "user_stocks" ("user_id", "stock_id", "amount", "unit_price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["user_id", 11], ["stock_id", 22], ["amount", 12.0], ["unit_price", 10.0], ["created_at", "2021-02-08 20:40:35.963436"], ["updated_at", "2021-02-08 20:40:35.963436"]]
+  ↳ db/seeds.rb:25
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:25
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:26
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ db/seeds.rb:26
+  [1m[36mStock Load (0.2ms)[0m  [1m[34mSELECT  "stocks".* FROM "stocks" WHERE "stocks"."id" = $1 LIMIT $2[0m  [["id", 23], ["LIMIT", 1]]
+  ↳ db/seeds.rb:26
+  [1m[36mUserStock Create (0.2ms)[0m  [1m[32mINSERT INTO "user_stocks" ("user_id", "stock_id", "amount", "unit_price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["user_id", 11], ["stock_id", 23], ["amount", 13.0], ["unit_price", 10.0], ["created_at", "2021-02-08 20:40:35.966306"], ["updated_at", "2021-02-08 20:40:35.966306"]]
+  ↳ db/seeds.rb:26
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:26
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:27
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ db/seeds.rb:27
+  [1m[36mStock Load (0.1ms)[0m  [1m[34mSELECT  "stocks".* FROM "stocks" WHERE "stocks"."id" = $1 LIMIT $2[0m  [["id", 24], ["LIMIT", 1]]
+  ↳ db/seeds.rb:27
+  [1m[36mUserStock Create (0.2ms)[0m  [1m[32mINSERT INTO "user_stocks" ("user_id", "stock_id", "amount", "unit_price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["user_id", 11], ["stock_id", 24], ["amount", 14.0], ["unit_price", 10.0], ["created_at", "2021-02-08 20:40:35.969330"], ["updated_at", "2021-02-08 20:40:35.969330"]]
+  ↳ db/seeds.rb:27
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:27
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:28
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ db/seeds.rb:28
+  [1m[36mStock Load (0.1ms)[0m  [1m[34mSELECT  "stocks".* FROM "stocks" WHERE "stocks"."id" = $1 LIMIT $2[0m  [["id", 21], ["LIMIT", 1]]
+  ↳ db/seeds.rb:28
+  [1m[36mUserStock Create (0.1ms)[0m  [1m[32mINSERT INTO "user_stocks" ("user_id", "stock_id", "amount", "unit_price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["user_id", 12], ["stock_id", 21], ["amount", 21.0], ["unit_price", 10.0], ["created_at", "2021-02-08 20:40:35.972334"], ["updated_at", "2021-02-08 20:40:35.972334"]]
+  ↳ db/seeds.rb:28
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:28
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:29
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ db/seeds.rb:29
+  [1m[36mStock Load (0.1ms)[0m  [1m[34mSELECT  "stocks".* FROM "stocks" WHERE "stocks"."id" = $1 LIMIT $2[0m  [["id", 24], ["LIMIT", 1]]
+  ↳ db/seeds.rb:29
+  [1m[36mUserStock Create (0.2ms)[0m  [1m[32mINSERT INTO "user_stocks" ("user_id", "stock_id", "amount", "unit_price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["user_id", 12], ["stock_id", 24], ["amount", 24.0], ["unit_price", 10.0], ["created_at", "2021-02-08 20:40:35.975147"], ["updated_at", "2021-02-08 20:40:35.975147"]]
+  ↳ db/seeds.rb:29
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:29
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  ↳ bin/rails:9
+  [1m[35m (33.3ms)[0m  [1m[35mDROP DATABASE IF EXISTS "princejohn_development"[0m
+  ↳ bin/rails:9
+  [1m[35m (32.1ms)[0m  [1m[35mDROP DATABASE IF EXISTS "princejohn_test"[0m
+  ↳ bin/rails:9
+  [1m[35m (64.7ms)[0m  [1m[35mCREATE DATABASE "princejohn_development" ENCODING = 'unicode'[0m
+  ↳ bin/rails:9
+  [1m[35m (75.0ms)[0m  [1m[35mCREATE DATABASE "princejohn_test" ENCODING = 'unicode'[0m
+  ↳ bin/rails:9
+  [1m[35m (17.2ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  ↳ bin/rails:9
+  [1m[35m (10.8ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_try_advisory_lock(3036389044469595885)[0m
+  ↳ bin/rails:9
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to CreateUsers (20210203020413)
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (12.3ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "username" character varying NOT NULL, "email" character varying NOT NULL, "password_digest" character varying NOT NULL, "session_token" character varying NOT NULL, "balance" float NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20210203020413_create_users.rb:3
+  [1m[35m (4.6ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_username" ON "users"  ("username")[0m
+  ↳ db/migrate/20210203020413_create_users.rb:12
+  [1m[36mActiveRecord::SchemaMigration Create (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210203020413"]]
+  ↳ bin/rails:9
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+Migrating to CreateStocks (20210203020417)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (9.1ms)[0m  [1m[35mCREATE TABLE "stocks" ("id" bigserial primary key, "ticker" character varying NOT NULL, "description" character varying NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20210203020417_create_stocks.rb:3
+  [1m[35m (3.3ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_stocks_on_ticker" ON "stocks"  ("ticker")[0m
+  ↳ db/migrate/20210203020417_create_stocks.rb:8
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210203020417"]]
+  ↳ bin/rails:9
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+Migrating to CreateUserStocks (20210203020424)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (4.0ms)[0m  [1m[35mCREATE TABLE "user_stocks" ("id" bigserial primary key, "user_id" integer NOT NULL, "stock_id" integer NOT NULL, "amount" float NOT NULL, "unit_price" float NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20210203020424_create_user_stocks.rb:3
+  [1m[35m (3.0ms)[0m  [1m[35mCREATE  INDEX  "index_user_stocks_on_user_id" ON "user_stocks"  ("user_id")[0m
+  ↳ db/migrate/20210203020424_create_user_stocks.rb:10
+  [1m[35m (3.1ms)[0m  [1m[35mCREATE  INDEX  "index_user_stocks_on_stock_id" ON "user_stocks"  ("stock_id")[0m
+  ↳ db/migrate/20210203020424_create_user_stocks.rb:11
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210203020424"]]
+  ↳ bin/rails:9
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Create (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2021-02-08 20:40:56.720193"], ["updated_at", "2021-02-08 20:40:56.720193"]]
+  ↳ bin/rails:9
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(3036389044469595885)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:10
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "Tului1"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:10
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "MZOxDTWAQ5I2ASPxRyFKfg"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:10
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("username", "email", "password_digest", "session_token", "balance", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["username", "Tului1"], ["email", "tului1@gmail.com"], ["password_digest", "$2a$12$pGkWRfaNqq/tTmO8AWaTWOIRkjBkzS576I7aDZkdy4uWgCmjj/8SS"], ["session_token", "MZOxDTWAQ5I2ASPxRyFKfg"], ["balance", 0.0], ["created_at", "2021-02-08 20:41:00.634740"], ["updated_at", "2021-02-08 20:41:00.634740"]]
+  ↳ db/seeds.rb:10
+  [1m[35m (7.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:10
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:11
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "Tului2"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:11
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "ADUu7OzOS5g2GW-zrqAXyw"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:11
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("username", "email", "password_digest", "session_token", "balance", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["username", "Tului2"], ["email", "tului2@gmail.com"], ["password_digest", "$2a$12$ftdtddB1mMy9SDubfWE.IeKWQqQQolPY4MKcX1j0t6pe9J7m4oTBW"], ["session_token", "ADUu7OzOS5g2GW-zrqAXyw"], ["balance", 0.0], ["created_at", "2021-02-08 20:41:00.811326"], ["updated_at", "2021-02-08 20:41:00.811326"]]
+  ↳ db/seeds.rb:11
+  [1m[35m (3.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:11
+  [1m[36mStock Load (0.3ms)[0m  [1m[34mSELECT "stocks".* FROM "stocks"[0m
+  ↳ db/seeds.rb:16
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:17
+  [1m[36mStock Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "stocks" WHERE "stocks"."ticker" = $1 LIMIT $2[0m  [["ticker", "QYLD"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:17
+  [1m[36mStock Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "stocks" WHERE "stocks"."description" = $1 LIMIT $2[0m  [["description", "ETF SP500"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:17
+  [1m[36mStock Create (0.3ms)[0m  [1m[32mINSERT INTO "stocks" ("ticker", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["ticker", "QYLD"], ["description", "ETF SP500"], ["created_at", "2021-02-08 20:41:00.822170"], ["updated_at", "2021-02-08 20:41:00.822170"]]
+  ↳ db/seeds.rb:17
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:17
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:18
+  [1m[36mStock Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "stocks" WHERE "stocks"."ticker" = $1 LIMIT $2[0m  [["ticker", "UAL"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:18
+  [1m[36mStock Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "stocks" WHERE "stocks"."description" = $1 LIMIT $2[0m  [["description", "United Airlines"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:18
+  [1m[36mStock Create (0.1ms)[0m  [1m[32mINSERT INTO "stocks" ("ticker", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["ticker", "UAL"], ["description", "United Airlines"], ["created_at", "2021-02-08 20:41:00.825059"], ["updated_at", "2021-02-08 20:41:00.825059"]]
+  ↳ db/seeds.rb:18
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:18
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:19
+  [1m[36mStock Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "stocks" WHERE "stocks"."ticker" = $1 LIMIT $2[0m  [["ticker", "TSLA"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:19
+  [1m[36mStock Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "stocks" WHERE "stocks"."description" = $1 LIMIT $2[0m  [["description", "Tesla"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:19
+  [1m[36mStock Create (0.1ms)[0m  [1m[32mINSERT INTO "stocks" ("ticker", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["ticker", "TSLA"], ["description", "Tesla"], ["created_at", "2021-02-08 20:41:00.827777"], ["updated_at", "2021-02-08 20:41:00.827777"]]
+  ↳ db/seeds.rb:19
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:19
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:20
+  [1m[36mStock Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "stocks" WHERE "stocks"."ticker" = $1 LIMIT $2[0m  [["ticker", "TWTR"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:20
+  [1m[36mStock Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "stocks" WHERE "stocks"."description" = $1 LIMIT $2[0m  [["description", "Twitter"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:20
+  [1m[36mStock Create (0.1ms)[0m  [1m[32mINSERT INTO "stocks" ("ticker", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["ticker", "TWTR"], ["description", "Twitter"], ["created_at", "2021-02-08 20:41:00.830341"], ["updated_at", "2021-02-08 20:41:00.830341"]]
+  ↳ db/seeds.rb:20
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:20
+  [1m[36mUserStock Load (0.2ms)[0m  [1m[34mSELECT "user_stocks".* FROM "user_stocks"[0m
+  ↳ db/seeds.rb:23
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:24
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ db/seeds.rb:24
+  [1m[36mStock Load (0.1ms)[0m  [1m[34mSELECT  "stocks".* FROM "stocks" WHERE "stocks"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ db/seeds.rb:24
+  [1m[36mUserStock Create (0.3ms)[0m  [1m[32mINSERT INTO "user_stocks" ("user_id", "stock_id", "amount", "unit_price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["user_id", 1], ["stock_id", 1], ["amount", 11.0], ["unit_price", 10.0], ["created_at", "2021-02-08 20:41:00.839245"], ["updated_at", "2021-02-08 20:41:00.839245"]]
+  ↳ db/seeds.rb:24
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:24
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:25
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ db/seeds.rb:25
+  [1m[36mStock Load (0.1ms)[0m  [1m[34mSELECT  "stocks".* FROM "stocks" WHERE "stocks"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ db/seeds.rb:25
+  [1m[36mUserStock Create (0.1ms)[0m  [1m[32mINSERT INTO "user_stocks" ("user_id", "stock_id", "amount", "unit_price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["user_id", 1], ["stock_id", 2], ["amount", 12.0], ["unit_price", 10.0], ["created_at", "2021-02-08 20:41:00.842098"], ["updated_at", "2021-02-08 20:41:00.842098"]]
+  ↳ db/seeds.rb:25
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:25
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:26
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ db/seeds.rb:26
+  [1m[36mStock Load (0.1ms)[0m  [1m[34mSELECT  "stocks".* FROM "stocks" WHERE "stocks"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ db/seeds.rb:26
+  [1m[36mUserStock Create (0.1ms)[0m  [1m[32mINSERT INTO "user_stocks" ("user_id", "stock_id", "amount", "unit_price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["user_id", 1], ["stock_id", 3], ["amount", 13.0], ["unit_price", 10.0], ["created_at", "2021-02-08 20:41:00.844679"], ["updated_at", "2021-02-08 20:41:00.844679"]]
+  ↳ db/seeds.rb:26
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:26
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:27
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ db/seeds.rb:27
+  [1m[36mStock Load (0.1ms)[0m  [1m[34mSELECT  "stocks".* FROM "stocks" WHERE "stocks"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ db/seeds.rb:27
+  [1m[36mUserStock Create (0.2ms)[0m  [1m[32mINSERT INTO "user_stocks" ("user_id", "stock_id", "amount", "unit_price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["user_id", 1], ["stock_id", 4], ["amount", 14.0], ["unit_price", 10.0], ["created_at", "2021-02-08 20:41:00.847259"], ["updated_at", "2021-02-08 20:41:00.847259"]]
+  ↳ db/seeds.rb:27
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:27
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:28
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ db/seeds.rb:28
+  [1m[36mStock Load (0.1ms)[0m  [1m[34mSELECT  "stocks".* FROM "stocks" WHERE "stocks"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ db/seeds.rb:28
+  [1m[36mUserStock Create (0.1ms)[0m  [1m[32mINSERT INTO "user_stocks" ("user_id", "stock_id", "amount", "unit_price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["user_id", 2], ["stock_id", 1], ["amount", 21.0], ["unit_price", 10.0], ["created_at", "2021-02-08 20:41:00.850232"], ["updated_at", "2021-02-08 20:41:00.850232"]]
+  ↳ db/seeds.rb:28
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:28
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:29
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ db/seeds.rb:29
+  [1m[36mStock Load (0.1ms)[0m  [1m[34mSELECT  "stocks".* FROM "stocks" WHERE "stocks"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ db/seeds.rb:29
+  [1m[36mUserStock Create (0.1ms)[0m  [1m[32mINSERT INTO "user_stocks" ("user_id", "stock_id", "amount", "unit_price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["user_id", 2], ["stock_id", 4], ["amount", 24.0], ["unit_price", 10.0], ["created_at", "2021-02-08 20:41:00.852908"], ["updated_at", "2021-02-08 20:41:00.852908"]]
+  ↳ db/seeds.rb:29
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:29

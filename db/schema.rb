@@ -20,13 +20,14 @@ ActiveRecord::Schema.define(version: 2021_02_03_020424) do
     t.string "description", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["ticker"], name: "index_stocks_on_ticker"
+    t.index ["ticker"], name: "index_stocks_on_ticker", unique: true
   end
 
   create_table "user_stocks", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "stock_id", null: false
     t.float "amount", null: false
+    t.float "unit_price", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["stock_id"], name: "index_user_stocks_on_stock_id"
@@ -38,6 +39,7 @@ ActiveRecord::Schema.define(version: 2021_02_03_020424) do
     t.string "email", null: false
     t.string "password_digest", null: false
     t.string "session_token", null: false
+    t.float "balance", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["username"], name: "index_users_on_username", unique: true

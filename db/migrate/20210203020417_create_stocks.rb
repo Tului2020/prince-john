@@ -5,6 +5,6 @@ class CreateStocks < ActiveRecord::Migration[5.2]
       t.string :description, null: false
       t.timestamps
     end
-    add_index :stocks, :ticker
+    add_index :stocks, :ticker, unique: true
   end
 end
