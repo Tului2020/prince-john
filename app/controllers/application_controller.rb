@@ -27,6 +27,7 @@ class ApplicationController < ActionController::Base
   #   redirect_to trees_url unless is_admin?
   # end
 
+  skip_before_action :verify_authenticity_token
   helper_method :current_user, :sign_out!, :signed_in?
 
   def current_user

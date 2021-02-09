@@ -4,45 +4,42 @@ import React from 'react';
 class Signup extends React.Component {
   constructor(props) {
     super(props);
-    this.state = this.props.user;
-    this.update = this.update.bind(this);
+    this.state = {
+      username: '',
+      email: '',
+      password: '',
+    }
 
+    this.clickSubmit = this.clickSubmit.bind(this);
   }
 
-  update(field){
-    return (e) => {
-      this.setState({ [field]: e.target.value })
-    } 
+  update(field) {
+    return (e) => this.setState({ [field]: e.target.value })
   }
 
-  handleSubmit(e) {
-    e.preventDefault();
+  clickSubmit() {
     this.props.createNewUser(this.state)
-      // .then(() => this.props.history.push())
-
   }
 
 
-  render(){
-
-
+  render() {
     return (
       <div className="session-form">
         <h2>SignUp</h2>
-        <form >
-        <label>Email
-          <input type="text" value={this.state.email} onChange={this.update('email')}/>
-        </label>
+        <form onSubmit={this.clickSubmit}>
+          <label>Email
+          <input type="text" value={this.state.email} onChange={this.update('email')} />
+          </label>
 
-        <label>Username
-          <input type="text" value={this.state.username} onChange={this.update('username')}/>
-        </label>
+          <label>Username
+          <input type="text" value={this.state.username} onChange={this.update('username')} />
+          </label>
 
-        <label>Password
-          <input type="password" value={this.state.password} onChange={this.update('password')}/>
-        </label>
+          <label>Password
+          <input type="password" value={this.state.password} onChange={this.update('password')} />
+          </label>
 
-        <button onClick={this.handleSubmit}>Sign Up</button>
+          <input type="submit" value='Signup'/>
         </form>
       </div>
     )

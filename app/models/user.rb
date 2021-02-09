@@ -7,6 +7,7 @@ class User < ApplicationRecord
   attr_reader :password
 
   def initialize(*args)
+    p *args
     super(*args)
     ensure_session_token
     calculate_balance

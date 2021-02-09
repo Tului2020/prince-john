@@ -12,8 +12,8 @@ const mDTP = dispatch => ({
   createNewUser: (formUser) => dispatch(createNewUser(formUser))
 })
 
-// export default connect(null, mDTP)(Signup)
-export default connect(mSTP, mDTP)(Signup)
+export default connect(null, mDTP)(Signup)
+// export default connect(mSTP, mDTP)(Signup)
 
 
 
