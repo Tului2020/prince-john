@@ -13,20 +13,13 @@ user2 = User.create(username: 'Tului2', password:'password', email:'tului2@gmail
 # user4 = User.create(username: 'Tului4', password:'password', email:'tului4@gmail.com')
 
 
-Stock.destroy_all
-stock1 = Stock.create(ticker: "QYLD", description: "ETF SP500")
-stock2 = Stock.create(ticker: "UAL", description: "United Airlines")
-stock3 = Stock.create(ticker: "TSLA", description: "Tesla")
-stock4 = Stock.create(ticker: "TWTR", description: "Twitter")
-
-
 UserStock.destroy_all
-user_stock11 = UserStock.create(user_id: user1.id, stock_id: stock1.id, amount: 11, unit_price: 10)
-user_stock12 = UserStock.create(user_id: user1.id, stock_id: stock2.id, amount: 12, unit_price: 10)
-user_stock13 = UserStock.create(user_id: user1.id, stock_id: stock3.id, amount: 13, unit_price: 10)
-user_stock14 = UserStock.create(user_id: user1.id, stock_id: stock4.id, amount: 14, unit_price: 10)
-user_stock21 = UserStock.create(user_id: user2.id, stock_id: stock1.id, amount: 21, unit_price: 10)
-user_stock24 = UserStock.create(user_id: user2.id, stock_id: stock4.id, amount: 24, unit_price: 10)
+user_stock1 = UserStock.create(user_id: user1.id, ticker: 'AAPL', amount: 11, unit_price: 10)
+user_stock2 = UserStock.create(user_id: user1.id, ticker: 'TSLA', amount: 12, unit_price: 10)
+user_stock3 = UserStock.create(user_id: user1.id, ticker: 'QYLD', amount: 13, unit_price: 10)
+user_stock4 = UserStock.create(user_id: user1.id, ticker: 'AZN', amount: 14, unit_price: 10)
+user_stock5 = UserStock.create(user_id: user2.id, ticker: 'AAPL', amount: 21, unit_price: 10)
+user_stock6 = UserStock.create(user_id: user2.id, ticker: 'OZON', amount: 24, unit_price: 10)
 
 
 

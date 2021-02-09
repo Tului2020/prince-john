@@ -2,11 +2,11 @@
   "name": "princejohn",
   "private": true,
   "dependencies": {
-    "polygon.io": "^2.0.2",
     "@babel/core": "^7.12.10",
     "@babel/preset-env": "^7.12.11",
     "@babel/preset-react": "^7.12.10",
     "babel-loader": "^8.2.2",
+    "polygon.io": "^2.0.2",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-redux": "^7.2.2",
