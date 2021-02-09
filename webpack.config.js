@@ -1,9 +1,8 @@
 var path = require('path');
 
 module.exports = {
-  entry: './frontend/todo_redux.jsx',
+  entry: './frontend/entry.jsx',
   output: {
-    // filename: './app/assets/javascripts/bundle.js',
     filename: './bundle.js',
     path: path.resolve(__dirname, "app", "assets", "javascripts")
   },
