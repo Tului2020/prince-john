@@ -4,6 +4,14 @@ begin
 rescue LoadError => e
   raise unless e.message.include?('spring')
 end
+
+begin
+  require 'minitest/autorun'
+rescue LoadError => e
+  raise e unless ENV['RAILS_ENV'] == "production"
+end 
+
+
 require_relative '../config/boot'
 require 'rake'
 Rake.application.run
