@@ -1,10 +1,10 @@
 class Api::SessionsController < ApplicationController
 
-  before_action :require_signed_in!, only: [:destroy]
+  # before_action :require_signed_in!, only: [:destroy]
 
   def destroy
     sign_out!
-    redirect_to new_session_url
+    render '/login'
   end
 
   def create

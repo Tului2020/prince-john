@@ -1,31 +1,5 @@
 class ApplicationController < ActionController::Base
 
-  # helper_method :is_admin?, :current_user, :sign_out!, :signed_in?
-
-  # def errors(ob)
-  #   ob.errors.full_messages
-  # end
-
-  # def correct_user?(user_id)
-  #   current_user.id == user_id || is_admin?
-  # end
-
-
-  # def require_correct_user!(user_id=params[:user_id], redirect_to_link='/')
-  #   unless correct_user?(user_id.to_i)
-  #     flash.now[:errors] = ['Incorrect user, redirected']
-  #     redirect_to redirect_to_link 
-  #   end
-  # end
-
-
-  # def is_admin?
-  #   current_user == User.first
-  # end
-
-  # def require_admin!
-  #   redirect_to trees_url unless is_admin?
-  # end
 
   skip_before_action :verify_authenticity_token
   helper_method :current_user, :sign_out!, :signed_in?
