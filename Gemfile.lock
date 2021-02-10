@@ -99,9 +99,11 @@ GEM
     method_source (1.0.0)
     mimemagic (0.3.5)
     mini_mime (1.0.2)
+    mini_portile2 (2.5.0)
     minitest (5.14.3)
     nio4r (2.5.5)
-    nokogiri (1.11.1-x86_64-linux)
+    nokogiri (1.11.1)
+      mini_portile2 (~> 2.5.0)
       racc (~> 1.4)
     pg (0.21.0)
     pry (0.14.0)
@@ -189,7 +191,7 @@ GEM
       nokogiri (~> 1.8)
 
 PLATFORMS
-  x86_64-linux
+  ruby
 
 DEPENDENCIES
   annotate
@@ -214,4 +216,4 @@ DEPENDENCIES
   web-console (>= 3.3.0)
 
 BUNDLED WITH
-   2.2.1
+   2.1.4
