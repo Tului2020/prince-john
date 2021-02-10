@@ -1,18 +1,12 @@
 class User < ApplicationRecord
+  validates :username, :session_token, :email, presence: true, uniqueness: true
+  validates :password_digest, presence: true
+  validates :password, length: { minimum: 6, allow_nil: true}
 
-  validates :username, :session_token, presence: true, uniqueness: true
-  validates :password, length: {minimum:6, allow_nil: true}
-  validates :balance, presence: true
-
+  after_initialize :ensure_session_token
   attr_reader :password
 
-  def initialize(*args)
-    p *args
-    super(*args)
-    ensure_session_token
-    calculate_balance
-  end
-
+  #SPIRE
 
   def self.find_by_credentials(username, pw)
     user = User.find_by(username: username)
@@ -33,27 +27,6 @@ class User < ApplicationRecord
     self.save!
     self.session_token
   end
-
-  has_many :user_stock, 
-    class_name: :UserStock, 
-    foreign_key: :user_id
-
-
-  has_many :stocks,
-    through: :user_stock,
-    source: :stock
-    # has_many :objects, class_name: "object", foreign_key: "reference_id"
-
-
-
-  def calculate_balance
-    self.balance = user_stock.pluck(:amount, :unit_price).inject(0) { |sum, stock| sum + stock[0] * stock[1]}
-    self.save!
-  end
-
-
-
-
 
   # private
   def ensure_session_token
