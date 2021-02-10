@@ -23,7 +23,6 @@ class SessionForm extends React.Component {
     e.preventDefault()
     this.props.processForm(this.state)
       .then(() => this.setState({ redirect: true }));
-    // <Redirect path='/' />
   }
 
 
@@ -35,6 +34,7 @@ class SessionForm extends React.Component {
     }
 
     let form; 
+    
     if (this.props.formType === 'Sign Up'){
       form = (<div>
         <label>Username

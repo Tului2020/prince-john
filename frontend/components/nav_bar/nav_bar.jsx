@@ -9,8 +9,12 @@ class NavBar extends React.Component{
     if (!currentUser){
       display = (
         <div>
-          <Link className="" to="/login">Log In</Link>
-          <Link className="btn" to="/signup">Sign Up</Link>
+
+          <div className="btn">
+            <Link id="login" to="/login">Log In</Link>
+            <Link id="signup" to="/signup">Sign Up</Link>
+          </div>
+
         </div>
       );
     }
@@ -18,6 +22,13 @@ class NavBar extends React.Component{
     return (
       <header className="nav-bar">
         <h1 className="logo">PrinceJohn</h1>
+        <div className="dropdowns">
+        <h2>Products</h2>
+        <h2>Learn</h2>
+        <h2>Support</h2>
+        <h2>Who we are</h2>
+
+        </div>
         <div>
           {display}
         </div>

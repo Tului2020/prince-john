@@ -1,5 +1,4 @@
 import React from 'react';
-import GreetingContainer from './greetings/greeting_container';
 import { Route } from 'react-router-dom';
 import LoginFormContainer from './sessions/login_form_container';
 import SignupFormContainer from './sessions/signup_form_container';
@@ -8,10 +7,9 @@ import NavBarContainer from './nav_bar/nav_bar_container'
 
 const App = () => (
   <div>
-    <Route path="/" component={NavBarContainer} />
-    <Route exact path="/" component={GreetingContainer} />
-    <AuthRoute path="/login" component={LoginFormContainer} />
-    <AuthRoute path="/signup" component={SignupFormContainer} />
+    <AuthRoute exact path="/" component={NavBarContainer} />
+    <AuthRoute exact path="/login" component={LoginFormContainer} />
+    <AuthRoute exact path="/signup" component={SignupFormContainer} />
   </div>
 );
 
