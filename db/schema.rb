@@ -10,30 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_09_014618) do
+ActiveRecord::Schema.define(version: 2021_02_08_223233) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "user_stocks", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.string "ticker", null: false
-    t.float "amount", null: false
-    t.float "unit_price", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["ticker"], name: "index_user_stocks_on_ticker"
-  end
 
   create_table "users", force: :cascade do |t|
     t.string "username", null: false
     t.string "email", null: false
     t.string "password_digest", null: false
     t.string "session_token", null: false
-    t.float "balance", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["username"], name: "index_users_on_username", unique: true
+    t.index ["username", "email", "session_token"], name: "index_users_on_username_and_email_and_session_token", unique: true
   end
 
 end

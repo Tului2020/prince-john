@@ -1,10 +1,10 @@
-var path = require('path');
+const path = require('path');
 
 module.exports = {
   entry: './frontend/entry.jsx',
   output: {
-    filename: './bundle.js',
-    path: path.resolve(__dirname, "app", "assets", "javascripts")
+    path: path.resolve(__dirname, 'app', 'assets', 'javascripts'),
+    filename: 'bundle.js'
   },
   module: {
     rules: [
@@ -24,4 +24,4 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.jsx', '*']
   }
-};
+}

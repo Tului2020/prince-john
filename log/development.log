@@ -8473,3 +8473,1142 @@ Processing by StaticPagesController#root as HTML
 Completed 200 OK in 685ms (Views: 684.4ms | ActiveRecord: 0.0ms)
 
 
+Started GET "/" for 127.0.0.1 at 2021-02-10 09:21:50 -0800
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/tului/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.4.4/lib/active_record/log_subscriber.rb:98
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 376ms (Views: 375.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2021-02-10 09:21:56 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.4ms)
+Started POST "/api/session" for 127.0.0.1 at 2021-02-10 09:21:56 -0800
+Completed 200 OK in 30ms (Views: 29.5ms | ActiveRecord: 0.0ms)
+
+
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"user"=>{"username"=>"testuser1", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "testuser1"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:18
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:34
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["username", "testuser1"], ["id", 17], ["LIMIT", 1]]
+  ↳ app/models/user.rb:34
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "F71GRkdM9PTYZl2B69CQcw"], ["id", 17], ["LIMIT", 1]]
+  ↳ app/models/user.rb:34
+  [1m[36mUser Update (0.2ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "F71GRkdM9PTYZl2B69CQcw"], ["updated_at", "2021-02-10 17:21:57.036076"], ["id", 17]]
+  ↳ app/models/user.rb:34
+  [1m[35m (3.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:34
+Redirected to http://localhost:3000/
+Completed 302 Found in 197ms (ActiveRecord: 8.7ms)
+
+
+Started POST "/api/session" for 127.0.0.1 at 2021-02-10 09:22:06 -0800
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"user"=>{"username"=>"testuser1", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "testuser1"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:18
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:34
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["username", "testuser1"], ["id", 17], ["LIMIT", 1]]
+  ↳ app/models/user.rb:34
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "u5kLoH8JymQQGnELFzaKIg"], ["id", 17], ["LIMIT", 1]]
+  ↳ app/models/user.rb:34
+  [1m[36mUser Update (0.2ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "u5kLoH8JymQQGnELFzaKIg"], ["updated_at", "2021-02-10 17:22:07.110230"], ["id", 17]]
+  ↳ app/models/user.rb:34
+  [1m[35m (3.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:34
+Redirected to http://localhost:3000/
+Completed 302 Found in 198ms (ActiveRecord: 5.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2021-02-10 09:22:07 -0800
+Processing by StaticPagesController#root as */*
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.2ms)
+Completed 200 OK in 12ms (Views: 10.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2021-02-10 09:30:50 -0800
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/tului/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.4.4/lib/active_record/log_subscriber.rb:98
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 673ms (Views: 673.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2021-02-10 09:51:27 -0800
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/tului/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.4.4/lib/active_record/log_subscriber.rb:98
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 671ms (Views: 670.3ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/api/session" for 127.0.0.1 at 2021-02-10 09:51:35 -0800
+Started GET "/" for 127.0.0.1 at 2021-02-10 09:51:35 -0800
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"user"=>{"username"=>"testuser1", "password"=>"[FILTERED]"}}
+Processing by StaticPagesController#root as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "testuser1"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:18
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.3ms)
+Redirected to http://localhost:3000/
+Completed 302 Found in 197ms (ActiveRecord: 4.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2021-02-10 09:51:35 -0800
+Processing by StaticPagesController#root as */*
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 18ms (Views: 15.4ms | ActiveRecord: 0.0ms)
+
+
+Completed 200 OK in 213ms (Views: 212.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/api/session" for 127.0.0.1 at 2021-02-10 09:51:42 -0800
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"user"=>{"username"=>"testuser1", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "testuser1"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:18
+Redirected to http://localhost:3000/
+Completed 302 Found in 205ms (ActiveRecord: 1.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2021-02-10 09:51:42 -0800
+Processing by StaticPagesController#root as */*
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 12ms (Views: 9.7ms | ActiveRecord: 0.0ms)
+
+
+Started DELETE "/api/session" for 127.0.0.1 at 2021-02-10 09:51:46 -0800
+Processing by Api::SessionsController#destroy as JSON
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "u5kLoH8JymQQGnELFzaKIg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:34
+  [1m[36mUser Exists (0.9ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["username", "testuser1"], ["id", 17], ["LIMIT", 1]]
+  ↳ app/models/user.rb:34
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "a4Tv9pDmE8qUX13OO2Gsgw"], ["id", 17], ["LIMIT", 1]]
+  ↳ app/models/user.rb:34
+  [1m[36mUser Update (0.9ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "a4Tv9pDmE8qUX13OO2Gsgw"], ["updated_at", "2021-02-10 17:51:46.139206"], ["id", 17]]
+  ↳ app/models/user.rb:34
+  [1m[35m (4.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:34
+Completed 500 Internal Server Error in 25ms (ActiveRecord: 7.4ms)
+
+
+  
+ActionView::MissingTemplate (Missing template /login with {:locale=>[:en], :formats=>[:json], :variants=>[], :handlers=>[:raw, :erb, :html, :builder, :ruby, :coffee, :jbuilder]}. Searched in:
+  * "/home/tului/Desktop/prince-john/app/views"
+):
+  
+app/controllers/api/sessions_controller.rb:7:in `destroy'
+Started GET "/" for 127.0.0.1 at 2021-02-10 09:52:19 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 15ms (Views: 14.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/api/session" for 127.0.0.1 at 2021-02-10 09:52:27 -0800
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"user"=>{"username"=>"testuser1", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "testuser1"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:18
+Redirected to http://localhost:3000/
+Completed 302 Found in 211ms (ActiveRecord: 6.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2021-02-10 09:52:27 -0800
+Processing by StaticPagesController#root as */*
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 20ms (Views: 18.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2021-02-10 09:52:48 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.2ms)
+Completed 200 OK in 23ms (Views: 21.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2021-02-10 09:53:04 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 234ms (Views: 233.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/api/session" for 127.0.0.1 at 2021-02-10 09:53:08 -0800
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"user"=>{"username"=>"testuser1", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "testuser1"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:18
+Redirected to http://localhost:3000/
+Completed 302 Found in 202ms (ActiveRecord: 5.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2021-02-10 09:53:08 -0800
+Processing by StaticPagesController#root as */*
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 13ms (Views: 10.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2021-02-10 09:53:28 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 228ms (Views: 226.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/api/session" for 127.0.0.1 at 2021-02-10 09:53:30 -0800
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"user"=>{"username"=>"testuser1", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "testuser1"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:18
+Redirected to http://localhost:3000/
+Completed 302 Found in 206ms (ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2021-02-10 09:53:31 -0800
+Processing by StaticPagesController#root as */*
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 12ms (Views: 9.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2021-02-10 09:54:01 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.2ms)
+Completed 200 OK in 236ms (Views: 235.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/api/session" for 127.0.0.1 at 2021-02-10 09:54:18 -0800
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"user"=>{"username"=>"testuser1", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "testuser1"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:18
+Redirected to http://localhost:3000/
+Completed 302 Found in 205ms (ActiveRecord: 0.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2021-02-10 09:54:18 -0800
+Processing by StaticPagesController#root as */*
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 220ms (Views: 218.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2021-02-10 10:02:47 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (62.4ms)
+Completed 500 Internal Server Error in 64ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `logged_in?' for #<StaticPagesController:0x00007f6781504430>
+Did you mean?  logger):
+    1: <% if logged_in? %>
+    2:   <script type=‘text/javascript’>
+    3:     window.currentUser = {
+    4:             “id”: <%= current_user.id %>,
+  
+app/views/static_pages/root.html.erb:1:in `_app_views_static_pages_root_html_erb__3452204179183069952_70041263494820'
+Started GET "/" for 127.0.0.1 at 2021-02-10 10:03:00 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (100.1ms)
+Completed 500 Internal Server Error in 103ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `signed_in?' for #<#<Class:0x00007f6781416b90>:0x00007f67811e6398>):
+    1: <% if signed_in? %>
+    2:   <script type=‘text/javascript’>
+    3:     window.currentUser = {
+    4:             “id”: <%= current_user.id %>,
+  
+app/views/static_pages/root.html.erb:1:in `_app_views_static_pages_root_html_erb__3452204179183069952_70041262354320'
+Started GET "/" for 127.0.0.1 at 2021-02-10 10:03:19 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (78.8ms)
+Completed 500 Internal Server Error in 80ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `signed_in?' for #<#<Class:0x00007f6781416b90>:0x00007f678210fce8>):
+    1: <% if signed_in? %>
+    2:   <script type=‘text/javascript’>
+    3:     window.currentUser = {
+    4:             “id”: <%= current_user.id %>,
+  
+app/views/static_pages/root.html.erb:1:in `_app_views_static_pages_root_html_erb__3452204179183069952_70041270223800'
+Started GET "/" for 127.0.0.1 at 2021-02-10 10:03:44 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "a4Tv9pDmE8qUX13OO2Gsgw"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26
+  Rendered static_pages/root.html.erb within layouts/application (15.0ms)
+Completed 200 OK in 27ms (Views: 21.4ms | ActiveRecord: 4.4ms)
+
+
+Started POST "/api/session" for 127.0.0.1 at 2021-02-10 10:03:51 -0800
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"user"=>{"username"=>"testuser1", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "testuser1"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:18
+Redirected to http://localhost:3000/
+Completed 302 Found in 185ms (ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2021-02-10 10:03:52 -0800
+Processing by StaticPagesController#root as */*
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "a4Tv9pDmE8qUX13OO2Gsgw"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26
+  Rendered static_pages/root.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 13ms (Views: 10.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2021-02-10 10:05:37 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 32ms (Views: 30.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/api/session" for 127.0.0.1 at 2021-02-10 10:05:43 -0800
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"user"=>{"username"=>"testuser1", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "testuser1"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:18
+Redirected to http://localhost:3000/
+Completed 302 Found in 192ms (ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2021-02-10 10:05:43 -0800
+Processing by StaticPagesController#root as */*
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 13ms (Views: 10.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2021-02-10 10:06:17 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "a4Tv9pDmE8qUX13OO2Gsgw"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26
+  Rendered static_pages/root.html.erb within layouts/application (2.9ms)
+Completed 200 OK in 236ms (Views: 234.4ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/api/session" for 127.0.0.1 at 2021-02-10 10:06:22 -0800
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"user"=>{"username"=>"testuser1", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "testuser1"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:18
+Redirected to http://localhost:3000/
+Completed 302 Found in 171ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2021-02-10 10:06:22 -0800
+Processing by StaticPagesController#root as */*
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "a4Tv9pDmE8qUX13OO2Gsgw"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26
+  Rendered static_pages/root.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 13ms (Views: 10.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2021-02-10 10:07:09 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "a4Tv9pDmE8qUX13OO2Gsgw"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26
+  Rendered static_pages/root.html.erb within layouts/application (3.2ms)
+Completed 200 OK in 242ms (Views: 240.5ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2021-02-10 10:07:22 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "a4Tv9pDmE8qUX13OO2Gsgw"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26
+  Rendered static_pages/root.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 225ms (Views: 224.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2021-02-10 10:07:26 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "a4Tv9pDmE8qUX13OO2Gsgw"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26
+  Rendered static_pages/root.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 16ms (Views: 15.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2021-02-10 10:08:16 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "a4Tv9pDmE8qUX13OO2Gsgw"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26
+  Rendered static_pages/root.html.erb within layouts/application (3.6ms)
+Completed 200 OK in 244ms (Views: 242.2ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/api/session" for 127.0.0.1 at 2021-02-10 10:08:26 -0800
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"user"=>{"username"=>"testuser1", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "testuser1"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:18
+Redirected to http://localhost:3000/
+Completed 302 Found in 182ms (ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2021-02-10 10:08:26 -0800
+Processing by StaticPagesController#root as */*
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "a4Tv9pDmE8qUX13OO2Gsgw"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26
+  Rendered static_pages/root.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 19ms (Views: 16.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2021-02-10 10:27:24 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "a4Tv9pDmE8qUX13OO2Gsgw"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26
+  Rendered static_pages/root.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 227ms (Views: 226.1ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/api/session" for 127.0.0.1 at 2021-02-10 10:27:44 -0800
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"user"=>{"username"=>"testuser1", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "testuser1"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:18
+Redirected to http://localhost:3000/
+Completed 302 Found in 190ms (ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2021-02-10 10:27:44 -0800
+Processing by StaticPagesController#root as */*
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "a4Tv9pDmE8qUX13OO2Gsgw"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26
+  Rendered static_pages/root.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 13ms (Views: 10.6ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/api/session" for 127.0.0.1 at 2021-02-10 10:27:47 -0800
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"user"=>{"username"=>"testuser1", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "testuser1"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:18
+Redirected to http://localhost:3000/
+Completed 302 Found in 210ms (ActiveRecord: 0.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2021-02-10 10:27:47 -0800
+Processing by StaticPagesController#root as */*
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "a4Tv9pDmE8qUX13OO2Gsgw"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26
+  Rendered static_pages/root.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 12ms (Views: 9.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2021-02-10 10:27:54 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "a4Tv9pDmE8qUX13OO2Gsgw"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26
+  Rendered static_pages/root.html.erb within layouts/application (2.8ms)
+Completed 200 OK in 30ms (Views: 28.2ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/api/session" for 127.0.0.1 at 2021-02-10 10:27:59 -0800
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"user"=>{"username"=>"testuser1", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "testuser1"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:18
+Redirected to http://localhost:3000/
+Completed 302 Found in 189ms (ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2021-02-10 10:27:59 -0800
+Processing by StaticPagesController#root as */*
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "a4Tv9pDmE8qUX13OO2Gsgw"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26
+  Rendered static_pages/root.html.erb within layouts/application (1.8ms)
+Completed 200 OK in 20ms (Views: 17.6ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/api/session" for 127.0.0.1 at 2021-02-10 10:28:02 -0800
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"user"=>{"username"=>"testuser1", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "testuser1"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:18
+Redirected to http://localhost:3000/
+Completed 302 Found in 198ms (ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2021-02-10 10:28:02 -0800
+Processing by StaticPagesController#root as */*
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "a4Tv9pDmE8qUX13OO2Gsgw"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26
+  Rendered static_pages/root.html.erb within layouts/application (1.8ms)
+Completed 200 OK in 17ms (Views: 15.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2021-02-10 10:28:16 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "a4Tv9pDmE8qUX13OO2Gsgw"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26
+  Rendered static_pages/root.html.erb within layouts/application (3.1ms)
+Completed 200 OK in 243ms (Views: 241.7ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/api/session" for 127.0.0.1 at 2021-02-10 10:28:20 -0800
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"user"=>{"username"=>"testuser1", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "testuser1"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:18
+Redirected to http://localhost:3000/
+Completed 302 Found in 196ms (ActiveRecord: 0.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2021-02-10 10:28:20 -0800
+Processing by StaticPagesController#root as */*
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "a4Tv9pDmE8qUX13OO2Gsgw"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26
+  Rendered static_pages/root.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 12ms (Views: 10.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2021-02-10 10:33:31 -0800
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/tului/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.4.4/lib/active_record/log_subscriber.rb:98
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "a4Tv9pDmE8qUX13OO2Gsgw"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26
+  Rendered static_pages/root.html.erb within layouts/application (22.9ms)
+Completed 200 OK in 533ms (Views: 530.2ms | ActiveRecord: 2.4ms)
+
+
+Started POST "/api/session" for 127.0.0.1 at 2021-02-10 10:33:39 -0800
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"user"=>{"username"=>"testuser1", "password"=>"[FILTERED]"}}
+Started GET "/" for 127.0.0.1 at 2021-02-10 10:33:39 -0800
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "testuser1"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:18
+Redirected to http://localhost:3000/
+Completed 302 Found in 193ms (ActiveRecord: 1.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2021-02-10 10:33:39 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "a4Tv9pDmE8qUX13OO2Gsgw"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26
+  Rendered static_pages/root.html.erb within layouts/application (5.8ms)
+Processing by StaticPagesController#root as */*
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "a4Tv9pDmE8qUX13OO2Gsgw"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26
+  Rendered static_pages/root.html.erb within layouts/application (2.6ms)
+Completed 200 OK in 30ms (Views: 25.5ms | ActiveRecord: 0.8ms)
+
+
+Completed 200 OK in 64ms (Views: 61.0ms | ActiveRecord: 2.7ms)
+
+
+Started POST "/api/session" for 127.0.0.1 at 2021-02-10 10:33:49 -0800
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"user"=>{"username"=>"testuser1", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "testuser1"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:18
+Redirected to http://localhost:3000/
+Completed 302 Found in 172ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2021-02-10 10:33:49 -0800
+Processing by StaticPagesController#root as */*
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "a4Tv9pDmE8qUX13OO2Gsgw"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26
+  Rendered static_pages/root.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 26ms (Views: 22.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2021-02-10 10:37:51 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "a4Tv9pDmE8qUX13OO2Gsgw"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:28
+  Rendered static_pages/root.html.erb within layouts/application (12.3ms)
+Completed 200 OK in 246ms (Views: 241.9ms | ActiveRecord: 4.0ms)
+
+
+Started POST "/api/session" for 127.0.0.1 at 2021-02-10 10:38:13 -0800
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"user"=>{"username"=>"testuser1", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "testuser1"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:18
+Redirected to http://localhost:3000/
+Completed 302 Found in 180ms (ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2021-02-10 10:38:13 -0800
+Processing by StaticPagesController#root as */*
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "a4Tv9pDmE8qUX13OO2Gsgw"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:28
+  Rendered static_pages/root.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 13ms (Views: 10.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2021-02-10 10:42:19 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "a4Tv9pDmE8qUX13OO2Gsgw"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:28
+  Rendered static_pages/root.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 229ms (Views: 228.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2021-02-10 10:42:39 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "a4Tv9pDmE8qUX13OO2Gsgw"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:28
+  Rendered static_pages/root.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 14ms (Views: 13.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2021-02-10 10:42:53 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "a4Tv9pDmE8qUX13OO2Gsgw"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:28
+  Rendered static_pages/root.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 11ms (Views: 10.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2021-02-10 10:43:05 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "a4Tv9pDmE8qUX13OO2Gsgw"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:28
+  Rendered static_pages/root.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 225ms (Views: 224.7ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/api/session" for 127.0.0.1 at 2021-02-10 10:43:20 -0800
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"user"=>{"username"=>"testuser1", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "testuser1"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:18
+Redirected to http://localhost:3000/
+Completed 302 Found in 184ms (ActiveRecord: 0.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2021-02-10 10:43:20 -0800
+Processing by StaticPagesController#root as */*
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "a4Tv9pDmE8qUX13OO2Gsgw"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:28
+  Rendered static_pages/root.html.erb within layouts/application (2.6ms)
+Completed 200 OK in 16ms (Views: 12.4ms | ActiveRecord: 0.2ms)
+
+
+Started DELETE "/api/session" for 127.0.0.1 at 2021-02-10 10:43:48 -0800
+Processing by Api::SessionsController#destroy as JSON
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "a4Tv9pDmE8qUX13OO2Gsgw"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:28
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:34
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["username", "testuser1"], ["id", 17], ["LIMIT", 1]]
+  ↳ app/models/user.rb:34
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "DW7Dy6umC2nLMH0pnE9pyg"], ["id", 17], ["LIMIT", 1]]
+  ↳ app/models/user.rb:34
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "DW7Dy6umC2nLMH0pnE9pyg"], ["updated_at", "2021-02-10 18:43:48.253812"], ["id", 17]]
+  ↳ app/models/user.rb:34
+  [1m[35m (3.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:34
+Redirected to http://localhost:3000login
+Completed 302 Found in 8ms (ActiveRecord: 4.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2021-02-10 10:43:49 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 9ms (Views: 8.7ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/api/users" for 127.0.0.1 at 2021-02-10 10:43:58 -0800
+Processing by Api::UsersController#create as JSON
+  Parameters: {"user"=>{"username"=>"testuser2", "email"=>"testuser2", "password"=>"[FILTERED]"}}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:57
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "testuser2"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:57
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "xbxBPdVluNKzMHh3g_IJMA"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:57
+  [1m[36mUser Create (0.8ms)[0m  [1m[32mINSERT INTO "users" ("username", "email", "password_digest", "session_token", "balance", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["username", "testuser2"], ["email", "testuser2"], ["password_digest", "$2a$12$.HioT..O85Oax34PCi45MOCxRmxU4zZtzpeEiSvINgnvqmsefeYZq"], ["session_token", "xbxBPdVluNKzMHh3g_IJMA"], ["balance", 0.0], ["created_at", "2021-02-10 18:43:58.896734"], ["updated_at", "2021-02-10 18:43:58.896734"]]
+  ↳ app/models/user.rb:57
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:57
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/users_controller.rb:6
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["username", "testuser2"], ["id", 18], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:6
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "xbxBPdVluNKzMHh3g_IJMA"], ["id", 18], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:6
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/users_controller.rb:6
+Redirected to http://localhost:3000/
+Completed 302 Found in 195ms (ActiveRecord: 4.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2021-02-10 10:43:58 -0800
+Processing by StaticPagesController#root as */*
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "xbxBPdVluNKzMHh3g_IJMA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:28
+  Rendered static_pages/root.html.erb within layouts/application (6.7ms)
+Completed 200 OK in 30ms (Views: 26.7ms | ActiveRecord: 0.2ms)
+
+
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+Started GET "/" for 127.0.0.1 at 2021-02-10 10:46:00 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "xbxBPdVluNKzMHh3g_IJMA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:28
+  Rendered static_pages/root.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 228ms (Views: 227.0ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/api/session" for 127.0.0.1 at 2021-02-10 10:46:11 -0800
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"user"=>{"username"=>"testuser2", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "testuser2"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:18
+Redirected to http://localhost:3000/
+Completed 302 Found in 177ms (ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2021-02-10 10:46:11 -0800
+Processing by StaticPagesController#root as */*
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "xbxBPdVluNKzMHh3g_IJMA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:28
+  Rendered static_pages/root.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 15ms (Views: 12.5ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2021-02-10 10:48:47 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "xbxBPdVluNKzMHh3g_IJMA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:28
+  Rendered static_pages/root.html.erb within layouts/application (3.5ms)
+Completed 200 OK in 244ms (Views: 242.0ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2021-02-10 10:49:11 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "xbxBPdVluNKzMHh3g_IJMA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:28
+  Rendered static_pages/root.html.erb within layouts/application (3.1ms)
+Completed 200 OK in 272ms (Views: 268.9ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2021-02-10 10:49:15 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "xbxBPdVluNKzMHh3g_IJMA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:28
+  Rendered static_pages/root.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 25ms (Views: 22.7ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2021-02-10 10:49:16 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "xbxBPdVluNKzMHh3g_IJMA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:28
+  Rendered static_pages/root.html.erb within layouts/application (4.6ms)
+Completed 200 OK in 25ms (Views: 21.7ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2021-02-10 10:49:25 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "xbxBPdVluNKzMHh3g_IJMA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:28
+  Rendered static_pages/root.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 13ms (Views: 12.4ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/api/session" for 127.0.0.1 at 2021-02-10 10:50:25 -0800
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"user"=>{"username"=>"testuser1", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "testuser1"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:18
+Redirected to http://localhost:3000/
+Completed 302 Found in 195ms (ActiveRecord: 0.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2021-02-10 10:50:26 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+Started GET "/" for 127.0.0.1 at 2021-02-10 10:50:26 -0800
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "xbxBPdVluNKzMHh3g_IJMA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:28
+  Rendered static_pages/root.html.erb within layouts/application (1.7ms)
+Processing by StaticPagesController#root as */*
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "DW7Dy6umC2nLMH0pnE9pyg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:28
+  Rendered static_pages/root.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 20ms (Views: 19.3ms | ActiveRecord: 0.3ms)
+
+
+Completed 200 OK in 15ms (Views: 11.8ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/api/session" for 127.0.0.1 at 2021-02-10 10:50:38 -0800
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"user"=>{"username"=>"testuser1", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "testuser1"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:18
+Redirected to http://localhost:3000/
+Completed 302 Found in 187ms (ActiveRecord: 0.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2021-02-10 10:50:38 -0800
+Processing by StaticPagesController#root as */*
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "DW7Dy6umC2nLMH0pnE9pyg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:28
+  Rendered static_pages/root.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 11ms (Views: 8.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2021-02-10 10:51:03 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "DW7Dy6umC2nLMH0pnE9pyg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:28
+  Rendered static_pages/root.html.erb within layouts/application (5.2ms)
+Completed 200 OK in 256ms (Views: 254.4ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/api/session" for 127.0.0.1 at 2021-02-10 10:51:09 -0800
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"user"=>{"username"=>"testuser1", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "testuser1"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:18
+Redirected to http://localhost:3000/
+Completed 302 Found in 195ms (ActiveRecord: 0.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2021-02-10 10:51:09 -0800
+Processing by StaticPagesController#root as */*
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "DW7Dy6umC2nLMH0pnE9pyg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:28
+  Rendered static_pages/root.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 13ms (Views: 10.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2021-02-10 10:51:47 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 23ms (Views: 21.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/api/session" for 127.0.0.1 at 2021-02-10 10:51:53 -0800
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"user"=>{"username"=>"testuser1", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "testuser1"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:18
+Redirected to http://localhost:3000/
+Completed 302 Found in 200ms (ActiveRecord: 0.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2021-02-10 10:51:53 -0800
+Processing by StaticPagesController#root as */*
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.2ms)
+Completed 200 OK in 18ms (Views: 15.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2021-02-10 10:55:01 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 241ms (Views: 239.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/api/session" for 127.0.0.1 at 2021-02-10 10:55:07 -0800
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"user"=>{"username"=>"testuser1", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "testuser1"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:18
+Redirected to http://localhost:3000/
+Completed 302 Found in 195ms (ActiveRecord: 0.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2021-02-10 10:55:07 -0800
+Processing by StaticPagesController#root as */*
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.2ms)
+Completed 200 OK in 15ms (Views: 13.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2021-02-10 10:56:38 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 243ms (Views: 242.7ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/api/session" for 127.0.0.1 at 2021-02-10 10:56:43 -0800
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"user"=>{"username"=>"testuser1", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "testuser1"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:18
+Redirected to http://localhost:3000/
+Completed 302 Found in 187ms (ActiveRecord: 0.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2021-02-10 10:56:43 -0800
+Processing by StaticPagesController#root as */*
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.2ms)
+Completed 200 OK in 11ms (Views: 8.7ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/api/session" for 127.0.0.1 at 2021-02-10 10:56:45 -0800
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"user"=>{"username"=>"testuser1", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "testuser1"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:18
+Redirected to http://localhost:3000/
+Completed 302 Found in 201ms (ActiveRecord: 0.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2021-02-10 10:56:45 -0800
+Processing by StaticPagesController#root as */*
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.2ms)
+Completed 200 OK in 11ms (Views: 8.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/api/session" for 127.0.0.1 at 2021-02-10 10:56:46 -0800
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"user"=>{"username"=>"testuser1", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "testuser1"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:18
+Redirected to http://localhost:3000/
+Completed 302 Found in 213ms (ActiveRecord: 0.5ms)
+
+
+Started POST "/api/session" for 127.0.0.1 at 2021-02-10 10:56:46 -0800
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"user"=>{"username"=>"testuser1", "password"=>"[FILTERED]"}}
+Started GET "/" for 127.0.0.1 at 2021-02-10 10:56:46 -0800
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "testuser1"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:18
+Redirected to http://localhost:3000/
+Completed 302 Found in 170ms (ActiveRecord: 0.3ms)
+
+
+Processing by StaticPagesController#root as */*
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.2ms)
+Completed 200 OK in 12ms (Views: 10.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2021-02-10 10:56:46 -0800
+Processing by StaticPagesController#root as */*
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.2ms)
+Completed 200 OK in 11ms (Views: 9.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/api/session" for 127.0.0.1 at 2021-02-10 10:56:53 -0800
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"user"=>{"username"=>"testuser1", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "testuser1"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:18
+Redirected to http://localhost:3000/
+Completed 302 Found in 187ms (ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2021-02-10 10:56:53 -0800
+Processing by StaticPagesController#root as */*
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.2ms)
+Completed 200 OK in 11ms (Views: 8.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/api/session" for 127.0.0.1 at 2021-02-10 10:56:55 -0800
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"user"=>{"username"=>"testuser1", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "testuser1"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:18
+Redirected to http://localhost:3000/
+Completed 302 Found in 198ms (ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2021-02-10 10:56:55 -0800
+Processing by StaticPagesController#root as */*
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.2ms)
+Completed 200 OK in 14ms (Views: 11.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/api/session" for 127.0.0.1 at 2021-02-10 10:56:56 -0800
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"user"=>{"username"=>"testuser1", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "testuser1"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:18
+Redirected to http://localhost:3000/
+Completed 302 Found in 211ms (ActiveRecord: 1.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2021-02-10 10:56:56 -0800
+Processing by StaticPagesController#root as */*
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 14ms (Views: 11.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2021-02-10 10:57:16 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.2ms)
+Completed 200 OK in 222ms (Views: 221.7ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/api/session" for 127.0.0.1 at 2021-02-10 10:57:21 -0800
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"user"=>{"username"=>"testuser1", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "testuser1"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:18
+No template found for Api::SessionsController#create, rendering head :no_content
+Completed 204 No Content in 199ms (ActiveRecord: 0.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2021-02-10 10:57:41 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 239ms (Views: 237.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/api/session" for 127.0.0.1 at 2021-02-10 10:57:46 -0800
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"user"=>{"username"=>"testuser1", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "testuser1"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:18
+Redirected to http://localhost:3000/
+Completed 302 Found in 192ms (ActiveRecord: 0.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2021-02-10 10:57:46 -0800
+Processing by StaticPagesController#root as */*
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 14ms (Views: 11.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2021-02-10 10:58:24 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 228ms (Views: 227.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/api/session" for 127.0.0.1 at 2021-02-10 10:58:30 -0800
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"user"=>{"username"=>"testuser1", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "testuser1"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:18
+Redirected to http://localhost:3000/
+Completed 302 Found in 185ms (ActiveRecord: 0.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2021-02-10 10:58:30 -0800
+Processing by StaticPagesController#root as */*
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 12ms (Views: 10.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2021-02-10 10:58:57 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 231ms (Views: 230.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2021-02-10 10:59:19 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 226ms (Views: 225.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/api/session" for 127.0.0.1 at 2021-02-10 10:59:23 -0800
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"user"=>{"username"=>"testuser1", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "testuser1"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:18
+Redirected to http://localhost:3000/
+Completed 302 Found in 189ms (ActiveRecord: 0.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2021-02-10 10:59:24 -0800
+Processing by StaticPagesController#root as */*
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 14ms (Views: 11.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2021-02-10 10:59:58 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 235ms (Views: 233.3ms | ActiveRecord: 0.0ms)
+
+

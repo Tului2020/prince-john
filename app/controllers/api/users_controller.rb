@@ -1,21 +1,18 @@
 class Api::UsersController < ApplicationController
-  
-  # Sign up request
+
   def create
     @user = User.new(user_params)
     if @user.save
-      sign_in!(@user)
-      redirect_to '/'
-    # else
-    #   flash.now[:errors] = @user.errors.full_messages
-    #   render :new
+      login!(@user)
+      render :show
+    else
+      render json: @user.errors.full_messages, status: 401
     end
   end
 
 
-
   private
   def user_params
-    params.require(:user).permit(:username, :password, :email)
+    params.require(:user).permit(:username, :email, :password)
   end
 end

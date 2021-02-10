@@ -1,28 +1,17 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import createStore from './store/store';
-import Root from './components/root';
-
-// document.addEventListener('DOMContentLoaded', ()=>{
-//   const rootEl = document.getElementById('root');
-//   ReactDOM.render(<h1>React Working</h1>, rootEl)
-// })
-
-window.store = createStore({session: {current: window.currentUser}});
+import React from 'react'
+import ReactDom from 'react-dom'
+import {login, signup, logout} from './actions/session_actions'
+import configureStore from './store/store'
 
 
 document.addEventListener('DOMContentLoaded', () => {
-  const root = document.getElementById('root');
-  let preloadedState = undefined;
-  if (window.currentUser) {
-    preloadedState = {
-      session: {
-        currentUser: window.currentUser
-      }
-    };
-  }
-  // const store = createStore(preloadedState);
-  // const store = createStore();
-
-  ReactDOM.render(<Root store={store} />, root);
+  const store = configureStore()
+  const rootEl = document.getElementById('root');
+  ReactDom.render(<h1>PrinceJohn</h1>, rootEl)
+  window.store = store 
+  window.login = login
+  window.signup = signup
+  window.logout = logout
+  window.getState = store.getState;
+  window.dispatch = store.dispatch; 
 })
