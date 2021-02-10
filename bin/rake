@@ -3,13 +3,9 @@ begin
   load File.expand_path('../spring', __FILE__)
 rescue LoadError => e
   raise unless e.message.include?('spring')
+  raise e unless ENV['RAILS_ENV'] == "production"
 end
 
-begin
-  require 'minitest/autorun'
-rescue LoadError => e
-  raise e unless ENV['RAILS_ENV'] == "production"
-end 
 
 
 require_relative '../config/boot'
