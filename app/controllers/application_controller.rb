@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   
-  helper_method :current_user, :logged_in?
+  helper_method :current_user, :signed_in?
   #CRLLL
 
   def current_user
@@ -10,20 +10,20 @@ class ApplicationController < ActionController::Base
     # return @current_user
   end
 
-  def require_logged_in!
-    redirect_to api_session_url unless logged_in?
+  def require_signed_in!
+    redirect_to api_session_url unless signed_in?
   end
 
-  def login!(user)
+  def sign_in!(user)
     @current_user = user 
     session[:session_token] = user.reset_sesssion_token!
   end
 
-  def logged_in?
+  def signed_in?
     !!current_user
   end
 
-  def logout!
+  def sign_out!
     @current_user.reset_sesssion_token!
     session[:session_token] = nil 
     @current_user = nil 

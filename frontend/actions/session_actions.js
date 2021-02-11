@@ -10,7 +10,7 @@ const receiveCurrentUser = (currentUser) => ({
   currentUser
 })
 
-const logoutCurrentUser = ()  => ({
+const signoutCurrentUser = ()  => ({
   type: REMOVE_CURRENT_USER,
 
 })
@@ -26,15 +26,15 @@ export const signup = (user) => dispatch => (
     .fail((errors) => dispatch(receiveErrors(errors.responseJSON)))
   )
 
-export const login = (user) => dispatch => (
-  SessionApiUtil.login(user)
+export const signin = (user) => dispatch => (
+  SessionApiUtil.signin(user)
       .then((newUser) => dispatch(receiveCurrentUser(newUser)))
       .fail((errors) => dispatch(receiveErrors(errors.responseJSON)))
 )
 
-export const logout = () => dispatch => (
-  SessionApiUtil.logout()
-    .then(() => dispatch(logoutCurrentUser()))
+export const signout = () => dispatch => (
+  SessionApiUtil.signout()
+    .then(() => dispatch(signoutCurrentUser()))
     .fail((errors) => dispatch(receiveErrors(errors.responseJSON)))
 )
 

@@ -8,7 +8,7 @@ export const signup = (user) => (
   })
 )
 
-export const login = (user) => (
+export const signin = (user) => (
   $.ajax({
     method: 'POST',
     url: '/api/session',
@@ -16,7 +16,7 @@ export const login = (user) => (
   })
 )
 
-export const logout = () => (
+export const signout = () => (
   $.ajax({
     method: 'DELETE',
     url: '/api/session',

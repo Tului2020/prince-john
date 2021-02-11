@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { login } from '../../actions/session_actions';
+import { signin } from '../../actions/session_actions';
 import SessionForm from './session_form'
 
 const mSTP = state => ({
@@ -8,7 +8,7 @@ const mSTP = state => ({
 })
 
 const mDTP = dispatch => ({
-  processForm: (currentUser) => dispatch(login(currentUser)),
+  processForm: (currentUser) => dispatch(signin(currentUser)),
 })
 
 
