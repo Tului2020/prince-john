@@ -25,19 +25,39 @@ class NavBar extends React.Component{
     }
   
     return (
-      <header className="nav-bar">
-        <h1 className="logo">PrinceJohn</h1>
-        <div className="dropdowns">
-        <h2>Products</h2>
-        <h2>Learn</h2>
-        <h2>Support</h2>
-        <h2>Who we are</h2>
+      <header>
+        <div id="fixed">
 
-        </div>
-        <div>
-          {display}
+
+          <div className="nav-bar">
+
+            <h1 className="logo">PrinceJohn</h1>
+            
+            <div className="dropdowns">
+              <div>Products</div>
+              <div>Learn</div>
+              <div>Support</div>
+              <div>Who we are</div>
+            </div>
+
+            <div id="other-nav-bar">
+            Place Holder
+              {/* place holder div */}
+            </div>
+
+            <div id="other-nav-bar">
+              Place Holder
+              {/* place holder div */}
+            </div>
+            
+            <div id="other-nav-bar">
+              {display}
+            </div>
+          </div>
         </div>
       </header>
+
+    
     );
   }
 };
