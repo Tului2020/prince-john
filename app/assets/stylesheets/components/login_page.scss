@@ -3,7 +3,59 @@
   justify-content: space-between;
 }
 
-#login-picture {
+#login-page-left{
   width: 50vw;
   height: 100vh; 
+  object-fit: cover;
+  border: 1px solid green;
 }
+
+
+#login-page-right{
+  display: flex;
+  flex-direction: column;
+  width: 45vw;
+  justify-content: space-evenly;
+  // border: 1px solid blue;
+  margin: 50px 0px;
+}
+
+#login-page-right-top > div {
+  // border: 1px solid red;
+  margin: 20px 0px;
+}
+
+
+.welcome {
+  font-size: 24px;
+  // padding: 10px 10px;
+  font-family: sans-serif;
+}
+
+#login-page-login {
+  align-items: center;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  display: inline-flex;
+  height: 48px;
+  justify-content: center;
+  min-width: 120px;
+  white-space: nowrap;
+  background-color: rgb(0, 200, 5);
+  color: white;
+  font-size: 14px;
+  font-weight: 900;
+}
+
+#login-page-input-field {
+  width: 50%;
+  height: 30px;
+  display: flex;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 4px;
+  transition: border-color 200ms ease 0s;
+  border-color: grey;
+}
+
+
