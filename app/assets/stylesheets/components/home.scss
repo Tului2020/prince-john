@@ -1,10 +1,13 @@
 #home-one {
-  background-color: rgb(190, 245, 82);
+  background-color: rgb(190, 245, 60);
   width: 99.5vw;
   height: 59vh;
   color: black;
   padding: 70px 0px;
   border-bottom: 1px solid black;
+
+  display: flex;
+  justify-content: space-between;
 }
 
 #home-two {
@@ -15,9 +18,9 @@
   border-bottom: 1px solid black;
 
   display: flex;
-  // flex-direction: row;
-  flex-flow: column wrap;
-  align-items: stretch;
+  flex-direction: row;
+  // flex-flow: column wrap;
+  // align-items: stretch;
 
 }
 
@@ -30,34 +33,29 @@
 }
 
 #home-four {
-  background-color: black;
+  background-color: rgb(241,235,230);
   width: 99vw;
   height: 67vh;
   color: black;
   border-bottom: 1px solid black;
+  display: flex;
+  justify-content: space-between;
 }
 
 #home-five {
-  background-color: white;
-  width: 99vw;
-  height: 72vh;
-  color: black;
-  border-bottom: 1px solid black;
-}
-
-#home-six {
   background-color: black;
   width: 99vw;
   height: 72vh;
   color: black;
   border-bottom: 1px solid black;
 }
+
 
 
 
 
 #videos {
-  width: 50%;
+  width: 72.8%;
   // object-fit: cover;
   // object-position: center;
   // height: 100%;
