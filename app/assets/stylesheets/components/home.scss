@@ -59,39 +59,38 @@
 #home-two {
   background-color: white;
   width: 99vw;
-  height: 52vh;
+  height: 450px;
   color: black;
-  border: 1px solid red;
+  border-bottom: 1px solid red;
 
   display: flex;
   flex-direction: row;
 
-  // #videos {
-  //   width
-  // }
+  #videos {
+    object-fit: none;
+    width: 50vw;
+  }
 
 }
 
-#border {
-  // height: 100%;
-  overflow: hidden;
-}
 
 #home-two-style {
   font-size: 50px;
   font-family: sans-serif;
-  width: 50%;
+  width: 50vw;
   display: flex;
   align-items: center;
   justify-content: center;
+  border: 1px solid black;
 }
 
 
 
 #home-three {
+  // 52.5vh == 530px
   background-color: white;
   width: 99vw;
-  height: 52.5vh;
+  height: 530px;
   color: black;
   border-bottom: 1px solid black;
 }

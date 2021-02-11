@@ -4,7 +4,7 @@ import LoginFormContainer from './sessions/login_form_container';
 import SignupFormContainer from './sessions/signup_form_container';
 import {AuthRoute} from '../util/route_util'
 import NavBarContainer from './nav_bar/nav_bar_container'
-import Home from './home /home';
+import Home from './home/home';
 
 const App = () => (
   <div>
