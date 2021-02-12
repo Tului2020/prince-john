@@ -1,0 +1,82 @@
+.signup-page {
+  // border: 1px solid red;
+  display: flex;
+  justify-content: center;
+}
+
+#signup-page-left {
+  // border: 1px solid blue; 
+  width: 40vw;
+  height: 60vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+}
+
+#signup-page-right {
+  // border: 1px solid black; 
+  width: 40vw;
+  height: 60vh;
+}
+
+
+#signup-page-left-top {
+  // border: 1px solid rgb(255, 0, 234);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#signup-page-left-top-one {
+  // border: 1px solid rgb(25, 0, 255); 
+  font-size: 24px;
+  // font-weight: 600;
+}
+
+#signup-page-left-top-two {
+  // border: 1px solid rgb(255, 0, 234); 
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: .1px;
+  line-height: 20px;
+}
+
+#signup-page-left-top-field {
+  // border: 1px solid rgb(255, 0, 234); 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#signup-page-left-top-field-names {
+  // border: 1px solid rgb(255, 0, 234); 
+  display: flex;
+  // width: 50%;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+#signup-page-left-top-field-names > div {
+  // border: 1px solid rgb(255, 0, 234); 
+  width: 50%;
+}
+
+#signup-page-input-field{
+  // border: 1px solid rgb(255, 0, 234); 
+  width: 80%;
+}
+
+// #signup-page-input-field{
+//   // border: 1px solid rgb(255, 0, 234); 
+//   width: 80%;
+// }
+
+#signup-page-left-bottom {
+  // border: 1px solid rgb(255, 0, 234); 
+}
+
+
+
+
+

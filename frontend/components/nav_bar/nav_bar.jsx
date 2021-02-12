@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 class NavBar extends React.Component{
   render() {
     const { currentUser, signout } = this.props
-    console.log(currentUser)
+    // console.log(currentUser)
     let display = null;
     if (currentUser){
       display = (
