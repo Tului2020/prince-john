@@ -3,8 +3,13 @@ import { signin } from '../../actions/session_actions';
 import LoginForm from './login_form'
 
 const mSTP = state => ({
-  errors: state.entities[state.errors.session.errors],
-  formType: 'Log In'
+  // console.log(state.errors.session.errors)
+
+
+    errors: state.errors.session,
+    formType: 'Log In'
+
+  
 })
 
 const mDTP = dispatch => ({

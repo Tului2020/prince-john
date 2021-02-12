@@ -5,7 +5,8 @@ import React from 'react';
 class LoginForm extends React.Component {
   constructor(props) {
     super(props);
-    // console.log(props);
+    // console.log(this.props.errors);
+    // this.props.errors = 'hdklajlka';
     this.state = {
       username: "",
       password: "",
@@ -24,20 +25,48 @@ class LoginForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault()
-    // console.log(this.state)
+    
     this.props.processForm(this.state)
+    // console.log(this.props.errors)
   }
 
   demoLogin(e) {
     e.preventDefault()
     this.props.processForm({
-      username: "demo",
+      username: "demolicious@demo.com",
       password: "123456",
     })
   }
 
 
+
+    
+  
+
+
   render() {
+    // const displayErrors = (
+    //   <ul>
+    //     <li>
+    //       {Object.values(this.props.errors)[0]}
+    //     </li>
+    //   </ul>
+    // )
+
+
+    const displayErrors = (
+      <ul>
+          {Object.values(this.props.errors).map(error => {
+            return (
+              <li>
+                {error}
+              </li>
+            )
+          })}
+      </ul>
+    )
+
+
     // This function simplifies different types of inputs i.e. username, password, email
     const fieldInput = (inputDisp, inputDB = null, inputType = 'text') => {
       if (!inputDB) {
@@ -75,12 +104,14 @@ class LoginForm extends React.Component {
 
 
           </div>
+            <div id="session-errors">
 
+              {displayErrors}
+            </div>
           <div id="login-demo">
             <button id="login-page-login" >{this.props.formType}</button>
             <button id="login-page-login" onClick={this.demoLogin}>Demo Login</button>
           </div>
-          {/* {this.props.errors} */}
         </div>
         
 
@@ -92,12 +123,9 @@ class LoginForm extends React.Component {
       <div className='session-form'>
         <form onSubmit={this.handleSubmit}>
           {form}
-
+          
         </form>
         
-        {/* <span>
-          {this.props}
-        </span> */}
       </div>
     )
   }

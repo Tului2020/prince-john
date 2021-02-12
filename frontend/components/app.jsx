@@ -8,7 +8,7 @@ import Home from './home/home';
 
 const App = () => (
   <div>
-    <Route path="/" component={NavBarContainer} />
+    <Route exact path="/" component={NavBarContainer} />
     <AuthRoute exact path="/" component={Home} />
     <AuthRoute exact path="/login" component={LoginFormContainer} />
     <AuthRoute exact path="/signup" component={SignupFormContainer} />

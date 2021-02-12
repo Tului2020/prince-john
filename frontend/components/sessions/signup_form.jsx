@@ -30,6 +30,20 @@ class SignupForm extends React.Component {
 
 
   render() {
+    const displayErrors = (
+      <ul>
+          {Object.values(this.props.errors).map(error => {
+            return (
+              <li>
+                {error}
+              </li>
+            )
+          })}
+      </ul>
+    )
+
+
+
     // This function simplifies different types of inputs i.e. username, password, email
     const fieldInput = (inputDisp, inputDB = null, inputType = 'text') => {
       if (!inputDB) {
@@ -73,6 +87,8 @@ class SignupForm extends React.Component {
             </div>
           </div>
 
+
+
           <div id="signup-page-left-bottom">
 
             <div id="signup-page-left-bottom-left">
@@ -88,6 +104,13 @@ class SignupForm extends React.Component {
               </div>
             </div>
           </div>
+
+          <div id="signup-page-left-errors">
+            {displayErrors}
+            {/* {this.setState({})} */}
+          </div>  
+
+
         </div>
 
 
@@ -129,7 +152,6 @@ class SignupForm extends React.Component {
       <div className='session-form'>
         <form onSubmit={this.handleSubmit}>
           {form}
-
         </form>
       </div>
     )

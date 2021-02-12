@@ -7,22 +7,33 @@
   width: 50vw;
   height: 100vh; 
   object-fit: cover;
-  border: 1px solid green;
+  // border: 1px solid green;
 }
 
 
-#login-page-right{
+#login-page-right {
   display: flex;
   flex-direction: column;
   width: 45vw;
-  justify-content: space-evenly;
+  justify-content: center;
   // border: 1px solid blue;
   margin: 50px 0px;
 }
+#login-page-right > div {
+  // border: 1px solid blue;
+  min-height: 5%;
+}
+
+#session-errors {
+  color: red;
+}
+
+
 
 #login-page-right-top > div {
   // border: 1px solid red;
   margin: 20px 0px;
+  
 }
 
 
@@ -30,11 +41,12 @@
   font-size: 24px;
   // padding: 10px 10px;
   font-family: sans-serif;
+  // border: 1px solid red;
 }
 
 #login-page-login {
   align-items: center;
-  border: 1px solid transparent;
+  border: 1px solid green;
   border-radius: 4px;
   display: inline-flex;
   height: 48px;
@@ -48,7 +60,7 @@
 }
 
 #login-page-input-field {
-  border: 1px solid red;
+  // border: 1px solid red;
   width: 50%;
   height: 30px;
   display: flex;

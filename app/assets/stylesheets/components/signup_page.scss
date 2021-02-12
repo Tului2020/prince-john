@@ -15,12 +15,6 @@
 }
 
 
-
-
-
-
-
-
 #signup-page-left-top {
   // border: 1px solid rgb(255, 0, 234);
   display: flex;
@@ -106,7 +100,7 @@
 
 #signup-page-left-bottom {
   // border: 1px solid rgb(255, 0, 234); 
-  height: 15%;
+  height: 12%;
   width: 50%;
   display: flex;
   flex-direction: row;
@@ -114,9 +108,20 @@
   justify-content: space-between;
 }
 
+#signup-page-left-errors {
+  color: red;
+  min-height: 120px;
+  // border: 1px solid rgb(255, 0, 234); 
+  display: flex;
+  // justify-content: center;
+  // justify-content: flex-end;
+  align-items: center;
+}
+
+
 #signup-page-left-bottom-right {
   // border: 1px solid rgb(255, 0, 234); 
-  height: 45%;
+  height: 35px;
   width: 53%;
   display: flex;
   flex-direction: column;
@@ -136,7 +141,7 @@
 
 #signup-page-left-bottom-left {
   // border: 1px solid rgb(255, 0, 234); 
-  height: 45%;
+  height: 35px;
   width: 40%;
 }
 
@@ -168,7 +173,7 @@
 
 #signup-page-right {
   // border: 1px solid black; 
-  width: 40vw;
+  // width: 40vw;
   height: 60vh;
   display: flex;
   flex-direction: column;
