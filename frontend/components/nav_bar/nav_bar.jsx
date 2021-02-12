@@ -33,20 +33,20 @@ class NavBar extends React.Component{
 
             <h1 className="logo">PrinceJohn</h1>
             
-            <div className="dropdowns">
+            {/* <div className="dropdowns">
               <div>Products</div>
               <div>Learn</div>
               <div>Support</div>
               <div>Who we are</div>
-            </div>
+            </div> */}
 
             <div id="other-nav-bar">
-            Place Holder
+            {/* Place Holder */}
               {/* place holder div */}
             </div>
 
             <div id="other-nav-bar">
-              Place Holder
+              {/* Place Holder */}
               {/* place holder div */}
             </div>
             
