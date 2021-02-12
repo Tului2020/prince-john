@@ -48,6 +48,7 @@
 }
 
 #login-page-input-field {
+  border: 1px solid red;
   width: 50%;
   height: 30px;
   display: flex;
@@ -56,6 +57,12 @@
   border-radius: 4px;
   transition: border-color 200ms ease 0s;
   border-color: rgb(236, 236, 236);
+  background-color: rgb(245, 248, 250);
+  padding-left:10px
+}
+
+#login-page-input-field:hover {
+  background-color: white;
 }
 
 #login-demo {

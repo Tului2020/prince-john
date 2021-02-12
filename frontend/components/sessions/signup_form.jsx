@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { Link } from 'react-router-dom';
 
 
 class SignupForm extends React.Component {
@@ -16,10 +16,11 @@ class SignupForm extends React.Component {
   }
 
   update(field) {
-    
+
     return (e) => {
       // console.log(field, e.target.value)
-      this.setState({ [field]: e.target.value })}
+      this.setState({ [field]: e.target.value })
+    }
   }
 
   handleSubmit(e) {
@@ -30,8 +31,8 @@ class SignupForm extends React.Component {
 
   render() {
     // This function simplifies different types of inputs i.e. username, password, email
-    const fieldInput = (inputDisp, inputDB=null, inputType='text') => {
-      if (!inputDB){
+    const fieldInput = (inputDisp, inputDB = null, inputType = 'text') => {
+      if (!inputDB) {
         inputDB = inputDisp;
       }
 
@@ -39,8 +40,8 @@ class SignupForm extends React.Component {
         <div >
           <label id="signup-page-input">
 
-            <br/><br/>
-            <input type={inputType} id="signup-page-input-field" placeholder={inputDisp} onChange={this.update(inputDB)}/>
+            <br /><br />
+            <input type={inputType} className="signup-field" id={`signup-${inputDB}`} placeholder={inputDisp} onChange={this.update(inputDB)} />
           </label>
         </div>
       )
@@ -65,7 +66,7 @@ class SignupForm extends React.Component {
                 {fieldInput('First name', 'first_name')}
                 {fieldInput('Last name', 'last_name')}
               </div>
-              
+
               {fieldInput('Email', 'username')}
               {fieldInput('Password (min. 6 characters)', 'password', 'password')}
 
@@ -73,27 +74,62 @@ class SignupForm extends React.Component {
           </div>
 
           <div id="signup-page-left-bottom">
-            <button id="login-page-login" >{this.props.formType}</button>
+
+            <div id="signup-page-left-bottom-left">
+              <button id="signup-page-continue" >Continue</button>
+            </div>
+
+            <div id="signup-page-left-bottom-right">
+              <div>
+                Already started?
+              </div>
+              <div>
+                <Link id="signup-page-login-link" to='/login'>Login to complete your application</Link>
+              </div>
+            </div>
           </div>
         </div>
+
+
+
         <div id="signup-page-right">
-        Commission-free stock trading
-We’ve cut the fat that makes other brokerages costly, like manual account management and hundreds of storefront locations, so we can offer zero commission trading.
-Account Protection
-Robinhood Financial is a member of SIPC. Securities in your account are protected up to $500,000. For details, please see www.sipc.org.
-Keep tabs on your money
-Set up customized news and notifications to stay on top of your assets as casually or as relentlessly as you like. Controlling the flow of info is up to you.
+          <div id="test">
+            <span id="signup-page-right-title">
+            Commission-free stock trading
+            </span><br/>
+            We’ve cut the fat that makes other brokerages costly, like manual account management and hundreds of storefront locations, so we can offer zero commission trading.
+
+          </div>
+
+          <div id="test">
+
+            <span id="signup-page-right-title">
+              Account Protection
+            </span>
+            <br/>
+            Robinhood Financial is a member of SIPC. Securities in your account are protected up to $500,000. For details, please see www.sipc.org.
+
+          </div>
+
+          <div id="test">
+            <span id="signup-page-right-title">
+            Keep tabs on your money
+            </span>
+            <br/>
+            Set up customized news and notifications to stay on top of your assets as casually or as relentlessly as you like. Controlling the flow of info is up to you.
+
+          </div>
         </div>
       </div>)
 
 
-    
+
 
     return (
       <div className='session-form'>
         <form onSubmit={this.handleSubmit}>
           {form}
-          
+
         </form>
       </div>
     )

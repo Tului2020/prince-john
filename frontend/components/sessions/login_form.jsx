@@ -49,7 +49,7 @@ class LoginForm extends React.Component {
           <label id="login-page-input">
             {inputDisp}
             <br /><br />
-            <input type={inputDisp.charAt(0).toUpperCase() + inputDisp.slice(1)} id="signup-page-input-field" onChange={this.update(inputDB)} />
+            <input type={inputDisp.charAt(0).toUpperCase() + inputDisp.slice(1)} id="login-page-input-field" onChange={this.update(inputDB)} />
           </label>
         </div>
       )
