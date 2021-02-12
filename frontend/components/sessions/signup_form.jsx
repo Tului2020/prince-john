@@ -19,7 +19,7 @@ class LoginForm extends React.Component {
   update(field) {
     
     return (e) => {
-      console.log(field, e.target.value)
+      // console.log(field, e.target.value)
       this.setState({ [field]: e.target.value })}
   }
 
@@ -41,7 +41,7 @@ class LoginForm extends React.Component {
           <label id="login-page-input">
 
             <br/><br/>
-            <input type={inputType} id="login-page-input-field" placeholder={inputDisp.charAt(0).toUpperCase() + inputDisp.slice(1)} onChange={this.update(inputDB)}/>
+            <input type={inputType} id="signup-page-input-field" placeholder={inputDisp.charAt(0).toUpperCase() + inputDisp.slice(1)} onChange={this.update(inputDB)}/>
           </label>
         </div>
       )
@@ -54,7 +54,14 @@ class LoginForm extends React.Component {
         <div id="signup-page-left">
 
           <div id="signup-page-left-top">
+            <span>
+              Make Your Money Move
+            </span>
 
+            <span>
+              LittleJohn lets you invest in companies you love, commission-free.
+
+            </span>
 
             {fieldInput('first name', 'first_name')}
             {fieldInput('last name', 'last_name')}

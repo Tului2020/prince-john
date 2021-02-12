@@ -6,28 +6,30 @@ const table = (
   <div>
 
     <table id="customers">
-      <tr>
-        <th>Invest Any Amount</th>
-        <th>Build a Balanced Portfolio</th>
-        <th>Trade in Real Time</th>
-      </tr>
+      <tbody>
+        <tr>
+          <th>Invest Any Amount</th>
+          <th>Build a Balanced Portfolio</th>
+          <th>Trade in Real Time</th>
+        </tr>
 
-      <tr>
-        <td>
-          Choose how much you want to <br/>
-          invest, and we’ll convert from <br/>
-          dollars to parts of a whole <br/>
-          share.</td>
-        <td>
-          Customize your portfolio with <br/>
-          pieces of different companies <br/>
-          and funds to help reduce risk.</td>
-        <td>
-          Trades placed during market <br/>
-          hours are executed at that time, <br/>
-          so you’ll always know the share <br/>
-          price.</td>
-      </tr>
+        <tr>
+          <td>
+            Choose how much you want to <br/>
+            invest, and we’ll convert from <br/>
+            dollars to parts of a whole <br/>
+            share.</td>
+          <td>
+            Customize your portfolio with <br/>
+            pieces of different companies <br/>
+            and funds to help reduce risk.</td>
+          <td>
+            Trades placed during market <br/>
+            hours are executed at that time, <br/>
+            so you’ll always know the share <br/>
+            price.</td>
+        </tr>
+      </tbody>
     </table>
 
 
@@ -50,7 +52,6 @@ const homeThree = (
       {table}
 
       <div>
-        <circle cx="12" cy="12" r="11" stroke="rgb(111, 120, 126)" stroke-width="2"></circle>
         Fractional Shares Disclosure
       </div>
     </div>
