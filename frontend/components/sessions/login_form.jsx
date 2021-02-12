@@ -7,11 +7,11 @@ class LoginForm extends React.Component {
     super(props);
     this.state = {
       username: "",
-      email: '',
       password: "",
     }
 
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.demoLogin = this.demoLogin.bind(this);
   }
 
   update(field) {
@@ -23,6 +23,14 @@ class LoginForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault()
     this.props.processForm(this.state)
+  }
+
+  demoLogin(e) {
+    e.preventDefault()
+    this.props.processForm({
+      username: "demo",
+      password: "123456",
+    })
   }
 
 
@@ -41,7 +49,7 @@ class LoginForm extends React.Component {
     }
 
     // using ternary logic to define form
-    let form = (this.props.formType == 'Log In') ? 
+    let form =
       (
         <div className="login-page">
           <div>
@@ -62,14 +70,13 @@ class LoginForm extends React.Component {
 
             </div>
 
-            <div>
-              <button id="login-page-login" >{this.props.formType}</button>
+            <div id="login-demo">
+              <button id="login-page-login" >{this.props.formType}</button> 
+              <button id="login-page-login" onClick={this.demoLogin}>Demo Login</button>
             </div>
           </div>
-          
+         
         </div>)
-      : 
-      (null)
 
     
 
@@ -79,6 +86,7 @@ class LoginForm extends React.Component {
           {form}
           
         </form>
+        
       </div>
     )
   }

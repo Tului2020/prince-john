@@ -8,31 +8,10 @@
 
 User.destroy_all 
 
-users =[
-    { 
-        username: "user1",
-        password: "123456",
-        email: "us@io.com"
-    },
-    { 
-        username: "user2",
-        password: "123456",
-        email: "asd@gmail.com"
-    },
-    { 
-        username: "user3",
-        password: "123456",
-        email: "ops@io.com"
-    },
-    { 
-        username: "user4",
-        password: "123456",
-        email: "haho@io.com"
-    },
-    { 
-        username: "tori",
-        password: "123456",
-        email: "torr@io.com"
-    },
-]
-User.create(users)
+user1 = User.create( 
+    username: "demo",
+    password: "123456",
+    email: "demolicious@demo.com",
+    first_name: 'demo',
+    last_name: 'feature'
+)

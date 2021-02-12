@@ -4,12 +4,13 @@ import { Link } from 'react-router-dom';
 class NavBar extends React.Component{
   render() {
     const { currentUser, signout } = this.props
-
+    console.log(currentUser)
     let display = null;
     if (currentUser){
       display = (
         <div>
-          <div className="btn">
+          <span >Hello {currentUser.username}</span>
+          <div className="btn"> 
             <button onClick={signout}>Log out</button>
           </div>
         </div>
