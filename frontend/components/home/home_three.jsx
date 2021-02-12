@@ -1,23 +1,62 @@
 import React from 'react';
 
+const shapeImage = <img height="530px" src="https://cdn.robinhood.com/assets/robinhood/brand/_next/static/images/3x__e61985cb13c119a29374ade4e7a49a47.png" alt=""/>
+
+const table = (
+  <div>
+
+    <table id="customers">
+      <tr>
+        <th>Invest Any Amount</th>
+        <th>Build a Balanced Portfolio</th>
+        <th>Trade in Real Time</th>
+      </tr>
+
+      <tr>
+        <td>
+          Choose how much you want to <br/>
+          invest, and we’ll convert from <br/>
+          dollars to parts of a whole <br/>
+          share.</td>
+        <td>
+          Customize your portfolio with <br/>
+          pieces of different companies <br/>
+          and funds to help reduce risk.</td>
+        <td>
+          Trades placed during market <br/>
+          hours are executed at that time, <br/>
+          so you’ll always know the share <br/>
+          price.</td>
+      </tr>
+    </table>
+
+
+  </div>
+)
+
+
+
 
 const homeThree = (
   <div id="home-three">
 
     <div>
-      Introducing Fractional Shares
-      Invest in thousands of stocks with as little as $1.
-      Invest Any Amount
-      Choose how much you want to invest, and we’ll convert from dollars to parts of a whole share.
-      Build a Balanced Portfolio
-      Customize your portfolio with pieces of different companies and funds to help reduce risk.
-      Trade in Real Time
-      Trades placed during market hours are executed at that time, so you’ll always know the share price.
+      <div style={{fontSize: '32px'}}>Introducing Fractional Shares</div>
+      
+      <div style={{color: 'rgb(111,120,126)'}}>
+        Invest in thousands of stocks with as little as $1.
+      </div>
+      
+      {table}
 
-      Fractional Shares Disclosure
+      <div>
+        <circle cx="12" cy="12" r="11" stroke="rgb(111, 120, 126)" stroke-width="2"></circle>
+        Fractional Shares Disclosure
+      </div>
     </div>
   
-    <img src="https://cdn.robinhood.com/assets/robinhood/brand/_next/static/images/3x__e61985cb13c119a29374ade4e7a49a47.png" alt=""/>
+  
+    {shapeImage}
 
   </div>
 

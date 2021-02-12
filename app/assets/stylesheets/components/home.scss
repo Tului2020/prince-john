@@ -6,14 +6,12 @@
   padding: 70px 0px;
   border-bottom: 1px solid black;
 
-
-  // border: 1px solid black;
   display: flex;
   justify-content: center;
 }
 
 #home-one > div {
-  // border: 1px solid black;
+
   width: 30vw;
   height: 578px;
   font-size: 50px;
@@ -36,8 +34,6 @@
   min-width: 130px;
   border-radius: 30px;
   background-color: black;
-  // border: 3px solid #73AD21;
-  // margin: 0px 15px;
 }
 
 
@@ -50,9 +46,8 @@
   
 }
 #home-one > div > h2 {
-  // border: 1px solid black;
   font-size: 25px;
-  
+  font-family: "Capsule Sans Display",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
 }
 
 
@@ -61,7 +56,7 @@
   width: 99vw;
   height: 450px;
   color: black;
-  border-bottom: 1px solid red;
+  border-bottom: 1px solid black;
 
   display: flex;
   flex-direction: row;
@@ -81,19 +76,55 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid black;
+  // border: 1px solid black;
 }
 
 
-
 #home-three {
-  // 52.5vh == 530px
+
   background-color: white;
   width: 99vw;
   height: 530px;
   color: black;
   border-bottom: 1px solid black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
 }
+
+#home-three > div {
+  width: 800px;
+  height: 270px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+#home-three > div > div {
+  // border: 1px solid black;
+}
+
+
+
+#customers {
+  width: 100%;
+}
+
+
+#customers th {
+  font-weight: bold;
+  text-align: left;
+}
+
+#customers td {
+  padding: 8px 0px;
+  text-align: left;
+}
+
+
+
+
 
 #home-four {
   background-color: rgb(241,235,230);
@@ -102,23 +133,47 @@
   color: black;
   border-bottom: 1px solid black;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
 }
+
+#home-four-left {
+  width: 350px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+
+
+}
+
+#home-four-left > h1 {
+  font-family: "Capsule Sans Text",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 28px;
+}
+
+#home-four-left > h2 {
+  font-family: "Capsule Sans Display",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 36px;
+}
+
+
 
 #home-five {
   background-color: black;
-  width: 99vw;
-  height: 20vh;
+  height: 100px;
   color: white;
-  border: 1px solid black;
-
-}
-
-#home-bottom {
-  // border: 1px solid red;
-  margin: 4vh 20vw;
   font-size: 15px;
   font-family: sans-serif;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 
