@@ -15,13 +15,14 @@ class LoginForm extends React.Component {
   }
 
   update(field) {
-    
+    // console.log(this.state)
     return (e) => {
       this.setState({ [field]: e.target.value })}
   }
 
   handleSubmit(e) {
     e.preventDefault()
+    // console.log(this.state)
     this.props.processForm(this.state)
   }
 
@@ -36,13 +37,17 @@ class LoginForm extends React.Component {
 
   render() {
     // This function simplifies different types of inputs i.e. username, password, email
-    const fieldInput = (inputDisp, inputType='text') => {
+    const fieldInput = (inputDisp, inputDB=null, inputType='text') => {
+      if (!inputDB){
+        inputDB = inputDisp;
+      }
+
       return (
         <div >
           <label id="login-page-input">
-            {inputDisp.charAt(0).toUpperCase() + inputDisp.slice(1)}
+            {inputDisp}
             <br/><br/>
-            <input id="login-page-input-field" type={inputType} value={this.state[inputDisp]} onChange={this.update(inputDisp)}/>
+            <input type={inputDisp.charAt(0).toUpperCase() + inputDisp.slice(1)} id="signup-page-input-field" onChange={this.update(inputDB)}/>
           </label>
         </div>
       )
@@ -63,9 +68,9 @@ class LoginForm extends React.Component {
                 Welcome to PrinceJohn
               </div>
 
-              {fieldInput('username')}
+              {fieldInput('Username or Email', 'username')}
 
-              {fieldInput('password', 'password')}
+              {fieldInput('Password', 'password', 'password')}
 
 
             </div>

@@ -19,12 +19,11 @@ ActiveRecord::Schema.define(version: 2021_02_08_223233) do
     t.string "first_name", null: false
     t.string "last_name", null: false
     t.string "username", null: false
-    t.string "email", null: false
     t.string "password_digest", null: false
     t.string "session_token", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["username", "email", "session_token"], name: "index_users_on_username_and_email_and_session_token", unique: true
+    t.index ["username", "session_token"], name: "index_users_on_username_and_session_token", unique: true
   end
 
 end

@@ -9,9 +9,8 @@
 User.destroy_all 
 
 user1 = User.create( 
-    username: "demo",
     password: "123456",
-    email: "demolicious@demo.com",
+    username: "demolicious@demo.com",
     first_name: 'demo',
     last_name: 'feature'
 )
