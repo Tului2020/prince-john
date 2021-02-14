@@ -14,6 +14,7 @@ class LoginForm extends React.Component {
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.demoLogin = this.demoLogin.bind(this);
+    this.removeErrors = this.removeErrors.bind(this);
   }
 
   update(field) {
@@ -38,6 +39,13 @@ class LoginForm extends React.Component {
     })
   }
 
+  removeErrors() {
+    // e.preventDefault();
+    // debugger
+    // console.log(this.props)
+    // debugger
+    return this.props.clearErrors()
+  }
 
 
     
@@ -45,20 +53,12 @@ class LoginForm extends React.Component {
 
 
   render() {
-    // const displayErrors = (
-    //   <ul>
-    //     <li>
-    //       {Object.values(this.props.errors)[0]}
-    //     </li>
-    //   </ul>
-    // )
-
 
     const displayErrors = (
       <ul>
-          {Object.values(this.props.errors).map(error => {
+          {Object.values(this.props.errors).map((error, i) => {
             return (
-              <li>
+              <li key={i}>
                 {error}
               </li>
             )
@@ -78,7 +78,7 @@ class LoginForm extends React.Component {
           <label id="login-page-input">
             {inputDisp}
             <br /><br />
-            <input type={inputDisp.charAt(0).toUpperCase() + inputDisp.slice(1)} id="login-page-input-field" onChange={this.update(inputDB)} />
+            <input type={inputDisp.charAt(0).toUpperCase() + inputDisp.slice(1)} className="login-page-input-field" onChange={this.update(inputDB)} />
           </label>
         </div>
       )
@@ -105,16 +105,15 @@ class LoginForm extends React.Component {
 
           </div>
             <div id="session-errors">
-
               {displayErrors}
             </div>
           <div id="login-demo">
-            <button id="login-page-login" >{this.props.formType}</button>
-            <button id="login-page-login" onClick={this.demoLogin}>Demo Login</button>
+            <button className="login-page-login" >{this.props.formType}</button>
+            <button className="login-page-login" onClick={this.demoLogin}>Demo Login</button>
           </div>
+          <button onClick={() => this.removeErrors()}>Remove Errors</button>
         </div>
         
-
       </div>)
 
 
@@ -123,9 +122,7 @@ class LoginForm extends React.Component {
       <div className='session-form'>
         <form onSubmit={this.handleSubmit}>
           {form}
-          
         </form>
-        
       </div>
     )
   }
