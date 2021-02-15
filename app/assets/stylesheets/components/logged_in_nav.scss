@@ -1,0 +1,32 @@
+
+
+
+#logged-in-nav > div {
+  // border: 1px solid red;
+  width: 33vw;
+}
+
+#logged-in-nav {
+  // border: 1px solid blue;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+#logged-in-dropdown {
+  // border: 1px solid green;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  // width: 30%;
+}
+
+#logged-in-dropdown > div {
+  // border: 1px solid green;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  margin-left: 5%;
+  // width: 17%;
+  // box-sizing:border-box;
+}
