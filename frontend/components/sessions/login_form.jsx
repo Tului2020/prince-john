@@ -5,8 +5,6 @@ import React from 'react';
 class LoginForm extends React.Component {
   constructor(props) {
     super(props);
-    // console.log(this.props.errors);
-    // this.props.errors = 'hdklajlka';
     this.state = {
       username: "",
       password: "",
@@ -18,7 +16,6 @@ class LoginForm extends React.Component {
   }
 
   update(field) {
-    // console.log(this.state)
     return (e) => {
       this.setState({ [field]: e.target.value })
     }
@@ -26,9 +23,7 @@ class LoginForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault()
-    
     this.props.processForm(this.state)
-    // console.log(this.props.errors)
   }
 
   demoLogin(e) {
