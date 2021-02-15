@@ -3,9 +3,11 @@
   top: 30%;
   left: 50%;
   transform: translate(-50%, -50%);
-  text-align: center; }
-  .not-found h1 {
-    font-size: 70px;
-    font-weight: bolder; }
-  .not-found a {
-    font-size: 40px; }
+  text-align: center; 
+  z-index: -1;
+}
+.not-found h1 {
+  font-size: 70px;
+  font-weight: bolder; }
+.not-found a {
+  font-size: 40px; }
