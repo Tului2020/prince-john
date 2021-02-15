@@ -1,16 +1,17 @@
-
-
-
 #logged-in-nav > div {
   // border: 1px solid red;
-  width: 33vw;
+  width: 32vw;
 }
 
 #logged-in-nav {
-  // border: 1px solid blue;
+  border: 1px solid blue;
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: center;
+  font-size: 13px;
+  height: 4vh;
+  // padding: 6px 0px;
+  align-items: center;
 }
 
 #logged-in-dropdown {
@@ -18,15 +19,54 @@
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
-  // width: 30%;
+  // padding-right: 20px;
+  font-weight: bold;
 }
+
 
 #logged-in-dropdown > div {
   // border: 1px solid green;
+
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
   margin-left: 5%;
-  // width: 17%;
-  // box-sizing:border-box;
+
+
+  height: 10px;
+
+  text-decoration: none;
+
+  // border: 1px solid red;
+}
+
+
+
+#logged-in-dropdown > div:hover {
+  color: green;
+  cursor: pointer;
+  
+}
+
+.search-bar {
+  width: 70%;
+  height: 30px;
+  // display: flex;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 4px;
+  transition: border-color 200ms ease 0s;
+  border-color: rgb(236, 236, 236);
+  background-color: rgb(245, 248, 250);
+  padding-left:10px
+}
+
+
+
+
+
+
+
+.drop-down-item {
+  display: none;
 }

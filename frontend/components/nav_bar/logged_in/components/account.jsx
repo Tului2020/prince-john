@@ -5,7 +5,8 @@ class Account extends React.Component {
   render() {
     return (
       <div>
-        <button onClick={this.props.signout}>Log out</button>
+        Account
+        <button className="drop-down-item" onClick={this.props.signout}>Log out</button>
       </div>
     )
   }
