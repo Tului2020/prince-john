@@ -32,9 +32,9 @@ class SignupForm extends React.Component {
   render() {
     const displayErrors = (
       <ul>
-          {Object.values(this.props.errors).map(error => {
+          {Object.values(this.props.errors).map((error, i) => {
             return (
-              <li>
+              <li key={i}>
                 {error}
               </li>
             )

@@ -49,7 +49,10 @@ class LoginForm extends React.Component {
 
 
     
-  
+  componentWillUnmount() {
+    debugger
+    this.props.clearErrors()
+  }
 
 
   render() {
@@ -78,7 +81,8 @@ class LoginForm extends React.Component {
           <label id="login-page-input">
             {inputDisp}
             <br /><br />
-            <input type={inputDisp.charAt(0).toUpperCase() + inputDisp.slice(1)} className="login-page-input-field" onChange={this.update(inputDB)} />
+            {/* <input type={inputDisp.charAt(0).toUpperCase() + inputDisp.slice(1)} className="login-page-input-field" onChange={this.update(inputDB)} /> */}
+            <input type={inputType} className="login-page-input-field" onChange={this.update(inputDB)} />
           </label>
         </div>
       )
@@ -111,7 +115,7 @@ class LoginForm extends React.Component {
             <button className="login-page-login" >{this.props.formType}</button>
             <button className="login-page-login" onClick={this.demoLogin}>Demo Login</button>
           </div>
-          {/* <button onClick={() => this.removeErrors()}>Remove Errors</button> */}
+          <button onClick={this.removeErrors}>Remove Errors</button>
         </div>
         
       </div>)

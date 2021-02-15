@@ -22,12 +22,17 @@ const receiveErrors = (errors) => ({ //array
   errors
 })
 
-const removeErrors = () => ({
-  type: REMOVE_ERRORS
-})
+const removeErrors = () => {
+    debugger
+    return {
+    type: REMOVE_ERRORS
+  }
+}
 
-export const deleteErrors = () => dispatch => () => {
-  dispatch(removeErrors())
+
+export const deleteErrors = () => dispatch => {
+  debugger
+  return dispatch(removeErrors())
 }
 
 
