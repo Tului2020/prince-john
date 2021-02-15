@@ -23,13 +23,18 @@ time, mark, audio, video {
 	font: inherit;
 	font-family: sans-serif;
 	vertical-align: baseline;
+	background-color: inherit;
 }
+
+
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 
 footer, header, hgroup, menu, nav, section {
 	display: block;
+	background-color: inherit;
 }
 body {
+	background-color: inherit;
 	line-height: 1;
 }
 ol, ul {

@@ -1,11 +1,12 @@
 import React from 'react';
+import nav_bar_container from '../nav_bar/nav_bar_container';
 import homeFive from './home_five';
 import homeFour from './home_four';
 // import { Link } from 'react-router-dom';
 import homeOne from './home_one'
 import homeThree from './home_three';
 import homeTwo from './home_two'
-
+import NavBarContainer from './../nav_bar/nav_bar_container'
 
 
 
@@ -28,6 +29,7 @@ class Home extends React.Component {
   render() {
     return (
       <div>
+        <NavBarContainer/>
         {homeOne}
         {homeTwo}
         {homeThree}
