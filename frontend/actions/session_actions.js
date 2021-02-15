@@ -23,7 +23,7 @@ const receiveErrors = (errors) => ({ //array
 })
 
 const removeErrors = () => {
-    debugger
+    // debugger
     return {
     type: REMOVE_ERRORS
   }
@@ -31,7 +31,7 @@ const removeErrors = () => {
 
 
 export const deleteErrors = () => dispatch => {
-  debugger
+  // debugger
   return dispatch(removeErrors())
 }
 

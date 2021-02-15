@@ -9,7 +9,7 @@ const mSTP = state => ({
 
 const mDTP = dispatch => ({
   processForm: (currentUser) => dispatch(signin(currentUser)),
-  clearErrors: () => dispatch(deleteErrors())
+  deleteErrors: () => dispatch(deleteErrors())
 })
 
 

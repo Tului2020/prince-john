@@ -16,7 +16,7 @@ const sessionErrorsReducer = (state = _errors, action) => {
     case RECEIVE_CURRENT_USER:
       return _errors;
     case REMOVE_ERRORS:
-      debugger
+      // debugger
       return _errors;
     default:
       return state; 

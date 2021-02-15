@@ -28,6 +28,11 @@ class SignupForm extends React.Component {
     this.props.processForm(this.state)
   }
 
+  componentWillUnmount() {
+    // debugger
+    this.props.deleteErrors()
+  }
+
 
   render() {
     const displayErrors = (
