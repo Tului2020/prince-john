@@ -1,10 +1,15 @@
+#logged-in-home {
+  // background-color: black;
+}
+
+
 #logged-in-nav > div {
   // border: 1px solid red;
   width: 32vw;
 }
 
 #logged-in-nav {
-  border: 1px solid blue;
+  // border: 1px solid blue;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -12,6 +17,7 @@
   height: 4vh;
   // padding: 6px 0px;
   align-items: center;
+  // back
 }
 
 #logged-in-dropdown {
@@ -58,7 +64,7 @@
   transition: border-color 200ms ease 0s;
   border-color: rgb(236, 236, 236);
   background-color: rgb(245, 248, 250);
-  padding-left:10px
+  padding-left: 50px;
 }
 
 
