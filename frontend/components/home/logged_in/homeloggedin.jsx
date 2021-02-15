@@ -1,11 +1,11 @@
 import React from 'react';
-import LoggedInNavBar from '../../nav_bar/logged_in/nav_bar_logged_in'
+import LoggedInNavBarContainer from '../../nav_bar/logged_in/nav_bar_logged_in_container'
 
 class HomeLoggedIn extends React.Component {
   render() {
     return (
     <div id="logged-in-home">
-      <LoggedInNavBar/>
+      <LoggedInNavBarContainer/>
     </div>
     )
   }

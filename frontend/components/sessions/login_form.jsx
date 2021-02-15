@@ -12,7 +12,6 @@ class LoginForm extends React.Component {
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.demoLogin = this.demoLogin.bind(this);
-    this.removeErrors = this.removeErrors.bind(this);
   }
 
   update(field) {
@@ -34,18 +33,9 @@ class LoginForm extends React.Component {
     })
   }
 
-  removeErrors() {
-    // e.preventDefault();
-    // debugger
-    // console.log(this.props)
-    // debugger
-    return this.props.clearErrors()
-  }
-
-
     
   componentWillUnmount() {
-    // debugger
+
     this.props.deleteErrors()
   }
 

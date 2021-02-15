@@ -23,7 +23,6 @@ const receiveErrors = (errors) => ({ //array
 })
 
 const removeErrors = () => {
-    // debugger
     return {
     type: REMOVE_ERRORS
   }

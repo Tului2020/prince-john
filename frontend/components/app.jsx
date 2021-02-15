@@ -9,8 +9,6 @@ import HomeLoggedIn from './home/logged_in/homeloggedin';
 // import HomeAuthRoute from '../util/route_util2';
 
 
-
-
 const App = () => (
   <div>
     <Switch>

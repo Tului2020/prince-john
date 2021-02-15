@@ -1,11 +1,12 @@
 import React from 'react';
-import Cash from './cash';
-import FreeStocks from './free_stocks';
-import LoggedInLogo from './logo'
-import Portfolio from './portfolio';
-import SearchBar from './search_bar';
-import Messages from './messages'
-import Account from './account';
+import Cash from './components/cash';
+import FreeStocks from './components/free_stocks';
+import LoggedInLogo from './components/logo'
+import Portfolio from './components/portfolio';
+import SearchBar from './components/search_bar';
+import Messages from './components/messages'
+import Account from './components/account';
+
 
 
 class LoggedInNavBar extends React.Component {
@@ -15,15 +16,13 @@ class LoggedInNavBar extends React.Component {
         <LoggedInLogo/>
         <SearchBar/>
 
-        
         <div id="logged-in-dropdown">
           <FreeStocks/>
           <Portfolio/>
           <Cash/>
           <Messages/>
-          <Account/>
+          <Account signout={this.props.signout}/>
         </div>
-        
       </div>
     )  
   }

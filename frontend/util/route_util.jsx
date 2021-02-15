@@ -14,7 +14,7 @@ const Auth = ({ component: Component, path, loggedIn, exact }) => (
     path={path}
     exact={exact}
     render={props => 
-      !loggedIn ? <Component {...props} /> : <Redirect to='/error' />
+      !loggedIn ? <Component {...props} /> : <Redirect to='/' />
     }
   />
 )
@@ -33,12 +33,10 @@ const HomeAuth = ({ component: Component, otherComponent: OtherComponent, path, 
 )
 
 
-const Error = ({ path, exact }) => (
+const Error = () => (
   <Route 
-    path={path}
-    exact={exact}
     render={() => 
-      <Redirect to='/404' />
+      <Redirect to='/404'/>
     }
   />
 )

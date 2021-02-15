@@ -5,7 +5,7 @@ class Account extends React.Component {
   render() {
     return (
       <div>
-        Account
+        <button onClick={this.props.signout}>Log out</button>
       </div>
     )
   }
