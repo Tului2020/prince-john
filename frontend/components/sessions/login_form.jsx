@@ -111,7 +111,7 @@ class LoginForm extends React.Component {
             <button className="login-page-login" >{this.props.formType}</button>
             <button className="login-page-login" onClick={this.demoLogin}>Demo Login</button>
           </div>
-          <button onClick={() => this.removeErrors()}>Remove Errors</button>
+          {/* <button onClick={() => this.removeErrors()}>Remove Errors</button> */}
         </div>
         
       </div>)
