@@ -18,7 +18,7 @@ const App = () => (
       <HomeAuthRoute exact path='/' component={HomeLoggedOut} otherComponent={HomeLoggedIn}/>
       <AuthRoute exact path="/login" component={LoginFormContainer} />
       <AuthRoute exact path="/signup" component={SignupFormContainer} />
-      <Route exact path='/error' component={NotFound}/>
+      <Route exact path='/404' component={NotFound}/>
       <ErrorRoute />
       
     </Switch>

@@ -38,7 +38,7 @@ const Error = ({ path, exact }) => (
     path={path}
     exact={exact}
     render={() => 
-      <Redirect to='/error' />
+      <Redirect to='/404' />
     }
   />
 )
