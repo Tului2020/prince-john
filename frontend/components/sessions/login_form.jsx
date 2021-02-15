@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { Link } from 'react-router-dom';
 
 
 class LoginForm extends React.Component {
@@ -109,8 +109,9 @@ class LoginForm extends React.Component {
           <div id="login-demo">
             <button className="login-page-login" >{this.props.formType}</button>
             <button className="login-page-login" onClick={this.demoLogin}>Demo Login</button>
+            <Link className="login-page-login" to='/signup'>Sign Up</Link>
           </div>
-          {/* <button onClick={this.removeErrors}>Remove Errors</button> */}
+
         </div>
         
       </div>)
