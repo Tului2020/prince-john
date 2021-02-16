@@ -33,6 +33,7 @@ class Account extends React.Component {
         <div className="dropdown-content">
           
           <p>{this.props.currentUser.username}</p>
+          {/* <input type="text"/> */}
           <Link className="dropdown-content-child" to='/referal'>Free Stock</Link>
           <Link className="dropdown-content-child" to='/referal'>Account</Link>
           <Link className="dropdown-content-child" to='/referal'>History</Link>

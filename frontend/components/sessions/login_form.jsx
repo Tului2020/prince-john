@@ -99,7 +99,7 @@ class LoginForm extends React.Component {
           <div id="login-demo">
             <button className="login-page-login" >{this.props.formType}</button>
             <button className="login-page-login" onClick={this.demoLogin}>Demo Login</button>
-            <Link className="login-page-login" to='/signup'>Sign Up</Link>
+            <Link id="signup-page-login-link" to='/signup'> Click Here to Sign Up!</Link>
           </div>
 
         </div>
