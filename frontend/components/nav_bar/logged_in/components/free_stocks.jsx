@@ -6,6 +6,7 @@ class FreeStocks extends React.Component {
     return (
       <div>
       Free Stocks
+      {/* Link to referal page */}
     </div>
     )
   }

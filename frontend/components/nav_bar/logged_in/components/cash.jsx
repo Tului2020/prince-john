@@ -6,6 +6,7 @@ class Cash extends React.Component {
     return (
       <div>
         Cash
+        {/* Link to Cash Page */}
       </div>
     )
   }

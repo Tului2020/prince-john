@@ -6,6 +6,7 @@ class Portfolio extends React.Component {
     return (
       <div>
         Portfolio
+        {/* Link to Portfolio Page */}
       </div>
     )
   }
