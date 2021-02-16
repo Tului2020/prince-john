@@ -12,5 +12,6 @@ user1 = User.create(
     password: "123456",
     username: "demolicious@demo.com",
     first_name: 'demo',
-    last_name: 'feature'
+    last_name: 'feature',
+    balance: 0
 )

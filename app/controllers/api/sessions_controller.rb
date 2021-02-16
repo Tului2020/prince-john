@@ -8,11 +8,9 @@ class Api::SessionsController < ApplicationController
 
     if @user 
       sign_in!(@user)
-      # redirect_to '/'
       render '/api/users/show'
     else
       render json: ['Invalid username or password, please try again'], status: 404
-      # flash.now[:errors] = ['Invalid username or password.']
     end
   end
 

@@ -3,6 +3,7 @@ import ReactDom from 'react-dom'
 import configureStore from './store/store'
 import Root from './components/root'
 import { deleteErrors, RECEIVE_CURRENT_USER, signout } from './actions/session_actions'
+import { signin } from './util/session_api_util'
 
 
 
@@ -26,9 +27,6 @@ document.addEventListener('DOMContentLoaded', () => {
   window.getState = store.getState;
   window.dispatch = store.dispatch; 
   window.removeErrors = deleteErrors;
-  window.signout = signout;
-
-
   const rootEl = document.getElementById('root');
   ReactDom.render(<Root store={store} />, rootEl)
 })

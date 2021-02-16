@@ -1,7 +1,10 @@
 class ApplicationController < ActionController::Base
   
+  skip_before_action :verify_authenticity_token
+
+
   helper_method :current_user, :signed_in?
-  #CRLLL
+
 
   def current_user
 
@@ -15,7 +18,9 @@ class ApplicationController < ActionController::Base
   end
 
   def sign_in!(user)
-    @current_user = user 
+    @current_user = user
+    p 'Here is the new user that just logged in!!!!!!!!!!!!!!!!!!!!!!!!' 
+    p @current_user
     session[:session_token] = user.reset_sesssion_token!
   end
 
