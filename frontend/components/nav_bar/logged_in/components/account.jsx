@@ -4,9 +4,16 @@ import React from 'react';
 class Account extends React.Component {
   render() {
     return (
-      <div>
-        Account
-        <button className="drop-down-item" onClick={this.props.signout}>Log out</button>
+      <div className="dropdown">
+        <span>
+          Account
+        </span>
+
+        <div className="dropdown-content">
+          <p>test</p>
+          <p>test</p>
+          <p>test</p>
+        </div>
       </div>
     )
   }
