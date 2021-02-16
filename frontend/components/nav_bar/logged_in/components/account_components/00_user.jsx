@@ -4,7 +4,7 @@ import React from 'react';
 class UserInfo extends React.Component {
   render() {
     return (
-      <p>
+      <p id="user-info" >
         {this.props.currentUser.username}
       </p>
     )

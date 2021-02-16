@@ -50,7 +50,7 @@
   position: absolute;
   background-color: #f9f9f9;
   min-width: 290px;
-  min-height: 600px;
+  min-height: 868px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   margin: 20px 0px;
   z-index: 1;
@@ -59,24 +59,42 @@
 .dropdown-content-child {
   text-decoration: none;
   color: black;
-  border: 1px solid red;
-  min-height: 40px;
+  // border: 1px solid red;
+  height: 64px;
+  width: 100%;
 }
 
+#bottom-border {
+  border-bottom: 1px solid rgb(216, 216, 216);
+}
+
+#gold {
+  color: rgb(224, 197, 45);
+  
+}
+
+#user-info {
+  height: 100px;
+  border-bottom: 1px solid rgb(216, 216, 216);
+  // border: 1px solid red;
+}
+
+
 .dropdown-content-child:hover {
-  color: red;
+
+  background-color: rgb(243, 243, 243);
   text-decoration: none;
-  // cursor: pointer;
+  cursor: pointer;
 }
 
 
 .drop-down-show {
-
+  // border: 1px solid red;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   // align-items: center;
-  padding-left: 10px;
+  // padding-left: 10px;
 }
 
 
