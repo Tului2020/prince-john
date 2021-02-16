@@ -54,18 +54,21 @@
   position: absolute;
   background-color: #f9f9f9;
   min-width: 290px;
-  min-height: 868px;
+  // height: 700;
   box-shadow: 3px 8px 10px 0px rgba(0,0,0,0.2);
   margin: 20px 0px;
   z-index: 1;
+  // border: 1px solid red;;
 }
 
 .dropdown-content-child {
   text-decoration: none;
   color: black;
   // border: 1px solid red;
-  height: 64px;
-  width: 100%;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  padding-left: 20px;
 }
 
 #bottom-border {
@@ -76,6 +79,7 @@
   color: rgb(224, 197, 45);
   
 }
+
 
 #user-info {
   height: 100px;
@@ -100,13 +104,17 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  
 }
 
 #balance-status > div {
   // border: 1px solid blue;
   width: 50%;
 }
+
+.balance-status-description {
+  font-size: 12px;
+}
+
 
 
 .dropdown-content-child:hover {

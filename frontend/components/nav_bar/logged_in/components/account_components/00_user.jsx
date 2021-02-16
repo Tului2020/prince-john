@@ -16,13 +16,17 @@ class UserInfo extends React.Component {
           <div id="portfolio-value">
             $100.00
             <br/>
-            Portfolio Value
+            <span className="balance-status-description">
+              Portfolio Value
+            </span>
           </div>
 
           <div id="buying-power">
-            ${balance}0
+            ${balance}
             <br/>
-            Buying Power
+            <span className="balance-status-description">
+              Buying Power
+            </span>
           </div>
 
         </div>
