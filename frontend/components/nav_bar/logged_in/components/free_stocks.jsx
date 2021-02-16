@@ -1,13 +1,12 @@
 import React from 'react';
-
+import { Link } from 'react-router-dom'
 
 class FreeStocks extends React.Component {
   render() {
     return (
       <div>
-      Free Stocks
-      {/* Link to referal page */}
-    </div>
+        <Link className="normal-link" to='/referal'>Free Stocks</Link>
+      </div>
     )
   }
 }

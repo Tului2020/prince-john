@@ -1,12 +1,11 @@
 import React from 'react';
-
+import { Link } from 'react-router-dom'
 
 class Portfolio extends React.Component {
   render() {
     return (
       <div>
-        Portfolio
-        {/* Link to Portfolio Page */}
+        <Link className="normal-link" to='/portfolio'>Portfolio</Link>
       </div>
     )
   }

@@ -1,6 +1,6 @@
-#logged-in-home {
-  // background-color: black;
-}
+// #logged-in-home {
+//   // background-color: black;
+// }
 
 
 #logged-in-nav > div {
@@ -29,7 +29,7 @@
 
 #logged-in-dropdown-list > div {
   // border: 1px solid green;
-
+  cursor: pointer;
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
@@ -88,5 +88,8 @@
 
 
 
-
+.normal-link {
+  text-decoration: none;
+  color: black;
+}
 
