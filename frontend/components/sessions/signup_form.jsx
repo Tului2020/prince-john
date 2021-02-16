@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
 
 class SignupForm extends React.Component {
@@ -10,6 +10,7 @@ class SignupForm extends React.Component {
       last_name: '',
       username: '',
       password: '',
+      balance: 0
     }
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -22,8 +23,9 @@ class SignupForm extends React.Component {
   }
 
   handleSubmit(e) {
-    e.preventDefault()
-    this.props.processForm(this.state)
+    e.preventDefault();
+    this.props.processForm(this.state);
+    // <Redirect to ='/'/>
   }
 
   componentWillUnmount() {

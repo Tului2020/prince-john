@@ -4,7 +4,7 @@ class Api::UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       sign_in!(@user)
-      redirect_to '/'
+      redirect_to root_url
     else
       render json: @user.errors.full_messages, status: 401
     end
@@ -17,6 +17,6 @@ class Api::UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:username, :password, :first_name, :last_name)
+    params.require(:user).permit(:username, :password, :first_name, :last_name, :balance)
   end
 end
