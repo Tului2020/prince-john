@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { Link } from 'react-router-dom';
 
 class Account extends React.Component {
   constructor(props) {
@@ -22,6 +22,8 @@ class Account extends React.Component {
 
 
   render() {
+    // debugger
+    console.log(this.props.currentUser.username)
     return (
       <div className="dropdown">
         <span onClick={this.dropDownClick}>
@@ -30,10 +32,11 @@ class Account extends React.Component {
 
         <div className="dropdown-content">
           
-          <p>Free Stock</p>
-          <p>Account</p>
-          <p>History</p>
-          <p onClick={this.props.signout}>Log Out</p>
+          <p>{this.props.currentUser.username}</p>
+          <Link className="dropdown-content-child" to='/referal'>Free Stock</Link>
+          <Link className="dropdown-content-child" to='/referal'>Account</Link>
+          <Link className="dropdown-content-child" to='/referal'>History</Link>
+          <span className="dropdown-content-child" onClick={this.props.signout}>Log Out</span>
 
         </div>
       </div>

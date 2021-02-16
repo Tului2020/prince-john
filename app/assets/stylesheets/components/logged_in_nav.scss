@@ -39,8 +39,14 @@
   text-decoration: none;
 }
 
+#logged-in-dropdown-list > div:hover {
+  color: green;
+
+}
+
 .dropdown-content {
   display: none;
+  color: black;
   position: absolute;
   background-color: #f9f9f9;
   min-width: 160px;
@@ -49,13 +55,21 @@
   z-index: 1;
 }
 
-#logged-in-dropdown-list > div:hover {
-  color: green;
+.dropdown-content-child {
+  text-decoration: none;
+  color: black;
+}
+
+.dropdown-content-child:hover {
+  color: red;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 
 .drop-down-show {
-  display: block;
+  display: flex;
+  flex-direction: column;
 }
 
 

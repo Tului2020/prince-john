@@ -11,6 +11,7 @@ import Account from './components/account';
 
 class LoggedInNavBar extends React.Component {
   render() {
+    const { signout, currentUser } = this.props
     return (
       <div id="logged-in-nav">
         <LoggedInLogo/>
@@ -21,7 +22,7 @@ class LoggedInNavBar extends React.Component {
           <Portfolio/>
           <Cash/>
           <Messages/>
-          <Account signout={this.props.signout}/>
+          <Account signout={signout} currentUser={currentUser}/>
         </div>
       </div>
     )  
