@@ -14,7 +14,16 @@ class HomeLoggedIn extends React.Component {
     return (
     <div id="logged-in-home">
       <LoggedInNavBarContainer/>
-      {/*  */}
+      <div id="logged-in-bottom">
+        <div id="logged-in-left">
+
+        </div>
+
+        <div id="logged-in-right">
+
+        </div>
+
+      </div>
     </div>
     )
   }
