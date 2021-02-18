@@ -26,7 +26,7 @@ class HomeLoggedIn extends React.Component {
         </div>
           
         <div id="logged-in-right">
-          <StockBar current_stocks={this.props.currentUser.current_stocks}/>
+          <StockBar stocks={this.props.stocks}/>
         </div>
 
       </div>
@@ -36,7 +36,8 @@ class HomeLoggedIn extends React.Component {
 } 
 
 const mSTP = state => ({
-  currentUser: state.entities.users[state.session.currentUserId]
+  currentUser: state.entities.users[state.session.currentUserId],
+  stocks: state.entities.stocks
 }) 
 
 
