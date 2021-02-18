@@ -1,2 +1,0 @@
-class UserStock < ApplicationRecord
-end

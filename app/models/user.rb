@@ -34,7 +34,7 @@ class User < ApplicationRecord
     self.session_token ||= SecureRandom::urlsafe_base64
   end
 
-  has_many :stocks, class_name: :UserStock, foreign_key: :user_id
+  has_many :stocks, class_name: :Stock, foreign_key: :user_id
 
   def current_stocks 
     stocks.group(:ticker).sum(:amount)
