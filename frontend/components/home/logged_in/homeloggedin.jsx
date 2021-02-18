@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 
 class HomeLoggedIn extends React.Component {
   UNSAFE_componentWillMount() {
+    // NEED TO CONFIRM WITH LINA IF THERES ANOTHER WAY TO GET CURRENT USER ID
     this.props.fetchUserInfo(parseInt(Object.keys(getState().entities.users)[0]));
   }
 
@@ -13,6 +14,7 @@ class HomeLoggedIn extends React.Component {
     return (
     <div id="logged-in-home">
       <LoggedInNavBarContainer/>
+      {/*  */}
     </div>
     )
   }

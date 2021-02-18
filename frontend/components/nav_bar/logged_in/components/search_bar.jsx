@@ -1,12 +1,19 @@
 import React from 'react';
+import { searchBarIcon } from './searchbar_components/search_bar_icon';
+
 
 
 class SearchBar extends React.Component {
   render() {
     return (
-      <div >
-        <input className="search-bar" type="text"
-          placeholder="Search"/>
+      <div className="search-bar-div">
+        <div className="search-bar-icon">
+          {searchBarIcon}
+        </div>
+
+          <input type="text" className="search-bar"
+            placeholder="Search"/>
+
       </div>
     )
   }
