@@ -1,5 +1,12 @@
 import React from 'react';
 
+const formatter = new Intl.NumberFormat('en-US', {
+  style: 'currency',
+  currency: 'USD',
+  minimumFractionDigits: 2
+})
+
+
 
 class UserInfo extends React.Component {
   render() {
@@ -14,7 +21,7 @@ class UserInfo extends React.Component {
 
         <div id="balance-status">
           <div id="portfolio-value">
-            $100.00
+          {formatter.format(100)}
             <br/>
             <span className="balance-status-description">
               Portfolio Value
@@ -22,7 +29,8 @@ class UserInfo extends React.Component {
           </div>
 
           <div id="buying-power">
-            ${balance}
+            {/* ${balance.toLocaleString()} */}
+            {formatter.format(balance)}
             <br/>
             <span className="balance-status-description">
               Buying Power

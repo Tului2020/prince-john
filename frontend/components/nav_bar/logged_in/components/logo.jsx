@@ -4,8 +4,8 @@ import React from 'react';
 class LoggedInLogo extends React.Component {
   render() {
     return (
-      <div className="logo1">
-        Logo
+      <div>
+        <img src={window.logo} className="logo-pic"/>
       </div>
     )
   }

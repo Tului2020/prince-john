@@ -32,7 +32,10 @@ class NavBar extends React.Component{
 
           <div className="nav-bar">
 
-            <h1 className="logo">PrinceJohn</h1>
+            <div id="logged-out-logo">
+              <h1 className="logo">PrinceJohn </h1>
+              <img src={window.logo} className='logo-pic'/>
+            </div>
             
             {/* <div className="dropdowns">
               <div>Products</div>
