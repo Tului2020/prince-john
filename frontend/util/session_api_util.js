@@ -22,3 +22,11 @@ export const signout = () => (
     url: '/api/session',
   })
 )
+
+
+export const fetchUserInfo = (userId) => (
+  $.ajax({
+    method: 'GET',
+    url: `/api/users/${userId}`,
+  })
+)
