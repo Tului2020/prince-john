@@ -5,8 +5,8 @@ import { connect } from 'react-redux';
 
 
 class HomeLoggedIn extends React.Component {
-  componentWillMount() {
-    this.props.fetchUserInfo(4);
+  UNSAFE_componentWillMount() {
+    this.props.fetchUserInfo(parseInt(Object.keys(getState().entities.users)[0]));
   }
 
   render() {

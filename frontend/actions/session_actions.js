@@ -46,8 +46,6 @@ export const signup = (user) => dispatch => (
 export const signin = (user) => dispatch => (
   SessionApiUtil.signin(user)
     .then((newUser) => {
-      // debugger
-      console.log(newUser)
       dispatch(receiveCurrentUser(newUser))
     })
     .fail((errors) => { dispatch(receiveErrors(errors.responseJSON)) })
