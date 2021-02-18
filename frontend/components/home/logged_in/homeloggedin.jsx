@@ -3,14 +3,16 @@ import LoggedInNavBarContainer from '../../nav_bar/logged_in/nav_bar_logged_in_c
 import { fetchUserInfo } from '../../../actions/session_actions';
 import { connect } from 'react-redux';
 import StockBar from '../../stock_bar/stock_bar';
+import { fetchUserStockInfo } from '../../../actions/stock_actions';
 
 
 class HomeLoggedIn extends React.Component {
   componentDidMount() {
-    // debugger
-    // NEED TO CONFIRM WITH LINA IF THERES ANOTHER WAY TO GET CURRENT USER ID
+    debugger
+
     this.userId = this.props.currentUser.id
     this.props.fetchUserInfo(this.userId);
+    this.props.fetchUserStockInfo(this.userId);
   }
 
   render() {
@@ -39,7 +41,8 @@ const mSTP = state => ({
 
 
 const mDTP = (dispatch) => ({
-  fetchUserInfo: (userId) => dispatch(fetchUserInfo(userId))
+  fetchUserInfo: (userId) => dispatch(fetchUserInfo(userId)),
+  fetchUserStockInfo: (userId) => dispatch(fetchUserStockInfo(userId))
 })
 
 export default connect(mSTP, mDTP)(HomeLoggedIn);

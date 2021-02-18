@@ -30,3 +30,11 @@ export const fetchUserInfo = (userId) => (
     url: `/api/users/${userId}`,
   })
 )
+
+
+export const fetchUserStockInfo = (userId) => (
+  $.ajax({
+    method: 'GET',
+    url: `/api/users/${userId}/stocks`,
+  })
+)
