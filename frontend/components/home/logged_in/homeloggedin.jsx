@@ -16,11 +16,11 @@ class HomeLoggedIn extends React.Component {
       <LoggedInNavBarContainer/>
       <div id="logged-in-bottom">
         <div id="logged-in-left">
-
+        jdaklsjdsal
         </div>
-
+          
         <div id="logged-in-right">
-
+          sadklajs
         </div>
 
       </div>

@@ -1,14 +1,19 @@
 #logged-in-bottom {
   border: 1px solid blue;
-  width: 70vw;
-  height: 90vh;
+  width: 55vw;
+  height: 92vh;
+  display: flex;
+  flex-direction: row;
 }
 
 #logged-in-left {
   border: 1px solid red;
+  width: 72%;
 }
 
 
 #logged-in-right {
-  border: 1px solid red;
+  border: 1px solid green;
+  width: 28%;
+  height: 95%;
 }

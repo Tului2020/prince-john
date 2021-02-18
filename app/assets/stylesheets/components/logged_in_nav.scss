@@ -1,6 +1,8 @@
-// #logged-in-home {
-//   // background-color: black;
-// }
+#logged-in-home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
 
 #logged-in-nav > div {
