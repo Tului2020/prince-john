@@ -2,7 +2,8 @@ import { GET_USER_STOCKS } from "../actions/stock_actions";
 
 
 const _nullSession = {
-  currentUserId: null
+  stock_history: null,
+  current_stocks: null
 }
 
 const stocksReducer = (state = _nullSession, action) => {

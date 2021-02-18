@@ -8,7 +8,7 @@ import { fetchUserStockInfo } from '../../../actions/stock_actions';
 
 class HomeLoggedIn extends React.Component {
   componentDidMount() {
-    debugger
+    // debugger
 
     this.userId = this.props.currentUser.id
     this.props.fetchUserInfo(this.userId);

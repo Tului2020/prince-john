@@ -10,7 +10,7 @@ const getUserStocks = (stockInfo) => ({
 export const fetchUserStockInfo = (userId) => dispatch => (
   SessionApiUtil.fetchUserStockInfo(userId)
     .then(stockInfo => {
-      debugger
+      // debugger
       dispatch(getUserStocks(stockInfo))})
 ) 
 
