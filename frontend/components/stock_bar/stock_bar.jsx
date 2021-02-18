@@ -7,7 +7,7 @@ class StockBar extends React.Component {
     // debugger
     return (
       <div>
-        {this.props.ownedStocks}
+        100
       </div>
     )
   }

@@ -2,6 +2,7 @@ import React from 'react';
 import LoggedInNavBarContainer from '../../nav_bar/logged_in/nav_bar_logged_in_container'
 import { fetchUserInfo } from '../../../actions/session_actions';
 import { connect } from 'react-redux';
+import StockBar from '../../stock_bar/stock_bar';
 
 
 class HomeLoggedIn extends React.Component {
@@ -20,7 +21,7 @@ class HomeLoggedIn extends React.Component {
         </div>
           
         <div id="logged-in-right">
-          sadklajs
+          <StockBar/>
         </div>
 
       </div>
