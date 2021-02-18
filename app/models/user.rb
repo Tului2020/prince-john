@@ -36,4 +36,8 @@ class User < ApplicationRecord
 
   has_many :stocks, class_name: :UserStock, foreign_key: :user_id
 
+  def current_stocks 
+    stocks.group(:ticker).sum(:amount)
+  end
+
 end
