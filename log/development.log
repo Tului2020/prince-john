@@ -53751,3 +53751,97 @@ Processing by Api::UsersController#show as JSON
 Completed 200 OK in 6ms (Views: 4.3ms | ActiveRecord: 0.6ms)
 
 
+Started GET "/" for 127.0.0.1 at 2021-02-18 14:15:04 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "UBXQBd4LpzNMd3yIVsd0gw"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:12
+  Rendered static_pages/root.html.erb within layouts/application (3.7ms)
+Completed 200 OK in 21ms (Views: 18.6ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/api/users/1" for 127.0.0.1 at 2021-02-18 14:15:04 -0800
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:14
+  Rendering api/users/show.json.jbuilder
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT SUM("user_stocks"."amount") AS sum_amount, "user_stocks"."ticker" AS user_stocks_ticker FROM "user_stocks" WHERE "user_stocks"."user_id" = $1 GROUP BY "user_stocks"."ticker"[0m  [["user_id", 1]]
+  ↳ app/models/user.rb:40
+  Rendered api/users/_user.json.jbuilder (1.6ms)
+  [1m[36mUserStock Load (0.1ms)[0m  [1m[34mSELECT "user_stocks".* FROM "user_stocks" WHERE "user_stocks"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:2
+  Rendered api/users/show.json.jbuilder (3.3ms)
+Completed 200 OK in 6ms (Views: 3.5ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2021-02-18 14:18:52 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "UBXQBd4LpzNMd3yIVsd0gw"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:12
+  Rendered static_pages/root.html.erb within layouts/application (1.8ms)
+Completed 200 OK in 238ms (Views: 237.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/api/users/1" for 127.0.0.1 at 2021-02-18 14:18:52 -0800
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:14
+  Rendering api/users/show.json.jbuilder
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT SUM("user_stocks"."amount") AS sum_amount, "user_stocks"."ticker" AS user_stocks_ticker FROM "user_stocks" WHERE "user_stocks"."user_id" = $1 GROUP BY "user_stocks"."ticker"[0m  [["user_id", 1]]
+  ↳ app/models/user.rb:40
+  Rendered api/users/_user.json.jbuilder (1.0ms)
+  [1m[36mUserStock Load (0.1ms)[0m  [1m[34mSELECT "user_stocks".* FROM "user_stocks" WHERE "user_stocks"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:2
+  Rendered api/users/show.json.jbuilder (2.3ms)
+Completed 200 OK in 4ms (Views: 2.8ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/api/users/1" for 127.0.0.1 at 2021-02-18 14:18:57 -0800
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:14
+  Rendering api/users/show.json.jbuilder
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT SUM("user_stocks"."amount") AS sum_amount, "user_stocks"."ticker" AS user_stocks_ticker FROM "user_stocks" WHERE "user_stocks"."user_id" = $1 GROUP BY "user_stocks"."ticker"[0m  [["user_id", 1]]
+  ↳ app/models/user.rb:40
+  Rendered api/users/_user.json.jbuilder (2.3ms)
+  [1m[36mUserStock Load (0.2ms)[0m  [1m[34mSELECT "user_stocks".* FROM "user_stocks" WHERE "user_stocks"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:2
+  Rendered api/users/show.json.jbuilder (5.1ms)
+Completed 200 OK in 10ms (Views: 6.5ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2021-02-18 14:18:58 -0800
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+actionpack (5.2.4.4) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.4.4) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.4.4) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.4.4) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.4.4) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.4.4) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.4.4) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.4.4) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.4.4) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.4.4) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.4.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.4.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.4.4) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+railties (5.2.4.4) lib/rails/engine.rb:524:in `call'
+puma (3.12.6) lib/puma/configuration.rb:227:in `call'
+puma (3.12.6) lib/puma/server.rb:706:in `handle_request'
+puma (3.12.6) lib/puma/server.rb:476:in `process_client'
+puma (3.12.6) lib/puma/server.rb:334:in `block in run'
+puma (3.12.6) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
