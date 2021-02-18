@@ -4,17 +4,21 @@ import React from 'react';
 class StockBar extends React.Component {
 
   render() {
-    const { current_stocks, stock_history } = this.props.stocks
-    console.log(current_stocks);
-  
-
-    return (
-      <div>
-        StockBar
-        {/* {[current_stocks]} */}
-        {/* {Object.keys(current_stocks)} */}
-      </div>
-    )
+    
+    if (this.props.stocks.current_stocks) {
+      debugger
+      const { current_stocks, stock_history } = this.props.stocks
+      return (
+        <div>
+          StockBar
+          <br/>
+          {current_stocks.TSLA}
+          {/* {Object.keys(current_stocks)} */}
+        </div>
+      )
+    } else {
+      return null
+    }
   }
 
 
