@@ -1,0 +1,26 @@
+#stock-bar {
+  margin-top: 25px;
+  // border: 1px solid red;
+  width: 100%;
+  height: 100%;
+  box-shadow: 0px 8px 24px rgb(173, 173, 173);
+  border-radius: 6px;
+  // width: 276px;
+  // height: 415px;
+}
+
+#stock-bar > div {
+  border: 1px solid blue;
+  min-height: 10px;
+}
+
+#stock-bar-title {
+  height: 5%;
+}
+
+
+
+
+
+
+
