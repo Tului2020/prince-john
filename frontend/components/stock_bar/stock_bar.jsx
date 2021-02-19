@@ -5,8 +5,8 @@ class StockBar extends React.Component {
 
   displayStock(stock) {
     return (
-      <div className='display-stock'>
-        <div className='stock-name-amount'>
+      <div className='display-stock' key={stock.name}>
+        <div className='stock-name-amount' >
           <div>
             {stock.name}
           </div>
@@ -15,11 +15,11 @@ class StockBar extends React.Component {
           </div>
         </div>
 
-        <div className='stock-graph'>
+        <div className='stock-graph' id={'stock-graph-' + stock.name}>
 
         </div>
 
-        <div className='stock-price'>
+        <div className='stock-price' id={'stock-price-' + stock.name}>
 
         </div>
 
@@ -33,7 +33,6 @@ class StockBar extends React.Component {
       const { current_stocks } = this.props.stocks
       return (
         <div id='stock-bar'>
-
           <div className='bottom-border'>
             <div id='stock-bar-title'>
               <div>
@@ -48,12 +47,9 @@ class StockBar extends React.Component {
 
 
           <div id='owned-stocks' className='bottom-border'>
-            {/* {this.displayStock(current_stocks[0])}
-            {this.displayStock(current_stocks[1])}
-            {this.displayStock(current_stocks[2])} */}
-            {/* {console.log(this.displayStock(current_stocks[2]))} */}
-
-            {console.log(current_stocks[0])}
+            {current_stocks.map(stock => (
+              this.displayStock(stock)
+            ))}
 
 
           </div>
