@@ -37,7 +37,10 @@ class User < ApplicationRecord
   has_many :stock_history, class_name: :Stock, foreign_key: :user_id
 
   def current_stocks 
-    stock_history.group(:ticker).sum(:amount)
+    info = stock_history.group(:ticker).sum(:amount);
+    info.keys.map do |key|
+      { name: key, amount: info[key]}
+    end
   end
 
 end

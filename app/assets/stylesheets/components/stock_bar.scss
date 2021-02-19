@@ -37,11 +37,38 @@
   font-weight: 550;
 }
 
-
-#stock-bar-title > div {
-  // border: 1px solid red;
-
+.display-stock {
+  border: 1px solid red;
+  width: 78%;
+  min-height: 45px;
+  display: flex;
 }
+
+.stock-name-amount {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.display-stock > div{
+  border: 1px solid blue;
+  min-width: 25%;
+}
+
+.stock-graph {
+  width: 50%;
+}
+
+#owned-stocks {
+  display: flex;
+  flex-direction: column;
+}
+
+// #stock-bar-title > div {
+//   // border: 1px solid red;
+// }
 
 
 
