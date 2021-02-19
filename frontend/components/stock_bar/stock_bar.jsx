@@ -5,21 +5,25 @@ class StockBar extends React.Component {
 
   displayStock(stock) {
     return (
-      <div className='display-stock' key={stock.name}>
-        <div className='stock-name-amount' >
-          <div>
-            {stock.name}
+      <div key={stock.name}>
+
+        <div className='display-stock' >
+          <div className='stock-name-amount' >
+            <div className='stock-name'>
+              {stock.name}
+            </div>
+            <div className='stock-amount'>
+              {stock.amount} Shares
+            </div>
           </div>
-          <div>
-            {stock.amount}
+
+          <div className='stock-graph' id={'stock-graph-' + stock.name}>
+
           </div>
-        </div>
 
-        <div className='stock-graph' id={'stock-graph-' + stock.name}>
+          <div className='stock-price' id={'stock-price-' + stock.name}>
 
-        </div>
-
-        <div className='stock-price' id={'stock-price-' + stock.name}>
+          </div>
 
         </div>
 
