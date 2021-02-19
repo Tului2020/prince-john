@@ -10,7 +10,7 @@ class SignupForm extends React.Component {
       last_name: '',
       username: '',
       password: '',
-      balance: 0
+      balance: 10000
     }
 
     this.handleSubmit = this.handleSubmit.bind(this);
