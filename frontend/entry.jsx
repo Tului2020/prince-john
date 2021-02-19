@@ -2,8 +2,8 @@ import React from 'react'
 import ReactDom from 'react-dom'
 import configureStore from './store/store'
 import Root from './components/root'
-import { deleteErrors, RECEIVE_CURRENT_USER, signout } from './actions/session_actions'
-import { signin } from './util/session_api_util'
+import { getAllStocks } from './util/polygon_api'
+
 
 
 
@@ -25,10 +25,13 @@ document.addEventListener('DOMContentLoaded', () => {
     store = configureStore();
   }
   
-  window.RECEIVE_CURRENT_USER = RECEIVE_CURRENT_USER;
+
   window.getState = store.getState;
   window.dispatch = store.dispatch; 
-  window.removeErrors = deleteErrors;
+  window.getAllStocks = getAllStocks;
+
+
+
   const rootEl = document.getElementById('root');
   ReactDom.render(<Root store={store} />, rootEl)
 })
