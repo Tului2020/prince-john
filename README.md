@@ -5,7 +5,7 @@
 * [General info](#general-info)
 * [Technologies](#technologies)
 * [Setup](#setup)
-* [Live demo](https://youtuubee.herokuapp.com/?#/)
+* [Live demo](https://princejohn.herokuapp.com/)
 * [Status](#setup)
 
 ### General info
