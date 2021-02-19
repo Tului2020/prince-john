@@ -5,22 +5,43 @@
   height: 100%;
   box-shadow: 0px 8px 24px rgb(173, 173, 173);
   border-radius: 6px;
+  display: flex;
+  // justify-content: center;
+  align-items: center;
+  flex-direction: column;
   // width: 276px;
   // height: 415px;
 }
 
 #stock-bar > div {
-  border: 1px solid blue;
-  min-height: 10px;
+  // border: 1px solid blue;
+  width: 100%;
+  min-height: 6%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+
+.bottom-border { 
+  border-bottom: 1px solid rgb(241, 241, 241);
+}
+
 
 #stock-bar-title {
-  height: 5%;
+  // border: 1px solid green;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 0%;
+  width: 85%;
+  font-weight: 550;
 }
 
 
+#stock-bar-title > div {
+  // border: 1px solid red;
 
-
+}
 
 
 

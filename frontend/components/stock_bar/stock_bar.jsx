@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { tripleDots } from './stock_bar_icon'
 
 class StockBar extends React.Component {
 
@@ -8,9 +8,20 @@ class StockBar extends React.Component {
       const { current_stocks, stock_history } = this.props.stocks
       return (
         <div id='stock-bar'>
-          <div id='stock-bar-title'>
-            Stock
+
+          <div className='bottom-border'>
+            <div id='stock-bar-title'>
+              <div>
+                Stocks
+              </div>
+
+              <div>
+                {tripleDots}
+              </div>
+            </div>
           </div>
+
+
           <div id='owned-stocks'>
             Stonks!!
           </div>

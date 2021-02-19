@@ -20,7 +20,7 @@ class HomeLoggedIn extends React.Component {
       <LoggedInNavBarContainer/>
       <div id="logged-in-bottom">
         <div id="logged-in-left">
-        jdaklsjdsal
+          This is where the stock bar goes
         </div>
           
         <div id="logged-in-right">
