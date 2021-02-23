@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDom from 'react-dom'
 import configureStore from './store/store'
 import Root from './components/root'
-import { getAllStocks } from './util/polygon_api'
+import * as polygon from './util/polygon_api'
 
 
 
@@ -27,8 +27,10 @@ document.addEventListener('DOMContentLoaded', () => {
   
 
   window.getState = store.getState;
+  console.log(getState())
+
   window.dispatch = store.dispatch; 
-  window.getAllStocks = getAllStocks;
+  window.polygon = polygon;
 
 
 
