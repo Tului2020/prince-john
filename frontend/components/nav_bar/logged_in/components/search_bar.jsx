@@ -1,6 +1,6 @@
 import React from 'react';
 import { searchBarIcon } from './searchbar_components/search_bar_icon';
-
+import bigData from './../../../../util/allStocks'
 
 
 class SearchBar extends React.Component {
