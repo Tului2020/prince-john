@@ -8,7 +8,7 @@ const searchByTicker = (phrase) => {
     searchData.forEach(el => {
         if (el.search(phrase.toUpperCase()) === 0) filteredData.push({[el]: bigData[el]})
     })
-    return filteredData
+    return filteredData.slice(0, 6)
 }
 
 const searchFunction = (phrase) => {
