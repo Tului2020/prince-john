@@ -37318,5 +37318,5 @@ const bigData = {
   "ZZZ": "Sleep Country Canada Holdings Inc",
   "ZZZOF": "Zinc One Resources, Inc. Common Shares"
 }
-// console.log(bigData.A)
+
 export default bigData;

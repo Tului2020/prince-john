@@ -1,7 +1,6 @@
 import bigData from './search_data'
 
 
-
 // only searching by ticker right now, will add search by name feature
 const searchByTicker = (phrase) => {
     let filteredData = [];
