@@ -14,9 +14,12 @@ class SearchBar extends React.Component {
 
   updateSearch(e) {
     if (e.target.value === '') {
-      e.target.nextElementSibling.classList.add('hide')
+      // debugger
+      e.target.nextElementSibling.classList.remove('search-show')
+      e.target.nextElementSibling.classList.add('search-content')
     } else {
-      e.target.nextElementSibling.classList.remove('hide')
+      e.target.nextElementSibling.classList.add('search-show')
+      e.target.nextElementSibling.classList.remove('search-content')
     }
     this.setState({ searching: e.target.value })
   }
@@ -24,29 +27,27 @@ class SearchBar extends React.Component {
 
   render() {
     return (
+
       <div className="search-bar-div">
+
         <div className="search-bar-icon">
           {searchBarIcon}
         </div>
-
         <input type="text" className="search-bar"
           placeholder="Search" onChange={this.updateSearch} />
 
 
-        <div className='search-values hide'>
-          {/* {Object.keys(searchFunction(this.state.searching)[0])[0]} */}
+
+
+
+        <div className='search-content'>
           {searchFunction(this.state.searching).slice(0, 20).map((el, idx) => {
             return (
-
-              <div className='search-results'>{Object.keys(el)[0]}</div>
-
+              <div key={idx} className='search-results'>{Object.keys(el)[0]}</div>
             )
-
           })}
-
-
         </div>
-        {/* {searchFunction(this.state.searching)[0]} */}
+
       </div>
     )
   }

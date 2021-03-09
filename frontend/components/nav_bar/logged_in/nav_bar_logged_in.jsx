@@ -15,6 +15,7 @@ class LoggedInNavBar extends React.Component {
     return (
       <div id="logged-in-nav">
         <LoggedInLogo/>
+        <div id="filler"></div>
         <SearchBar/>
 
         <div id="logged-in-dropdown-list">
