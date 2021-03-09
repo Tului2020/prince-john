@@ -13,15 +13,15 @@ class SearchBar extends React.Component {
 
 
   updateSearch(e) {
+    // debugger
     if (e.target.value === '') {
       e.target.nextElementSibling.classList.remove('search-show')
       e.target.nextElementSibling.classList.add('search-content')
     } else {
       e.target.nextElementSibling.classList.add('search-show')
-      e.target.nextElementSibling.classList.remove('search-content')``
+      e.target.nextElementSibling.classList.remove('search-content')
     }
     this.setState({ searching: e.target.value })
-    console.log(this.state)
   }
 
 
@@ -39,22 +39,27 @@ class SearchBar extends React.Component {
 
         <div className='search-content'>
             <div className='search-show-header'>Stocks</div>
-            {searchFunction(this.state.searching).map((el, idx) => {
-              return (
-                <div key={idx} className='search-result-line-outer'>
+            <div className='search-show-results'>
 
-                  <div className='search-result-line'>
-                    <div>
-                      {Object.keys(el)[0]}
-                    </div>
-                    <div className="search-result-name">
-                      {(Object.values(el)[0].length > 17) ? (Object.values(el)[0].slice(0, 17) + '..') : (Object.values(el)[0])}
-                    </div>
 
+              {searchFunction(this.state.searching).map((el, idx) => {
+                return (
+                  <div key={idx} className='search-result-line-outer'>
+
+                    <div className='search-result-line'>
+                      <div>
+                        {Object.keys(el)[0]}
+                      </div>
+                      <div className="search-result-name">
+                        {(Object.values(el)[0].length > 17) ? (Object.values(el)[0].slice(0, 17) + '..') : (Object.values(el)[0])}
+                      </div>
+
+                    </div>
                   </div>
-                </div>
-              )
-            })}
+                )
+              })}
+            </div>
+            
           </div>
         {/* </div> */}
 
