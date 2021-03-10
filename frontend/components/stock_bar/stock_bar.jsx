@@ -20,26 +20,26 @@ class StockBar extends React.Component {
     // this.props.history.push(`/dashboard`);
   };
 
-  displayStock(stock) {
+  displayStock({name, amount}) {
     // debugger
     return (
-      <Link to='/stocks/TSLA' key={stock.name} className='link-to-stock-show'>
+      <Link to={`/stocks/${name}`} key={name} className='link-to-stock-show'>
     
         <div className='display-stock' >
           <div className='stock-name-amount' >
             <div className='stock-name'>
-              {stock.name}
+              {name}
             </div>
             <div className='stock-amount'>
-              {stock.amount} Shares
+              {amount} Shares
             </div>
           </div>
 
-          <div className='stock-graph' id={'stock-graph-' + stock.name}>
+          <div className='stock-graph' id={'stock-graph-' + name}>
 
           </div>
 
-          <div className='stock-price' id={'stock-price-' + stock.name}>
+          <div className='stock-price' id={'stock-price-' + name}>
 
           </div>
 
