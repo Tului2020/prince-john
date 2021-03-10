@@ -1,11 +1,19 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { fetchUserStockInfo } from '../../actions/stock_actions';
 import LoggedInNavBarContainer from '../nav_bar/logged_in/nav_bar_logged_in_container';
 
 
 
 
+
 class StockShow extends React.Component {
+    componentDidMount() {
+        this.userId = this.props.currentUser.id
+        this.props.fetchUserStockInfo(this.userId);
+      }
+
+
 
     render() {
         // debugger
@@ -101,11 +109,12 @@ class StockShow extends React.Component {
 
 const mSTP = (state, ownParams) => ({
     ticker: ownParams.match.params.ticker,
-    current_stocks: state.entities.stocks
+    current_stocks: state.entities.stocks,
+    currentUser: state.entities.users[state.session.currentUserId],
 })
 
 const mDTP = (dispatch) => ({
-
+    fetchUserStockInfo: (userId) => dispatch(fetchUserStockInfo(userId))
 })
 
 const StockShowContainer = connect(mSTP, mDTP)(StockShow);
