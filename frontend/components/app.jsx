@@ -2,10 +2,11 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import LoginFormContainer from './sessions/login_form_container';
 import SignupFormContainer from './sessions/signup_form_container';
-import {AuthRoute, HomeAuthRoute, ErrorRoute} from '../util/route_util'
+import {AuthRoute, HomeAuthRoute, ErrorRoute, ProtectedRoute} from '../util/route_util'
 import NotFound from './errors/404';
 import HomeLoggedOut from './home/logged_out/homeloggedout';
 import HomeLoggedIn from './home/logged_in/homeloggedin';
+import StockShowContainer from './stock_show/stock_show';
 
 
 
@@ -16,6 +17,7 @@ const App = () => (
       <HomeAuthRoute exact path='/' component={HomeLoggedOut} otherComponent={HomeLoggedIn}/>
       <AuthRoute exact path="/login" component={LoginFormContainer} />
       <AuthRoute exact path="/signup" component={SignupFormContainer} />
+      <ProtectedRoute exact path="/stock" component={StockShowContainer} />
       <Route exact path='/404' component={NotFound}/>
       <ErrorRoute />
       

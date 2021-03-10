@@ -20,6 +20,17 @@ const Auth = ({ component: Component, path, loggedIn, exact }) => (
 )
 
 
+const Prot = ({ component: Component, path, loggedIn, exact }) => (
+  // debugger
+  <Route 
+    path={path}
+    exact={exact}
+    render={props => 
+      loggedIn ? <Component {...props} /> : <Redirect to='/' />
+    }
+  />
+)
+
 
 
 const HomeAuth = ({ component: Component, otherComponent: OtherComponent, path, loggedIn, exact }) => (
@@ -31,6 +42,8 @@ const HomeAuth = ({ component: Component, otherComponent: OtherComponent, path, 
     }
   />
 )
+
+
 
 
 const Error = () => (
@@ -63,4 +76,11 @@ export const AuthRoute = withRouter(
     mSTP,
     null
   )(Auth)
+)
+
+export const ProtectedRoute = withRouter(
+  connect(
+    mSTP,
+    null
+  )(Prot)
 )
