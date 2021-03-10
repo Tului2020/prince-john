@@ -92,8 +92,10 @@
   flex-direction: column;
 }
 
-#owned-stocks > div {
+.link-to-stock-show {
   width: 100%;
+  text-decoration: none;
+  color: black;
   // border: 1px solid black;
   display: flex;
   justify-content: center;

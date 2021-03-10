@@ -23,7 +23,7 @@ class HomeLoggedIn extends React.Component {
         </div>
           
         <div id="logged-in-right">
-          <StockBar stocks={this.props.stocks}/>
+          <StockBar/>
         </div>
 
       </div>

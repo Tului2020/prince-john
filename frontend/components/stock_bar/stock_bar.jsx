@@ -1,14 +1,30 @@
 import React from 'react';
-import { Redirect } from 'react-router';
+import { Redirect, useHistory } from 'react-router';
 import { tripleDots } from './stock_bar_icon'
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+
+
+
 
 class StockBar extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleOnSubmit = this.handleOnSubmit.bind(this);
+  }
+
+  handleOnSubmit() {
+    // debugger
+    console.log('clicked')
+    return <Redirect to='/stocks/TSLA'/>
+    // this.props.history.push(`/dashboard`);
+  };
 
   displayStock(stock) {
     // debugger
     return (
-      <div key={stock.name}>
-
+      <Link to='/stocks/TSLA' key={stock.name} className='link-to-stock-show'>
+    
         <div className='display-stock' >
           <div className='stock-name-amount' >
             <div className='stock-name'>
@@ -29,7 +45,7 @@ class StockBar extends React.Component {
 
         </div>
 
-      </div>
+      </Link>
     )
   }
 
@@ -75,5 +91,16 @@ class StockBar extends React.Component {
 }
 
 
-export default StockBar;
+const mSTP = (state) =>  ({
+    stocks: state.entities.stocks
+  })
+
+
+const mDTP = (dispatch) => ({
+  
+})
+
+const StockBarContainer = connect(mSTP, mDTP)(StockBar);
+export default StockBarContainer;
+
 
