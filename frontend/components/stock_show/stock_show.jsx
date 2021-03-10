@@ -1,6 +1,5 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { fetchUserStockInfo } from '../../actions/stock_actions';
+
 import LoggedInNavBarContainer from '../nav_bar/logged_in/nav_bar_logged_in_container';
 
 
@@ -8,15 +7,31 @@ import LoggedInNavBarContainer from '../nav_bar/logged_in/nav_bar_logged_in_cont
 
 
 class StockShow extends React.Component {
-    componentDidMount() {
+    componentWillMount() {
         this.userId = this.props.currentUser.id
         this.props.fetchUserStockInfo(this.userId);
+
       }
 
 
 
     render() {
+        let stockAmount;
+
+        if (this.props.current_stocks) {
+            let pageTicker = this.props.ticker
+            // debugger
+            this.props.current_stocks.forEach(({name, amount}) => {
+                // debugger
+                if (name === pageTicker) {
+                    stockAmount = amount
+                }
+            })
+            // debugger
+        }
         // debugger
+
+
         return (
             <div id="stock-show-page">
 
@@ -84,7 +99,7 @@ class StockShow extends React.Component {
                                 </div>
 
                                 <div id="stock-show-market-bar-order-bottom">
-
+                                    {/* {stockAmount} */}
                                 </div>
 
                             </div>
@@ -93,7 +108,7 @@ class StockShow extends React.Component {
 
 
                             <div id="stock-show-market-bar-buy-power">
-                                
+                                {stockAmount}
                             </div>
                         </div>
 
@@ -107,17 +122,5 @@ class StockShow extends React.Component {
 
 }
 
-const mSTP = (state, ownParams) => ({
-    ticker: ownParams.match.params.ticker,
-    current_stocks: state.entities.stocks,
-    currentUser: state.entities.users[state.session.currentUserId],
-})
-
-const mDTP = (dispatch) => ({
-    fetchUserStockInfo: (userId) => dispatch(fetchUserStockInfo(userId))
-})
-
-const StockShowContainer = connect(mSTP, mDTP)(StockShow);
-
-export default StockShowContainer
+export default StockShow
 

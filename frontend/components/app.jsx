@@ -6,7 +6,7 @@ import {AuthRoute, HomeAuthRoute, ErrorRoute, ProtectedRoute} from '../util/rout
 import NotFound from './errors/404';
 import HomeLoggedOut from './home/logged_out/homeloggedout';
 import HomeLoggedIn from './home/logged_in/homeloggedin';
-import StockShowContainer from './stock_show/stock_show';
+import StockShowContainer from './stock_show/stock_show_container';
 
 
 
