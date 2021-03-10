@@ -17,7 +17,7 @@ const App = () => (
       <HomeAuthRoute exact path='/' component={HomeLoggedOut} otherComponent={HomeLoggedIn}/>
       <AuthRoute exact path="/login" component={LoginFormContainer} />
       <AuthRoute exact path="/signup" component={SignupFormContainer} />
-      <ProtectedRoute exact path="/stock" component={StockShowContainer} />
+      <ProtectedRoute path="/stocks/:ticker" component={StockShowContainer} />
       <Route exact path='/404' component={NotFound}/>
       <ErrorRoute />
       

@@ -1,9 +1,11 @@
 import React from 'react';
+import { Redirect } from 'react-router';
 import { tripleDots } from './stock_bar_icon'
 
 class StockBar extends React.Component {
 
   displayStock(stock) {
+    // debugger
     return (
       <div key={stock.name}>
 

@@ -1,23 +1,30 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import LoggedInNavBarContainer from '../nav_bar/logged_in/nav_bar_logged_in_container';
+
+
 
 
 class StockShow extends React.Component {
 
     render() {
+
         return (
-            <div>This is the stock show page</div>
+            <div>
+                <LoggedInNavBarContainer />
+                <div>This is the stock show page for {this.props.ticker}</div>
+            </div>
         )
     }
 
 }
 
-const mSTP = (state) => ({
-    currentUser: state.entities.users[state.session.currentUserId]
+const mSTP = (state, ownParams) => ({
+    ticker: ownParams.match.params.ticker
   })
   
   const mDTP = (dispatch) => ({
-    signout: () => dispatch(signout())
+
   })
   
 const StockShowContainer = connect(mSTP, mDTP)(StockShow);
