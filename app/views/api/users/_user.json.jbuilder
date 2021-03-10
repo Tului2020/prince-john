@@ -1,1 +1,1 @@
-json.extract! user, :id, :username, :last_name, :first_name, :balance
+json.extract! user, :id, :username, :last_name, :first_name, :balance, :current_stocks, :stock_history
