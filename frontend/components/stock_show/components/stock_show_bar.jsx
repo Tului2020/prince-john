@@ -46,12 +46,15 @@ class StockShowBar extends React.Component {
 
 	render() {
 		let stockAmount;
+		let { current_stocks } = this.props
 
-		if (this.props.current_stocks) {
+		if (current_stocks) {
 			let pageTicker = this.props.ticker
-			this.props.current_stocks.forEach(({ name, amount }) => {
+
+
+			Object.keys(current_stocks).forEach(name => {
 				if (name === pageTicker) {
-					stockAmount = amount
+					stockAmount = current_stocks[name]
 				}
 			})
 		}
