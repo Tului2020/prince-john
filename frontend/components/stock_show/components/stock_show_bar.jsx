@@ -46,30 +46,33 @@ class StockShowBar extends React.Component {
 
 	render() {
 		let stockAmount;
-		let { current_stocks } = this.props
+		let { current_stocks, ticker } = this.props
 
 		if (current_stocks) {
-			let pageTicker = this.props.ticker
 
 
 			Object.keys(current_stocks).forEach(name => {
-				if (name === pageTicker) {
+				if (name === ticker) {
 					stockAmount = current_stocks[name]
 				}
 			})
 		}
+
 
 		// debugger
 		return (
 			<div id="stock-show-market-bar">
 				<div id="stock-show-market-bar-trade" className="bottom-border">
 					<div className="stock-show-chosen-transaction" onClick={this.changeTransactionType} value="Buy">
-						Buy {this.props.ticker}
+						Buy {ticker}
 					</div>
 
-					<div onClick={this.changeTransactionType} value="Sell">
-						Sell {this.props.ticker}
-					</div>
+					{Object.keys(current_stocks).includes(ticker)? (<div onClick={this.changeTransactionType} value="Sell">
+						Sell {ticker}
+					</div>) : (<div></div>) }
+
+
+					
 					<div id="filler2"></div>
 					<div>
 						{downArrow}
@@ -128,7 +131,7 @@ class StockShowBar extends React.Component {
 
 
 				<div id="stock-show-market-bar-buy-power">
-					{(this.state.trade === 'Sell') ? (`${stockAmount} Shares Available`) :
+					{(this.state.trade === 'Sell') ? (`${stockAmount? stockAmount : 0} Shares Available`) :
 						(`${currencyFormatter.format(this.props.currentUser.balance)} Buying Power Available`)}
 				</div>
 			</div>)
@@ -141,7 +144,7 @@ class StockShowBar extends React.Component {
 
 const mSTP = (state, ownParams) => ({
 	// ticker: ownParams.match.params.ticker,
-	current_stocks: state.entities.stocks.current_stocks,
+	current_stocks: state.entities.stocks.current_stocks || {},
 	currentUser: state.entities.users[state.session.currentUserId],
 })
 
