@@ -128,9 +128,12 @@ class StockShow extends React.Component {
                 </div>
 
                 <div id="stock-show-market-bar-order-bottom">
-                  <div>Estimated Cost</div>
-                  <div className="flex-end">
-
+                  <div id="stock-show-market-estimated-cost">
+                    <div>Estimated Cost</div>
+                    <div className="flex-end">$$$$</div>
+                  </div>
+                  <div id="stock-show-market-review-order">
+                    <button id="stock-show-market-review-order-button">Review Order</button>
                   </div>
 
 

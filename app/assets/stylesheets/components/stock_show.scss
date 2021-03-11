@@ -160,7 +160,7 @@ input::-webkit-inner-spin-button {
 
 
 #stock-show-market-bar-order-top > div > div {
-  border: 1px solid blue;
+  // border: 1px solid blue;
   height: 100%;
   width: 50%;
   font-size: 13.5px;
@@ -170,9 +170,41 @@ input::-webkit-inner-spin-button {
 
 
 #stock-show-market-bar-order-bottom {
-  border: 1px solid red;
+  // border: 1px solid red;
   height: 45%;
   width: 80%;
   font-size: 12px;
   font-weight: bold;
 }
+
+#stock-show-market-bar-order-bottom > div {
+  // border: 1px solid red;
+}
+
+#stock-show-market-estimated-cost {
+  height: 40%;
+  display: flex;
+  justify-content: space-between;
+}
+
+#stock-show-market-review-order {
+  height: 45px;
+  display: flex;
+  justify-content: center;
+}
+
+#stock-show-market-review-order-button{
+  cursor: pointer;
+  width: 85%;
+  font-family: sans-serif;
+  font-weight: bold;
+  background-color: #00C805;
+  border-radius: 5px;
+  // font-family: sans-serif
+}
+
+#stock-show-market-review-order-button:hover {
+  background-color: #3bd840;
+
+}
+
