@@ -33,7 +33,7 @@ class StockShow extends React.Component {
 
 
             <div id="stock-show-user-info">
-              <StockShowUserInfoContainer/>
+              <StockShowUserInfoContainer ticker={this.props.ticker}/>
             </div>
 
 

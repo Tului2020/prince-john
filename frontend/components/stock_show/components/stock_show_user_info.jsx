@@ -33,14 +33,20 @@ class StockShowUserInfo extends React.Component {
 
 
 	avgCostDiv() {
-		// debugger
+		let shares;
+		if (!this.props.current_stocks) {
+			shares = 0
+		} else {
+			shares = this.props.current_stocks[this.props.ticker]
+		}
+
 		return (
 			<>
 				<div id="stock-show-user-info-avg-cost-header">Your Average Cost</div>
 				<div id="stock-show-user-info-avg-cost-amount">$$ needs to go here</div>
 				<div id="stock-show-user-info-avg-cost-shares" className='bottom-border'>
 					<div>Shares</div>
-					<div># Shares here!!!</div>
+					<div>{shares}</div>
 				</div>
 				<div id="stock-show-user-info-avg-cost-today-return">
 					<div>Portfolio Diversity</div>

@@ -222,12 +222,13 @@ input::-webkit-inner-spin-button {
   justify-content: center;
 }
 
-#stock-show-market-review-order-button{
+#stock-show-market-review-order-button {
   cursor: pointer;
   width: 85%;
   font-family: sans-serif;
   font-weight: bold;
   background-color: #00C805;
+  border: none;
   border-radius: 5px;
   // font-family: sans-serif
 }

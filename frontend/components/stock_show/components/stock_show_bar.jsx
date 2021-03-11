@@ -131,7 +131,8 @@ class StockShowBar extends React.Component {
 
 
 				<div id="stock-show-market-bar-buy-power">
-					{(this.state.trade === 'Sell') ? (`${stockAmount? stockAmount : 0} Shares Available`) :
+					{(this.state.trade === 'Sell')? 
+						(`${stockAmount? stockAmount : 0} Shares Available -  Sell All`) :
 						(`${currencyFormatter.format(this.props.currentUser.balance)} Buying Power Available`)}
 				</div>
 			</div>)
