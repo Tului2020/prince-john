@@ -33,6 +33,7 @@ class StockShowUserInfo extends React.Component {
 
 
 	avgCostDiv() {
+		debugger
 		return (
 			<>
 				<div id="stock-show-user-info-avg-cost-header">Your Average Cost</div>
