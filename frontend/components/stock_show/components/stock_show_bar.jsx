@@ -142,8 +142,7 @@ class StockShowBar extends React.Component {
 
 
 
-const mSTP = (state, ownParams) => ({
-	// ticker: ownParams.match.params.ticker,
+const mSTP = state => ({
 	current_stocks: state.entities.stocks.current_stocks || {},
 	currentUser: state.entities.users[state.session.currentUserId],
 })
