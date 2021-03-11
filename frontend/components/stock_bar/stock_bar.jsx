@@ -20,7 +20,7 @@ class StockBar extends React.Component {
     // this.props.history.push(`/dashboard`);
   };
 
-  displayStock({name, amount}) {
+  displayStock(name, amount) {
     // debugger
     return (
       <Link to={`/stocks/${name}`} key={name} className='link-to-stock-show'>
@@ -69,8 +69,8 @@ class StockBar extends React.Component {
 
 
           <div id='owned-stocks' className='bottom-border'>
-            {current_stocks.map(stock => (
-              this.displayStock(stock)
+            {Object.keys(current_stocks).map(name => (
+              this.displayStock(name, current_stocks[name])
             ))}
 
 
