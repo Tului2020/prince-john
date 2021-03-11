@@ -1,6 +1,7 @@
 import React from 'react';
 
 import LoggedInNavBarContainer from '../nav_bar/logged_in/nav_bar_logged_in_container';
+import { downArrow } from './stock_show_icons';
 
 
 
@@ -74,8 +75,9 @@ class StockShow extends React.Component {
                                 <div>
                                     Sell {this.props.ticker}
                                 </div>
+                                <div id="filler2"></div>
                                 <div>
-
+                                    {downArrow}
                                 </div>
                             </div>
 
@@ -85,7 +87,10 @@ class StockShow extends React.Component {
                                 <div id="stock-show-market-bar-order-top" className="bottom-border">
                                     <div id="stock-show-invest-in">
                                         <div>Invest In</div>
-                                        <div></div>
+                                        <div>
+                                            
+
+                                        </div>
                                     </div>
                                     <div id="stock-show-shares">
                                         <div>Shares</div>
@@ -93,7 +98,7 @@ class StockShow extends React.Component {
                                     </div>
 
                                     <div id="stock-show-market-price">
-                                        <div>Market Price</div>
+                                        <div id="stock-show-market-price-sub">Market Price</div>
                                         <div></div>
                                     </div>
                                 </div>

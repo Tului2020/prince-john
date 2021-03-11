@@ -4,6 +4,11 @@
     align-items: center;
 }
 
+body {
+    cursor: default;
+}
+
+
 #stock-show-main {
     margin-top: 35px;
     border: 1px solid red;
@@ -63,9 +68,24 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
+
     // padding-top: 20px;
+}
+
+#stock-show-market-bar-trade > div {
+    font-size: 15px;
+    // border: 1px solid red;
+}
 
 
+
+#stock-show-market-bar-trade > div:hover {
+    color: green;
+    cursor: pointer;
+}
+
+#filler2 {
+    width: 7%;
 }
 
 #stock-show-market-bar-order {
@@ -93,16 +113,24 @@
 }
 
 #stock-show-market-bar-order-top > div {
-    border: 1px solid red;
+    // border: 1px solid red;
     height: 30%;
     display: flex;
     flex-direction: row;
 }
 
+#stock-show-market-price-sub {
+    color: green
+}
+
+
+
+
 #stock-show-market-bar-order-top > div > div {
     border: 1px solid red;
     height: 100%;
     width: 50%;
+    font-size: 13.5px;
     display: flex;
     align-items: center;
 }
