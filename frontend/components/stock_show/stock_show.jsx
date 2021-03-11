@@ -17,10 +17,6 @@ class StockShow extends React.Component {
 
   render() {
 
-    // debugger
-
-
-
     return (
       <div id="stock-show-page">
 
@@ -54,7 +50,7 @@ class StockShow extends React.Component {
           </div>
 
           <div id="stock-show-right">
-            <StockShowBarCotainer/>
+            <StockShowBarCotainer ticker={this.props.ticker}/>
 
           </div>
         </div>
