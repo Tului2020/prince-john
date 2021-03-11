@@ -1,6 +1,7 @@
 import React from 'react';
 import LoggedInNavBarContainer from '../nav_bar/logged_in/nav_bar_logged_in_container';
 import StockShowBarCotainer from './components/stock_show_bar';
+import StockShowUserInfoContainer from './components/stock_show_user_info';
 
 
 
@@ -26,13 +27,13 @@ class StockShow extends React.Component {
 
         <div id="stock-show-main">
           <div id="stock-show-left">
-            <div id="stock-show-graph">
+            <div id="stock-show-graph" className='bottom-border'>
               Stock Graph
             </div>
 
 
             <div id="stock-show-user-info">
-              User Info
+              <StockShowUserInfoContainer/>
             </div>
 
 

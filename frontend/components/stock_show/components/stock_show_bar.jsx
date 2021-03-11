@@ -56,7 +56,7 @@ class StockShowBar extends React.Component {
 			})
 		}
 
-		debugger
+		// debugger
 		return (
 			<div id="stock-show-market-bar">
 				<div id="stock-show-market-bar-trade" className="bottom-border">

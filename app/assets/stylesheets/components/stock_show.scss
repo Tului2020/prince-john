@@ -20,7 +20,7 @@ body {
 }
 
 #stock-show-left {
-  border: 1px solid red;
+  // border: 1px solid red;
   height: 100%;
   width: 60%;
 }
@@ -32,16 +32,29 @@ body {
 }
 
 #stock-show-graph {
-  border: 1px solid red;
+  // border: 1px solid red;
   height: 51%;
   width: 100%;
 }
 
 #stock-show-user-info {
-  border: 1px solid red;
+  // border: 1px solid red;
   height: 29%;
   width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
 }
+
+#stock-show-user-info > div {
+  border: 1px solid rgb(221, 221, 221);
+  border-radius: 4px;
+  height: 81%;
+  width: 48%;
+
+}
+
+
 
 #stock-show-upcoming-activity {
   border: 1px solid red;
@@ -224,3 +237,29 @@ input::-webkit-inner-spin-button {
 
 }
 
+#stock-show-user-info-market-value, #stock-show-user-info-avg-cost {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid black;
+}
+
+#stock-show-user-info-market-value > div, #stock-show-user-info-avg-cost > div{
+  display: flex;
+  width: 85%;
+  height: 15%;
+  justify-content: space-between;
+  align-items: center;
+
+}
+
+#stock-show-user-info-market-value-amount, #stock-show-user-info-avg-cost-amount {
+  // border: 1px solid green;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+body {
+  font-size: 13px;
+}
