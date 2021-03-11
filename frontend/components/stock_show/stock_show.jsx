@@ -11,14 +11,28 @@ class StockShow extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = { value: 'coconut' };
+    this.state = { value: 'Shares', trade: 'Buy' };
 
     this.handleChange = this.handleChange.bind(this);
-    // this.handleSubmit = this.handleSubmit.bind(this);
+    this.changeTransactionType = this.changeTransactionType.bind(this);
   }
 
   handleChange(event) {
     this.setState({ value: event.target.value });
+  }
+
+  changeTransactionType(e){
+    // debugger
+    document.getElementsByClassName('stock-show-chosen-transaction')[0].classList.remove('stock-show-chosen-transaction')
+    e.target.classList.add('stock-show-chosen-transaction')
+    // (e.target.innerHTML.split(' ')[0] === 'Sell') ? (this.setState({trade: 'Buy'})) : (this.setState({trade: 'Sell'}))
+    if (e.target.innerHTML.split(' ')[0] === 'Buy') {
+      this.setState({trade: 'Buy'})
+      // debugger
+    } else {
+      this.setState({trade: 'Sell'})
+    }
+    console.log(this.state.value)
   }
 
 
@@ -80,11 +94,11 @@ class StockShow extends React.Component {
           <div id="stock-show-right">
             <div id="stock-show-market-bar">
               <div id="stock-show-market-bar-trade" className="bottom-border">
-                <div>
+                <div className="stock-show-chosen-transaction" onClick={this.changeTransactionType} value="Buy">
                   Buy {this.props.ticker}
                 </div>
 
-                <div>
+                <div onClick={this.changeTransactionType} value="Sell">
                   Sell {this.props.ticker}
                 </div>
                 <div id="filler2"></div>
@@ -129,7 +143,7 @@ class StockShow extends React.Component {
 
                 <div id="stock-show-market-bar-order-bottom">
                   <div id="stock-show-market-estimated-cost">
-                    <div>Estimated Cost</div>
+                    <div>Estimated {(this.state.trade === 'Buy')? ('Cost'): ('Credit')}</div>
                     <div className="flex-end">$$$$</div>
                   </div>
                   <div id="stock-show-market-review-order">
