@@ -4,6 +4,12 @@ import LoggedInNavBarContainer from '../nav_bar/logged_in/nav_bar_logged_in_cont
 import { downArrow } from './stock_show_icons';
 
 
+const currencyFormatter = new Intl.NumberFormat('en-US', {
+  style: 'currency',
+  currency: 'USD',
+  minimumFractionDigits: 2
+})
+
 
 
 
@@ -22,17 +28,13 @@ class StockShow extends React.Component {
   }
 
   changeTransactionType(e){
-    // debugger
     document.getElementsByClassName('stock-show-chosen-transaction')[0].classList.remove('stock-show-chosen-transaction')
     e.target.classList.add('stock-show-chosen-transaction')
-    // (e.target.innerHTML.split(' ')[0] === 'Sell') ? (this.setState({trade: 'Buy'})) : (this.setState({trade: 'Sell'}))
     if (e.target.innerHTML.split(' ')[0] === 'Buy') {
       this.setState({trade: 'Buy'})
-      // debugger
     } else {
       this.setState({trade: 'Sell'})
     }
-    console.log(this.state.value)
   }
 
 
@@ -47,6 +49,8 @@ class StockShow extends React.Component {
 
 
   render() {
+
+    // debugger
     let stockAmount;
 
     if (this.props.current_stocks) {
@@ -159,7 +163,8 @@ class StockShow extends React.Component {
 
 
               <div id="stock-show-market-bar-buy-power">
-                {stockAmount}
+                {(this.state.trade === 'Sell')? (`${stockAmount} Shares Available`): 
+                (`${currencyFormatter.format(this.props.currentUser.balance)} Buying Power Available`)} 
               </div>
             </div>
 

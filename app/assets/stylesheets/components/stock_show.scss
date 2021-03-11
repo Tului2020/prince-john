@@ -151,6 +151,8 @@ input::-webkit-inner-spin-button {
   display: flex;
   justify-content: center;
   align-items: center;
+  color: #00C805;
+  font-size: 13px;
 }
 
 #stock-show-market-bar-order-top {
@@ -195,9 +197,6 @@ input::-webkit-inner-spin-button {
   font-weight: bold;
 }
 
-#stock-show-market-bar-order-bottom > div {
-  // border: 1px solid red;
-}
 
 #stock-show-market-estimated-cost {
   height: 40%;
