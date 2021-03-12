@@ -4,6 +4,7 @@ import configureStore from './store/store'
 import Root from './components/root'
 import { getAllStocks } from './util/polygon_api'
 import searchFunction from './components/nav_bar/logged_in/components/searchbar_components/search_function'  //./components/nav_bar/logged_in/components/searchbar_components/search_function'
+import getIntraDay from './util/alphavantage_api'
 
 
 
@@ -29,7 +30,8 @@ document.addEventListener('DOMContentLoaded', () => {
   window.getState = store.getState;
   window.dispatch = store.dispatch; 
   window.getAllStocks = getAllStocks;
-  window.searchFunction = searchFunction
+  window.searchFunction = searchFunction;
+  window.getIntraDay = getIntraDay;
 
 
   const rootEl = document.getElementById('root');
