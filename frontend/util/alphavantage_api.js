@@ -10,11 +10,14 @@ const getIntraDay = (symbol) => (callBackFunc) => {
         function: 'TIME_SERIES_INTRADAY',
         symbol,
         interval: '5min',
-        // slice: 'year1month1',
-        apikey: 'PMC6363GDICNKO59'
+        apikey: 'PMC6363GDICNKO59',
+        datatype: 'csv'
       }
     })
-    .then(({data}) => callBackFunc(data['Time Series (5min)']))
+    .then(({data}) => {
+      debugger
+      // callBackFunc(data['Time Series (5min)'])})
+      callBackFunc(data)})
     // .catch(err => console.log(err))
 }
 
