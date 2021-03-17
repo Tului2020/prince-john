@@ -12,7 +12,7 @@ const getIntraDay = (symbol) => (callBackFunc) => {
       }
     })
     .then(({data}) => {
-      debugger
+      // debugger
       callBackFunc(data)})
 }
 

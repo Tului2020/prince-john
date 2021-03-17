@@ -1,34 +1,21 @@
 import React from 'react';
+import GraphContainer from '../graph/grapher';
 import LoggedInNavBarContainer from '../nav_bar/logged_in/nav_bar_logged_in_container';
 import StockShowBarCotainer from './components/stock_show_bar';
 import StockShowUserInfoContainer from './components/stock_show_user_info';
 
 
 
-
-
-
-
-
 class StockShow extends React.Component {
-
-
-
-
-
   render() {
 
     return (
       <div id="stock-show-page">
-
-
         <LoggedInNavBarContainer ticker={this.props.ticker} />
-
-
         <div id="stock-show-main">
           <div id="stock-show-left">
             <div id="stock-show-graph" className='bottom-border'>
-              Stock Graph
+              <GraphContainer ticker={this.props.ticker}/>
             </div>
 
 
