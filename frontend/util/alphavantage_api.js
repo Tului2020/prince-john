@@ -1,8 +1,5 @@
 const axios = require('axios')
 
-
-
-
 const getIntraDay = (symbol) => (callBackFunc) => {
   return axios.get('https://www.alphavantage.co/query',
     {
@@ -16,9 +13,7 @@ const getIntraDay = (symbol) => (callBackFunc) => {
     })
     .then(({data}) => {
       debugger
-      // callBackFunc(data['Time Series (5min)'])})
       callBackFunc(data)})
-    // .catch(err => console.log(err))
 }
 
 
