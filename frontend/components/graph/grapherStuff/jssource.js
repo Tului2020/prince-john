@@ -1,59 +1,21 @@
-// Chart.plugins.register ( {
-//   afterDatasetsDraw: function(chart, e) {
-//     chart_type = chart.config.type;
-//     console.log(e)
+Chart.plugins.register ( {
+  afterDatasetsDraw: function(chart) {
+    chart_type = chart.config.type;
+    // console.log(e)
     // debugger
 
 
-    // if (chart.tooltip._active && chart.tooltip._active.length) {
-    //   console.log('yes')
-    //   // debugger
-      // var activePoint = chart.tooltip._active[0];
-      // ctx = chart.chart.ctx;
-      // x_axis = chart.scales['x-axis-0'];
-      // y_axis = chart.scales['y-axis-0'];
-      // x = activePoint.tooltipPosition().x;
-      // topY = y_axis.top;
-      // bottomY = y_axis.bottom;
-      // // debugger
-      // // draw line
-      // ctx.save();
-      // ctx.beginPath();
-      // ctx.moveTo(x, topY+7);
-      // ctx.lineTo(x, bottomY+1);
-      // ctx.setLineDash([]);
-      // ctx.lineWidth = 1;
-      // ctx.strokeStyle = 'black';
-      // ctx.stroke();
-      // ctx.restore();
-    // }
-  // }
-// });
-
-
-// var parentEventHandler = Chart.Controller.prototype.eventHandler;
-Chart.Controller.prototype.eventHandler = function(event) {
-    // var ret = parentEventHandler.apply(this, arguments);
-
-    // Draw the vertical line here
-    // var eventPosition = Chart.helpers.getRelativePosition(arguments[0], this.chart);
-    // this.chart.ctx.beginPath();
-    // this.chart.ctx.moveTo(eventPosition.x, 30);
-    // this.chart.ctx.strokeStyle = "#ff0000";
-    // this.chart.ctx.lineTo(eventPosition.x, 340);
-    // this.chart.ctx.stroke();
-
-
-
-      debugger
-      // var activePoint = chart.tooltip._active[0];
-      ctx = stockGraph.chart.ctx;
-      x_axis = stockGraph.scales['x-axis-0'];
-      y_axis = stockGraph.scales['y-axis-0'];
-      // x = activePoint.tooltipPosition().x;
-      topY = y_axis.top;
-      bottomY = y_axis.bottom;
+    if (chart.tooltip._active && chart.tooltip._active.length) {
+      // console.log('yes')
       // debugger
+      var activePoint = chart.tooltip._active[0];
+      ctx = chart.chart.ctx;
+      x_axis = chart.scales['x-axis-0'];
+      y_axis = chart.scales['y-axis-0'];
+      x = activePoint.tooltipPosition().x;
+      topY = 0;
+      bottomY = 240;
+      debugger
       // draw line
       ctx.save();
       ctx.beginPath();
@@ -64,8 +26,22 @@ Chart.Controller.prototype.eventHandler = function(event) {
       ctx.strokeStyle = 'black';
       ctx.stroke();
       ctx.restore();
+    }
+  }
+});
 
-    // return ret;
+
+Chart.Controller.prototype.eventHandler = function({x}) {
+    debugger
+    let ctx = stockGraph.chart.ctx;
+    ctx.save();
+    ctx.beginPath();
+    ctx.moveTo(x, 7);
+    ctx.lineTo(x, 241);
+    ctx.lineWidth = 1;
+    ctx.strokeStyle = 'black';
+    ctx.stroke();
+    ctx.restore();
 };
 
 
