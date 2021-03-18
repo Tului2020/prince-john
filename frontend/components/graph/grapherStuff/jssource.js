@@ -4,7 +4,7 @@ Chart.plugins.register ( {
     if (chart.tooltip._active && chart.tooltip._active.length && chart_type === 'line') {
          var activePoint = chart.tooltip._active[0],
          ctx = chart.chart.ctx,
-         x_axis = chart.scales['x-axis-0'],
+        //  x_axis = chart.scales['x-axis-0'],
         y_axis = chart.scales['y-axis-0'],
         x = activePoint.tooltipPosition().x,
         topY = y_axis.top,
@@ -56,6 +56,9 @@ window.stockGraph = new Chart(myChart, {
     },
     tooltips: {
       enabled: false
+    },
+    hover: {
+      mode: null
     },
 
     elements: {
