@@ -9,9 +9,8 @@ class Graph extends React.Component {
 
   componentDidMount() {
     let myChart = document.getElementById('myChart')
-    new Chart(myChart, {
+    window.stockGraph = new Chart(myChart, {
       type: 'line',
-
 
       data: {
         labels: ['Boston', 'Worcester', 'Springfield', 'Lowell', 'Cambridge', 'New Bedford'],
@@ -23,17 +22,15 @@ class Graph extends React.Component {
         }]
       },
 
-
       options: {
         legend: {
           display: false
         },
 
         elements: {
-          line: {
-            // cubicInterpolationMode: 'monotone' ,
-            // tension: 0, // disables bezier curves
-          }
+          point:{
+            radius: 0
+        }
         },
 
 
@@ -59,10 +56,13 @@ class Graph extends React.Component {
         }
       }
     })
-
-
-
     // debugger
+    // stockGraph.data.datasets[0].data = [1,2,3,4,5,6,7]
+
+  }
+
+  grabData() {
+
   }
 
 
