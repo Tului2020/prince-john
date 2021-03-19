@@ -72,13 +72,10 @@ getIntraDay('TSLA')((myData) => {
 
 	var cities = ['price'].map(name => ({
 		name: name,
-		values: data.map(d => {
-			return {
+		values: data.map(d => ({
 				date: d.date,
 				temperature: +d[name]
-			};
-		})
-
+		}))
 	}));
 
 
