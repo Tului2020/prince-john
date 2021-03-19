@@ -124,13 +124,13 @@ getIntraDay('TSLA')((myData) => {
 		.attr('height', height)
 		.attr('fill', 'none')
 		.attr('pointer-events', 'all')
-		.on('mouseout', () => { // on mouse out hide line, circles and text
+		.on('mouseout', () => { // on mouse out hide line and text
 			d3.select(".mouse-line")
 				.style("opacity", "0");
 			d3.selectAll(".mouse-per-line text")
 				.style("opacity", "0");
 		})
-		.on('mouseover', function () { // on mouse in show line, circles and text
+		.on('mouseover', function () { // on mouse in show line and text
 			d3.select(".mouse-line")
 				.style("opacity", "1");
 			d3.selectAll(".mouse-per-line text")
