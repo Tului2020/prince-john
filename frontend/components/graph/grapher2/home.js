@@ -36,8 +36,8 @@ getIntraDay('TSLA')((myData) => {
 
 	var y = d3.scale.linear()
 		.range([height, 0]);
-	
-	
+
+
 
 	var line = d3.svg.line()
 		.interpolate("basis")
@@ -70,17 +70,16 @@ getIntraDay('TSLA')((myData) => {
 	})
 
 
-	var cities = ['price'].map(name => {
-		return {
-			name: name,
-			values: data.map( d => {
-				return {
-					date: d.date,
-					temperature: +d[name]
-				};
-			})
-		};
-	});
+	var cities = ['price'].map(name => ({
+		name: name,
+		values: data.map(d => {
+			return {
+				date: d.date,
+				temperature: +d[name]
+			};
+		})
+
+	}));
 
 
 
@@ -160,7 +159,7 @@ getIntraDay('TSLA')((myData) => {
 
 			d3.selectAll(".mouse-per-line")
 				.attr("transform", function (d, i) {
-					let {date, temperature} = d.values[(data.length - 1) - Math.round(mouse[0] / width * (data.length - 1))]
+					let { date, temperature } = d.values[(data.length - 1) - Math.round(mouse[0] / width * (data.length - 1))]
 
 					var beginning = 0,
 						end = lines[i].getTotalLength(),
@@ -180,7 +179,7 @@ getIntraDay('TSLA')((myData) => {
 
 					// debugger
 					d3.select(this).select('text')
-						.text(`${date.getHours()}:${date.getMinutes()} ${temperature}` )
+						.text(`${date.getHours()}:${date.getMinutes()} ${temperature}`)
 					return "translate(" + (mouse[0] - 20) + "," + 0 + ")";
 				});
 		});
