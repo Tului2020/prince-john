@@ -1,7 +1,7 @@
 import React from 'react';
 import { searchBarIcon } from './searchbar_components/search_bar_icon';
 import searchFunction from './searchbar_components/search_function';
-
+import { Link } from 'react-router-dom';
 
 
 class SearchBar extends React.Component {
@@ -43,9 +43,10 @@ class SearchBar extends React.Component {
 
 
               {searchFunction(this.state.searching).map((el, idx) => {
+                // debugger
                 return (
-                  <div key={idx} className='search-result-line-outer'>
-
+                  <Link to={`/stocks/${Object.keys(el)[0]}`} key={idx} className='search-result-line-outer'>
+                  {/* <div key={idx} className='search-result-line-outer'> */}
                     <div className='search-result-line'>
                       <div>
                         {Object.keys(el)[0]}
@@ -55,7 +56,8 @@ class SearchBar extends React.Component {
                       </div>
 
                     </div>
-                  </div>
+                    {/* </div> */}
+                  </Link>
                 )
               })}
             </div>
