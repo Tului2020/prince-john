@@ -81,9 +81,7 @@ getIntraDay('TSLA')((myData) => {
 
 
 
-	x.domain(d3.extent(data, function (d) {
-		return d.date;
-	}));
+	x.domain(d3.extent(data, d => d.date));
 
 	y.domain([
 		d3.min(cities, function (c) {
