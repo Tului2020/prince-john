@@ -117,6 +117,7 @@ getIntraDay('TSLA')((myData) => {
 
 
 	mousePerLine.append("text")
+		.attr('id', 'price-indicator')
 		.attr("transform", "translate(10,3)");
 
 	mouseG.append('svg:rect') // append a rect to catch mouse movements on canvas
@@ -162,7 +163,7 @@ getIntraDay('TSLA')((myData) => {
 					}
 
 					// debugger
-					d3.select(this).select('text')
+					d3.select(this).select('#price-indicator')
 						.text(`${date.getHours()}:${date.getMinutes()} ${temperature}`)
 					return "translate(" + (mouse[0] - 20) + "," + 0 + ")";
 				});
