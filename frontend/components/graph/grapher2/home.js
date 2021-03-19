@@ -1,124 +1,262 @@
-/* implementation heavily influenced by http://bl.ocks.org/1166403 */
 
-// define dimensions of graph
-var m = [80, 80, 80, 80]; // margins
-var w = 1000 - m[1] - m[3]; // width
-var h = 400 - m[0] - m[2]; // height
+const getIntraDay = (symbol) => (callBackFunc) => {
+  return axios.get('https://www.alphavantage.co/query',
+    {
+      params: {
+        function: 'TIME_SERIES_INTRADAY',
+        symbol,
+        interval: '5min',
+        apikey: 'PMC6363GDICNKO59',
+        // datatype: 'csv'
+      }
+    })
+    .then(({data}) => {
+			// debugger
+      callBackFunc(data['Time Series (5min)'])})
+}
 
-// create a simple data array that we'll plot with a line (this array represents only the Y values, X will just be the index location)
-var data = [3, 6, 2, 7, 5, 2, 0, 3, 8, 9, 2, 5, 9, 3, 6, 3, 6, 2, 7, 5, 2, 1, 3, 8, 9, 2, 5, 9, 2, 7];
 
-// X scale will fit all values from data[] within pixels 0-w
-var xScale = d3.scale.linear().domain([0, data.length]).range([0, w]);
-// Y scale will fit values from 0-10 within pixels h-0 (Note the inverted domain for the y-scale: bigger is up!)
-var yScale = d3.scale.linear().domain([0, 10]).range([h, 0]);
-// automatically determining max range can work something like this
-// var y = d3.scale.linear().domain([0, d3.max(data)]).range([h, 0]);
 
-// create a line function that can convert data[] into x and y points
+getIntraDay('TSLA')(console.log)
+
+
+
+
+
+
+
+
+
+
+
+var myData = "date	New York	San Francisco	Austin\n\
+20111001	63.4	62.7	72.2\n\
+20111002	58.0	59.9	67.7\n\
+20111003	53.3	59.1	69.4\n\
+20111004	55.7	58.8	68.0\n\
+20111005	64.2	58.7	72.4\n\
+20111006	58.8	57.0	77.0\n\
+20111007	57.9	56.7	82.3\n\
+20111008	61.8	56.8	78.9\n\
+20111009	69.3	56.7	68.8\n\
+20111010	71.2	60.1	68.7\n\
+20111011	68.7	61.1	70.3\n\
+20111012	61.8	61.5	75.3\n\
+20111013	63.0	64.3	76.6\n\
+20111014	66.9	67.1	66.6\n\
+20111015	61.7	64.6	68.0\n\
+20111016	61.8	61.6	70.6\n\
+20111017	62.8	61.1	71.1\n\
+20111018	60.8	59.2	70.0\n\
+20111019	62.1	58.9	61.6\n\
+20111020	65.1	57.2	57.4\n\
+20111021	55.6	56.4	64.3\n\
+20111022	54.4	60.7	72.4\n";
+
+
+
+var margin = {
+	top: 20,
+	right: 80,
+	bottom: 30,
+	left: 50
+},
+	width = 900 - margin.left - margin.right,
+	height = 500 - margin.top - margin.bottom;
+
+var parseDate = d3.time.format("%Y%m%d").parse;
+
+var x = d3.time.scale()
+	.range([0, width]);
+
+var y = d3.scale.linear()
+	.range([height, 0]);
+
+
 var line = d3.svg.line()
-// assign the X function to plot our line as we wish
-.x(function (d, i) {
-    // verbose logging to show what's actually being done
-    //  console.log('Plotting X value for data point: ' + d + ' using index: ' + i + ' to be at: ' + x(i) + ' using our xScale.');
-    // return the X coordinate where we want to plot this datapoint
-    return xScale(i);
-})
-    .y(function (d) {
-    // verbose logging to show what's actually being done
-    //  console.log('Plotting Y value for data point: ' + d + ' to be at: ' + y(d) + " using our yScale.");
-    // return the Y coordinate where we want to plot this datapoint
-    return yScale(d);
+	.interpolate("basis")
+	.x(function (d) {
+		return x(d.date);
+	})
+	.y(function (d) {
+		return y(d.temperature);
+	});
+
+// this is how you enter the body
+var svg = d3.select("body").append("svg")
+	.attr("width", width + margin.left + margin.right)
+	.attr("height", height + margin.top + margin.bottom)
+	.append("g")
+	.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+var data = d3.tsv.parse(myData);
+
+console.log(data[0])
+data.forEach(d => {
+	// debugger
+	d.date = parseDate(d.date);
+});
+console.log(data[0])
+
+var cities = ['San Francisco'].map(function (name) {
+	return {
+		name: name,
+		values: data.map(function (d) {
+			return {
+				date: d.date,
+				temperature: +d[name]
+			};
+		})
+	};
 });
 
-// Add an SVG element with the desired dimensions and margin.
-var graph = d3.select("#graph").append("svg:svg")
-    .attr("width", w + m[1] + m[3])
-    .attr("height", h + m[0] + m[2])
-    .append("svg:g")
-    .attr("transform", "translate(" + m[3] + "," + m[0] + ")");
+x.domain(d3.extent(data, function (d) {
+	return d.date;
+}));
 
-// create yAxis
-var xAxis = d3.svg.axis().scale(xScale).tickSize(-h).tickSubdivide(true);
-// Add the x-axis.
-
-var rect = graph.append("rect").attr({
-    w: 0,
-    h: 0,
-    width: w,
-    height: h,
-    fill: "#ffffff"
-});
-
-graph.append("svg:g")
-    .attr("class", "x axis")
-    .attr("transform", "translate(0," + h + ")")
-    .call(xAxis);
+y.domain([
+	d3.min(cities, function (c) {
+		return d3.min(c.values, function (v) {
+			return v.temperature;
+		});
+	}),
+	d3.max(cities, function (c) {
+		return d3.max(c.values, function (v) {
+			return v.temperature;
+		});
+	})
+]);
 
 
+// Creates legend
+// var legend = svg.selectAll('g')
+//   .data(cities)
+//   .enter()
+//   .append('g')
+//   .attr('class', 'legend');
 
-var yAxisLeft = d3.svg.axis().scale(yScale).ticks(4).orient("left");
+// legend.append('rect')
+//   .attr('x', width - 20)
+//   .attr('y', function (d, i) {
+//     return i * 20;
+//   })
+//   .attr('width', 10)
+//   .attr('height', 10)
+//   .style('fill', function (d) {
+//     return color(d.name);
+//   });
 
-graph.append("g")
-    .attr("class", "y axis")
-    .attr("transform", "translate(-25,0)")
-    .call(yAxisLeft);
-
-
-var mainLine = graph.append("path").attr("d", line(data));
-
-//console.log(line(data));        
-
-
-var verticalLine = graph.append('line')
-// .attr('transform', 'translate(100, 50)')
-.attr({
-    'x1': 0,
-    'y1': 0,
-    'x2': 0,
-    'y2': h
-})
-    .attr("stroke", "steelblue")
-    .attr('class', 'verticalLine');
-
-circle = graph.append("circle")
-    .attr("opacity", 0)
-    .attr({
-    r: 6,
-    fill: 'darkred'
-
-});
-
-rect.on('mousemove', function () {
-
-    var xPos = d3.mouse(this)[0];
-    d3.select(".verticalLine").attr("transform", function () {
-        return "translate(" + xPos + ",0)";
-    });
+// legend.append('text')
+//   .attr('x', width - 8)
+//   .attr('y', function (d, i) {
+//     return (i * 20) + 9;
+//   })
+//   .text(function (d) {
+//     return d.name;
+//   });
 
 
-    var pathLength = mainLine.node().getTotalLength();
-    var x = xPos;
-    var beginning = x,
-        end = pathLength,
-        target;
-    while (true) {
-        target = Math.floor((beginning + end) / 2);
-        pos = mainLine.node().getPointAtLength(target);
-        if ((target === end || target === beginning) && pos.x !== x) {
-            break;
-        }
-        if (pos.x > x) end = target;
-        else if (pos.x < x) beginning = target;
-        else break; //position found
-    }
-    circle.attr("opacity", 1)
-        .attr("cx", x)
-        .attr("cy", pos.y);
+// svg.append("g")
+//   .attr("class", "x axis")
+//   .attr("transform", "translate(0," + height + ")")
+//   .call(xAxis);
 
-    
-    console.log("x and y coordinate where vertical line intersects graph: " + [pos.x, pos.y]);
-    console.log("data where vertical line intersects graph: " + [xScale.invert(pos.x), yScale.invert(pos.y)]);
+// svg.append("g")
+//   .attr("class", "y axis")
+//   .call(yAxis)
+//   .append("text")
+//   .attr("transform", "rotate(-90)")
+//   .attr("y", 6)
+//   .attr("dy", ".71em")
+//   .style("text-anchor", "end")
+//   .text("Temperature (ºF)");
+
+var city = svg.selectAll(".city")
+	.data(cities)
+	.enter().append("g")
+	.attr("class", "city");
+
+city.append("path")
+	.attr("class", "line")
+	.attr("d", function (d) {
+		return line(d.values);
+	})
+	.style("stroke", "#00C805");
 
 
-});
+var mouseG = svg.append("g")
+	.attr("class", "mouse-over-effects");
+
+mouseG.append("path") // this is the black vertical line to follow mouse
+	.attr("class", "mouse-line")
+	.style("stroke", "black")
+	.style("stroke-width", "1px")
+	.style("opacity", "0");
+
+var lines = document.getElementsByClassName('line');
+
+var mousePerLine = mouseG.selectAll('.mouse-per-line')
+	.data(cities)
+	.enter()
+	.append("g")
+	.attr("class", "mouse-per-line");
+
+
+mousePerLine.append("text")
+	.attr("transform", "translate(10,3)");
+
+mouseG.append('svg:rect') // append a rect to catch mouse movements on canvas
+	.attr('width', width) // can't catch mouse events on a g element
+	.attr('height', height)
+	.attr('fill', 'none')
+	.attr('pointer-events', 'all')
+	.on('mouseout', function () { // on mouse out hide line, circles and text
+		d3.select(".mouse-line")
+			.style("opacity", "0");
+		d3.selectAll(".mouse-per-line text")
+			.style("opacity", "0");
+	})
+	.on('mouseover', function () { // on mouse in show line, circles and text
+		d3.select(".mouse-line")
+			.style("opacity", "1");
+		d3.selectAll(".mouse-per-line text")
+			.style("opacity", "1");
+	})
+	.on('mousemove', function () { // mouse moving over canvas
+		var mouse = d3.mouse(this);
+		d3.select(".mouse-line")
+			.attr("d", function () {
+				var d = "M" + mouse[0] + "," + height;
+				d += " " + mouse[0] + "," + 0;
+				return d;
+			});
+
+		d3.selectAll(".mouse-per-line")
+			.attr("transform", function (d, i) {
+				// console.log(width / mouse[0])
+				var xDate = x.invert(mouse[0]),
+					bisect = d3.bisector(function (d) { return d.date; }).right;
+				idx = bisect(d.values, xDate);
+
+				var beginning = 0,
+					end = lines[i].getTotalLength(),
+					target = null;
+
+				while (true) {
+					target = Math.floor((beginning + end) / 2);
+					pos = lines[i].getPointAtLength(target);
+					if ((target === end || target === beginning) && pos.x !== mouse[0]) {
+						break;
+					}
+					if (pos.x > mouse[0]) end = target;
+					else if (pos.x < mouse[0]) beginning = target;
+					else break; //position found
+				}
+
+				d3.select(this).select('text')
+					.text(y.invert(pos.y).toFixed(2));
+
+				// return "translate(" + mouse[0] + "," + pos.y + ")";
+				return "translate(0, 0)";
+			});
+	});
