@@ -24,32 +24,6 @@ const getIntraDay = (symbol) => (callBackFunc) => {
 
 
 getIntraDay('TSLA')((myData) => {
-	// debugger
-// 	var myData = "date	New York	San Francisco	Austin\n\
-// 20111001	63.4	62.7	72.2\n\
-// 20111002	58.0	59.9	67.7\n\
-// 20111003	53.3	59.1	69.4\n\
-// 20111004	55.7	58.8	68.0\n\
-// 20111005	64.2	58.7	72.4\n\
-// 20111006	58.8	57.0	77.0\n\
-// 20111007	57.9	56.7	82.3\n\
-// 20111008	61.8	56.8	78.9\n\
-// 20111009	69.3	56.7	68.8\n\
-// 20111010	71.2	60.1	68.7\n\
-// 20111011	68.7	61.1	70.3\n\
-// 20111012	61.8	61.5	75.3\n\
-// 20111013	63.0	64.3	76.6\n\
-// 20111014	66.9	67.1	66.6\n\
-// 20111015	61.7	64.6	68.0\n\
-// 20111016	61.8	61.6	70.6\n\
-// 20111017	62.8	61.1	71.1\n\
-// 20111018	60.8	59.2	70.0\n\
-// 20111019	62.1	58.9	61.6\n\
-// 20111020	65.1	57.2	57.4\n\
-// 20111021	55.6	56.4	64.3\n\
-// 20111022	54.4	60.7	72.4\n";
-
-
 
 	var margin = {
 		top: 20,
@@ -60,15 +34,18 @@ getIntraDay('TSLA')((myData) => {
 		width = 900 - margin.left - margin.right,
 		height = 500 - margin.top - margin.bottom;
 
-	// var parseDate = d3.time.format("%Y%m%d").parse;
+	// var parseDate1 = d3.time.format("%Y%m%d").parse;
 	var parseDate = d3.time.format("%Y-%m-%d %H:%M:%S").parse;
 
+
+	// x and y are functions that give linear positions with respect to width and height, respectively
 	var x = d3.time.scale()
 		.range([0, width]);
 
 	var y = d3.scale.linear()
 		.range([height, 0]);
-
+	
+	
 
 	var line = d3.svg.line()
 		.interpolate("basis")
@@ -79,6 +56,8 @@ getIntraDay('TSLA')((myData) => {
 			return y(d.temperature);
 		});
 
+		// debugger
+
 	// this is how you enter the body
 	var svg = d3.select("body").append("svg")
 		.attr("width", width + margin.left + margin.right)
@@ -87,36 +66,19 @@ getIntraDay('TSLA')((myData) => {
 		.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
 
-	// var data = d3.tsv.parse(myData);
+	// var data1 = d3.tsv.parse(myData1);
 	let data = d3.csv.parse(myData);
 
-	// debugger
 
 
-	// data.forEach(d => {
-	// 	d.date = parseDate(d.date);
-	// });
+
 
 
 	data = data.map(el => {
 		let price = (parseFloat(el.open) + parseFloat(el.close)).toFixed(2) / 2;
 		return { date: parseDate(el.timestamp), price }
 	})
-
-
-
-	
-	// var cities = ['San Francisco'].map(function (name) {
-	// 	return {
-	// 		name: name,
-	// 		values: data.map(function (d) {
-	// 			return {
-	// 				date: d.date,
-	// 				temperature: +d[name]
-	// 			};
-	// 		})
-	// 	};
-	// });
+	// console.log(data)
 
 
 	var cities = ['price'].map(function (name) {
@@ -131,8 +93,6 @@ getIntraDay('TSLA')((myData) => {
 		};
 	});
 
-	// debugger
-
 
 
 
@@ -146,7 +106,7 @@ getIntraDay('TSLA')((myData) => {
 				return v.temperature;
 			});
 		}),
-		d3.max(cities, function (c) {
+		1.005 * d3.max(cities, function (c) {
 			return d3.max(c.values, function (v) {
 				return v.temperature;
 			});
@@ -161,9 +121,7 @@ getIntraDay('TSLA')((myData) => {
 
 	city.append("path")
 		.attr("class", "line")
-		.attr("d", function (d) {
-			return line(d.values);
-		})
+		.attr("d", d => line(d.values))
 		.style("stroke", "#00C805");
 
 
@@ -210,16 +168,21 @@ getIntraDay('TSLA')((myData) => {
 			d3.select(".mouse-line")
 				.attr("d", function () {
 					var d = "M" + mouse[0] + "," + height;
-					d += " " + mouse[0] + "," + 0;
+					d += " " + mouse[0] + "," + 10;
+					// debugger
 					return d;
 				});
 
 			d3.selectAll(".mouse-per-line")
 				.attr("transform", function (d, i) {
+					// console.log([d, i])
 					// console.log(width / mouse[0])
 					var xDate = x.invert(mouse[0]),
 						bisect = d3.bisector(function (d) { return d.date; }).right;
 					idx = bisect(d.values, xDate);
+
+					// debugger
+					// console.log(xDate)
 
 					var beginning = 0,
 						end = lines[i].getTotalLength(),
@@ -228,6 +191,7 @@ getIntraDay('TSLA')((myData) => {
 					while (true) {
 						target = Math.floor((beginning + end) / 2);
 						pos = lines[i].getPointAtLength(target);
+						// debugger
 						if ((target === end || target === beginning) && pos.x !== mouse[0]) {
 							break;
 						}
@@ -237,10 +201,9 @@ getIntraDay('TSLA')((myData) => {
 					}
 
 					d3.select(this).select('text')
-						.text(y.invert(pos.y).toFixed(2));
-
-					return "translate(" + mouse[0] + "," + pos.y + ")";
-					// return "translate(0, 0)";
+						.text(`${xDate.getHours()}:${xDate.getMinutes()}`)
+					// console.log(mouse[0] - 20)
+					return "translate(" + (mouse[0] - 20) + "," + 0 + ")";
 				});
 		});
 })
