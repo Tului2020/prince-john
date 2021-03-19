@@ -70,10 +70,10 @@ getIntraDay('TSLA')((myData) => {
 	})
 
 
-	var cities = ['price'].map(function (name) {
+	var cities = ['price'].map(name => {
 		return {
 			name: name,
-			values: data.map(function (d) {
+			values: data.map( d => {
 				return {
 					date: d.date,
 					temperature: +d[name]
