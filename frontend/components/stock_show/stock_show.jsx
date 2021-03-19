@@ -14,7 +14,7 @@ class StockShow extends React.Component {
         <LoggedInNavBarContainer ticker={this.props.ticker} />
         <div id="stock-show-main">
           <div id="stock-show-left">
-            <div id="stock-show-graph" className='bottom-border'>
+            <div id="stock-show-graph-div" className='bottom-border'>
               <GraphContainer ticker={this.props.ticker}/>
             </div>
 
