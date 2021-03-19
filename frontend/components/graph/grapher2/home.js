@@ -1,4 +1,3 @@
-
 const getIntraDay = (symbol) => (callBackFunc) => {
 	return axios.get('https://www.alphavantage.co/query',
 		{
@@ -11,12 +10,6 @@ const getIntraDay = (symbol) => (callBackFunc) => {
 			}
 		})
 		.then(({ data }) => {
-			// let importantData = data['Time Series (5min)'];
-			// Object.keys(importantData).map(date => {
-			// 	return (parseFloat(importantData[date]['1. open']) + parseFloat(importantData[date]['4. close'])) / 2
-			// })
-
-			// debugger
 			callBackFunc(data)
 		})
 }
@@ -34,7 +27,6 @@ getIntraDay('TSLA')((myData) => {
 		width = 900 - margin.left - margin.right,
 		height = 500 - margin.top - margin.bottom;
 
-	// var parseDate1 = d3.time.format("%Y%m%d").parse;
 	var parseDate = d3.time.format("%Y-%m-%d %H:%M:%S").parse;
 
 
@@ -56,7 +48,6 @@ getIntraDay('TSLA')((myData) => {
 			return y(d.temperature);
 		});
 
-		// debugger
 
 	// this is how you enter the body
 	var svg = d3.select("body").append("svg")
@@ -66,19 +57,17 @@ getIntraDay('TSLA')((myData) => {
 		.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
 
-	// var data1 = d3.tsv.parse(myData1);
 	let data = d3.csv.parse(myData);
-
-
-
+	let mappedData = {};
 
 
 
 	data = data.map(el => {
 		let price = (parseFloat(el.open) + parseFloat(el.close)).toFixed(2) / 2;
-		return { date: parseDate(el.timestamp), price }
+		let date = parseDate(el.timestamp);
+		mappedData[date] = price;
+		return { date, price }
 	})
-	// console.log(data)
 
 
 	var cities = ['price'].map(function (name) {
@@ -136,6 +125,7 @@ getIntraDay('TSLA')((myData) => {
 
 	var lines = document.getElementsByClassName('line');
 
+	//d3.select('.mouse-per-line')[0][0].__data__.values
 	var mousePerLine = mouseG.selectAll('.mouse-per-line')
 		.data(cities)
 		.enter()
@@ -166,23 +156,11 @@ getIntraDay('TSLA')((myData) => {
 		.on('mousemove', function () { // mouse moving over canvas
 			var mouse = d3.mouse(this);
 			d3.select(".mouse-line")
-				.attr("d", function () {
-					var d = "M" + mouse[0] + "," + height;
-					d += " " + mouse[0] + "," + 10;
-					// debugger
-					return d;
-				});
+				.attr("d", () => `M${mouse[0]},${height} ${mouse[0]},10`);
 
 			d3.selectAll(".mouse-per-line")
 				.attr("transform", function (d, i) {
-					// console.log([d, i])
-					// console.log(width / mouse[0])
-					var xDate = x.invert(mouse[0]),
-						bisect = d3.bisector(function (d) { return d.date; }).right;
-					idx = bisect(d.values, xDate);
-
-					// debugger
-					// console.log(xDate)
+					let {date, temperature} = d.values[(data.length - 1) - Math.round(mouse[0] / width * (data.length - 1))]
 
 					var beginning = 0,
 						end = lines[i].getTotalLength(),
@@ -200,9 +178,9 @@ getIntraDay('TSLA')((myData) => {
 						else break; //position found
 					}
 
+					// debugger
 					d3.select(this).select('text')
-						.text(`${xDate.getHours()}:${xDate.getMinutes()}`)
-					// console.log(mouse[0] - 20)
+						.text(`${date.getHours()}:${date.getMinutes()} ${temperature}` )
 					return "translate(" + (mouse[0] - 20) + "," + 0 + ")";
 				});
 		});
