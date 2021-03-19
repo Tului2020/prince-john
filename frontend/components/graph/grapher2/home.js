@@ -78,22 +78,11 @@ getIntraDay('TSLA')((myData) => {
 		}))
 	}));
 
-
-
-
 	x.domain(d3.extent(data, d => d.date));
 
 	y.domain([
-		d3.min(cities, function (c) {
-			return d3.min(c.values, function (v) {
-				return v.temperature;
-			});
-		}),
-		1.005 * d3.max(cities, function (c) {
-			return d3.max(c.values, function (v) {
-				return v.temperature;
-			});
-		})
+		d3.min(cities, c => d3.min(c.values, v => v.temperature)),
+		d3.max(cities, c => d3.max(c.values, v => v.temperature)) * 1.005
 	]);
 
 
@@ -135,7 +124,7 @@ getIntraDay('TSLA')((myData) => {
 		.attr('height', height)
 		.attr('fill', 'none')
 		.attr('pointer-events', 'all')
-		.on('mouseout', function () { // on mouse out hide line, circles and text
+		.on('mouseout', () => { // on mouse out hide line, circles and text
 			d3.select(".mouse-line")
 				.style("opacity", "0");
 			d3.selectAll(".mouse-per-line text")
