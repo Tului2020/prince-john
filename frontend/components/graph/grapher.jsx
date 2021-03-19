@@ -15,6 +15,10 @@ class Graph extends React.Component {
     return <div id="stock-show-graph"></div>;
   }
 
+  componentWillUpdate() {
+    debugger
+  }
+
   componentDidMount() {
     // console.log(this.props.ticker)
     this.graphData();
@@ -25,7 +29,7 @@ class Graph extends React.Component {
     getIntraDay(this.props.ticker)(myData => {
       let width = document.getElementById('stock-show-graph-div').clientWidth;
       let height = document.getElementById('stock-show-graph-div').clientHeight;
-      console.log(width, height)
+      // console.log(width, height)
       // debugger
       var parseDate = d3.time.format("%Y-%m-%d %H:%M:%S").parse;
     

@@ -11,9 +11,16 @@ class SearchBar extends React.Component {
     this.updateSearch = this.updateSearch.bind(this);
   }
 
+  componentDidMount(){
+    document.addEventListener('mousedown', this.toggleDropDown)
+  }
+
+  componentWillUnmount(){
+    document.removeEventListener('mousedown', this.toggleDropDown)
+  }
+
 
   updateSearch(e) {
-    // debugger
     if (e.target.value === '') {
       e.target.nextElementSibling.classList.remove('search-show')
       e.target.nextElementSibling.classList.add('search-content')
@@ -23,6 +30,16 @@ class SearchBar extends React.Component {
     }
     this.setState({ searching: e.target.value })
   }
+
+  toggleDropDown(e) {
+    if (document.getElementsByClassName('search-bar')[0] === e.target) {
+      e.target.nextElementSibling.classList.add('search-show')
+      e.target.nextElementSibling.classList.remove('search-content')
+    } else {
+
+    }
+  }
+
 
 
   render() {
@@ -38,32 +55,28 @@ class SearchBar extends React.Component {
 
 
         <div className='search-content'>
-            <div className='search-show-header'>Stocks</div>
-            <div className='search-show-results'>
+          <div className='search-show-header'>Stocks</div>
+          <div className='search-show-results'>
 
 
-              {searchFunction(this.state.searching).map((el, idx) => {
-                // debugger
-                return (
-                  <Link to={`/stocks/${Object.keys(el)[0]}`} key={idx} className='search-result-line-outer'>
-                  {/* <div key={idx} className='search-result-line-outer'> */}
-                    <div className='search-result-line'>
-                      <div>
-                        {Object.keys(el)[0]}
-                      </div>
-                      <div className="search-result-name">
-                        {(Object.values(el)[0].length > 17) ? (Object.values(el)[0].slice(0, 17) + '..') : (Object.values(el)[0])}
-                      </div>
-
+            {searchFunction(this.state.searching).map((el, idx) => {
+              return (
+                <Link to={`/stocks/${Object.keys(el)[0]}`} key={idx} className='search-result-line-outer'>
+                  <div className='search-result-line'>
+                    <div>
+                      {Object.keys(el)[0]}
                     </div>
-                    {/* </div> */}
-                  </Link>
-                )
-              })}
-            </div>
-            
+                    <div className="search-result-name">
+                      {(Object.values(el)[0].length > 17) ? (Object.values(el)[0].slice(0, 17) + '..') : (Object.values(el)[0])}
+                    </div>
+
+                  </div>
+                </Link>
+              )
+            })}
           </div>
-        {/* </div> */}
+
+        </div>
 
       </div>
     )

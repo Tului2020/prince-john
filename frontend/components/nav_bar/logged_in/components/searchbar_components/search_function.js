@@ -3,6 +3,7 @@ import bigData from './search_data'
 
 // only searching by ticker right now, will add search by name feature
 const searchByTicker = (phrase) => {
+    if (phrase === '') return []
     let filteredData = [];
     const searchData = Object.keys(bigData)
     searchData.forEach(el => {
