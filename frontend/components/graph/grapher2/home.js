@@ -16,7 +16,7 @@ const getIntraDay = (symbol) => (callBackFunc) => {
 
 
 
-getIntraDay('TSLA')((myData) => {
+getIntraDay('TSLA')(myData => {
 
 	var margin = {
 		top: 20,
@@ -27,6 +27,7 @@ getIntraDay('TSLA')((myData) => {
 		width = 900 - margin.left - margin.right,
 		height = 500 - margin.top - margin.bottom;
 
+		// var parseDate = d3.time.format("%Y-%m-%d %H:%M:%S").parse;
 	var parseDate = d3.time.format("%Y-%m-%d %H:%M:%S").parse;
 
 
@@ -50,22 +51,16 @@ getIntraDay('TSLA')((myData) => {
 
 
 	// this is how you enter the body
-	var svg = d3.select("body").append("svg")
+	var svg = d3.select("#myChart").append("svg")
 		.attr("width", width + margin.left + margin.right)
 		.attr("height", height + margin.top + margin.bottom)
 		.append("g")
 		.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
 
-	let data = d3.csv.parse(myData);
-	let mappedData = {};
-
-
-
-	data = data.map(el => {
+	let data =  d3.csv.parse(myData).map(el => {
 		let price = (parseFloat(el.open) + parseFloat(el.close)).toFixed(2) / 2;
 		let date = parseDate(el.timestamp);
-		mappedData[date] = price;
 		return { date, price }
 	})
 
