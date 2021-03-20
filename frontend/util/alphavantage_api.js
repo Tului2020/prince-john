@@ -23,7 +23,9 @@ const getIntraDay = (symbol, keyNum=1) => (callBackFunc) => {
 			callBackFunc(data)
 		})
 		.catch(err => {
-			console.log('err')
+			console.log('Max reached')
+			return getIntraDay(symbol, keyNum+1)(callBackFunc)
+			
 		})
 }
 

@@ -16,11 +16,11 @@ class Graph extends React.Component {
     return <div id="stock-show-graph"></div>;
   }
 
-  componentDidUpdate() {
+  UNSAFE_componentDidUpdate() {
     getIntraDay(this.props.ticker)(myData => this.saveData(myData));
   }
   
-  componentWillUpdate() {
+  UNSAFE_componentWillUpdate() {
     this.clearGraph();
   }
 
@@ -46,6 +46,7 @@ class Graph extends React.Component {
     this.myData = myData
     this.clearGraph()
     this.graphData()
+    // debugger
   }
 
 

@@ -38,7 +38,7 @@ class StockShowBar extends React.Component {
 
 
 
-	componentWillMount() {
+	UNSAFE_componentWillMount() {
 		this.userId = this.props.currentUser.id
 		this.props.fetchUserStockInfo(this.userId);
 	}

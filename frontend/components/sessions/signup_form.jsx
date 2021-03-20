@@ -27,7 +27,7 @@ class SignupForm extends React.Component {
     this.props.processForm(this.state).then(() => {this.props.history.push('/')});
   }
 
-  componentWillUnmount() {
+  UNSAFE_componentWillUnmount() {
     this.props.deleteErrors()
   }
 

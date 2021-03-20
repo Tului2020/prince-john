@@ -34,7 +34,7 @@ class LoginForm extends React.Component {
   }
 
     
-  componentWillUnmount() {
+  UNSAFE_componentWillUnmount() {
 
     this.props.deleteErrors()
   }
