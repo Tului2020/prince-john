@@ -79,9 +79,12 @@ class Graph extends React.Component {
       
       x.domain(d3.extent(data, d => d.date));
     
-      let minPoint = 0.99 * d3.min(cities, c => d3.min(c.values, v => v.temperature));
-      let maxPoint = 1.01 * d3.max(cities, c => d3.max(c.values, v => v.temperature));
-      y.domain([minPoint, maxPoint]);
+      let minPoint = d3.min(cities, c => d3.min(c.values, v => v.temperature));
+      let maxPoint = d3.max(cities, c => d3.max(c.values, v => v.temperature));
+      let adjustedMaxMinDelta = 1 * (maxPoint - minPoint)
+
+
+      y.domain([minPoint - adjustedMaxMinDelta, maxPoint + adjustedMaxMinDelta]);
     
     
       var city = svg.selectAll(".city")
