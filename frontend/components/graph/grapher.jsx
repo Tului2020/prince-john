@@ -16,13 +16,24 @@ class Graph extends React.Component {
   }
 
   componentWillUpdate() {
-    // debugger
+    this.clearGraph();
+    this.graphData();
+    console.log('done')
   }
 
   componentDidMount() {
     // console.log(this.props.ticker)
     this.graphData();
   }
+
+  clearGraph() {
+    let graphDiv = document.getElementById('stock-show-graph');
+    while (graphDiv.firstChild) {
+      graphDiv.removeChild(graphDiv.firstChild)
+    }
+  }
+
+
 
   graphData() {
     // debugger
@@ -176,14 +187,10 @@ class Graph extends React.Component {
 
 }
 
-const mSTP = (state, ownParams) => ({
-
-})
 
 
-const mDTP = (dispatch) => ({
-
-})
+const mSTP = (state, ownParams) => ({})
+const mDTP = (dispatch) => ({})
 
 const GraphContainer = connect(mSTP, mDTP)(Graph);
 export default GraphContainer
