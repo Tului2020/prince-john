@@ -9,7 +9,7 @@ class Graph extends React.Component {
   constructor(props) {
     super(props);
     this.myData = null;
-    getIntraDay(this.props.ticker)(myData => this.saveData(myData));
+    // getIntraDay(this.props.ticker)(myData => this.saveData(myData));
   }
 
   render() {

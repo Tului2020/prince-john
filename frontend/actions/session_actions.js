@@ -7,6 +7,8 @@ export const REMOVE_ERRORS = 'REMOVE_ERRORS';
 export const GET_USER_INFO = 'GET_USER_INFO';
 
 
+
+
 const receiveCurrentUser = (currentUser) => ({
   type: RECEIVE_CURRENT_USER,
   currentUser
@@ -24,6 +26,9 @@ const receiveErrors = (errors) => ({ //array
 const removeErrors = () => ({
   type: REMOVE_ERRORS
 })
+
+
+
 
 
 export const fetchUserInfo = (userId) => dispatch => (

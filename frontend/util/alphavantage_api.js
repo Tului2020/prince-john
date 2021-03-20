@@ -7,7 +7,7 @@ const apiKeys = {
 
 
 
-const getIntraDay = (symbol, keyNum=1) => (callBackFunc) => {
+const getIntraDay = (symbol, keyNum=1) => {
 	if (keyNum > Object.keys(apiKeys).length) return
 	return axios.get('https://www.alphavantage.co/query',
 		{
@@ -19,14 +19,14 @@ const getIntraDay = (symbol, keyNum=1) => (callBackFunc) => {
 				datatype: 'csv'
 			}
 		})
-		.then(({ data }) => {
-			callBackFunc(data)
-		})
-		.catch(err => {
-			console.log('Max reached')
-			return getIntraDay(symbol, keyNum+1)(callBackFunc)
+		// .then(({ data }) => {
+		// 	callBackFunc(data)
+		// })
+		// .catch(err => {
+		// 	console.log('Max reached')
+		// 	return getIntraDay(symbol, keyNum+1)(callBackFunc)
 			
-		})
+		// })
 }
 
 export default getIntraDay;

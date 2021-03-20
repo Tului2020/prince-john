@@ -3,6 +3,7 @@ import ReactDom from 'react-dom'
 import configureStore from './store/store'
 import Root from './components/root'
 import { updateUserStockInfo } from './actions/stock_actions'
+import { getIntraDayThunk } from './actions/history_actions'
 
 
 
@@ -28,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   window.getState = store.getState;
   window.dispatch = store.dispatch; 
-  window.updateUserStockInfo = updateUserStockInfo
+  window.getIntraDayThunk = getIntraDayThunk;
 
 
   const rootEl = document.getElementById('root');
