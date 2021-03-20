@@ -16,16 +16,16 @@ class Graph extends React.Component {
     return <div id="stock-show-graph"></div>;
   }
 
+  componentDidUpdate() {
+    getIntraDay(this.props.ticker)(myData => this.saveData(myData));
+  }
+  
   componentWillUpdate() {
     this.clearGraph();
-    this.graphData();
-    // console.log('done')
   }
 
+
   componentDidMount() {
-    // console.log(this.props.ticker)
-    // this.graphData();
-    // debugger
     window.addEventListener('resize', () => {
       this.clearGraph();
       this.graphData();
@@ -44,6 +44,7 @@ class Graph extends React.Component {
 
   saveData(myData) {
     this.myData = myData
+    this.clearGraph()
     this.graphData()
   }
 
