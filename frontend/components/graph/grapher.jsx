@@ -8,6 +8,7 @@ import * as d3 from 'd3';
 class Graph extends React.Component {
   constructor(props) {
     super(props);
+    this.stockData = null;
     // window.addEventListener('resize', this.graphData)
   }
 
@@ -24,6 +25,9 @@ class Graph extends React.Component {
   componentDidMount() {
     // console.log(this.props.ticker)
     this.graphData();
+    window.addEventListener('resize', () => {
+      debugger
+    })
   }
 
   clearGraph() {
@@ -36,12 +40,10 @@ class Graph extends React.Component {
 
 
   graphData() {
-    // debugger
+
     getIntraDay(this.props.ticker)(myData => {
       let width = document.getElementById('stock-show-graph-div').clientWidth;
       let height = document.getElementById('stock-show-graph-div').clientHeight;
-      // console.log(width, height)
-      // debugger
       var parseDate = d3.time.format("%Y-%m-%d %H:%M:%S").parse;
     
     
