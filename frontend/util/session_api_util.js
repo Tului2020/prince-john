@@ -1,5 +1,3 @@
-
-
 export const signup = (user) => (
   $.ajax({
     method: 'POST',
@@ -38,3 +36,18 @@ export const fetchUserStockInfo = (userId) => (
     url: `/api/users/${userId}/stocks`,
   })
 )
+
+export const updateUserStockInfo = (userId, ticker, amount, unit_price) => (
+  $.ajax({
+    method: 'POST',
+    url: `/api/users/${userId}/stocks`,
+    data: {
+      stock: {
+        ticker,
+        amount,
+        unit_price
+      }
+    }
+  })
+)
+

@@ -9,11 +9,6 @@ class Api::StocksController < ApplicationController
     if !@stock.save 
       render json: @stock.errors.full_messages, status: 401
     end
-
-
-  end
-
-  def destroy
   end
 
 

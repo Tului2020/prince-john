@@ -2,9 +2,8 @@ import React from 'react'
 import ReactDom from 'react-dom'
 import configureStore from './store/store'
 import Root from './components/root'
-import { getAllStocks } from './util/polygon_api'
-import searchFunction from './components/nav_bar/logged_in/components/searchbar_components/search_function'  //./components/nav_bar/logged_in/components/searchbar_components/search_function'
-import getIntraDay from './util/alphavantage_api'
+import { updateUserStockInfo } from './actions/stock_actions'
+
 
 
 
@@ -29,9 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   window.getState = store.getState;
   window.dispatch = store.dispatch; 
-  window.getAllStocks = getAllStocks;
-  window.searchFunction = searchFunction;
-  window.getIntraDay = getIntraDay;
+  window.updateUserStockInfo = updateUserStockInfo
 
 
   const rootEl = document.getElementById('root');
