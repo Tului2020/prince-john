@@ -32,11 +32,19 @@ class SearchBar extends React.Component {
   }
 
   toggleDropDown(e) {
-    if (document.getElementsByClassName('search-bar')[0] === e.target) {
-      e.target.nextElementSibling.classList.add('search-show')
-      e.target.nextElementSibling.classList.remove('search-content')
-    } else {
+    let searchElement = document.getElementsByClassName('search-bar')[0]
 
+    if (searchElement === e.target) {
+      // debugger
+      if (e.target.value !== '') {
+        e.target.nextElementSibling.classList.add('search-show')
+        e.target.nextElementSibling.classList.remove('search-content')
+      }
+    } else {
+      searchElement.nextElementSibling.classList.remove('search-show')
+      searchElement.nextElementSibling.classList.add('search-content')
+      
+      // debugger
     }
   }
 
