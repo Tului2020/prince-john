@@ -15,9 +15,9 @@ class SearchBar extends React.Component {
     document.addEventListener('mousedown', this.toggleDropDown)
   }
 
-  componentWillUnmount(){
-    document.removeEventListener('mousedown', this.toggleDropDown)
-  }
+  // componentWillUnmount(){
+  //   document.removeEventListener('mousedown', this.toggleDropDown)
+  // }
 
 
   updateSearch(e) {
@@ -31,50 +31,54 @@ class SearchBar extends React.Component {
     this.setState({ searching: e.target.value })
   }
 
+
+
+
+
+
   toggleDropDown(e) {
     let searchElement = document.getElementsByClassName('search-bar')[0]
 
-    if (searchElement === e.target) {
-      // debugger
+    if (e.target.classList.contains('search-component')) {
       if (e.target.value !== '') {
-        e.target.nextElementSibling.classList.add('search-show')
-        e.target.nextElementSibling.classList.remove('search-content')
+        searchElement.nextElementSibling.classList.add('search-show')
+        searchElement.nextElementSibling.classList.remove('search-content')
       }
     } else {
       searchElement.nextElementSibling.classList.remove('search-show')
       searchElement.nextElementSibling.classList.add('search-content')
-      
-      // debugger
     }
   }
 
 
 
+
+
   render() {
     return (
-      <div className="search-bar-div">
+      <div className="search-bar-div search-component">
 
-        <div className="search-bar-icon">
+        <div className="search-bar-icon search-component">
           {searchBarIcon}
         </div>
-        <input type="text" className="search-bar"
+        <input type="text" className="search-bar search-component"
           placeholder="Search" onChange={this.updateSearch} />
 
 
 
-        <div className='search-content'>
-          <div className='search-show-header'>Stocks</div>
-          <div className='search-show-results'>
+        <div className='search-content search-component'>
+          <div className='search-show-header search-component'>Stocks</div>
+          <div className='search-show-results search-component'>
 
 
             {searchFunction(this.state.searching).map((el, idx) => {
               return (
-                <Link to={`/stocks/${Object.keys(el)[0]}`} key={idx} className='search-result-line-outer'>
-                  <div className='search-result-line'>
-                    <div>
+                <Link to={`/stocks/${Object.keys(el)[0]}`} key={idx} className='search-result-line-outer search-component'>
+                  <div className='search-result-line search-component'>
+                    <div className='search-component'>
                       {Object.keys(el)[0]}
                     </div>
-                    <div className="search-result-name">
+                    <div className="search-result-name search-component">
                       {(Object.values(el)[0].length > 17) ? (Object.values(el)[0].slice(0, 17) + '..') : (Object.values(el)[0])}
                     </div>
 

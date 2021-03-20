@@ -16,7 +16,7 @@ class Graph extends React.Component {
   }
 
   componentWillUpdate() {
-    debugger
+    // debugger
   }
 
   componentDidMount() {
