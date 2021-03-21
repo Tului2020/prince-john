@@ -8,23 +8,13 @@ import { getIntraDayThunk } from '../../actions/history_actions';
 
 class Graph extends React.Component {
   constructor(props) {
-    super(props);
-    this.myData = null;
-    // getIntraDay(this.props.ticker)(myData => this.saveData(myData));
+    super(props);  
   }
 
   render() {
-    // debugger
     return <div id="stock-show-graph"></div>;
   }
 
-  // UNSAFE_componentDidUpdate() {
-  //   getIntraDay(this.props.ticker)(myData => this.saveData(myData));
-  // }
-  
-  // UNSAFE_componentWillUpdate() {
-  //   this.clearGraph();
-  // }
 
 
   componentDidMount() {
@@ -45,19 +35,11 @@ class Graph extends React.Component {
   }
 
 
-  // saveData(myData) {
-  //   this.myData = myData
-  //   this.clearGraph()
-  //   this.graphData()
-  //   // debugger
-  // }
-
-
   graphData() {
     let myData = this.myData;
     let width = document.getElementById('stock-show-graph-div').clientWidth;
     let height = document.getElementById('stock-show-graph-div').clientHeight;
-    var parseDate = d3.time.format("%Y-%m-%d %H:%M:%S").parse;
+    const parseDate = d3.time.format("%Y-%m-%d %H:%M:%S").parse;
 
 
     // x and y are functions that give linear positions with respect to width and height, respectively

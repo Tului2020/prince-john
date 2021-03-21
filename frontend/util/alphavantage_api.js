@@ -7,7 +7,7 @@ const apiKeys = {
 
 
 
-const getIntraDay = (symbol, keyNum=1) => {
+const getIntraDay = (symbol, keyNum=2) => {
 	if (keyNum > Object.keys(apiKeys).length) return
 	return axios.get('https://www.alphavantage.co/query',
 		{
