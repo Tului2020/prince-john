@@ -1,14 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import getIntraDay from '../../util/alphavantage_api';
 import * as d3 from 'd3';
-import { getIntraDayThunk } from '../../actions/history_actions';
 
 
 
 class Graph extends React.Component {
   constructor(props) {
-    super(props);  
+    super(props);
+    this.userHistory = null;
   }
 
   render() {
@@ -16,13 +15,20 @@ class Graph extends React.Component {
   }
 
 
+  componentDidUpdate() {
+    // console.log(this.props.history)
+    if (this.props.history[this.props.ticker]) this.graphData();
+  }
 
   componentDidMount() {
-    // debugger
-  //   window.addEventListener('resize', () => {
-  //     this.clearGraph();
-  //     this.graphData();
-  //   })
+    window.addEventListener('resize', () => {
+      this.clearGraph();
+      this.graphData();
+    })
+  }
+
+  UNSAFE_componentWillUpdate() {
+    this.clearGraph();
   }
 
 
@@ -34,12 +40,22 @@ class Graph extends React.Component {
     }
   }
 
+  userHistoryCalculator() {
+    let userHistory = [];
+  }
+
 
   graphData() {
-    let myData = this.myData;
+    let { ticker, history } = this.props;
+    let data;
+    if (ticker) {
+      data = history[ticker]
+    } else {
+      return
+    }
+
     let width = document.getElementById('stock-show-graph-div').clientWidth;
     let height = document.getElementById('stock-show-graph-div').clientHeight;
-    const parseDate = d3.time.format("%Y-%m-%d %H:%M:%S").parse;
 
 
     // x and y are functions that give linear positions with respect to width and height, respectively
@@ -57,7 +73,7 @@ class Graph extends React.Component {
         return x(d.date);
       })
       .y(function (d) {
-        return y(d.temperature);
+        return y(d.price);
       });
 
 
@@ -69,26 +85,20 @@ class Graph extends React.Component {
     // .attr("transform", "translate(0, 0)");
 
 
-    let data = d3.csv.parse(myData).map(el => {
-      let price = (parseFloat(el.open) + parseFloat(el.close)).toFixed(2) / 2;
-      let date = parseDate(el.timestamp);
-      return { date, price }
-    })
-
 
     var cities = ['price'].map(name => ({
       name: name,
       values: data.map(d => ({
         date: d.date,
-        temperature: +d[name]
+        price: +d[name]
       }))
     }));
 
 
     x.domain(d3.extent(data, d => d.date));
 
-    let minPoint = d3.min(cities, c => d3.min(c.values, v => v.temperature));
-    let maxPoint = d3.max(cities, c => d3.max(c.values, v => v.temperature));
+    let minPoint = d3.min(cities, c => d3.min(c.values, v => v.price));
+    let maxPoint = d3.max(cities, c => d3.max(c.values, v => v.price));
     let adjustedMaxMinDelta = 1 * (maxPoint - minPoint)
 
 
@@ -153,7 +163,7 @@ class Graph extends React.Component {
 
         d3.selectAll(".mouse-per-line")
           .attr("transform", function (d, i) {
-            let { date, temperature } = d.values[(data.length - 1) - Math.round(mouse[0] / width * (data.length - 1))]
+            let { date, price } = d.values[(data.length - 1) - Math.round(mouse[0] / width * (data.length - 1))]
 
             var beginning = 0,
               end = lines[i].getTotalLength(),
@@ -171,7 +181,7 @@ class Graph extends React.Component {
             }
 
             d3.select(this).select('#price-indicator')
-              .text(`${date.getHours()}:${date.getMinutes()} ${temperature}`)
+              .text(`${date.getHours()}:${date.getMinutes()} ${price}`)
             return "translate(" + (mouse[0] - 20) + "," + 10 + ")";
           });
       });
@@ -182,13 +192,13 @@ class Graph extends React.Component {
 }
 
 
-const mSTP = (state, ownParams) => ({
-  history: state.entities.history,
-})
+const mSTP = state => {
+  return {
+    history: state.entities.history,
+  }
+}
 
-const mDTP = (dispatch) => ({
-  getIntraDayThunk: (ticker) => dispatch(getIntraDayThunk(ticker))
-})
+const mDTP = (dispatch) => ({})
 
 const GraphContainer = connect(mSTP, mDTP)(Graph);
 export default GraphContainer

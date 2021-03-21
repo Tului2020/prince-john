@@ -14,13 +14,11 @@ const dataParser = (myData) => {
 
 
 
-
 const historyReducer = (state={}, action) => {
   Object.freeze(state);
 
   switch (action.type) {
     case STOCK_HISTORY:
-      // console.log(action.stockHistory)
       return Object.assign({}, state, {[action.ticker]: dataParser(action.stockHistory)})
     default:
       return state
