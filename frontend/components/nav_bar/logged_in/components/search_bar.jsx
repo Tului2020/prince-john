@@ -50,6 +50,12 @@ class SearchBar extends React.Component {
     }
   }
 
+  closeDropDown() {
+    let searchElement = document.getElementsByClassName('search-bar')[0]
+    searchElement.nextElementSibling.classList.remove('search-show')
+    searchElement.nextElementSibling.classList.add('search-content')
+  }
+
 
 
 
@@ -73,7 +79,7 @@ class SearchBar extends React.Component {
 
             {searchFunction(this.state.searching).map((el, idx) => {
               return (
-                <Link to={`/stocks/${Object.keys(el)[0]}`} key={idx} className='search-result-line-outer search-component'>
+                <Link to={`/stocks/${Object.keys(el)[0]}`} onClick={() => {setTimeout(this.closeDropDown(), 10)}}key={idx} className='search-result-line-outer search-component'>
                   <div className='search-result-line search-component'>
                     <div className='search-component'>
                       {Object.keys(el)[0]}
