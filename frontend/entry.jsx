@@ -30,6 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
   window.dispatch = store.dispatch; 
   window.getIntraDayThunk = getIntraDayThunk;
   // debugger
+  window.updateUserStockInfo = updateUserStockInfo;
 
   const rootEl = document.getElementById('root');
   ReactDom.render(<Root store={store} />, rootEl)

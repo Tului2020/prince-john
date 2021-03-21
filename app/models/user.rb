@@ -37,7 +37,7 @@ class User < ApplicationRecord
   has_many :stock_history, class_name: :Stock, foreign_key: :user_id
 
   def current_stocks 
-    stock_history.group(:ticker).sum(:amount)
+    stock_history.group(:ticker).sum(:amount).select {|k, v| v > 0}
   end
 
 end
