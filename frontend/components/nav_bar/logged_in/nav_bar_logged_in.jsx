@@ -10,12 +10,13 @@ import Account from './components/account';
 
 
 class LoggedInNavBar extends React.Component {
+  constructor(props) {
+    super(props);
+    this.apiCalls = [];
+  }
 
   comparison(history, currentStocks) { // see if history has same tickers as currentStocks, returns missing tickers
-    return Object.keys(currentStocks).filter(ticker => {
-      return !Object.keys(history).includes(ticker)
-  })
-
+    return Object.keys(currentStocks).filter(ticker => !Object.keys(history).includes(ticker)).filter(ticker => !this.apiCalls.includes(ticker))
   }
 
 
@@ -23,7 +24,9 @@ class LoggedInNavBar extends React.Component {
     let { current_stocks, getIntraDayThunk, history } = this.props
 
     if (current_stocks) {
-      this.comparison(history, current_stocks).forEach(ticker => getIntraDayThunk(ticker))
+      this.comparison(history, current_stocks).forEach(ticker => {
+        this.apiCalls.push(ticker)
+        getIntraDayThunk(ticker)})
     } 
   }
 
