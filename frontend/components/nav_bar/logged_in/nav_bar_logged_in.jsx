@@ -11,12 +11,19 @@ import Account from './components/account';
 
 class LoggedInNavBar extends React.Component {
 
+  comparison(history, currentStocks) { // see if history has same tickers as currentStocks, returns missing tickers
+    return Object.keys(currentStocks).filter(ticker => {
+      return !Object.keys(history).includes(ticker)
+  })
+
+  }
+
+
   getStockHistory() {
     let { current_stocks, getIntraDayThunk, history } = this.props
 
     if (current_stocks) {
-      console.log(Object.keys(history))
-      console.log(Object.keys(current_stocks))
+      this.comparison(history, current_stocks).forEach(ticker => getIntraDayThunk(ticker))
     } 
   }
 
