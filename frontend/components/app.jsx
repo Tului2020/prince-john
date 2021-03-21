@@ -13,14 +13,12 @@ import StockShowContainer from './stock_show/stock_show_container';
 const App = () => (
   <div>
     <Switch>
-      
       <HomeAuthRoute exact path='/' component={HomeLoggedOut} otherComponent={HomeLoggedIn}/>
       <AuthRoute exact path="/login" component={LoginFormContainer} />
       <AuthRoute exact path="/signup" component={SignupFormContainer} />
       <ProtectedRoute path="/stocks/:ticker" component={StockShowContainer} />
       <Route exact path='/404' component={NotFound}/>
       <ErrorRoute />
-      
     </Switch>
   </div>
 );

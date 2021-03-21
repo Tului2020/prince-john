@@ -12,7 +12,6 @@ document.addEventListener('DOMContentLoaded', () => {
   let store; 
 
   if (window.currentUser) {
-
     const preloadedState = {
       entities: {
         users: { [window.currentUser.id]: window.currentUser}
@@ -30,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
   window.getState = store.getState;
   window.dispatch = store.dispatch; 
   window.getIntraDayThunk = getIntraDayThunk;
-
+  // debugger
 
   const rootEl = document.getElementById('root');
   ReactDom.render(<Root store={store} />, rootEl)

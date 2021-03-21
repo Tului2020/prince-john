@@ -1,10 +1,9 @@
 import React from 'react';
 import LoggedInNavBarContainer from '../../nav_bar/logged_in/nav_bar_logged_in_container'
-import { fetchUserInfo } from '../../../actions/session_actions';
 import { connect } from 'react-redux';
 import StockBar from '../../stock_bar/stock_bar';
 import { fetchUserStockInfo } from '../../../actions/stock_actions';
-import GraphContainer from '../../graph/grapher';
+
 
 
 class HomeLoggedIn extends React.Component {
@@ -35,12 +34,11 @@ class HomeLoggedIn extends React.Component {
 
 const mSTP = state => ({
   currentUser: state.entities.users[state.session.currentUserId],
-  stocks: state.entities.stocks
+  // stocks: state.entities.stocks
 }) 
 
 
 const mDTP = (dispatch) => ({
-  fetchUserInfo: (userId) => dispatch(fetchUserInfo(userId)),
   fetchUserStockInfo: (userId) => dispatch(fetchUserStockInfo(userId))
 })
 

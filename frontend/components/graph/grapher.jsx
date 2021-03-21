@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import getIntraDay from '../../util/alphavantage_api';
 import * as d3 from 'd3';
+import { getIntraDayThunk } from '../../actions/history_actions';
 
 
 
@@ -13,23 +14,25 @@ class Graph extends React.Component {
   }
 
   render() {
+    // debugger
     return <div id="stock-show-graph"></div>;
   }
 
-  UNSAFE_componentDidUpdate() {
-    getIntraDay(this.props.ticker)(myData => this.saveData(myData));
-  }
+  // UNSAFE_componentDidUpdate() {
+  //   getIntraDay(this.props.ticker)(myData => this.saveData(myData));
+  // }
   
-  UNSAFE_componentWillUpdate() {
-    this.clearGraph();
-  }
+  // UNSAFE_componentWillUpdate() {
+  //   this.clearGraph();
+  // }
 
 
   componentDidMount() {
-    window.addEventListener('resize', () => {
-      this.clearGraph();
-      this.graphData();
-    })
+    // debugger
+  //   window.addEventListener('resize', () => {
+  //     this.clearGraph();
+  //     this.graphData();
+  //   })
   }
 
 
@@ -42,12 +45,12 @@ class Graph extends React.Component {
   }
 
 
-  saveData(myData) {
-    this.myData = myData
-    this.clearGraph()
-    this.graphData()
-    // debugger
-  }
+  // saveData(myData) {
+  //   this.myData = myData
+  //   this.clearGraph()
+  //   this.graphData()
+  //   // debugger
+  // }
 
 
   graphData() {
@@ -197,9 +200,13 @@ class Graph extends React.Component {
 }
 
 
+const mSTP = (state, ownParams) => ({
+  history: state.entities.history,
+})
 
-const mSTP = (state, ownParams) => ({})
-const mDTP = (dispatch) => ({})
+const mDTP = (dispatch) => ({
+  getIntraDayThunk: (ticker) => dispatch(getIntraDayThunk(ticker))
+})
 
 const GraphContainer = connect(mSTP, mDTP)(Graph);
 export default GraphContainer

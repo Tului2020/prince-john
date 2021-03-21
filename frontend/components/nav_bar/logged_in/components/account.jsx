@@ -38,8 +38,6 @@ class Account extends React.Component {
 
 
   render() {
-    // debugger
-    // console.log(this.props.currentUser.username)
     const { currentUser, signout } = this.props
 
     return (
