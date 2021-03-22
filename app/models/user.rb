@@ -40,4 +40,5 @@ class User < ApplicationRecord
     stock_history.group(:ticker).sum(:amount).select {|k, v| v > 0}
   end
 
+
 end
