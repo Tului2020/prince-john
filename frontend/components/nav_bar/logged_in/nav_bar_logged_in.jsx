@@ -6,7 +6,6 @@ import Portfolio from './components/portfolio';
 import SearchBar from './components/search_bar';
 import Messages from './components/messages'
 import Account from './components/account';
-// import { debug } from 'webpack';
 
 
 class LoggedInNavBar extends React.Component {
@@ -27,6 +26,9 @@ class LoggedInNavBar extends React.Component {
       this.comparison(history, current_stocks).forEach(ticker => {
         this.apiCalls.push(ticker)
         getIntraDayThunk(ticker)})
+      
+      // debugger
+      if (!Object.keys(current_stocks).includes(this.props.ticker)) getIntraDayThunk(this.props.ticker)
     } 
   }
 

@@ -4,7 +4,7 @@ import { signout } from './../../../actions/session_actions';
 import { getIntraDayThunk } from '../../../actions/history_actions';
 
 
-const mSTP = (state) => ({
+const mSTP = (state, ownParams) => ({
   currentUser: state.entities.users[state.session.currentUserId],
   current_stocks: state.entities.stocks.current_stocks,
   history: state.entities.history,
