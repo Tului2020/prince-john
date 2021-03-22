@@ -16,7 +16,7 @@ class Graph extends React.Component {
 
 
   componentDidUpdate() {
-    // console.log(this.props.history)
+    console.log(this.props.ticker)
     if (this.props.history[this.props.ticker]) this.graphData();
   }
 
@@ -51,6 +51,7 @@ class Graph extends React.Component {
     if (ticker) {
       data = history[ticker]
     } else {
+      // data = history['QYLD']
       return
     }
 

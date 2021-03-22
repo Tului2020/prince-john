@@ -21,14 +21,17 @@ class LoggedInNavBar extends React.Component {
 
   getStockHistory() {
     let { current_stocks, getIntraDayThunk, history } = this.props
-
     if (current_stocks) {
       this.comparison(history, current_stocks).forEach(ticker => {
+        debugger
         this.apiCalls.push(ticker)
         getIntraDayThunk(ticker)})
       
       // debugger
-      if (!Object.keys(current_stocks).includes(this.props.ticker)) getIntraDayThunk(this.props.ticker)
+      if (this.props.ticker && !this.apiCalls.includes(this.props.ticker)) {
+        debugger
+        this.apiCalls.push(this.props.ticker)
+        getIntraDayThunk(this.props.ticker)}
     } 
   }
 

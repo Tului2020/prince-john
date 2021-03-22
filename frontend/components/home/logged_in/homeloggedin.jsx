@@ -3,6 +3,9 @@ import LoggedInNavBarContainer from '../../nav_bar/logged_in/nav_bar_logged_in_c
 import { connect } from 'react-redux';
 import StockBar from '../../stock_bar/stock_bar';
 import { fetchUserStockInfo } from '../../../actions/stock_actions';
+import GraphContainer from '../../graph/grapher';
+
+
 
 
 
@@ -19,7 +22,7 @@ class HomeLoggedIn extends React.Component {
       <LoggedInNavBarContainer/>
       <div id="logged-in-bottom">
         <div id="logged-in-left">
-          {/* <GraphContainer/> */}
+          <GraphContainer/>
         </div>
           
         <div id="logged-in-right">

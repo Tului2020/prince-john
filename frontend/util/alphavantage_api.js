@@ -7,8 +7,9 @@ const apiKeys = {
 
 
 
-const getIntraDay = (symbol, keyNum=4) => {
-	if (keyNum > Object.keys(apiKeys).length) return
+const getIntraDay = (symbol, keyNum=2) => {
+	// if (keyNum > Object.keys(apiKeys).length) return
+	console.log('getIntraDay Working')
 	return axios.get('https://www.alphavantage.co/query',
 		{
 			params: {
@@ -19,15 +20,7 @@ const getIntraDay = (symbol, keyNum=4) => {
 				datatype: 'csv'
 			}
 		})
-		// .then(({ data }) => {
-		// 	callBackFunc(data)
-		// })
-		// .catch(err => {
-		// 	console.log('Max reached')
-		// 	return getIntraDay(symbol, keyNum+1)(callBackFunc)
-			
-		// })
-}
+	}
 
 export default getIntraDay;
 
