@@ -104,19 +104,25 @@ class StockShowUserInfo extends React.Component {
 
 	render() {
 		let { stockAvgCost, stockPortDiversity, stockMarketValue, stockTotalCost, stockTodayReturn, stockTotalReturn } = this.statusCalculator();
+		let { current_stocks, ticker } = this.props
 		// debugger
-		return (
-			<>
-				<div id="stock-show-user-info-market-value">
-					{this.marketValueDiv(stockMarketValue, stockTotalCost, stockTodayReturn, stockTotalReturn)}
-				</div>
 
-				<div id="stock-show-user-info-avg-cost">
-					{this.avgCostDiv(stockAvgCost, stockPortDiversity)}
-				</div>
+		if (Object.keys(current_stocks).includes(ticker)) {
+			return (
+				<>
+					<div id="stock-show-user-info-market-value">
+						{this.marketValueDiv(stockMarketValue, stockTotalCost, stockTodayReturn, stockTotalReturn)}
+					</div>
+
+					<div id="stock-show-user-info-avg-cost">
+						{this.avgCostDiv(stockAvgCost, stockPortDiversity)}
+					</div>
 
 
-			</>)
+				</>)
+		} else {
+			return null;
+		}
 	}
 
 
@@ -125,7 +131,7 @@ class StockShowUserInfo extends React.Component {
 
 
 const mSTP = ({entities, session}) => ({
-	current_stocks: entities.stocks.current_stocks,
+	current_stocks: entities.stocks.current_stocks || {},
 	current_user: entities.users[session.currentUserId],
 	stock_history: entities.stocks.stock_history,
 })

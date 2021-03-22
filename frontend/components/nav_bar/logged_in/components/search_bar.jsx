@@ -45,7 +45,8 @@ class SearchBar extends React.Component {
         searchElement.nextElementSibling.classList.remove('search-content')
       }
     } else {
-      this.closeDropDown();
+      searchElement.nextElementSibling.classList.remove('search-show')
+      searchElement.nextElementSibling.classList.add('search-content')
     }
   }
 
