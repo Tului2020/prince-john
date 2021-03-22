@@ -8,6 +8,10 @@ class Graph extends React.Component {
   constructor(props) {
     super(props);
     this.userHistory = null;
+    window.addEventListener('resize', () => {
+      this.clearGraph();
+      this.graphData();
+    })
   }
 
   render() {
@@ -21,10 +25,10 @@ class Graph extends React.Component {
   }
 
   componentDidMount() {
-    window.addEventListener('resize', () => {
+    if (this.props.history[this.props.ticker]) {
       this.clearGraph();
       this.graphData();
-    })
+    }
   }
 
   UNSAFE_componentWillUpdate() {
