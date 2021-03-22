@@ -105,9 +105,13 @@ class StockShowUserInfo extends React.Component {
 	render() {
 		let { stockAvgCost, stockPortDiversity, stockMarketValue, stockTotalCost, stockTodayReturn, stockTotalReturn } = this.statusCalculator();
 		let { current_stocks, ticker } = this.props
-		// debugger
+		let userInfoEl = document.getElementById('stock-show-user-info')
+
 
 		if (Object.keys(current_stocks).includes(ticker)) {
+			
+			if (userInfoEl) userInfoEl.classList.add('stock-show-user-info')
+
 			return (
 				<>
 					<div id="stock-show-user-info-market-value">
@@ -121,6 +125,7 @@ class StockShowUserInfo extends React.Component {
 
 				</>)
 		} else {
+			if (userInfoEl) userInfoEl.classList.remove('stock-show-user-info')
 			return null;
 		}
 	}

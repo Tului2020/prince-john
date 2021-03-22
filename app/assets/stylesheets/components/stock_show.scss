@@ -43,8 +43,7 @@ body {
   // width: 100%;
 }
 
-#stock-show-user-info {
-  // border: 1px solid red;
+.stock-show-user-info {
   height: 29%;
   width: 100%;
   display: flex;
@@ -52,8 +51,7 @@ body {
   justify-content: space-around;
 }
 
-#stock-show-user-info > div {
-  border: 1px solid rgb(221, 221, 221);
+.stock-show-user-info > div {
   border-radius: 4px;
   height: 81%;
   width: 48%;
@@ -249,7 +247,7 @@ input::-webkit-inner-spin-button {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  border: 1px solid black;
+  border: 1px solid rgb(221, 221, 221);
 }
 
 #stock-show-user-info-market-value > div, #stock-show-user-info-avg-cost > div{
