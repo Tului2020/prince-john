@@ -6,6 +6,7 @@ import * as d3 from 'd3';
 
 class Graph extends React.Component {
   constructor(props) {
+    // debugger
     super(props);
     this.userHistory = null;
     window.addEventListener('resize', () => {
@@ -20,12 +21,11 @@ class Graph extends React.Component {
 
 
   componentDidUpdate() {
-    console.log(this.props.ticker)
-    if (this.props.history[this.props.ticker]) this.graphData();
+    if (this.props.history[this.props.ticker] || this.props.ticker === 'homePage') this.graphData();
   }
 
   componentDidMount() {
-    if (this.props.history[this.props.ticker]) {
+    if (this.props.history[this.props.ticker] || this.props.ticker === 'homePage') {
       this.clearGraph();
       this.graphData();
     }
@@ -45,19 +45,32 @@ class Graph extends React.Component {
   }
 
   userHistoryCalculator() {
-    let userHistory = [];
+    let { history, current_stocks } = this.props
+    if (current_stocks && Object.keys(current_stocks).length === Object.keys(history).length) {
+      let userHistory = [];
+      debugger
+    }
+
+    
   }
 
 
   graphData() {
     let { ticker, history } = this.props;
     let data;
+    // console.log(ticker)
+
     if (ticker) {
-      data = history[ticker]
-    } else {
-      // data = history['QYLD']
-      return
-    }
+      if (ticker === 'homePage') {
+        console.log('loading')
+        this.userHistoryCalculator();
+        return
+        // this.userHistoryCalculator()
+      } else {
+        data = history[ticker]
+      }
+      
+    } 
 
     let width = document.getElementById('stock-show-graph-div').clientWidth;
     let height = document.getElementById('stock-show-graph-div').clientHeight;
@@ -201,6 +214,7 @@ class Graph extends React.Component {
 const mSTP = state => {
   return {
     history: state.entities.history,
+    current_stocks: state.entities.stocks.current_stocks,
   }
 }
 
