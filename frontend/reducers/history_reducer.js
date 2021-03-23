@@ -7,8 +7,9 @@ const dataParser = (myData) => {
   let marketOpen = new Date(`${date} 09:30:00`);
   let marketClose = new Date(`${date} 18:30:00`);
   let parsedDataObj = {};
-  let previousHourTracker = new Date(`${date} 09:25:00`);
+  // let previousHourTracker = new Date(`${date} 09:25:00`);
   let hourTracker = new Date(`${date} 09:30:00`);
+  let retArr = [];
 
 
   parsedData.forEach(el => {
@@ -20,28 +21,41 @@ const dataParser = (myData) => {
   })
 
   while (hourTracker <= marketClose) {
+    // debugger
+
     let hourTrackerPrice = parsedDataObj[hourTracker]
-    if (!hourTrackerPrice) {
-      parsedDataObj[hourTracker] = parsedDataObj[previousHourTracker]
+    if (hourTrackerPrice) {
+      retArr.push({date: new Date(hourTracker), price: hourTrackerPrice})
+    } else {
+      retArr.push({date: new Date(hourTracker)})
     }
+
+    
+
+
+  //   if (!hourTrackerPrice) {
+  //     parsedDataObj[hourTracker] = parsedDataObj[previousHourTracker]
+  //   }
     hourTracker = new Date(hourTracker.setMinutes(hourTracker.getMinutes() + 5))
-    previousHourTracker = new Date(previousHourTracker.setMinutes(previousHourTracker.getMinutes() + 5))
+  //   previousHourTracker = new Date(previousHourTracker.setMinutes(previousHourTracker.getMinutes() + 5))
+  //   // if (!parsedDataObj[previousHourTracker]) parsedDataObj[previousHourTracker] = parsedDataObj[hourTracker]
   }
 
-  
+  debugger
   // nned to fix issues with going from array to object
 
   return Object.keys(parsedDataObj).map(date => ({date: new Date(date), price: parsedDataObj[date]}))
+  // return retArr
 }
 
 
-// const dataParser = (myData) => {
-//   return d3.csv.parse(myData).map(el => {
-//     let price = (parseFloat(el.open) + parseFloat(el.close)).toFixed(2) / 2;
-//     let date = d3.time.format("%Y-%m-%d %H:%M:%S").parse(el.timestamp);
-//     return { date, price }
-//   })
-// }
+const dataParser1 = (myData) => {
+  return d3.csv.parse(myData).map(el => {
+    let price = (parseFloat(el.open) + parseFloat(el.close)).toFixed(2) / 2;
+    let date = d3.time.format("%Y-%m-%d %H:%M:%S").parse(el.timestamp);
+    return { date, price }
+  })
+}
 
 
 
