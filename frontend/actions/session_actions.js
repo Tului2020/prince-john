@@ -32,9 +32,7 @@ const removeErrors = () => ({
 
 
 export const fetchUserInfo = (userId) => dispatch => (
-  SessionApiUtil.fetchUserInfo(userId)
-    .then((newUser) => dispatch(receiveCurrentUser(newUser))
-    )
+  SessionApiUtil.fetchUserInfo(userId).then(newUser => dispatch(receiveCurrentUser(newUser)))
 )
 
 export const deleteErrors = () => dispatch => {

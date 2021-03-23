@@ -22,7 +22,9 @@ class HomeLoggedIn extends React.Component {
       <LoggedInNavBarContainer/>
       <div id="logged-in-bottom">
         <div id="logged-in-left">
-          <GraphContainer ticker={'homePage'}/>
+          <div id="stock-show-graph-div">
+            <GraphContainer ticker={'homePage'}/>
+          </div>
         </div>
           
         <div id="logged-in-right">

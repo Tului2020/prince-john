@@ -46,47 +46,44 @@ class Graph extends React.Component {
   }
 
   userHistoryCalculator() {
-    let { history, current_stocks } = this.props
-    if (current_stocks && Object.keys(current_stocks).length === Object.keys(history).length) {
+    let { history, current_stocks, balance } = this.props
+    if (current_stocks && Object.keys(current_stocks).length <= Object.keys(history).length) {
       let stockNames = Object.keys(history)
-      let userHistory = history[stockNames[0]].map(({date}) => date)
+      let userHistory = history[stockNames[0]].map(({ date }) => ({ date }))
 
       stockNames.forEach(stockName => {
-        userHistory.forEach(userHistoryObj => {
-          let userStockPrice;
+        userHistory.forEach((userHistoryObj, idx) => {
+          let userStockPrice = current_stocks[stockName] * history[stockName][idx].price
           if (!userHistoryObj.price) {
-
+            userHistoryObj.price = userStockPrice + balance;
+          } else {
+            userHistoryObj.price += userStockPrice;
           }
 
         })
       })
-
-      
+      return userHistory
     }
-
-    
+    return []
   }
 
 
   graphData() {
     let { ticker, history } = this.props;
     let data;
-    // console.log(ticker)
+    let width;
+    let height;
 
-    if (ticker) {
-      if (ticker === 'homePage') {
-        console.log('loading')
-        this.userHistoryCalculator();
-        return
-        // this.userHistoryCalculator()
-      } else {
-        data = history[ticker]
-      }
-      
-    } 
 
-    let width = document.getElementById('stock-show-graph-div').clientWidth;
-    let height = document.getElementById('stock-show-graph-div').clientHeight;
+    if (ticker === 'homePage') {
+      data = this.userHistoryCalculator();
+    } else {
+      data = history[ticker]
+    }
+
+    width = document.getElementById('stock-show-graph-div').clientWidth;
+    height = document.getElementById('stock-show-graph-div').clientHeight;
+
 
 
     // x and y are functions that give linear positions with respect to width and height, respectively
@@ -123,7 +120,6 @@ class Graph extends React.Component {
       }))
     }];
 
-    // debugger
 
 
 
@@ -217,6 +213,8 @@ class Graph extends React.Component {
             return "translate(" + (mouse[0] - 20) + "," + 10 + ")";
           });
       });
+
+
   }
 
 
@@ -224,10 +222,11 @@ class Graph extends React.Component {
 }
 
 
-const mSTP = state => {
+const mSTP = ({entities, session}) => {
   return {
-    history: state.entities.history,
-    current_stocks: state.entities.stocks.current_stocks,
+    history: entities.history,
+    current_stocks: entities.stocks.current_stocks,
+    balance: parseFloat(entities.users[session.currentUserId].balance)
   }
 }
 
