@@ -2,8 +2,8 @@ import { GET_USER_STOCKS, NEW_USER_STOCK } from "../actions/stock_actions";
 
 
 const _nullSession = {
-  stock_history: null,
-  current_stocks: null
+  stock_history: [],
+  current_stocks: {}
 }
 
 

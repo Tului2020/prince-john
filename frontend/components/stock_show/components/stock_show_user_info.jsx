@@ -25,7 +25,7 @@ class StockShowUserInfo extends React.Component {
 
 		if (!stock_history) return {stockAvgCost, stockPortDiversity, stockMarketValue, stockTotalCost, stockTodayReturn, stockTotalReturn }
 
-
+		debugger
 
 		Object.keys(stock_history).forEach(stock_info => {
 			let stock = stock_history[stock_info]
@@ -33,16 +33,11 @@ class StockShowUserInfo extends React.Component {
 			if (stock.ticker === ticker) {	
 				stockTotalCost += (stock.amount * stock.unit_price);
 
-
-
 			}
 		})
 
 		stockAvgCost = currencyFormatter.format(stockTotalCost / current_stocks[ticker])
 		stockTotalCost = currencyFormatter.format(stockTotalCost)
-
-
-
 		return { stockAvgCost, stockPortDiversity, stockMarketValue, stockTotalCost, stockTodayReturn, stockTotalReturn }
 	}
 
@@ -136,9 +131,10 @@ class StockShowUserInfo extends React.Component {
 
 
 const mSTP = ({entities, session}) => ({
-	current_stocks: entities.stocks.current_stocks || {},
-	current_user: entities.users[session.currentUserId],
+	current_stocks: entities.stocks.current_stocks,
+	// current_user: entities.users[session.currentUserId],
 	stock_history: entities.stocks.stock_history,
+	history: entities.history,
 })
 
 const mDTP = (dispatch) => ({
