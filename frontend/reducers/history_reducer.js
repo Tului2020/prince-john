@@ -31,7 +31,7 @@ const dataParser = (myData) => {
   
   // nned to fix issues with going from array to object
 
-  return Object.keys(parsedDataObj).map(date => {date, price: parsedDataObj[date]})
+  return Object.keys(parsedDataObj).map(date => ({date, price: parsedDataObj[date]}))
 }
 
 

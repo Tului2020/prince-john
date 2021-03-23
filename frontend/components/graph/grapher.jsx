@@ -92,7 +92,7 @@ class Graph extends React.Component {
 
 
     var cities = ['price'].map(name => {
-      debugger;
+      // debugger;
       return {
 
         name: name,
