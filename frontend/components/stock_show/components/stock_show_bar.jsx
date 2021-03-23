@@ -15,8 +15,9 @@ class StockShowBar extends React.Component {
 
 	constructor(props) {
 		super(props);
-		this.state = { value: 'Shares', trade: 'Buy' };
+		this.state = { value: 'Shares', trade: 'Buy', amountToTrade: 0 };
 
+		this.updateTradeAmount = this.updateTradeAmount.bind(this);
 		this.handleChange = this.handleChange.bind(this);
 		this.changeTransactionType = this.changeTransactionType.bind(this);
 	}
@@ -42,6 +43,13 @@ class StockShowBar extends React.Component {
 		this.userId = this.props.currentUser.id
 		this.props.fetchUserStockInfo(this.userId);
 	}
+
+
+	updateTradeAmount(e) {
+		this.setState({amountToTrade: e.target.value})
+	}
+
+
 
 
 	render() {
@@ -98,7 +106,7 @@ class StockShowBar extends React.Component {
 						<div id="stock-show-shares">
 							<div>Shares</div>
 							<div className="flex-end">
-								<input type="number" placeholder="0" id="stock-show-shares-input" />
+								<input type="number" placeholder="0" id="stock-show-shares-input" value={this.state.amountToTrade} onChange={this.updateTradeAmount}/>
 							</div>
 						</div>
 
@@ -113,7 +121,7 @@ class StockShowBar extends React.Component {
 					<div id="stock-show-market-bar-order-bottom">
 						<div id="stock-show-market-estimated-cost">
 							<div>Estimated {(this.state.trade === 'Buy') ? ('Cost') : ('Credit')}</div>
-							<div className="flex-end">$$$$</div>
+							<div className="flex-end">{currencyFormatter.format(stockPrice * this.state.amountToTrade)}</div>
 						</div>
 						<div id="stock-show-market-review-order">
 							<button id="stock-show-market-review-order-button">Review Order</button>
