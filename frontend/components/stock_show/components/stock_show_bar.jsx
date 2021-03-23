@@ -74,12 +74,9 @@ class StockShowBar extends React.Component {
 						Buy {ticker}
 					</div>
 
-					{Object.keys(current_stocks).includes(ticker)? (<div onClick={this.changeTransactionType} value="Sell">
-						Sell {ticker}
-					</div>) : (<div></div>) }
+					{Object.keys(current_stocks).includes(ticker)? 
+					(<div onClick={this.changeTransactionType} value="Sell"> Sell {ticker}</div>) : (<div></div>) }
 
-
-					
 					<div id="filler2"></div>
 					<div>
 						{downArrow}
@@ -95,8 +92,8 @@ class StockShowBar extends React.Component {
 							<div className="flex-end" >
 
 								<select value={this.state.value} onChange={this.handleChange} id="stock-show-drop-down">
-									<option value="shares">Shares</option>
-									<option value="dollars">Dollars</option>
+									<option value="Shares">Shares</option>
+									<option value="Dollars">Dollars</option>
 								</select>
 
 
@@ -104,24 +101,36 @@ class StockShowBar extends React.Component {
 							</div>
 						</div>
 						<div id="stock-show-shares">
-							<div>Shares</div>
+							<div>{(this.state.value === 'Shares') ? (`Shares`) : (`Amount`)}</div>
 							<div className="flex-end">
 								<input type="number" placeholder="0" id="stock-show-shares-input" value={this.state.amountToTrade} onChange={this.updateTradeAmount}/>
 							</div>
 						</div>
-
-						<div id="stock-show-market-price">
-							<div id="stock-show-market-price-sub">Market Price</div>
-							<div className="flex-end">
-								{currencyFormatter.format(stockPrice)}
-							</div>
-						</div>
+						{(this.state.value === 'Shares') ? 
+							(
+							<div id="stock-show-market-price">
+								<div id="stock-show-market-price-sub">Market Price</div>
+								<div className="flex-end">{currencyFormatter.format(stockPrice)}</div>
+							</div>) : (null)}
+						
 					</div>
 
 					<div id="stock-show-market-bar-order-bottom">
 						<div id="stock-show-market-estimated-cost">
-							<div>Estimated {(this.state.trade === 'Buy') ? ('Cost') : ('Credit')}</div>
-							<div className="flex-end">{currencyFormatter.format(stockPrice * this.state.amountToTrade)}</div>
+							<div>
+								{(this.state.value === 'Shares') ? (
+									`Estimated ${(this.state.trade === 'Buy') ? ('Cost') : ('Credit')}`) : 
+									(`Est.Quantity`)}
+															
+							
+							</div>
+							<div className="flex-end">
+								{(this.state.value === 'Shares') ? 
+								(currencyFormatter.format(stockPrice * this.state.amountToTrade)) : 
+								(this.state.amountToTrade / stockPrice).toFixed(3)}
+							
+							
+							</div>
 						</div>
 						<div id="stock-show-market-review-order">
 							<button id="stock-show-market-review-order-button">Review Order</button>
