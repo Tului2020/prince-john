@@ -9,6 +9,7 @@ class Graph extends React.Component {
     // debugger
     super(props);
     this.userHistory = null;
+    this.userHistoryCalculator = this.userHistoryCalculator.bind(this)
     window.addEventListener('resize', () => {
       this.clearGraph();
       this.graphData();
@@ -47,8 +48,20 @@ class Graph extends React.Component {
   userHistoryCalculator() {
     let { history, current_stocks } = this.props
     if (current_stocks && Object.keys(current_stocks).length === Object.keys(history).length) {
-      let userHistory = [];
-      debugger
+      let stockNames = Object.keys(history)
+      let userHistory = history[stockNames[0]].map(({date}) => date)
+
+      stockNames.forEach(stockName => {
+        userHistory.forEach(userHistoryObj => {
+          let userStockPrice;
+          if (!userHistoryObj.price) {
+
+          }
+
+        })
+      })
+
+      
     }
 
     
