@@ -87,8 +87,6 @@ class Graph extends React.Component {
       .attr("width", width)
       .attr("height", height)
       .append("g")
-    // .attr("transform", "translate(0, 0)");
-
 
 
     var cities = [{
@@ -135,7 +133,6 @@ class Graph extends React.Component {
 
     var lines = document.getElementsByClassName('line');
 
-    //d3.select('.mouse-per-line')[0][0].__data__.values
     var mousePerLine = mouseG.selectAll('.mouse-per-line')
       .data(cities)
       .enter()
@@ -171,7 +168,8 @@ class Graph extends React.Component {
 
         d3.selectAll(".mouse-per-line")
           .attr("transform", function (d, i) {
-            let { date, price } = d.values[(data.length - 1) - Math.round(mouse[0] / width * (data.length - 1))]
+            // let { date, price } = d.values[(data.length - 1) - Math.round(mouse[0] / width * (data.length - 1))]
+            let { date, price } = d.values[Math.round(mouse[0] / width * (data.length - 1))]
 
             var beginning = 0,
               end = lines[i].getTotalLength(),
