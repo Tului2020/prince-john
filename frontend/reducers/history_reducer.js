@@ -1,23 +1,43 @@
 import * as d3 from 'd3';
 import { STOCK_HISTORY } from "../actions/history_actions";
 
-const dataParser = (myData) => {
-  return d3.csv.parse(myData).map(el => {
-    let price = (parseFloat(el.open) + parseFloat(el.close)).toFixed(2) / 2;
+const dataParser = (myData, ticker) => {
+  let parsedData = d3.csv.parse(myData);
+  let date = parsedData[0].timestamp.slice(0, 10);
+  let marketOpen = new Date(`${date} 09:30:00`);
+  let marketClose = new Date(`${date} 18:30:00`);
+  let parsedDataObj = {};
+  let previousHourTracker = new Date(`${date} 09:25:00`);
+  let hourTracker = new Date(`${date} 09:30:00`);
+
+
+  parsedData.forEach(el => {
     let date = d3.time.format("%Y-%m-%d %H:%M:%S").parse(el.timestamp);
-    return { date, price }
+    if (marketOpen <= date && date <= marketClose) {
+      let price = (parseFloat(el.open) + parseFloat(el.close)).toFixed(2) / 2;
+      parsedDataObj[date] = price;
+    }
   })
+
+  while (hourTracker <= marketClose) {
+    let hourTrackerPrice = parsedDataObj[hourTracker]
+    if (!hourTrackerPrice) {
+      parsedDataObj[hourTracker] = parsedDataObj[previousHourTracker]
+    }
+    hourTracker = new Date(hourTracker.setMinutes(hourTracker.getMinutes() + 5))
+    previousHourTracker = new Date(previousHourTracker.setMinutes(previousHourTracker.getMinutes() + 5))
+  }
+  return parsedDataObj
 }
 
 
 
-const historyReducer = (state={}, action) => {
+const historyReducer = (state = {}, action) => {
   Object.freeze(state);
 
   switch (action.type) {
     case STOCK_HISTORY:
-      debuggera
-      return Object.assign({}, state, {[action.ticker]: dataParser(action.stockHistory)})
+      return Object.assign({}, state, { [action.ticker]: dataParser(action.stockHistory, action.ticker) })
     default:
       return state
   }
