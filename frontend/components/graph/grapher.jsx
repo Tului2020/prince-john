@@ -48,7 +48,7 @@ class Graph extends React.Component {
   userHistoryCalculator() {
     let { history, current_stocks, balance } = this.props
     if (current_stocks && Object.keys(current_stocks).length <= Object.keys(history).length) {
-      let stockNames = Object.keys(history)
+      let stockNames = Object.keys(current_stocks)
       let userHistory = history[stockNames[0]].map(({ date }) => ({ date }))
 
       stockNames.forEach(stockName => {
@@ -112,6 +112,7 @@ class Graph extends React.Component {
       .append("g")
 
 
+    // debugger
     var cities = [{
       name: 'price',
       values: data.map(d => ({
