@@ -1,7 +1,7 @@
 import * as d3 from 'd3';
 import { STOCK_HISTORY } from "../actions/history_actions";
 
-const dataParser = (myData, ticker) => {
+const dataParser = (myData) => {
   let parsedData = d3.csv.parse(myData);
   let date = parsedData[0].timestamp.slice(0, 10);
   let marketOpen = new Date(`${date} 09:30:00`);
@@ -27,7 +27,11 @@ const dataParser = (myData, ticker) => {
     hourTracker = new Date(hourTracker.setMinutes(hourTracker.getMinutes() + 5))
     previousHourTracker = new Date(previousHourTracker.setMinutes(previousHourTracker.getMinutes() + 5))
   }
-  return parsedDataObj
+
+  
+  // nned to fix issues with going from array to object
+
+  return Object.keys(parsedDataObj).map(date => {date, price: parsedDataObj[date]})
 }
 
 
@@ -37,7 +41,7 @@ const historyReducer = (state = {}, action) => {
 
   switch (action.type) {
     case STOCK_HISTORY:
-      return Object.assign({}, state, { [action.ticker]: dataParser(action.stockHistory, action.ticker) })
+      return Object.assign({}, state, { [action.ticker]: dataParser(action.stockHistory) })
     default:
       return state
   }
