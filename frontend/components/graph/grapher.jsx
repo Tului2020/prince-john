@@ -91,18 +91,16 @@ class Graph extends React.Component {
 
 
 
-    var cities = ['price'].map(name => {
-      // debugger;
-      return {
+    var cities = [{
+      name: 'price',
+      values: data.map(d => ({
+        date: d.date,
+        price: +d['price']
+      }))
+    }];
 
-        name: name,
-        values: data.map(d => ({
-          date: d.date,
-          price: +d[name]
-        }))
-      }
+    // debugger
 
-    });
 
 
     x.domain(d3.extent(data, d => d.date));

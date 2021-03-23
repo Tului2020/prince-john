@@ -31,8 +31,18 @@ const dataParser = (myData) => {
   
   // nned to fix issues with going from array to object
 
-  return Object.keys(parsedDataObj).map(date => ({date, price: parsedDataObj[date]}))
+  return Object.keys(parsedDataObj).map(date => ({date: new Date(date), price: parsedDataObj[date]}))
 }
+
+
+// const dataParser = (myData) => {
+//   return d3.csv.parse(myData).map(el => {
+//     let price = (parseFloat(el.open) + parseFloat(el.close)).toFixed(2) / 2;
+//     let date = d3.time.format("%Y-%m-%d %H:%M:%S").parse(el.timestamp);
+//     return { date, price }
+//   })
+// }
+
 
 
 
