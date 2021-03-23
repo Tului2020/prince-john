@@ -45,17 +45,16 @@ class StockShowBar extends React.Component {
 
 
 	render() {
-		let stockAmount;
-		let { current_stocks, ticker } = this.props
+		let stockAmount = 0;
+		let stockPrice = 0;
+		let { current_stocks, ticker, history } = this.props
+		// debugger
 
-		if (current_stocks) {
 
-
-			Object.keys(current_stocks).forEach(name => {
-				if (name === ticker) {
-					stockAmount = current_stocks[name]
-				}
-			})
+		if (history[ticker]) {
+			stockAmount = current_stocks[ticker];
+			stockPrice = history[ticker][108].price
+			// debugger
 		}
 
 
@@ -106,9 +105,7 @@ class StockShowBar extends React.Component {
 						<div id="stock-show-market-price">
 							<div id="stock-show-market-price-sub">Market Price</div>
 							<div className="flex-end">
-
-								{/* This is where the market price from API will go!!!!!!!!!! */}
-
+								{currencyFormatter.format(stockPrice)}
 							</div>
 						</div>
 					</div>
@@ -143,9 +140,10 @@ class StockShowBar extends React.Component {
 
 
 
-const mSTP = state => ({
-	current_stocks: state.entities.stocks.current_stocks || {},
-	currentUser: state.entities.users[state.session.currentUserId],
+const mSTP = ({entities, session}) => ({
+	current_stocks: entities.stocks.current_stocks,
+	currentUser: entities.users[session.currentUserId],
+	history: entities.history,
 })
 
 const mDTP = (dispatch) => ({
