@@ -14,7 +14,7 @@ const currencyFormatter = new Intl.NumberFormat('en-US', {
 class StockShowUserInfo extends React.Component {
 
 	statusCalculator() {
-		let {stock_history, ticker, current_stocks} = this.props;
+		let {stock_history, ticker, current_stocks, history} = this.props;
 		
 		let stockAvgCost = 0;
 		let stockPortDiversity = 0;
@@ -23,20 +23,35 @@ class StockShowUserInfo extends React.Component {
 		let stockTodayReturn = 0;
 		let stockTotalReturn = 0;
 
-		if (!stock_history) return {stockAvgCost, stockPortDiversity, stockMarketValue, stockTotalCost, stockTodayReturn, stockTotalReturn }
+		if (!stock_history || Object.keys(history).length === 0) return {stockAvgCost, stockPortDiversity, stockMarketValue, stockTotalCost, stockTodayReturn, stockTotalReturn }
 
-		debugger
+		let beginningUnitPrice = history[ticker][0].price;
+		let currentUnitPrice = history[ticker][108].price;
+		let currentShares = current_stocks[ticker];
+		// debugger
 
 		Object.keys(stock_history).forEach(stock_info => {
 			let stock = stock_history[stock_info]
-			
 			if (stock.ticker === ticker) {	
 				stockTotalCost += (stock.amount * stock.unit_price);
-
 			}
 		})
 
+
+		
+		stockMarketValue = currentUnitPrice * currentShares
+		stockTotalReturn = `${((stockMarketValue - stockTotalCost) / stockTotalCost * 100).toFixed(2)}%`
+		stockTodayReturn = `${((currentUnitPrice - beginningUnitPrice) / beginningUnitPrice * 100).toFixed(2)}%`
+
+		let portfolioValue = Object.keys(current_stocks)
+			.map(ticker => history[ticker][108].price * current_stocks[ticker])
+			.reduce((acc, el) => acc + el)
+
+		stockPortDiversity = (stockMarketValue / portfolioValue * 100).toFixed(2)
+
+		// 
 		stockAvgCost = currencyFormatter.format(stockTotalCost / current_stocks[ticker])
+		stockMarketValue = currencyFormatter.format(stockMarketValue)
 		stockTotalCost = currencyFormatter.format(stockTotalCost)
 		return { stockAvgCost, stockPortDiversity, stockMarketValue, stockTotalCost, stockTodayReturn, stockTotalReturn }
 	}

@@ -47,8 +47,11 @@ class Graph extends React.Component {
 
   userHistoryCalculator() {
     let { history, current_stocks, balance } = this.props
-    if (current_stocks && Object.keys(current_stocks).length <= Object.keys(history).length) {
+    let currentStocksLength = Object.keys(current_stocks).length
+
+    if (currentStocksLength > 0 && currentStocksLength <= Object.keys(history).length) {
       let stockNames = Object.keys(current_stocks)
+      // debugger
       let userHistory = history[stockNames[0]].map(({ date }) => ({ date }))
 
       stockNames.forEach(stockName => {
@@ -192,6 +195,7 @@ class Graph extends React.Component {
         d3.selectAll(".mouse-per-line")
           .attr("transform", function (d, i) {
             // let { date, price } = d.values[(data.length - 1) - Math.round(mouse[0] / width * (data.length - 1))]
+            // debugger
             let { date, price } = d.values[Math.round(mouse[0] / width * (data.length - 1))]
 
             var beginning = 0,
