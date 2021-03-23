@@ -7,9 +7,9 @@ const dataParser = (myData) => {
   let marketOpen = new Date(`${date} 09:30:00`);
   let marketClose = new Date(`${date} 18:30:00`);
   let parsedDataObj = {};
-  // let previousHourTracker = new Date(`${date} 09:25:00`);
-  let hourTracker = new Date(`${date} 09:30:00`);
+  
   let retArr = [];
+  let missingPricesIndex = [];
 
 
   parsedData.forEach(el => {
@@ -20,32 +20,57 @@ const dataParser = (myData) => {
     }
   })
 
-  while (hourTracker <= marketClose) {
-    // debugger
+  for (let i = 0; i < 109; i ++) {
+    let date = new Date(marketOpen);
+    date = new Date(date.setMinutes(date.getMinutes() + 5 * i))
 
-    let hourTrackerPrice = parsedDataObj[hourTracker]
-    if (hourTrackerPrice) {
-      retArr.push({date: new Date(hourTracker), price: hourTrackerPrice})
+    let price = parsedDataObj[date]
+    if (price) {
+      retArr.push({date, price})
     } else {
-      retArr.push({date: new Date(hourTracker)})
+      retArr.push({date})
+      missingPricesIndex.push(i)
     }
-
-    
-
-
-  //   if (!hourTrackerPrice) {
-  //     parsedDataObj[hourTracker] = parsedDataObj[previousHourTracker]
-  //   }
-    hourTracker = new Date(hourTracker.setMinutes(hourTracker.getMinutes() + 5))
-  //   previousHourTracker = new Date(previousHourTracker.setMinutes(previousHourTracker.getMinutes() + 5))
-  //   // if (!parsedDataObj[previousHourTracker]) parsedDataObj[previousHourTracker] = parsedDataObj[hourTracker]
   }
 
-  debugger
+  missingPricesIndex.forEach(idx => {
+    let priceInterpolated = false;
+    let delta = 1
+
+    while (!priceInterpolated) {
+      if (idx + delta <= 108) {
+        if (retArr[idx + delta].price) {
+          retArr[idx].price = retArr[idx + delta].price
+          priceInterpolated = true;
+        }
+      } else {
+        if (retArr[idx - delta].price) {
+          retArr[idx].price = retArr[idx - delta].price
+          priceInterpolated = true;
+        }
+      }
+      delta += 1
+    }
+
+  })
+
+
+  
+  // while (hourTracker <= marketClose) {
+  //   let hourTrackerPrice = parsedDataObj[hourTracker]
+  //   if (hourTrackerPrice) {
+  //     retArr.push({date: new Date(hourTracker), price: hourTrackerPrice})
+  //   } else {
+  //     retArr.push({date: new Date(hourTracker)})
+  //   }
+  //   hourTracker = new Date(hourTracker.setMinutes(hourTracker.getMinutes() + 5))
+  // }
+
+  // debugger
   // nned to fix issues with going from array to object
 
-  return Object.keys(parsedDataObj).map(date => ({date: new Date(date), price: parsedDataObj[date]}))
-  // return retArr
+  // return Object.keys(parsedDataObj).map(date => ({date: new Date(date), price: parsedDataObj[date]}))
+  return retArr
 }
 
 
