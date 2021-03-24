@@ -11,7 +11,7 @@ body {
 
 #stock-show-main {
   margin-top: 35px;
-  border: 1px solid red;
+  // border: 1px solid red;
   height: 90vh;
   width: 60vw;
   display: flex;
@@ -38,7 +38,7 @@ body {
 }
 
 #stock-show-graph {
-  border: 1px solid red;
+  // border: 1px solid red;
   // height: 51%;
   // width: 100%;
 }
@@ -74,7 +74,7 @@ body {
 
 
 #stock-show-upcoming-activity {
-  border: 1px solid red;
+  // border: 1px solid red;
   height: 19%;
   width: 100%;
 }
@@ -92,13 +92,13 @@ body {
 .stock-show-market-bar-comp {
   height: 50px;
   width: 100%;
-  border: 1px solid red;
+  // border: 1px solid red;
 }
 
 #stock-show-market-bar-button {
   height: 80px;
   width: 100%;
-  border: 1px solid red;
+  // border: 1px solid red;
 }
 
 
@@ -136,15 +136,23 @@ body {
   justify-content: flex-end;
 }
 
+
+#stock-show-shares {
+  border: 1px solid blue;
+  width: 90%;
+  height: 100%;
+}
+
+
 #stock-show-shares-input {
-  width: 60%;
-  height: 70%;
+  width: 40%;
+  // height: 100%;
   border-style: solid;
   border-width: 1px;
   border-radius: 4px;
   text-align: right;
   padding-right: 8px;
-  -webkit-appearance: none;
+  // -webkit-appearance: none;
 }
 
 input::-webkit-outer-spin-button,
@@ -197,38 +205,43 @@ input::-webkit-inner-spin-button {
 }
 
 #stock-show-market-bar-order-top {
-  // border: 1px solid red;
-  height: 50%;
-  width: 80%;
+  // border: 1px solid blue;
+  height: 100%;
+  width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-    
+  align-items: center;
+  // justify-content: space-around;
+  
 }
 
 #stock-show-market-bar-order-top > div {
   // border: 1px solid red;
-  height: 30%;
+  width: 90%;
+  height: 100%;
   display: flex;
   flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
 }
-
-#stock-show-market-price-sub {
-  color: #00C805
-}
-
-
-
 
 #stock-show-market-bar-order-top > div > div {
   // border: 1px solid blue;
-  height: 100%;
+  height: 90%;
   width: 50%;
   font-size: 13.5px;
   display: flex;
   align-items: center;
+  
 }
 
+
+
+
+
+#stock-show-market-price-sub {
+  color: #00C805
+}
 
 #stock-show-market-bar-order-bottom {
   // border: 1px solid red;

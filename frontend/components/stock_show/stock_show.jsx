@@ -39,7 +39,7 @@ class StockShow extends React.Component {
           </div>
 
           <div id="stock-show-right">
-            <StockShowBarCotainer ticker={this.props.ticker}/>
+            <StockShowBarCotainer2 ticker={this.props.ticker}/>
 
           </div>
         </div>

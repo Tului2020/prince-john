@@ -15,7 +15,7 @@ class StockShowBar extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = { value: 'Shares', trade: 'Buy', amountToTrade: 0 };
+    this.state = { value: 'Shares', trade: 'Buy', amountToTrade: '' };
 
     this.updateTradeAmount = this.updateTradeAmount.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -51,7 +51,7 @@ class StockShowBar extends React.Component {
 
 
 
-  buySellDiv() {
+  componentOne() {
     let { current_stocks, ticker, history } = this.props
 
     return (
@@ -68,6 +68,72 @@ class StockShowBar extends React.Component {
         </div>
       </>)
   }
+
+  componentTwo() {
+    return (
+      <div id="stock-show-market-bar-order-top">
+        <div id="stock-show-invest-in">
+          <div>Invest In</div>
+          <div className="flex-end" >
+
+            <select value={this.state.value} onChange={this.handleChange} id="stock-show-drop-down">
+              <option value="Shares">Shares</option>
+              <option value="Dollars">Dollars</option>
+            </select>
+
+          </div>
+        </div>
+      </div>
+    )
+  }
+
+  componentThree() {
+    return (
+
+      <div id="stock-show-shares">
+        <div>{(this.state.value === 'Shares') ? (`Shares`) : (`Amount`)}</div>
+        <div className="flex-end">
+          <input type="number" placeholder="0" id="stock-show-shares-input" value={this.state.amountToTrade} onChange={this.updateTradeAmount} />
+        </div>
+      </div>
+    				// {
+      // (this.state.value === 'Shares') ?
+      // (
+      //   <div id="stock-show-market-price">
+      //     <div id="stock-show-market-price-sub">Market Price</div>
+      //     <div className="flex-end">{currencyFormatter.format(stockPrice)}</div>
+      //   </div>) : (null)
+    // }
+
+    			// </div >
+
+    )
+  }
+
+
+  componentFour() {
+
+  }
+
+  componentFive() {
+
+  }
+
+  componentSix() {
+
+  }
+
+  componentSeven() {
+
+  }
+
+
+
+
+
+
+
+
 
 
 
@@ -86,9 +152,9 @@ class StockShowBar extends React.Component {
 
     return (
       <div id="stock-show-market-bar">
-        <div className='stock-show-market-bar-comp bottom-border'>{this.buySellDiv()}</div>
-        <div className='stock-show-market-bar-comp'></div>
-        <div className='stock-show-market-bar-comp'></div>
+        <div className='stock-show-market-bar-comp bottom-border'>{this.componentOne()}</div>
+        <div className='stock-show-market-bar-comp'>{this.componentTwo()}</div>
+        <div className='stock-show-market-bar-comp'>{this.componentThree()}</div>
         <div className='stock-show-market-bar-comp'></div>
         <div className='stock-show-market-bar-comp'></div>
         <div id='stock-show-market-bar-button'></div>
@@ -103,36 +169,9 @@ class StockShowBar extends React.Component {
 
 
 
-    // 		<div id="stock-show-market-bar-order" className="bottom-border">
-
-    // 			<div id="stock-show-market-bar-order-top" className="bottom-border">
-    // 				<div id="stock-show-invest-in">
-    // 					<div>Invest In</div>
-    // 					<div className="flex-end" >
-
-    // 						<select value={this.state.value} onChange={this.handleChange} id="stock-show-drop-down">
-    // 							<option value="Shares">Shares</option>
-    // 							<option value="Dollars">Dollars</option>
-    // 						</select>
 
 
 
-    // 					</div>
-    // 				</div>
-    // 				<div id="stock-show-shares">
-    // 					<div>{(this.state.value === 'Shares') ? (`Shares`) : (`Amount`)}</div>
-    // 					<div className="flex-end">
-    // 						<input type="number" placeholder="0" id="stock-show-shares-input" value={this.state.amountToTrade} onChange={this.updateTradeAmount}/>
-    // 					</div>
-    // 				</div>
-    // 				{(this.state.value === 'Shares') ? 
-    // 					(
-    // 					<div id="stock-show-market-price">
-    // 						<div id="stock-show-market-price-sub">Market Price</div>
-    // 						<div className="flex-end">{currencyFormatter.format(stockPrice)}</div>
-    // 					</div>) : (null)}
-
-    // 			</div>
 
     // 			<div id="stock-show-market-bar-order-bottom">
     // 				<div id="stock-show-market-estimated-cost">
