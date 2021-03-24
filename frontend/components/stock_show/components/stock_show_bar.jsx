@@ -14,7 +14,7 @@ const currencyFormatter = new Intl.NumberFormat('en-US', {
 class StockShowBar extends React.Component {
 	constructor(props) {
 		super(props);
-		this.state = { value: 'Shares', trade: 'Sell', amountToTrade: '' };
+		this.state = { value: 'Shares', trade: 'Buy', amountToTrade: '' };
 		this.updateTradeAmount = this.updateTradeAmount.bind(this);
 		this.valueChange = this.valueChange.bind(this);
 		this.changeTransactionType = this.changeTransactionType.bind(this);
@@ -154,11 +154,11 @@ class StockShowBar extends React.Component {
 				
 
 				if (estimatedCost > balance) {
-					this.displayBuyError();
-					console.log('Insufficient Funds')
-				
+					this.displayBuyError();				
+				} else {
+					this.displaySuccess();
 				}
-				// actions need to go here
+
 				return
 
 			case 'Sell':
@@ -173,9 +173,9 @@ class StockShowBar extends React.Component {
 				let creditBack = sharesToSell * stockPrice
 				if (stockAmount < sharesToSell) {
 					this.displaySellError(stockAmount, stockPrice, creditBack);
+				} else {
+					this.displaySuccess();
 				}
-				// actions need to go here
-
 				return
 		}
 	}
@@ -212,7 +212,6 @@ class StockShowBar extends React.Component {
 			secondMessage.innerHTML = `You currently only own ${currencyFormatter.format(stockPrice * stockAmount)} of ${this.props.ticker} which means you cannot sell ${currencyFormatter.format(creditBack)}. Instead, you can sell all your shares.`
 		}
 
-		// You can only sell up to 145.445694 shares of QYLD.
 		htmlElement.appendChild(firstMessage)
 		htmlElement.appendChild(secondMessage)
 		htmlElement.appendChild(backButton)
@@ -223,7 +222,35 @@ class StockShowBar extends React.Component {
 	}
 
 	displayBuyError() {
+		let htmlElement = document.getElementById('stock-show-market-bar-button')
+		while (htmlElement.firstChild) htmlElement.firstChild.remove()
+		let firstMessage = document.createElement('div')
+		firstMessage.classList.add('bold-font')
 
+
+		let secondMessage = document.createElement('div')
+
+
+		let depositFundsButton = document.createElement('button')
+		depositFundsButton.id = 'stock-show-market-review-order-button'
+		depositFundsButton.innerHTML = 'Deposit Funds'
+		depositFundsButton.onclick = () => {
+			while (htmlElement.firstChild) htmlElement.firstChild.remove()
+			let reviewOrderButton = document.createElement('button')
+			reviewOrderButton.id = 'stock-show-market-review-order-button'
+			reviewOrderButton.innerHTML = 'Review Order'
+			// reviewOrderButton.onclick = () => {this.reviewOrderAction(stockPrice, stockAmount)}
+
+			htmlElement.appendChild(reviewOrderButton)
+		}
+
+		firstMessage.innerHTML = 'Not Enough Buying Power'
+		secondMessage.innerHTML = `You don’t have enough buying power for this order.`
+
+
+		htmlElement.appendChild(firstMessage)
+		htmlElement.appendChild(secondMessage)
+		htmlElement.appendChild(depositFundsButton)
 	}
 
 
