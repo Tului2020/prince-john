@@ -28,7 +28,7 @@ body {
 #stock-show-right {
   // border: 1px solid red;
   height: 100%;
-  width: 25%;
+  width: 30%;
 }
 
 #stock-show-graph-div {
@@ -37,11 +37,11 @@ body {
   width: 100%;
 }
 
-#stock-show-graph {
+// #stock-show-graph {
   // border: 1px solid red;
   // height: 51%;
   // width: 100%;
-}
+// }
 
 .stock-show-user-info {
   height: 29%;
@@ -58,17 +58,24 @@ body {
 
 }
 
+
+
 .stock-show-market-bar-comp {
+  height: 50px;
+  width: 100%;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-around;
+
 }
 
 .stock-show-market-bar-comp > div {
   height: 100%;
   display: flex;
   align-items: center;
+  flex-direction: row;
+  
 }
 
 
@@ -89,15 +96,14 @@ body {
   flex-direction: column;
 }
 
-.stock-show-market-bar-comp {
-  height: 50px;
-  width: 100%;
-  // border: 1px solid red;
-}
+
 
 #stock-show-market-bar-button {
   height: 80px;
   width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   // border: 1px solid red;
 }
 
@@ -139,7 +145,7 @@ body {
 
 #stock-show-shares {
   border: 1px solid blue;
-  width: 90%;
+  width: 80%;
   height: 100%;
 }
 
@@ -217,7 +223,7 @@ input::-webkit-inner-spin-button {
 
 #stock-show-market-bar-order-top > div {
   // border: 1px solid red;
-  width: 90%;
+  width: 80%;
   height: 100%;
   display: flex;
   flex-direction: row;
@@ -236,6 +242,13 @@ input::-webkit-inner-spin-button {
 }
 
 
+#stock-show-market-price{
+  display: flex;
+  justify-content: space-between;
+  // border: 1px solid green;
+  width: 80%;
+}
+
 
 
 
@@ -244,11 +257,13 @@ input::-webkit-inner-spin-button {
 }
 
 #stock-show-market-bar-order-bottom {
-  // border: 1px solid red;
-  height: 45%;
-  width: 80%;
+  border: 1px solid red;
+  height: inherit;
+  width: 90%;
   font-size: 12px;
   font-weight: bold;
+  // display: flex;
+  // justify-content: center;
 }
 
 
@@ -256,6 +271,7 @@ input::-webkit-inner-spin-button {
   height: 40%;
   display: flex;
   justify-content: space-between;
+  width: 80%;
 }
 
 #stock-show-market-review-order {
@@ -272,6 +288,7 @@ input::-webkit-inner-spin-button {
   background-color: #00C805;
   border: none;
   border-radius: 5px;
+  height: 50%;
   // font-family: sans-serif
 }
 

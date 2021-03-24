@@ -97,13 +97,7 @@ class StockShowBar extends React.Component {
         </div>
       </div>
     				// {
-      // (this.state.value === 'Shares') ?
-      // (
-      //   <div id="stock-show-market-price">
-      //     <div id="stock-show-market-price-sub">Market Price</div>
-      //     <div className="flex-end">{currencyFormatter.format(stockPrice)}</div>
-      //   </div>) : (null)
-    // }
+
 
     			// </div >
 
@@ -111,20 +105,56 @@ class StockShowBar extends React.Component {
   }
 
 
-  componentFour() {
+  componentFour(stockPrice) {
+    return (
+      <>
+        {(this.state.value === 'Shares') ?
+         (
+          <div id="stock-show-market-price">
+            <div id="stock-show-market-price-sub">Market Price</div>
+            <div>{currencyFormatter.format(stockPrice)}</div>
+          </div>) : (null)
+        }
+      </>
 
+    )
   }
 
-  componentFive() {
+  componentFive(stockPrice) {
+    return (
+      <div id="stock-show-market-estimated-cost">
+        <div>
+          {(this.state.value === 'Shares') ? (
+            `Estimated ${(this.state.trade === 'Buy') ? ('Cost') : ('Credit')}`) : 
+            (`Est.Quantity`)}
+
+        </div>
+        <div>
+          {(this.state.value === 'Shares') ? 
+          (currencyFormatter.format(stockPrice * this.state.amountToTrade)) : 
+          (this.state.amountToTrade / stockPrice).toFixed(3)}
+
+        </div>
+      </div>
+    )
 
   }
 
   componentSix() {
-
+    return (
+        // <div id="stock-show-market-review-order">
+          <button id="stock-show-market-review-order-button">Review Order</button>
+        // </div>
+    )
   }
 
-  componentSeven() {
-
+  componentSeven(stockAmount) {
+    return (    		
+      <div id="stock-show-market-bar-buy-power">
+        {(this.state.trade === 'Sell')? 
+          (`${stockAmount? stockAmount : 0} Shares Available -  Sell All`) :
+          (`${currencyFormatter.format(this.props.currentUser.balance)} Buying Power Available`)}
+      </div>)
   }
 
 
@@ -155,58 +185,29 @@ class StockShowBar extends React.Component {
         <div className='stock-show-market-bar-comp bottom-border'>{this.componentOne()}</div>
         <div className='stock-show-market-bar-comp'>{this.componentTwo()}</div>
         <div className='stock-show-market-bar-comp'>{this.componentThree()}</div>
-        <div className='stock-show-market-bar-comp'></div>
-        <div className='stock-show-market-bar-comp'></div>
-        <div id='stock-show-market-bar-button'></div>
-        <div className='stock-show-market-bar-comp'></div>
+        <div className='stock-show-market-bar-comp bottom-border'>{this.componentFour(stockPrice)}</div>
+        <div className='stock-show-market-bar-comp'>{this.componentFive(stockPrice)}</div>
+        <div id='stock-show-market-bar-button' className='bottom-border'>{this.componentSix()}</div>
+        <div className='stock-show-market-bar-comp'>{this.componentSeven(stockAmount)}</div>
       </div>
     )
 
 
     // debugger
     // return (
-    // 	<div id="stock-show-market-bar">
 
 
 
 
 
 
-
-    // 			<div id="stock-show-market-bar-order-bottom">
-    // 				<div id="stock-show-market-estimated-cost">
-    // 					<div>
-    // 						{(this.state.value === 'Shares') ? (
-    // 							`Estimated ${(this.state.trade === 'Buy') ? ('Cost') : ('Credit')}`) : 
-    // 							(`Est.Quantity`)}
-
-
-    // 					</div>
-    // 					<div className="flex-end">
-    // 						{(this.state.value === 'Shares') ? 
-    // 						(currencyFormatter.format(stockPrice * this.state.amountToTrade)) : 
-    // 						(this.state.amountToTrade / stockPrice).toFixed(3)}
-
-
-    // 					</div>
-    // 				</div>
-    // 				<div id="stock-show-market-review-order">
-    // 					<button id="stock-show-market-review-order-button">Review Order</button>
-    // 				</div>
-
-
-    // 			</div>
 
     // 		</div>
 
 
 
 
-    // 		<div id="stock-show-market-bar-buy-power">
-    // 			{(this.state.trade === 'Sell')? 
-    // 				(`${stockAmount? stockAmount : 0} Shares Available -  Sell All`) :
-    // 				(`${currencyFormatter.format(this.props.currentUser.balance)} Buying Power Available`)}
-    // 		</div>
+
     // 	</div>)
   }
 
