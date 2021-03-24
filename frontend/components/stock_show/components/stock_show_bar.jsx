@@ -258,10 +258,15 @@ class StockShowBar extends React.Component {
 
 		let firstMessage = document.createElement('div')
 
-		let backButton = document.createElement('button')
-		backButton.id = 'stock-show-market-review-order-button'
-		backButton.innerHTML = 'Back'
-		backButton.onclick = () => {
+		let sellButton = document.createElement('button')
+		sellButton.id = 'stock-show-market-review-order-button'
+		sellButton.innerHTML = 'Sell'
+
+		let editButton = document.createElement('button')
+		editButton.id = 'stock-show-market-review-order-button'
+		editButton.innerHTML = 'Edit'
+
+		editButton.onclick = () => {
 			while (htmlElement.firstChild) htmlElement.firstChild.remove()
 			let reviewOrderButton = document.createElement('button')
 			reviewOrderButton.id = 'stock-show-market-review-order-button'
@@ -279,13 +284,9 @@ class StockShowBar extends React.Component {
 		}
 
 		htmlElement.appendChild(firstMessage)
-		htmlElement.appendChild(backButton)
+		htmlElement.appendChild(sellButton)
+		htmlElement.appendChild(editButton)
 	}
-
-
-	// You are placing a good for day market order to sell $40.00 of AZN based on the current market price of $48.85. You will sell approximately 0.818833 shares. Your order will be placed after the market opens.
-	// You are placing a good for day limit order to sell 10 shares of AZN. Your pending order, if executed, will execute at $49.00 per share or better.
-
 
 
 
