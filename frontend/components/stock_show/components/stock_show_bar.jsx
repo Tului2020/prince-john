@@ -154,7 +154,7 @@ class StockShowBar extends React.Component {
 				
 
 				if (estimatedCost > balance) {
-					this.displayBuyError();				
+					this.displayBuyError(stockPrice, stockAmount);				
 				} else {
 					this.displaySuccess();
 				}
@@ -221,7 +221,7 @@ class StockShowBar extends React.Component {
 
 	}
 
-	displayBuyError() {
+	displayBuyError(stockPrice, stockAmount) {
 		let htmlElement = document.getElementById('stock-show-market-bar-button')
 		while (htmlElement.firstChild) htmlElement.firstChild.remove()
 		let firstMessage = document.createElement('div')
@@ -234,12 +234,20 @@ class StockShowBar extends React.Component {
 		let depositFundsButton = document.createElement('button')
 		depositFundsButton.id = 'stock-show-market-review-order-button'
 		depositFundsButton.innerHTML = 'Deposit Funds'
-		depositFundsButton.onclick = () => {
+
+
+
+
+		let dismissButton = document.createElement('button')
+		dismissButton.id = 'stock-show-market-review-order-button'
+		dismissButton.innerHTML = 'Dismiss'
+
+		dismissButton.onclick = () => {
 			while (htmlElement.firstChild) htmlElement.firstChild.remove()
 			let reviewOrderButton = document.createElement('button')
 			reviewOrderButton.id = 'stock-show-market-review-order-button'
 			reviewOrderButton.innerHTML = 'Review Order'
-			// reviewOrderButton.onclick = () => {this.reviewOrderAction(stockPrice, stockAmount)}
+			reviewOrderButton.onclick = () => {this.reviewOrderAction(stockPrice, stockAmount)}
 
 			htmlElement.appendChild(reviewOrderButton)
 		}
@@ -251,6 +259,7 @@ class StockShowBar extends React.Component {
 		htmlElement.appendChild(firstMessage)
 		htmlElement.appendChild(secondMessage)
 		htmlElement.appendChild(depositFundsButton)
+		htmlElement.appendChild(dismissButton)
 	}
 
 
