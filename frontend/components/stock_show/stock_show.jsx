@@ -2,6 +2,7 @@ import React from 'react';
 import GraphContainer from '../graph/grapher';
 import LoggedInNavBarContainer from '../nav_bar/logged_in/nav_bar_logged_in_container';
 import StockShowBarCotainer from './components/stock_show_bar';
+import StockShowBarCotainer2 from './components/stock_show_bar2';
 import StockShowUserInfoContainer from './components/stock_show_user_info';
 
 
@@ -38,7 +39,7 @@ class StockShow extends React.Component {
           </div>
 
           <div id="stock-show-right">
-            <StockShowBarCotainer ticker={this.props.ticker}/>
+            <StockShowBarCotainer2 ticker={this.props.ticker}/>
 
           </div>
         </div>
