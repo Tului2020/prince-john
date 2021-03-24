@@ -18,8 +18,8 @@ class StockShowBar extends React.Component {
 		this.updateTradeAmount = this.updateTradeAmount.bind(this);
 		this.valueChange = this.valueChange.bind(this);
 		this.changeTransactionType = this.changeTransactionType.bind(this);
+		this.reviewOrderAction = this.reviewOrderAction.bind(this)
 	}
-
 
 	valueChange(event) {
 		this.setState({ value: event.target.value });
@@ -35,32 +35,26 @@ class StockShowBar extends React.Component {
 		}
 	}
 
-
-
-
 	UNSAFE_componentWillMount() {
 		this.userId = this.props.currentUser.id
 		this.props.fetchUserStockInfo(this.userId);
 	}
 
-
 	updateTradeAmount(e) {
 		this.setState({ amountToTrade: e.target.value })
 	}
 
-
-
 	componentOne(current_stocks, ticker) {
 		return (
 			<>
-				<div className="stock-show-chosen-transaction" onClick={this.changeTransactionType} value="Buy" >
+				<div className="stock-show-chosen-transaction cursor-pointer" onClick={this.changeTransactionType} value="Buy" >
 					Buy {ticker}
 				</div >
 				{Object.keys(current_stocks).includes(ticker) ?
-					(<div onClick={this.changeTransactionType} value="Sell"> Sell {ticker}</div>) : (<div></div>)}
+					(<div className="cursor-pointer" onClick={this.changeTransactionType} value="Sell"> Sell {ticker}</div>) : (<div></div>)}
 
 				{/* <div id="filler2"></div> */}
-				<div>
+				<div className="cursor-pointer">
 					{downArrow}
 				</div>
 			</>)
@@ -92,7 +86,6 @@ class StockShowBar extends React.Component {
 			</div>
 		)
 	}
-
 
 	componentFour(stockPrice) {
 		return (
@@ -129,10 +122,10 @@ class StockShowBar extends React.Component {
 
 	}
 
-	componentSix() {
+	componentSix(stockPrice, stockAmount) {
 		return (
 			// <div id="stock-show-market-review-order">
-			<button id="stock-show-market-review-order-button">Review Order</button>
+			<button id="stock-show-market-review-order-button" onClick={() => this.reviewOrderAction(stockPrice, stockAmount)}>Review Order</button>
 			// </div>
 		)
 	}
@@ -148,6 +141,51 @@ class StockShowBar extends React.Component {
 
 
 
+	reviewOrderAction(stockPrice, stockAmount) {
+		switch (this.state.trade) {
+			case 'Buy':
+				let estimatedCost;
+				let balance = parseFloat(this.props.currentUser.balance)
+
+				if (this.state.value === 'Shares') {
+					estimatedCost = parseFloat((stockPrice * this.state.amountToTrade).toFixed(2))
+				} else {
+					estimatedCost = parseFloat(this.state.amountToTrade)
+				}
+				
+
+				if (estimatedCost > balance) console.log('Insufficient Funds')
+				// actions need to go here
+				return
+
+			case 'Sell':
+				let sharesToSell;
+
+				if (this.state.value === 'Shares') {
+					sharesToSell = this.state.amountToTrade;
+				} else {
+					sharesToSell = this.state.amountToTrade / stockPrice
+				}
+
+				let creditBack = sharesToSell * stockPrice
+				if (stockAmount < sharesToSell) console.log('Trying to sell shares you dont have')
+				// actions need to go here
+
+				return
+		}
+	}
+
+	displayBuyError() {
+		
+	}
+
+	displaySuccess() {
+
+	}
+
+	displaySellError() {
+
+	}
 
 
 
@@ -176,7 +214,7 @@ class StockShowBar extends React.Component {
 				<div className='stock-show-market-bar-comp'>{this.componentThree()}</div>
 				{this.componentFour(stockPrice)}
 				<div className='stock-show-market-bar-comp top-border bold-font'>{this.componentFive(stockPrice)}</div>
-				<div id='stock-show-market-bar-button'>{this.componentSix()}</div>
+				<div id='stock-show-market-bar-button'>{this.componentSix(stockPrice, stockAmount)}</div>
 				<div className='stock-show-market-bar-comp top-border'>{this.componentSeven(stockAmount)}</div>
 			</div>
 		)
@@ -190,12 +228,13 @@ const mSTP = ({ entities, session }) => ({
 	current_stocks: entities.stocks.current_stocks,
 	currentUser: entities.users[session.currentUserId],
 	history: entities.history,
+	// balance: entities
 })
 
 const mDTP = (dispatch) => ({
 	fetchUserStockInfo: (userId) => dispatch(fetchUserStockInfo(userId))
 })
 
-const StockShowBarCotainer2 = connect(mSTP, mDTP)(StockShowBar);
+const StockShowBarCotainer = connect(mSTP, mDTP)(StockShowBar);
 
-export default StockShowBarCotainer2
+export default StockShowBarCotainer
