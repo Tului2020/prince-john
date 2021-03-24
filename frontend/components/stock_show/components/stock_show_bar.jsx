@@ -14,7 +14,7 @@ const currencyFormatter = new Intl.NumberFormat('en-US', {
 class StockShowBar extends React.Component {
 	constructor(props) {
 		super(props);
-		this.state = { value: 'Shares', trade: 'Sell', amountToTrade: '' };
+		this.state = { value: 'Shares', trade: 'Buy', amountToTrade: '' };
 		this.updateTradeAmount = this.updateTradeAmount.bind(this);
 		this.valueChange = this.valueChange.bind(this);
 		this.changeTransactionType = this.changeTransactionType.bind(this);
@@ -172,7 +172,7 @@ class StockShowBar extends React.Component {
 
 				let creditBack = sharesToSell * stockPrice
 				if (stockAmount < sharesToSell) {
-					this.displaySellError(stockAmount);
+					this.displaySellError(stockAmount, stockPrice);
 					console.log('Trying to sell shares you dont have')}
 				// actions need to go here
 
@@ -180,7 +180,7 @@ class StockShowBar extends React.Component {
 		}
 	}
 
-	displaySellError(stockAmount) {
+	displaySellError(stockAmount, stockPrice) {
 		let htmlElement = document.getElementById('stock-show-market-bar-button')
 		while (htmlElement.firstChild) htmlElement.firstChild.remove()
 		let firstMessage = document.createElement('div')
@@ -193,6 +193,16 @@ class StockShowBar extends React.Component {
 		let backButton = document.createElement('button')
 		backButton.id = 'stock-show-market-review-order-button'
 		backButton.innerHTML = 'Back'
+		backButton.onclick = () => {
+			while (htmlElement.firstChild) htmlElement.firstChild.remove()
+			let reviewOrderButton = document.createElement('button')
+			reviewOrderButton.id = 'stock-show-market-review-order-button'
+			reviewOrderButton.innerHTML = 'Review Order'
+			reviewOrderButton.onclick = () => {this.reviewOrderAction(stockPrice, stockAmount)}
+
+			htmlElement.appendChild(reviewOrderButton)
+		}
+
 
 		// You can only sell up to 145.445694 shares of QYLD.
 		htmlElement.appendChild(firstMessage)
