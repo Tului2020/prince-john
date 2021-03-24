@@ -88,35 +88,32 @@ class StockShowBar extends React.Component {
   }
 
   componentThree() {
-    return (
+    let isShares = (this.state.value === 'Shares')
 
+    return (
       <div id="stock-show-shares">
-        <div>{(this.state.value === 'Shares') ? (`Shares`) : (`Amount`)}</div>
+        <div>{(isShares) ? (`Shares`) : (`Amount`)}</div>
         <div className="flex-end">
-          <input type="number" placeholder="0" id="stock-show-shares-input" value={this.state.amountToTrade} onChange={this.updateTradeAmount} />
+          <input type="number" placeholder={(isShares) ? (`0`) : (currencyFormatter.format(0))} id="stock-show-shares-input" value={this.state.amountToTrade} onChange={this.updateTradeAmount} />
         </div>
       </div>
-    				// {
-
-
-    			// </div >
-
     )
   }
 
 
   componentFour(stockPrice) {
     return (
-      <>
+        <>
         {(this.state.value === 'Shares') ?
          (
-          <div id="stock-show-market-price">
-            <div id="stock-show-market-price-sub">Market Price</div>
-            <div>{currencyFormatter.format(stockPrice)}</div>
-          </div>) : (null)
+          <div className='stock-show-market-bar-comp'>
+            <div id="stock-show-market-price">
+              <div id="stock-show-market-price-sub">Market Price</div>
+              <div>{currencyFormatter.format(stockPrice)}</div>
+            </div></div>) : (null)
         }
       </>
-
+      
     )
   }
 
@@ -185,10 +182,10 @@ class StockShowBar extends React.Component {
         <div className='stock-show-market-bar-comp bottom-border'>{this.componentOne()}</div>
         <div className='stock-show-market-bar-comp'>{this.componentTwo()}</div>
         <div className='stock-show-market-bar-comp'>{this.componentThree()}</div>
-        <div className='stock-show-market-bar-comp bottom-border'>{this.componentFour(stockPrice)}</div>
-        <div className='stock-show-market-bar-comp'>{this.componentFive(stockPrice)}</div>
-        <div id='stock-show-market-bar-button' className='bottom-border'>{this.componentSix()}</div>
-        <div className='stock-show-market-bar-comp'>{this.componentSeven(stockAmount)}</div>
+        {this.componentFour(stockPrice)}
+        <div className='stock-show-market-bar-comp top-border'>{this.componentFive(stockPrice)}</div>
+        <div id='stock-show-market-bar-button'>{this.componentSix()}</div>
+        <div className='stock-show-market-bar-comp top-border'>{this.componentSeven(stockAmount)}</div>
       </div>
     )
 
