@@ -100,19 +100,7 @@ class StockShowBar extends React.Component {
     // debugger
     // return (
     // 	<div id="stock-show-market-bar">
-    // 		<div id="stock-show-market-bar-trade" className="bottom-border">
-    // 			<div className="stock-show-chosen-transaction" onClick={this.changeTransactionType} value="Buy">
-    // 				Buy {ticker}
-    // 			</div>
 
-    // 			{Object.keys(current_stocks).includes(ticker)? 
-    // 			(<div onClick={this.changeTransactionType} value="Sell"> Sell {ticker}</div>) : (<div></div>) }
-
-    // 			<div id="filler2"></div>
-    // 			<div>
-    // 				{downArrow}
-    // 			</div>
-    // 		</div>
 
 
     // 		<div id="stock-show-market-bar-order" className="bottom-border">
