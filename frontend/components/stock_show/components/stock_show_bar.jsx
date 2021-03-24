@@ -14,7 +14,7 @@ const currencyFormatter = new Intl.NumberFormat('en-US', {
 class StockShowBar extends React.Component {
 	constructor(props) {
 		super(props);
-		this.state = { value: 'Shares', trade: 'Buy', amountToTrade: '' };
+		this.state = { value: 'Shares', trade: 'Sell', amountToTrade: '' };
 		this.updateTradeAmount = this.updateTradeAmount.bind(this);
 		this.valueChange = this.valueChange.bind(this);
 		this.changeTransactionType = this.changeTransactionType.bind(this);
@@ -172,23 +172,23 @@ class StockShowBar extends React.Component {
 
 				let creditBack = sharesToSell * stockPrice
 				if (stockAmount < sharesToSell) {
-					this.displaySellError(stockAmount, stockPrice);
-					console.log('Trying to sell shares you dont have')}
+					this.displaySellError(stockAmount, stockPrice, creditBack);
+				}
 				// actions need to go here
 
 				return
 		}
 	}
 
-	displaySellError(stockAmount, stockPrice) {
+	displaySellError(stockAmount, stockPrice, creditBack) {
 		let htmlElement = document.getElementById('stock-show-market-bar-button')
 		while (htmlElement.firstChild) htmlElement.firstChild.remove()
 		let firstMessage = document.createElement('div')
 		firstMessage.classList.add('bold-font')
-		firstMessage.innerHTML = 'Not Enough Shares'
+
 
 		let secondMessage = document.createElement('div')
-		secondMessage.innerHTML = `You can only sell up to ${stockAmount} shares of ${this.props.ticker}`
+
 
 		let backButton = document.createElement('button')
 		backButton.id = 'stock-show-market-review-order-button'
@@ -203,6 +203,14 @@ class StockShowBar extends React.Component {
 			htmlElement.appendChild(reviewOrderButton)
 		}
 
+
+		if (this.state.value === 'Shares') {
+			firstMessage.innerHTML = 'Not Enough Shares'
+			secondMessage.innerHTML = `You can only sell up to ${stockAmount} shares of ${this.props.ticker}`
+		} else {
+			firstMessage.innerHTML = 'Not Enough Invested'
+			secondMessage.innerHTML = `You currently only own ${currencyFormatter.format(stockPrice * stockAmount)} of ${this.props.ticker} which means you cannot sell ${currencyFormatter.format(creditBack)}. Instead, you can sell all your shares.`
+		}
 
 		// You can only sell up to 145.445694 shares of QYLD.
 		htmlElement.appendChild(firstMessage)
