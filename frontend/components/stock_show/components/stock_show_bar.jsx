@@ -156,7 +156,7 @@ class StockShowBar extends React.Component {
 				if (estimatedCost > balance) {
 					this.displayBuyError(stockPrice, stockAmount);				
 				} else {
-					this.displaySuccess();
+					// this.displaySuccess();
 				}
 
 				return
@@ -174,7 +174,7 @@ class StockShowBar extends React.Component {
 				if (stockAmount < sharesToSell) {
 					this.displaySellError(stockAmount, stockPrice, creditBack);
 				} else {
-					this.displaySuccess();
+					this.displaySuccessSell(stockPrice, stockAmount, creditBack);
 				}
 				return
 		}
@@ -183,12 +183,11 @@ class StockShowBar extends React.Component {
 	displaySellError(stockAmount, stockPrice, creditBack) {
 		let htmlElement = document.getElementById('stock-show-market-bar-button')
 		while (htmlElement.firstChild) htmlElement.firstChild.remove()
+
 		let firstMessage = document.createElement('div')
 		firstMessage.classList.add('bold-font')
 
-
 		let secondMessage = document.createElement('div')
-
 
 		let backButton = document.createElement('button')
 		backButton.id = 'stock-show-market-review-order-button'
@@ -199,10 +198,8 @@ class StockShowBar extends React.Component {
 			reviewOrderButton.id = 'stock-show-market-review-order-button'
 			reviewOrderButton.innerHTML = 'Review Order'
 			reviewOrderButton.onclick = () => {this.reviewOrderAction(stockPrice, stockAmount)}
-
 			htmlElement.appendChild(reviewOrderButton)
 		}
-
 
 		if (this.state.value === 'Shares') {
 			firstMessage.innerHTML = 'Not Enough Shares'
@@ -217,26 +214,19 @@ class StockShowBar extends React.Component {
 		htmlElement.appendChild(backButton)
 	}
 
-	displaySuccess() {
-
-	}
 
 	displayBuyError(stockPrice, stockAmount) {
 		let htmlElement = document.getElementById('stock-show-market-bar-button')
 		while (htmlElement.firstChild) htmlElement.firstChild.remove()
+		
 		let firstMessage = document.createElement('div')
 		firstMessage.classList.add('bold-font')
 
-
 		let secondMessage = document.createElement('div')
-
 
 		let depositFundsButton = document.createElement('button')
 		depositFundsButton.id = 'stock-show-market-review-order-button'
 		depositFundsButton.innerHTML = 'Deposit Funds'
-
-
-
 
 		let dismissButton = document.createElement('button')
 		dismissButton.id = 'stock-show-market-review-order-button'
@@ -248,13 +238,11 @@ class StockShowBar extends React.Component {
 			reviewOrderButton.id = 'stock-show-market-review-order-button'
 			reviewOrderButton.innerHTML = 'Review Order'
 			reviewOrderButton.onclick = () => {this.reviewOrderAction(stockPrice, stockAmount)}
-
 			htmlElement.appendChild(reviewOrderButton)
 		}
 
 		firstMessage.innerHTML = 'Not Enough Buying Power'
 		secondMessage.innerHTML = `You don’t have enough buying power for this order.`
-
 
 		htmlElement.appendChild(firstMessage)
 		htmlElement.appendChild(secondMessage)
@@ -264,7 +252,39 @@ class StockShowBar extends React.Component {
 
 
 
+	displaySuccessSell(stockPrice, stockAmount, creditBack) {
+		let htmlElement = document.getElementById('stock-show-market-bar-button')
+		while (htmlElement.firstChild) htmlElement.firstChild.remove()
 
+		let firstMessage = document.createElement('div')
+
+		let backButton = document.createElement('button')
+		backButton.id = 'stock-show-market-review-order-button'
+		backButton.innerHTML = 'Back'
+		backButton.onclick = () => {
+			while (htmlElement.firstChild) htmlElement.firstChild.remove()
+			let reviewOrderButton = document.createElement('button')
+			reviewOrderButton.id = 'stock-show-market-review-order-button'
+			reviewOrderButton.innerHTML = 'Review Order'
+			reviewOrderButton.onclick = () => {this.reviewOrderAction(stockPrice, stockAmount)}
+			htmlElement.appendChild(reviewOrderButton)
+		}
+
+		if (this.state.value === 'Shares') {
+			firstMessage.innerHTML = `You are placing a good for day limit order to sell ${this.props.amountToTrade} shares of ${this.props.ticker}. Your pending order will execute at ${currencyFormatter.format(stockPrice)} per share`
+
+		} else {
+			let shares = (this.state.amountToTrade / stockPrice).toFixed(4)
+			firstMessage.innerHTML = `You are placing a good for day market order to sell ${this.state.amountToTrade} of ${this.props.ticker} based on the current market price of ${currencyFormatter.format(stockPrice)}. You will sell approximately ${shares} shares.`
+		}
+
+		htmlElement.appendChild(firstMessage)
+		htmlElement.appendChild(backButton)
+	}
+
+
+	// You are placing a good for day market order to sell $40.00 of AZN based on the current market price of $48.85. You will sell approximately 0.818833 shares. Your order will be placed after the market opens.
+	// You are placing a good for day limit order to sell 10 shares of AZN. Your pending order, if executed, will execute at $49.00 per share or better.
 
 
 
