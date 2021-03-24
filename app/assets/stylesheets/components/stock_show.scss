@@ -55,7 +55,6 @@ body {
   border-radius: 4px;
   height: 81%;
   width: 48%;
-
 }
 
 
@@ -67,7 +66,7 @@ body {
   flex-direction: row;
   align-items: center;
   justify-content: space-around;
-
+  // border: 1px solid green;
 }
 
 .stock-show-market-bar-comp > div {
@@ -147,18 +146,21 @@ body {
   // border: 1px solid blue;
   width: 80%;
   height: 100%;
+  display: flex;
+  justify-content: space-between;
+
 }
 
 
 #stock-show-shares-input {
   width: 40%;
-  // height: 100%;
+  height: 60%;
   border-style: solid;
   border-width: 1px;
   border-radius: 4px;
   text-align: right;
   padding-right: 8px;
-  // -webkit-appearance: none;
+  -webkit-appearance: none;
 }
 
 input::-webkit-outer-spin-button,

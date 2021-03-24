@@ -93,9 +93,7 @@ class StockShowBar extends React.Component {
     return (
       <div id="stock-show-shares">
         <div>{(isShares) ? (`Shares`) : (`Amount`)}</div>
-        <div className="flex-end">
           <input type="number" placeholder={(isShares) ? (`0`) : (currencyFormatter.format(0))} id="stock-show-shares-input" value={this.state.amountToTrade} onChange={this.updateTradeAmount} />
-        </div>
       </div>
     )
   }
