@@ -14,7 +14,7 @@ const currencyFormatter = new Intl.NumberFormat('en-US', {
 class StockShowBar extends React.Component {
 	constructor(props) {
 		super(props);
-		this.state = { value: 'Shares', trade: 'Buy', amountToTrade: '' };
+		this.state = { value: 'Shares', trade: 'Sell', amountToTrade: '' };
 		this.updateTradeAmount = this.updateTradeAmount.bind(this);
 		this.valueChange = this.valueChange.bind(this);
 		this.changeTransactionType = this.changeTransactionType.bind(this);
@@ -47,11 +47,11 @@ class StockShowBar extends React.Component {
 	componentOne(current_stocks, ticker) {
 		return (
 			<>
-				<div className="stock-show-chosen-transaction cursor-pointer" onClick={this.changeTransactionType} value="Buy" >
+				<div className={`${(this.state.trade === 'Buy')? ('stock-show-chosen-transaction ') : (null)}cursor-pointer`} onClick={this.changeTransactionType} value="Buy" >
 					Buy {ticker}
 				</div >
 				{Object.keys(current_stocks).includes(ticker) ?
-					(<div className="cursor-pointer" onClick={this.changeTransactionType} value="Sell"> Sell {ticker}</div>) : (<div></div>)}
+					(<div className={`${(this.state.trade === 'Sell')? ('stock-show-chosen-transaction ') : (null)}cursor-pointer`} onClick={this.changeTransactionType} value="Sell"> Sell {ticker}</div>) : (<div></div>)}
 
 				{/* <div id="filler2"></div> */}
 				<div className="cursor-pointer">
@@ -124,9 +124,7 @@ class StockShowBar extends React.Component {
 
 	componentSix(stockPrice, stockAmount) {
 		return (
-			// <div id="stock-show-market-review-order">
 			<button id="stock-show-market-review-order-button" onClick={() => this.reviewOrderAction(stockPrice, stockAmount)}>Review Order</button>
-			// </div>
 		)
 	}
 
@@ -142,6 +140,7 @@ class StockShowBar extends React.Component {
 
 
 	reviewOrderAction(stockPrice, stockAmount) {
+		// debugger
 		switch (this.state.trade) {
 			case 'Buy':
 				let estimatedCost;
@@ -154,7 +153,11 @@ class StockShowBar extends React.Component {
 				}
 				
 
-				if (estimatedCost > balance) console.log('Insufficient Funds')
+				if (estimatedCost > balance) {
+					this.displayBuyError();
+					console.log('Insufficient Funds')
+				
+				}
 				// actions need to go here
 				return
 
@@ -168,22 +171,40 @@ class StockShowBar extends React.Component {
 				}
 
 				let creditBack = sharesToSell * stockPrice
-				if (stockAmount < sharesToSell) console.log('Trying to sell shares you dont have')
+				if (stockAmount < sharesToSell) {
+					this.displaySellError(stockAmount);
+					console.log('Trying to sell shares you dont have')}
 				// actions need to go here
 
 				return
 		}
 	}
 
-	displayBuyError() {
-		
+	displaySellError(stockAmount) {
+		let htmlElement = document.getElementById('stock-show-market-bar-button')
+		while (htmlElement.firstChild) htmlElement.firstChild.remove()
+		let firstMessage = document.createElement('div')
+		firstMessage.classList.add('bold-font')
+		firstMessage.innerHTML = 'Not Enough Shares'
+
+		let secondMessage = document.createElement('div')
+		secondMessage.innerHTML = `You can only sell up to ${stockAmount} shares of ${this.props.ticker}`
+
+		let backButton = document.createElement('button')
+		backButton.id = 'stock-show-market-review-order-button'
+		backButton.innerHTML = 'Back'
+
+		// You can only sell up to 145.445694 shares of QYLD.
+		htmlElement.appendChild(firstMessage)
+		htmlElement.appendChild(secondMessage)
+		htmlElement.appendChild(backButton)
 	}
 
 	displaySuccess() {
 
 	}
 
-	displaySellError() {
+	displayBuyError() {
 
 	}
 
