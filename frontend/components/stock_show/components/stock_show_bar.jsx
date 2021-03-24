@@ -1,7 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { fetchUserStockInfo } from '../../../actions/stock_actions';
+import { fetchUserStockInfo, updateUserStockInfo } from '../../../actions/stock_actions';
 import { downArrow } from './../stock_show_icons';
+
 
 const currencyFormatter = new Intl.NumberFormat('en-US', {
 	style: 'currency',
@@ -261,6 +262,14 @@ class StockShowBar extends React.Component {
 		let sellButton = document.createElement('button')
 		sellButton.id = 'stock-show-market-review-order-button'
 		sellButton.innerHTML = 'Sell'
+		sellButton.onclick = () => {
+
+			// WORKING OVER HERE, NEED TO CONNECT SELLING TO BACK END
+			// debugger
+			// this.props.updateUserStockInfo()
+			//userId, ticker, amount, unitPrice
+		}
+
 
 		let editButton = document.createElement('button')
 		editButton.id = 'stock-show-market-review-order-button'
@@ -328,7 +337,8 @@ const mSTP = ({ entities, session }) => ({
 })
 
 const mDTP = (dispatch) => ({
-	fetchUserStockInfo: (userId) => dispatch(fetchUserStockInfo(userId))
+	fetchUserStockInfo: (userId) => dispatch(fetchUserStockInfo(userId)),
+	updateUserStockInfo: (userId, ticker, amount, unitPrice) => dispatch(updateUserStockInfo(userId, ticker, amount, unitPrice))
 })
 
 const StockShowBarCotainer = connect(mSTP, mDTP)(StockShowBar);
