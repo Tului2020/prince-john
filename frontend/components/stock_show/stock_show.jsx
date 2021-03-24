@@ -8,7 +8,6 @@ import StockShowUserInfoContainer from './components/stock_show_user_info';
 
 class StockShow extends React.Component {
   render() {
-
     return (
       <div id="stock-show-page">
         <LoggedInNavBarContainer ticker={this.props.ticker} />
