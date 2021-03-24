@@ -214,7 +214,8 @@ class Graph extends React.Component {
             }
 
             d3.select(this).select('#price-indicator')
-              .text(`${date.getHours()}:${date.getMinutes()} ${price}`)
+              // .text(`${date.getHours()}:${date.getMinutes()} ${price}`)
+              .text(date.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true }))
             return "translate(" + (mouse[0] - 20) + "," + 10 + ")";
           });
       });

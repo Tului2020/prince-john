@@ -51,9 +51,7 @@ class StockShowBar extends React.Component {
 
 
 
-  componentOne() {
-    let { current_stocks, ticker, history } = this.props
-
+  componentOne(current_stocks, ticker) {
     return (
       <>
         <div className="stock-show-chosen-transaction" onClick={this.changeTransactionType} value="Buy" >
@@ -62,7 +60,7 @@ class StockShowBar extends React.Component {
         {Object.keys(current_stocks).includes(ticker) ?
           (<div onClick={this.changeTransactionType} value="Sell"> Sell {ticker}</div>) : (<div></div>)}
 
-        <div id="filler2"></div>
+        {/* <div id="filler2"></div> */}
         <div>
           {downArrow}
         </div>
@@ -177,11 +175,11 @@ class StockShowBar extends React.Component {
 
     return (
       <div id="stock-show-market-bar">
-        <div className='stock-show-market-bar-comp bottom-border'>{this.componentOne()}</div>
+        <div className='stock-show-market-bar-comp bottom-border bold-font'>{this.componentOne(current_stocks, ticker)}</div>
         <div className='stock-show-market-bar-comp'>{this.componentTwo()}</div>
         <div className='stock-show-market-bar-comp'>{this.componentThree()}</div>
         {this.componentFour(stockPrice)}
-        <div className='stock-show-market-bar-comp top-border'>{this.componentFive(stockPrice)}</div>
+        <div className='stock-show-market-bar-comp top-border bold-font'>{this.componentFive(stockPrice)}</div>
         <div id='stock-show-market-bar-button'>{this.componentSix()}</div>
         <div className='stock-show-market-bar-comp top-border'>{this.componentSeven(stockAmount)}</div>
       </div>
