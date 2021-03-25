@@ -147,9 +147,18 @@ class StockShowBar extends React.Component {
 	}
 
 	componentSix() {
-		return (
-			<button id="stock-show-market-review-order-button" onClick={this.reviewOrderAction}>Review Order</button>
-		)
+		let { amountToTrade, stockAmountOwned, stockUnitPrice, trade, value, errors } = this.state
+		let balance = parseFloat(this.props.currentUser.balance)
+		amountToTrade = parseFloat(amountToTrade)
+		// debugger
+
+		if (this.state.errors === null)	{
+			return (
+				<button id="stock-show-market-review-order-button" onClick={this.reviewOrderAction}>Review Order</button>
+			)
+		} else {
+			return ('Woohoo')
+		}
 	}
 
 	componentSeven() {
@@ -192,7 +201,7 @@ class StockShowBar extends React.Component {
 
 
 	render() {
-		console.log(this.state.errors)
+		// console.log(this.state.errors)
 		return (
 			<div id="stock-show-market-bar">
 				<div className='stock-show-market-bar-comp bottom-border bold-font'>{this.componentOne()}</div>
