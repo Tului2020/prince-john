@@ -96,7 +96,7 @@ class StockShowUserInfo extends React.Component {
 				<div id="stock-show-user-info-avg-cost-amount">{stockAvgCost}</div>
 				<div id="stock-show-user-info-avg-cost-shares" className='bottom-border'>
 					<div>Shares</div>
-					<div>{shares}</div>
+					<div>{shares.toFixed(3)}</div>
 				</div>
 				<div id="stock-show-user-info-avg-cost-today-return">
 					<div>Portfolio Diversity</div>

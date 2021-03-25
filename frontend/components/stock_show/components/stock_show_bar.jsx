@@ -125,24 +125,24 @@ class StockShowBar extends React.Component {
 
 	}
 
-	componentSix(stockPrice, stockAmount) {
+	componentSix(stockPrice, stockAmountOwned) {
 		return (
-			<button id="stock-show-market-review-order-button" onClick={() => this.reviewOrderAction(stockPrice, stockAmount)}>Review Order</button>
+			<button id="stock-show-market-review-order-button" onClick={() => this.reviewOrderAction(stockPrice, stockAmountOwned)}>Review Order</button>
 		)
 	}
 
-	componentSeven(stockAmount) {
+	componentSeven(stockAmountOwned) {
 		return (
 			<div id="stock-show-market-bar-buy-power">
 				{(this.state.trade === 'Sell') ?
-					(`${stockAmount ? stockAmount : 0} Shares Available -  Sell All`) :
+					(`${stockAmountOwned ? stockAmountOwned : 0} Shares Available -  Sell All`) :
 					(`${currencyFormatter.format(this.props.currentUser.balance)} Buying Power Available`)}
 			</div>)
 	}
 
 
 
-	reviewOrderAction(stockPrice, stockAmount) {
+	reviewOrderAction(stockPrice, stockAmountOwned) {
 		switch (this.state.trade) {
 			case 'Buy':
 				let estimatedCost;
@@ -155,7 +155,7 @@ class StockShowBar extends React.Component {
 				}
 				
 				if (estimatedCost > balance) {
-					this.displayBuyError(stockPrice, stockAmount);				
+					this.displayBuyError(stockPrice, stockAmountOwned);				
 				} else {
 					this.displaySuccessBuy(stockPrice);
 				}
@@ -172,10 +172,10 @@ class StockShowBar extends React.Component {
 				}
 
 				let creditBack = sharesToSell * stockPrice
-				if (stockAmount < sharesToSell) {
-					this.displaySellError(stockAmount, stockPrice, creditBack);
+				if (stockAmountOwned < sharesToSell) {
+					this.displaySellError(stockAmountOwned, stockPrice, creditBack);
 				} else {
-					this.displaySuccessSell(stockPrice, stockAmount);
+					this.displaySuccessSell(stockPrice, stockAmountOwned);
 				}
 		}
 	}
@@ -201,7 +201,7 @@ class StockShowBar extends React.Component {
 			let reviewOrderButton = document.createElement('button')
 			reviewOrderButton.id = 'stock-show-market-review-order-button'
 			reviewOrderButton.innerHTML = 'Review Order'
-			reviewOrderButton.onclick = () => {this.reviewOrderAction(stockPrice, stockAmount)}
+			reviewOrderButton.onclick = () => {this.reviewOrderAction(stockPrice, stockAmountOwned)}
 			htmlElement.appendChild(reviewOrderButton)
 		}
 
@@ -214,7 +214,7 @@ class StockShowBar extends React.Component {
 		}
 
 		htmlElement.appendChild(firstMessage)
-		htmlElement.appendChild(sellButton)
+		htmlElement.appendChild(buyButton)
 		htmlElement.appendChild(editButton)
 
 	}
@@ -223,7 +223,7 @@ class StockShowBar extends React.Component {
 
 
 
-	displaySellError(stockAmount, stockPrice, creditBack) {
+	displaySellError(stockAmountOwned, stockPrice, creditBack) {
 		let htmlElement = document.getElementById('stock-show-market-bar-button')
 		while (htmlElement.firstChild) htmlElement.firstChild.remove()
 
@@ -240,16 +240,16 @@ class StockShowBar extends React.Component {
 			let reviewOrderButton = document.createElement('button')
 			reviewOrderButton.id = 'stock-show-market-review-order-button'
 			reviewOrderButton.innerHTML = 'Review Order'
-			reviewOrderButton.onclick = () => {this.reviewOrderAction(stockPrice, stockAmount)}
+			reviewOrderButton.onclick = () => {this.reviewOrderAction(stockPrice, stockAmountOwned)}
 			htmlElement.appendChild(reviewOrderButton)
 		}
 
 		if (this.state.value === 'Shares') {
 			firstMessage.innerHTML = 'Not Enough Shares'
-			secondMessage.innerHTML = `You can only sell up to ${stockAmount} shares of ${this.props.ticker}`
+			secondMessage.innerHTML = `You can only sell up to ${stockAmountOwned} shares of ${this.props.ticker}`
 		} else {
 			firstMessage.innerHTML = 'Not Enough Invested'
-			secondMessage.innerHTML = `You currently only own ${currencyFormatter.format(stockPrice * stockAmount)} of ${this.props.ticker} which means you cannot sell ${currencyFormatter.format(creditBack)}. Instead, you can sell all your shares.`
+			secondMessage.innerHTML = `You currently only own ${currencyFormatter.format(stockPrice * stockAmountOwned)} of ${this.props.ticker} which means you cannot sell ${currencyFormatter.format(creditBack)}. Instead, you can sell all your shares.`
 		}
 
 		htmlElement.appendChild(firstMessage)
@@ -258,7 +258,7 @@ class StockShowBar extends React.Component {
 	}
 
 
-	displayBuyError(stockPrice, stockAmount) {
+	displayBuyError(stockPrice, stockAmountOwned) {
 		let htmlElement = document.getElementById('stock-show-market-bar-button')
 		while (htmlElement.firstChild) htmlElement.firstChild.remove()
 		
@@ -280,7 +280,7 @@ class StockShowBar extends React.Component {
 			let reviewOrderButton = document.createElement('button')
 			reviewOrderButton.id = 'stock-show-market-review-order-button'
 			reviewOrderButton.innerHTML = 'Review Order'
-			reviewOrderButton.onclick = () => {this.reviewOrderAction(stockPrice, stockAmount)}
+			reviewOrderButton.onclick = () => {this.reviewOrderAction(stockPrice, stockAmountOwned)}
 			htmlElement.appendChild(reviewOrderButton)
 		}
 
@@ -293,17 +293,22 @@ class StockShowBar extends React.Component {
 		htmlElement.appendChild(dismissButton)
 	}
 
-	buySellStock(stockPrice, stockAmount) {
+	buySellStock(stockPrice, stockAmountOwned) {
 		let userId = this.props.currentUser.id
 		let { ticker } = this.props
 		let tradeAmount = (this.state.trade === 'Buy') ? (parseFloat(this.state.amountToTrade)) : (-parseFloat(this.state.amountToTrade))
+		if (this.state.value === 'Dollars') {
+			tradeAmount /= stockPrice
+		}
+		// debugger
+
 		this.props.updateUserStockInfo(userId, ticker, tradeAmount, stockPrice)
 		// de
-		if (this.state.trade === 'Sell' && (stockAmount === this.state.amountToTrade)) this.setState({ trade: 'Buy' })
+		if (this.state.trade === 'Sell' && (stockAmountOwned === this.state.amountToTrade)) this.setState({ trade: 'Buy' })
 	}
 
 
-	displaySuccessSell(stockPrice, stockAmount) {
+	displaySuccessSell(stockPrice, stockAmountOwned) {
 		let htmlElement = document.getElementById('stock-show-market-bar-button')
 		while (htmlElement.firstChild) htmlElement.firstChild.remove()
 
@@ -312,7 +317,7 @@ class StockShowBar extends React.Component {
 		let sellButton = document.createElement('button')
 		sellButton.id = 'stock-show-market-review-order-button'
 		sellButton.innerHTML = 'Sell'
-		sellButton.onclick = () => this.buySellStock(stockPrice, stockAmount)
+		sellButton.onclick = () => this.buySellStock(stockPrice, stockAmountOwned)
 
 		let editButton = document.createElement('button')
 		editButton.id = 'stock-show-market-review-order-button'
@@ -323,7 +328,7 @@ class StockShowBar extends React.Component {
 			let reviewOrderButton = document.createElement('button')
 			reviewOrderButton.id = 'stock-show-market-review-order-button'
 			reviewOrderButton.innerHTML = 'Review Order'
-			reviewOrderButton.onclick = () => {this.reviewOrderAction(stockPrice, stockAmount)}
+			reviewOrderButton.onclick = () => {this.reviewOrderAction(stockPrice, stockAmountOwned)}
 			htmlElement.appendChild(reviewOrderButton)
 		}
 
@@ -343,14 +348,14 @@ class StockShowBar extends React.Component {
 
 
 	render() {
-		let stockAmount = 0;
+		let stockAmountOwned = 0;
 		let stockPrice = 0;
 		let { current_stocks, ticker, history } = this.props
 		// debugger
 
 
 		if (history[ticker]) {
-			stockAmount = current_stocks[ticker];
+			stockAmountOwned = current_stocks[ticker];
 			stockPrice = history[ticker][108].price
 			// debugger
 		}
@@ -362,8 +367,8 @@ class StockShowBar extends React.Component {
 				<div className='stock-show-market-bar-comp'>{this.componentThree()}</div>
 				{this.componentFour(stockPrice)}
 				<div className='stock-show-market-bar-comp top-border bold-font'>{this.componentFive(stockPrice)}</div>
-				<div id='stock-show-market-bar-button'>{this.componentSix(stockPrice, stockAmount)}</div>
-				<div className='stock-show-market-bar-comp top-border'>{this.componentSeven(stockAmount)}</div>
+				<div id='stock-show-market-bar-button'>{this.componentSix(stockPrice, stockAmountOwned)}</div>
+				<div className='stock-show-market-bar-comp top-border'>{this.componentSeven(stockAmountOwned)}</div>
 			</div>
 		)
 	}
