@@ -5,9 +5,9 @@ import { updatePortfolioValue } from './../../actions/portfolio_actions'
 
 
 const currencyFormatter = new Intl.NumberFormat('en-US', {
-	style: 'currency',
-	currency: 'USD',
-	minimumFractionDigits: 2
+  style: 'currency',
+  currency: 'USD',
+  minimumFractionDigits: 2
 })
 
 class Graph extends React.Component {
@@ -200,11 +200,21 @@ class Graph extends React.Component {
       .attr('height', height)
       .attr('fill', 'none')
       .attr('pointer-events', 'all')
-      .on('mouseout', () => { // on mouse out hide line and text
+      .on('mouseout', function (d, i) { // on mouse out hide line and text
         d3.select(".mouse-line")
           .style("opacity", "0");
         d3.selectAll(".mouse-per-line text")
-          .style("opacity", "0");
+          .style("opacity", "0")
+          .attr("transform", function (d, i) {
+            // debugger
+            let beginningPrice = d.values[0].price
+            let displayPrice = d.values[108].price
+            let displayReturn = ((displayPrice - beginningPrice) / beginningPrice * 100).toFixed(2)
+
+            document.getElementById('stock-show-graph-price').innerHTML = currencyFormatter.format(displayPrice)
+            document.getElementById('stock-show-graph-return-money').innerHTML = currencyFormatter.format(displayReturn * beginningPrice / 100)
+            document.getElementById('stock-show-graph-return-percent').innerHTML = `(${displayReturn}%)`
+          })
       })
       .on('mouseover', function () { // on mouse in show line and text
         d3.select(".mouse-line")
@@ -238,12 +248,13 @@ class Graph extends React.Component {
               else break; //position found
             }
 
-            // debugger
-            // this.props.updateDisplayValue(price)
-            let priceEl = document.getElementById('stock-show-graph-price')
-            if (priceEl) {
-              priceEl.innerHTML = currencyFormatter.format(price)
-            }
+            let beginningPrice = d.values[0].price
+            let displayPrice = price
+            let displayReturn = ((displayPrice - beginningPrice) / beginningPrice * 100).toFixed(2)
+
+            document.getElementById('stock-show-graph-price').innerHTML = currencyFormatter.format(displayPrice)
+            document.getElementById('stock-show-graph-return-money').innerHTML = currencyFormatter.format(displayReturn * beginningPrice / 100)
+            document.getElementById('stock-show-graph-return-percent').innerHTML = `(${displayReturn}%)`
 
             d3.select(this).select('#price-indicator')
               // .text(`${date.getHours()}:${date.getMinutes()} ${price}`)
@@ -260,7 +271,7 @@ class Graph extends React.Component {
 }
 
 
-const mSTP = ({entities, session}) => {
+const mSTP = ({ entities, session }) => {
   return {
     history: entities.history,
     current_stocks: entities.stocks.current_stocks,

@@ -18,29 +18,35 @@ class HomeLoggedIn extends React.Component {
   render() {
     // debugger
     return (
-    <div id="logged-in-home">
-      <LoggedInNavBarContainer/>
-      <div id="logged-in-bottom">
-        <div id="logged-in-left">
-          <div id="stock-show-graph-div">
-            <GraphContainer ticker={'homePage'}/>
+      <div id="logged-in-home">
+        <LoggedInNavBarContainer />
+        <div id="logged-in-bottom">
+          <div id="logged-in-left">
+            <div id="stock-show-graph-div">
+              <div id="stock-show-graph-price">{0}</div>
+              <div id="stock-show-graph-return">
+                <div id="stock-show-graph-return-money" className='bold-font'>{0}</div>
+                <div id="stock-show-graph-return-percent" className='bold-font'>({0}%)</div>
+                <div className='light-font'>Today</div>
+              </div>
+              <GraphContainer ticker={'homePage'} />
+            </div>
           </div>
-        </div>
-          
-        <div id="logged-in-right">
-          <StockBar/>
-        </div>
 
+          <div id="logged-in-right">
+            <StockBar />
+          </div>
+
+        </div>
       </div>
-    </div>
     )
   }
-} 
+}
 
 const mSTP = state => ({
   currentUser: state.entities.users[state.session.currentUserId],
   // stocks: state.entities.stocks
-}) 
+})
 
 
 const mDTP = (dispatch) => ({
