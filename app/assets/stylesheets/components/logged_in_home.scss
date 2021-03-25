@@ -4,7 +4,7 @@
   height: 91vh;
   display: flex;
   flex-direction: row;
-  margin-top: 10px;
+  margin-top: 50px;
 }
 
 #logged-in-left {
@@ -25,12 +25,30 @@
   // border: 1px solid red;
 }
 
+
+#home-stock-show-graph-div{
+  // border: 1px solid red;
+  height: 35%;
+  width: 100%;
+  display: flex;
+  // justify-content: center;
+  flex-direction: column;
+}
+
+
 #buying-power {
   // border: 1px solid blue;
+  margin-top: 6px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   height: 70px;
   font-weight: bold;
   font-size: 15px;
+}
+
+#buying-power:hover {
+  background-color: rgb(243, 243, 243);
+  border-radius: 5px;
+
 }

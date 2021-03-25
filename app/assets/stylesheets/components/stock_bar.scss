@@ -2,7 +2,7 @@
   margin-top: 25px;
   // border: 1px solid red;
   width: 100%;
-  height: 100%;
+  height: 90%;
   box-shadow: 0px 8px 24px rgb(173, 173, 173);
   border-radius: 6px;
   display: flex;
@@ -19,16 +19,11 @@
   // border: 1px solid red;
 }
 
-// .stock-amount {
-  // border: 1px solid red;
-//   // display: inline-block;
-//   // display: flex;
-//   // flex-direction: column;
-//   height: 16px;
-//   width: 50px;
-//   font-size: 13px;
-  // overflow: hidden;
-// }
+.stock-amount {
+  height: 16px;
+  width: 50px;
+  font-size: 13px;
+}
 
 
 #stock-bar > div {
@@ -104,6 +99,10 @@
   // border: 1px solid black;
   display: flex;
   justify-content: center;
+}
+
+.link-to-stock-show:hover {
+  background-color: rgb(240, 240, 240);
 }
 
 #owned-stocks > div:hover {

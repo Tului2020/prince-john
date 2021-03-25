@@ -150,13 +150,13 @@ class StockShowBar extends React.Component {
 		let { ticker, current_stocks} = this.props
 		let stockAmountOwned = current_stocks[ticker]
 
-		let balance = parseFloat(this.props.currentUser.balance)
+		// let balance = parseFloat(this.props.currentUser.balance)
 		amountToTrade = parseFloat(amountToTrade)
 
 
 		if (errors === null) {
 			return (
-				<button id="stock-show-market-review-order-button" onClick={this.reviewOrderAction}>Review Order</button>
+				<div><button id="stock-show-market-review-order-button" onClick={this.reviewOrderAction}>Review Order</button></div>
 			)
 		} else if (!errors) {
 			let shares = (value === 'Shares') ? (amountToTrade) : (amountToTrade / stockUnitPrice)
@@ -165,8 +165,8 @@ class StockShowBar extends React.Component {
 			return (
 				<>
 					<div>{`You are placing a good for day market order to ${trade.toLowerCase()} ${Math.abs(shares.toFixed(3))} shares of ${ticker}.`}</div>
-					<button id="stock-show-market-review-order-button" onClick={() => this.buySellStock(shares)}>{trade}</button>
-					<button id="stock-show-market-review-order-button" onClick={() => this.setState({errors: null})}>Edit</button>
+					<div><button id="stock-show-market-review-order-button" onClick={() => this.buySellStock(shares)}>{trade}</button></div>
+					<div><button id="stock-show-market-review-order-button" onClick={() => this.setState({errors: null})}>Edit</button></div>
 				</>
 			)
 		} else {
@@ -182,14 +182,14 @@ class StockShowBar extends React.Component {
 			} else {
 				firstMessage = 'Not Enough Buying Power'
 				secondMessage = `Please Deposit More Funds`
-				depositFundsButton = <button id="stock-show-market-review-order-button" onClick={() => console.log('Deposit Mo Money')}>Deposit Funds</button>
+				depositFundsButton = <div><button id="stock-show-market-review-order-button" onClick={() => console.log('Deposit Mo Money')}>Deposit Funds</button></div>
 			}
 			return (
 				<>
 					<div className='bold-font'>{firstMessage}</div>
 					<div>{secondMessage}</div>
 					{depositFundsButton}
-					<button id="stock-show-market-review-order-button" onClick={() => this.setState({errors: null})}>Back</button>
+					<div><button id="stock-show-market-review-order-button" onClick={() => this.setState({errors: null})}>Back</button></div>
 				</>
 			)
 		}

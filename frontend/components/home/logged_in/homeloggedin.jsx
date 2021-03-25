@@ -55,7 +55,7 @@ class HomeLoggedIn extends React.Component {
         <LoggedInNavBarContainer />
         <div id="logged-in-bottom">
           <div id="logged-in-left">
-            <div id="stock-show-graph-div" className='bottom-border'>
+            <div id="home-stock-show-graph-div" className='bottom-border'>
               <div id="stock-show-graph-price">{portfolioValueEnding}</div>
               <div id="stock-show-graph-return">
                 <div id="stock-show-graph-return-money" className='bold-font'>{portfolioReturnMoney}</div>

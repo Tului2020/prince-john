@@ -97,21 +97,22 @@ class Graph extends React.Component {
     let data;
     let width;
     let height;
+    let graphDivId = 'stock-show-graph-div'
 
     this.props.updatePortfolioValue(this.getPortfilioValue())
 
     if (ticker === 'homePage') {
       data = this.userHistoryCalculator();
+      graphDivId = 'home-' + graphDivId
     } else {
       data = history[ticker]
     }
 
-    width = document.getElementById('stock-show-graph-div').clientWidth;
-    // height = document.getElementById('stock-show-graph-div').clientHeight;
-    // width = 691;
+    
+    width = document.getElementById(graphDivId).clientWidth;
     height = 250;
-    let factor = 0.35;
-    // console.log([width, height])
+    let factor = 0.2;
+
 
 
     // x and y are functions that give linear positions with respect to width and height, respectively
