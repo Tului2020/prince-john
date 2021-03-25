@@ -47,14 +47,15 @@ class HomeLoggedIn extends React.Component {
 
   render() {
     let {portfolioValueEnding, portfolioReturnPercent, portfolioReturnMoney} = this.getPortfilioStatus();
-    
+    let balance  = parseFloat(this.props.currentUser.balance)
+    // debugger
 
     return (
       <div id="logged-in-home">
         <LoggedInNavBarContainer />
         <div id="logged-in-bottom">
           <div id="logged-in-left">
-            <div id="stock-show-graph-div">
+            <div id="stock-show-graph-div" className='bottom-border'>
               <div id="stock-show-graph-price">{portfolioValueEnding}</div>
               <div id="stock-show-graph-return">
                 <div id="stock-show-graph-return-money" className='bold-font'>{portfolioReturnMoney}</div>
@@ -63,6 +64,13 @@ class HomeLoggedIn extends React.Component {
               </div>
               <GraphContainer ticker={'homePage'} />
             </div>
+            <div id='buying-power' className='bottom-border'>
+              <div>Buying Power</div>
+              <div>{currencyFormatter.format(balance)}</div>
+            </div>
+
+
+
           </div>
 
           <div id="logged-in-right">
