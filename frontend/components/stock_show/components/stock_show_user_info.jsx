@@ -43,11 +43,14 @@ class StockShowUserInfo extends React.Component {
 		stockTotalReturn = `${((stockMarketValue - stockTotalCost) / stockTotalCost * 100).toFixed(2)}%`
 		stockTodayReturn = `${((currentUnitPrice - beginningUnitPrice) / beginningUnitPrice * 100).toFixed(2)}%`
 
-		let portfolioValue = Object.keys(current_stocks)
-			.map(ticker => history[ticker][108].price * current_stocks[ticker])
-			.reduce((acc, el) => acc + el)
-
-		stockPortDiversity = (stockMarketValue / portfolioValue * 100).toFixed(2)
+		// debugger
+		if (Object.keys(current_stocks).length > 0) {
+			let portfolioValue = Object.keys(current_stocks)
+				.map(ticker => history[ticker][108].price * current_stocks[ticker])
+				.reduce((acc, el) => acc + el)
+	
+			stockPortDiversity = (stockMarketValue / portfolioValue * 100).toFixed(2)
+		}
 
 		// 
 		stockAvgCost = currencyFormatter.format(stockTotalCost / current_stocks[ticker])

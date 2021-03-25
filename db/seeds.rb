@@ -11,8 +11,8 @@ user1 = User.create(password: "123456", username: "demolicious@demo.com", first_
 user2 = User.create(password: "123456", username: "tgantulga@ucdavis.edu", first_name: 'Tului', last_name: 'Gantulga', balance: 10000)
 
 Stock.destroy_all
-user1stock1 = Stock.create(user_id: user1.id, ticker: 'TSLA', amount: 100, unit_price: 800)
+# user1stock1 = Stock.create(user_id: user1.id, ticker: 'TSLA', amount: 100, unit_price: 800)
 user1stock2 = Stock.create(user_id: user1.id, ticker: 'QYLD', amount: 100, unit_price: 23)
-user1stock3 = Stock.create(user_id: user1.id, ticker: 'OZON', amount: 100, unit_price: 60)
-user1stock4 = Stock.create(user_id: user1.id, ticker: 'TSLA', amount: -50, unit_price: 100)
+# user1stock3 = Stock.create(user_id: user1.id, ticker: 'OZON', amount: 100, unit_price: 60)
+# user1stock4 = Stock.create(user_id: user1.id, ticker: 'TSLA', amount: -50, unit_price: 100)
 user2stock1 = Stock.create(user_id: user2.id, ticker: 'TSLA', amount: 100, unit_price: 350)

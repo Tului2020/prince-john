@@ -251,6 +251,13 @@ class StockShowBar extends React.Component {
 		htmlElement.appendChild(dismissButton)
 	}
 
+	buySellStock(stockPrice) {
+		// debugger
+		let userId = this.props.currentUser.id
+		let { ticker } = this.props
+		// debugger
+		this.props.updateUserStockInfo(userId, ticker, -this.props.amountToTrade, stockPrice)
+	}
 
 
 	displaySuccessSell(stockPrice, stockAmount, creditBack) {
@@ -262,13 +269,7 @@ class StockShowBar extends React.Component {
 		let sellButton = document.createElement('button')
 		sellButton.id = 'stock-show-market-review-order-button'
 		sellButton.innerHTML = 'Sell'
-		sellButton.onclick = () => {
-
-			// WORKING OVER HERE, NEED TO CONNECT SELLING TO BACK END
-			// debugger
-			// this.props.updateUserStockInfo()
-			//userId, ticker, amount, unitPrice
-		}
+		sellButton.onclick = () => this.buySellStock(stockPrice, stockAmount)
 
 
 		let editButton = document.createElement('button')
@@ -333,7 +334,6 @@ const mSTP = ({ entities, session }) => ({
 	current_stocks: entities.stocks.current_stocks,
 	currentUser: entities.users[session.currentUserId],
 	history: entities.history,
-	// balance: entities
 })
 
 const mDTP = (dispatch) => ({
