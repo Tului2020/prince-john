@@ -5,7 +5,11 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import MiniGraphContainer from '../graph/mini_grapher';
 
-
+const currencyFormatter = new Intl.NumberFormat('en-US', {
+  style: 'currency',
+  currency: 'USD',
+  minimumFractionDigits: 2
+})
 
 
 class StockBar extends React.Component {
@@ -24,6 +28,16 @@ class StockBar extends React.Component {
   displayStock(ticker, amount) {
     // debugger
     let {history} = this.props
+    let price = 0;
+    let percentChange = 0;
+
+    if (Object.keys(history).includes(ticker)) {
+      price = history[ticker][108].price
+      let beginningPrice = history[ticker][0].price
+      percentChange = (price - beginningPrice) / beginningPrice * 100 
+    }
+
+
     return (
       <Link to={`/stocks/${ticker}`} key={ticker} className='link-to-stock-show'>
     
@@ -42,7 +56,8 @@ class StockBar extends React.Component {
           </div>
 
           <div className='stock-price' id={'stock-price-' + ticker}>
-
+            <div>{currencyFormatter.format(price)}</div>
+            <div>{percentChange.toFixed(2)}%</div>
           </div>
 
         </div>
