@@ -20,6 +20,8 @@ class StockShowBar extends React.Component {
 		this.valueChange = this.valueChange.bind(this);
 		this.changeTransactionType = this.changeTransactionType.bind(this);
 		this.reviewOrderAction = this.reviewOrderAction.bind(this)
+		this.buySellStock = this.buySellStock.bind(this)
+		
 	}
 
 	valueChange(event) {
@@ -141,7 +143,6 @@ class StockShowBar extends React.Component {
 
 
 	reviewOrderAction(stockPrice, stockAmount) {
-		// debugger
 		switch (this.state.trade) {
 			case 'Buy':
 				let estimatedCost;
@@ -153,14 +154,13 @@ class StockShowBar extends React.Component {
 					estimatedCost = parseFloat(this.state.amountToTrade)
 				}
 				
-
 				if (estimatedCost > balance) {
 					this.displayBuyError(stockPrice, stockAmount);				
 				} else {
-					// this.displaySuccess();
+					this.displaySuccessBuy(stockPrice);
 				}
-
 				return
+
 
 			case 'Sell':
 				let sharesToSell;
@@ -175,11 +175,53 @@ class StockShowBar extends React.Component {
 				if (stockAmount < sharesToSell) {
 					this.displaySellError(stockAmount, stockPrice, creditBack);
 				} else {
-					this.displaySuccessSell(stockPrice, stockAmount, creditBack);
+					this.displaySuccessSell(stockPrice, stockAmount);
 				}
-				return
 		}
 	}
+	
+
+	displaySuccessBuy(stockPrice) {
+		let htmlElement = document.getElementById('stock-show-market-bar-button')
+		while (htmlElement.firstChild) htmlElement.firstChild.remove()
+
+		let firstMessage = document.createElement('div')
+
+		let buyButton = document.createElement('button')
+		buyButton.id = 'stock-show-market-review-order-button'
+		buyButton.innerHTML = 'Buy'
+		buyButton.onclick = () => this.buySellStock(stockPrice)
+
+		let editButton = document.createElement('button')
+		editButton.id = 'stock-show-market-review-order-button'
+		editButton.innerHTML = 'Edit'
+
+		editButton.onclick = () => {
+			while (htmlElement.firstChild) htmlElement.firstChild.remove()
+			let reviewOrderButton = document.createElement('button')
+			reviewOrderButton.id = 'stock-show-market-review-order-button'
+			reviewOrderButton.innerHTML = 'Review Order'
+			reviewOrderButton.onclick = () => {this.reviewOrderAction(stockPrice, stockAmount)}
+			htmlElement.appendChild(reviewOrderButton)
+		}
+
+		if (this.state.value === 'Shares') {
+			firstMessage.innerHTML = `You are placing a good for day limit order to buy ${this.props.amountToTrade} shares of ${this.props.ticker}. Your pending order will execute at ${currencyFormatter.format(stockPrice)} per share`
+
+		} else {
+			let shares = (this.state.amountToTrade / stockPrice).toFixed(4)
+			firstMessage.innerHTML = `You are placing a good for day market order to buy ${this.state.amountToTrade} of ${this.props.ticker} based on the current market price of ${currencyFormatter.format(stockPrice)}. You will sell approximately ${shares} shares.`
+		}
+
+		htmlElement.appendChild(firstMessage)
+		htmlElement.appendChild(sellButton)
+		htmlElement.appendChild(editButton)
+
+	}
+
+
+
+
 
 	displaySellError(stockAmount, stockPrice, creditBack) {
 		let htmlElement = document.getElementById('stock-show-market-bar-button')
@@ -251,16 +293,17 @@ class StockShowBar extends React.Component {
 		htmlElement.appendChild(dismissButton)
 	}
 
-	buySellStock(stockPrice) {
-		// debugger
+	buySellStock(stockPrice, stockAmount) {
 		let userId = this.props.currentUser.id
 		let { ticker } = this.props
-		// debugger
-		this.props.updateUserStockInfo(userId, ticker, -this.props.amountToTrade, stockPrice)
+		let tradeAmount = (this.state.trade === 'Buy') ? (parseFloat(this.state.amountToTrade)) : (-parseFloat(this.state.amountToTrade))
+		this.props.updateUserStockInfo(userId, ticker, tradeAmount, stockPrice)
+		// de
+		if (this.state.trade === 'Sell' && (stockAmount === this.state.amountToTrade)) this.setState({ trade: 'Buy' })
 	}
 
 
-	displaySuccessSell(stockPrice, stockAmount, creditBack) {
+	displaySuccessSell(stockPrice, stockAmount) {
 		let htmlElement = document.getElementById('stock-show-market-bar-button')
 		while (htmlElement.firstChild) htmlElement.firstChild.remove()
 
@@ -270,7 +313,6 @@ class StockShowBar extends React.Component {
 		sellButton.id = 'stock-show-market-review-order-button'
 		sellButton.innerHTML = 'Sell'
 		sellButton.onclick = () => this.buySellStock(stockPrice, stockAmount)
-
 
 		let editButton = document.createElement('button')
 		editButton.id = 'stock-show-market-review-order-button'

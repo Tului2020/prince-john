@@ -23,7 +23,7 @@ class StockShowUserInfo extends React.Component {
 		let stockTodayReturn = 0;
 		let stockTotalReturn = 0;
 
-		if (!stock_history || Object.keys(history).length === 0) return {stockAvgCost, stockPortDiversity, stockMarketValue, stockTotalCost, stockTodayReturn, stockTotalReturn }
+		if (!stock_history || Object.keys(history).length === 0 || !history[ticker]) return {stockAvgCost, stockPortDiversity, stockMarketValue, stockTotalCost, stockTodayReturn, stockTotalReturn }
 
 		let beginningUnitPrice = history[ticker][0].price;
 		let currentUnitPrice = history[ticker][108].price;
@@ -37,13 +37,10 @@ class StockShowUserInfo extends React.Component {
 			}
 		})
 
-
-		
 		stockMarketValue = currentUnitPrice * currentShares
 		stockTotalReturn = `${((stockMarketValue - stockTotalCost) / stockTotalCost * 100).toFixed(2)}%`
 		stockTodayReturn = `${((currentUnitPrice - beginningUnitPrice) / beginningUnitPrice * 100).toFixed(2)}%`
 
-		// debugger
 		if (Object.keys(current_stocks).length > 0) {
 			let portfolioValue = Object.keys(current_stocks)
 				.map(ticker => history[ticker][108].price * current_stocks[ticker])
@@ -52,7 +49,6 @@ class StockShowUserInfo extends React.Component {
 			stockPortDiversity = (stockMarketValue / portfolioValue * 100).toFixed(2)
 		}
 
-		// 
 		stockAvgCost = currencyFormatter.format(stockTotalCost / current_stocks[ticker])
 		stockMarketValue = currencyFormatter.format(stockMarketValue)
 		stockTotalCost = currencyFormatter.format(stockTotalCost)
@@ -104,7 +100,7 @@ class StockShowUserInfo extends React.Component {
 				</div>
 				<div id="stock-show-user-info-avg-cost-today-return">
 					<div>Portfolio Diversity</div>
-					<div>{stockPortDiversity}</div>
+					<div>{stockPortDiversity}%</div>
 				</div>
 				<div></div>
 			</>
