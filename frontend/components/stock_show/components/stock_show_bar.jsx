@@ -16,18 +16,19 @@ class StockShowBar extends React.Component {
 	constructor(props) {
 		super(props);
 		// declaring state
-		this.state = { value: 'Shares', trade: 'Buy', amountToTrade: '', stockUnitPrice: 0, stockAmountOwned: 0, infoSet: false };
+		this.state = { value: 'Shares', trade: 'Sell', amountToTrade: '', stockUnitPrice: 0, stockAmountOwned: 0, infoSet: false, errors: null };
 
 
 		// all bindings
 		this.updateTradeAmount = this.updateTradeAmount.bind(this);
-		this.valueChange = this.valueChange.bind(this);
 		this.changeTransactionType = this.changeTransactionType.bind(this);
+		this.reviewOrderAction = this.reviewOrderAction.bind(this);
 	}
 
-	valueChange(event) {
-		this.setState({ value: event.target.value });
-	}
+	// valueChange(event) {
+	// 	this.setState({ value: event.target.value });
+	// }
+
 
 	changeTransactionType(e) {
 		document.getElementsByClassName('stock-show-chosen-transaction')[0].classList.remove('stock-show-chosen-transaction')
@@ -74,7 +75,6 @@ class StockShowBar extends React.Component {
 				{Object.keys(current_stocks).includes(ticker) ?
 					(<div className={`${(this.state.trade === 'Sell')? ('stock-show-chosen-transaction ') : (null)}cursor-pointer`} onClick={this.changeTransactionType} value="Sell"> Sell {ticker}</div>) : (<div></div>)}
 
-				{/* <div id="filler2"></div> */}
 				<div className="cursor-pointer">
 					{downArrow}
 				</div>
@@ -87,7 +87,7 @@ class StockShowBar extends React.Component {
 				<div id="stock-show-invest-in">
 					<div>Invest In</div>
 					<div>
-						<select value={this.state.value} onChange={this.valueChange} id="stock-show-drop-down">
+						<select value={this.state.value} onChange={(event) => this.setState({ value: event.target.value })} id="stock-show-drop-down">
 							<option value="Shares">Shares</option>
 							<option value="Dollars">Dollars</option>
 						</select>
@@ -148,7 +148,7 @@ class StockShowBar extends React.Component {
 
 	componentSix() {
 		return (
-			<button id="stock-show-market-review-order-button">Review Order</button>
+			<button id="stock-show-market-review-order-button" onClick={this.reviewOrderAction}>Review Order</button>
 		)
 	}
 
@@ -157,16 +157,42 @@ class StockShowBar extends React.Component {
 		return (
 			<div id="stock-show-market-bar-buy-power">
 				{(this.state.trade === 'Sell') ?
-					(`${stockAmountOwned} Shares Available -  Sell All`) :
+					(`${stockAmountOwned.toFixed(3)} Shares Available -  Sell All`) :
 					(`${currencyFormatter.format(this.props.currentUser.balance)} Buying Power Available`)}
 			</div>)
 	}
 
 
+	reviewOrderAction() {
+		let { amountToTrade, stockAmountOwned, stockUnitPrice, trade, value } = this.state
+		if (!parseFloat(amountToTrade)) return
+		// debugger
+
+		let balance = parseFloat(this.props.currentUser.balance)
+		amountToTrade = parseFloat(amountToTrade)
+
+		if (trade === 'Buy') {
+			if (value === 'Shares') {
+				(stockUnitPrice * amountToTrade <= balance) ? this.setState({errors: false}) : this.setState({errors: true})
+			} else {
+				(amountToTrade <= balance) ? this.setState({errors: false}) : this.setState({errors: true})
+			}
+
+
+		} else {
+			if (value === 'Shares') {
+				(amountToTrade <= stockAmountOwned) ? this.setState({errors: false}) : this.setState({errors: true})
+			} else {
+				(amountToTrade / stockUnitPrice <= stockAmountOwned) ? this.setState({errors: false}) : this.setState({errors: true})
+			}
+		}
+		// debugger
+	}
 
 
 
 	render() {
+		console.log(this.state.errors)
 		return (
 			<div id="stock-show-market-bar">
 				<div className='stock-show-market-bar-comp bottom-border bold-font'>{this.componentOne()}</div>
@@ -179,6 +205,10 @@ class StockShowBar extends React.Component {
 			</div>
 		)
 	}
+
+
+
+
 }
 
 
