@@ -237,14 +237,15 @@ class StockShowBar extends React.Component {
 
 	buySellStock(shares) {
 		let userId = this.props.currentUser.id
-		let { ticker } = this.props
+		let { ticker, current_stocks } = this.props
 		let { stockUnitPrice } = this.state
 
 		this.props.updateUserStockInfo(userId, ticker, shares, stockUnitPrice)
-		this.setState({infoSet: false})
+		this.setState({errors: null})
+		if (shares + current_stocks[ticker] === 0) {
+			this.setState({trade: 'Buy'})
+		}
 	}
-	// componentWillReceiveProps
-
 
 	render() {
 
