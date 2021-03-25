@@ -16,7 +16,7 @@ class StockShowBar extends React.Component {
 	constructor(props) {
 		super(props);
 		// declaring state
-		this.state = { value: 'Shares', trade: 'Sell', amountToTrade: '', stockUnitPrice: 0, stockAmountOwned: 0, infoSet: false, errors: null };
+		this.state = { value: 'Shares', trade: 'Buy', amountToTrade: '', stockUnitPrice: 0, infoSet: false, errors: null };
 
 
 		// all bindings
@@ -43,13 +43,12 @@ class StockShowBar extends React.Component {
 
 	componentDidUpdate() {
 		let { current_stocks, ticker, history } = this.props
-		// debugger
 
 
 		if (history[ticker] && !this.state.infoSet) {
+			// debugger
 			this.setState({
 				stockUnitPrice: history[ticker][108].price,
-				stockAmountOwned: current_stocks[ticker],
 				infoSet: true
 			})
 		}
@@ -147,21 +146,26 @@ class StockShowBar extends React.Component {
 	}
 
 	componentSix() {
-		let { amountToTrade, stockAmountOwned, stockUnitPrice, trade, value, errors } = this.state
-		let { ticker } = this.props
+		let { amountToTrade, stockUnitPrice, trade, value, errors } = this.state
+		let { ticker, current_stocks} = this.props
+		let stockAmountOwned = current_stocks[ticker]
+
 		let balance = parseFloat(this.props.currentUser.balance)
 		amountToTrade = parseFloat(amountToTrade)
-		// debugger
+
 
 		if (errors === null) {
 			return (
 				<button id="stock-show-market-review-order-button" onClick={this.reviewOrderAction}>Review Order</button>
 			)
 		} else if (!errors) {
+			let shares = (value === 'Shares') ? (amountToTrade) : (amountToTrade / stockUnitPrice)
+			if (trade === 'Sell') shares = -shares
+
 			return (
 				<>
-					<div>{`You are placing a good for day market order to ${trade.toLowerCase()} ${amountToTrade} shares of ${ticker}.`}</div>
-					<button id="stock-show-market-review-order-button" onClick={this.buySellStock}>{trade}</button>
+					<div>{`You are placing a good for day market order to ${trade.toLowerCase()} ${Math.abs(shares.toFixed(3))} shares of ${ticker}.`}</div>
+					<button id="stock-show-market-review-order-button" onClick={() => this.buySellStock(shares)}>{trade}</button>
 					<button id="stock-show-market-review-order-button" onClick={() => this.setState({errors: null})}>Edit</button>
 				</>
 			)
@@ -192,7 +196,8 @@ class StockShowBar extends React.Component {
 	}
 
 	componentSeven() {
-		let { stockAmountOwned } = this.state
+		let { ticker, current_stocks} = this.props
+		let stockAmountOwned = current_stocks[ticker]
 		return (
 			<div id="stock-show-market-bar-buy-power">
 				{(this.state.trade === 'Sell') ?
@@ -203,7 +208,9 @@ class StockShowBar extends React.Component {
 
 
 	reviewOrderAction() {
-		let { amountToTrade, stockAmountOwned, stockUnitPrice, trade, value } = this.state
+		let { amountToTrade, stockUnitPrice, trade, value } = this.state
+		let { ticker, current_stocks} = this.props
+		let stockAmountOwned = current_stocks[ticker]
 		if (!parseFloat(amountToTrade)) return
 		// debugger
 
@@ -228,13 +235,20 @@ class StockShowBar extends React.Component {
 		// debugger
 	}
 
-	buySellStock() {
-		debugger
-	}
+	buySellStock(shares) {
+		let userId = this.props.currentUser.id
+		let { ticker } = this.props
+		let { stockUnitPrice } = this.state
 
+		this.props.updateUserStockInfo(userId, ticker, shares, stockUnitPrice)
+		this.setState({infoSet: false})
+	}
+	// componentWillReceiveProps
 
 
 	render() {
+
+
 		// console.log(this.state.errors)
 		return (
 			<div id="stock-show-market-bar">
