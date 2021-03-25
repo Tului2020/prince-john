@@ -3,8 +3,8 @@ import NavBar  from './nav_bar'
 import { signout } from '../../../actions/session_actions';
 
 
-const mSTP = (state) => ({
-  currentUser: state.entities.users[state.session.currentUserId],
+const mSTP = ({entities, session}) => ({
+  currentUser: entities.users[session.currentUserId],
 })
 
 const mDTP = (dispatch) => ({

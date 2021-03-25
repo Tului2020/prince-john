@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 const formatter = new Intl.NumberFormat('en-US', {
   style: 'currency',
@@ -21,7 +22,7 @@ class UserInfo extends React.Component {
 
         <div id="balance-status">
           <div id="portfolio-value">
-          {formatter.format(100)}
+          {formatter.format(this.props.portfolioValue)}
             <br/>
             <span className="balance-status-description">
               Portfolio Value
@@ -45,4 +46,14 @@ class UserInfo extends React.Component {
   }
 }
 
-export default UserInfo;
+
+const mSTP = ({entities, session}) => ({
+  currentUser: entities.users[session.currentUserId],
+  portfolioValue: entities.portfolioValue.toFixed(2),
+})
+
+const mDTP = (dispatch) => ({})
+
+
+const UserInfoContainer = connect(mSTP, mDTP)(UserInfo);
+export default UserInfoContainer

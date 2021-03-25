@@ -68,11 +68,11 @@ class StockShowBar extends React.Component {
 		let { current_stocks, ticker } = this.props
 		return (
 			<>
-				<div className={`${(this.state.trade === 'Buy') ? ('stock-show-chosen-transaction ') : (null)}cursor-pointer`} onClick={this.changeTransactionType} value="Buy" >
+				<div className={`${(this.state.trade === 'Buy') ? ('stock-show-chosen-transaction ') : ('')}cursor-pointer`} onClick={this.changeTransactionType} value="Buy" >
 					Buy {ticker}
 				</div >
 				{Object.keys(current_stocks).includes(ticker) ?
-					(<div className={`${(this.state.trade === 'Sell') ? ('stock-show-chosen-transaction ') : (null)}cursor-pointer`} onClick={this.changeTransactionType} value="Sell"> Sell {ticker}</div>) : (<div></div>)}
+					(<div className={`${(this.state.trade === 'Sell') ? ('stock-show-chosen-transaction ') : ('')}cursor-pointer`} onClick={this.changeTransactionType} value="Sell"> Sell {ticker}</div>) : (<div></div>)}
 
 				<div className="cursor-pointer">
 					{downArrow}

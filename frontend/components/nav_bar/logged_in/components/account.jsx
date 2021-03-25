@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import UserInfo from './account_components/00_user';
 import PrinceJohnGold from './account_components/01_princejohn_gold';
 import FreeStocks from './account_components/02_free_stock';
@@ -47,7 +46,7 @@ class Account extends React.Component {
         </span>
 
         <div className="dropdown-content">
-          <UserInfo currentUser={currentUser}/>
+          <UserInfo/>
           <PrinceJohnGold/>
           <FreeStocks/>
           <AccountDrop />

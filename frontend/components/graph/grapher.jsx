@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import * as d3 from 'd3';
-
+import { updatePortfolioValue } from './../../actions/portfolio_actions'
 
 
 class Graph extends React.Component {
@@ -70,15 +70,24 @@ class Graph extends React.Component {
   }
 
 
+
+
+
   graphData() {
     let { ticker, history } = this.props;
     let data;
     let width;
     let height;
-
+    // debugger
+    let userPortfolioHistory = this.userHistoryCalculator();
+    if (userPortfolioHistory.length > 0) {
+      // debugger
+      console.log(userPortfolioHistory[108].price - this.props.balance)
+      this.props.updatePortfolioValue(userPortfolioHistory[108].price - this.props.balance)
+    }
 
     if (ticker === 'homePage') {
-      data = this.userHistoryCalculator();
+      data = userPortfolioHistory
     } else {
       data = history[ticker]
     }
@@ -238,7 +247,9 @@ const mSTP = ({entities, session}) => {
   }
 }
 
-const mDTP = (dispatch) => ({})
+const mDTP = (dispatch) => ({
+  updatePortfolioValue: (portfolioValue) => dispatch(updatePortfolioValue(portfolioValue))
+})
 
 const GraphContainer = connect(mSTP, mDTP)(Graph);
 export default GraphContainer

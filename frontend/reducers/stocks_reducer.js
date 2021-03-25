@@ -1,4 +1,4 @@
-import { GET_USER_STOCKS, NEW_USER_STOCK } from "../actions/stock_actions";
+import { GET_USER_STOCKS } from "../actions/stock_actions";
 
 
 const _nullSession = {
