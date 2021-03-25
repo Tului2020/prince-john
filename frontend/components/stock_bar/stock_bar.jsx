@@ -23,6 +23,7 @@ class StockBar extends React.Component {
 
   displayStock(ticker, amount) {
     // debugger
+    let {history} = this.props
     return (
       <Link to={`/stocks/${ticker}`} key={ticker} className='link-to-stock-show'>
     
@@ -37,7 +38,7 @@ class StockBar extends React.Component {
           </div>
 
           <div className='stock-graph' id={'stock-graph-' + ticker}>
-            <MiniGraphContainer ticker={ticker}/>
+            <MiniGraphContainer ticker={ticker} data={history[ticker]}/>
           </div>
 
           <div className='stock-price' id={'stock-price-' + ticker}>
