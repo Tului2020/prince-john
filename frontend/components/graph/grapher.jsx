@@ -6,7 +6,6 @@ import * as d3 from 'd3';
 
 class Graph extends React.Component {
   constructor(props) {
-    // debugger
     super(props);
     this.userHistory = null;
     this.userHistoryCalculator = this.userHistoryCalculator.bind(this)
@@ -85,8 +84,11 @@ class Graph extends React.Component {
     }
 
     width = document.getElementById('stock-show-graph-div').clientWidth;
-    height = document.getElementById('stock-show-graph-div').clientHeight;
-
+    // height = document.getElementById('stock-show-graph-div').clientHeight;
+    // width = 691;
+    height = 250;
+    let factor = 0.35;
+    // console.log([width, height])
 
 
     // x and y are functions that give linear positions with respect to width and height, respectively
@@ -131,7 +133,7 @@ class Graph extends React.Component {
 
     let minPoint = d3.min(cities, c => d3.min(c.values, v => v.price));
     let maxPoint = d3.max(cities, c => d3.max(c.values, v => v.price));
-    let adjustedMaxMinDelta = 1 * (maxPoint - minPoint)
+    let adjustedMaxMinDelta = factor * (maxPoint - minPoint)
 
 
     y.domain([minPoint - adjustedMaxMinDelta, maxPoint + adjustedMaxMinDelta]);
@@ -196,7 +198,7 @@ class Graph extends React.Component {
           .attr("transform", function (d, i) {
             // let { date, price } = d.values[(data.length - 1) - Math.round(mouse[0] / width * (data.length - 1))]
             // debugger
-            let { date, price } = d.values[Math.round(mouse[0] / width * (data.length - 1))]
+            let { date } = d.values[Math.round(mouse[0] / width * (data.length - 1))]
 
             var beginning = 0,
               end = lines[i].getTotalLength(),

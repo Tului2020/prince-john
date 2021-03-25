@@ -32,16 +32,19 @@ body {
 }
 
 #stock-show-graph-div {
-  // border: 1px solid red;
+  border: 1px solid red;
   height: 51%;
   width: 100%;
+  display: flex;
+  align-items: center;
 }
 
-// #stock-show-graph {
-  // border: 1px solid red;
-  // height: 51%;
-  // width: 100%;
-// }
+#stock-show-graph {
+  border: 1px solid red;
+  height: 51%;
+  width: 100%;
+  // overflow: hidden;
+}
 
 .stock-show-user-info {
   height: 29%;
