@@ -5,11 +5,16 @@ import LoggedInNavBarContainer from '../nav_bar/logged_in/nav_bar_logged_in_cont
 import StockShowBarCotainer from './components/stock_show_bar';
 import StockShowUserInfoContainer from './components/stock_show_user_info';
 
+const currencyFormatter = new Intl.NumberFormat('en-US', {
+	style: 'currency',
+	currency: 'USD',
+	minimumFractionDigits: 2
+})
 
 
 class StockShow extends React.Component {
   render() {
-    let { ticker } = this.props
+    let { ticker, history } = this.props
     // debugger
     return (
       <div id="stock-show-page">
@@ -18,7 +23,7 @@ class StockShow extends React.Component {
           <div id="stock-show-left">
             <div id="stock-show-graph-div" className='bottom-border'>
               <div id="stock-show-graph-info">{(ticker)? searchFunction(ticker)[0][ticker] : null}</div>
-              <div id="stock-show-graph-price">$100.00</div>
+              <div id="stock-show-graph-price">{(history[ticker])? (currencyFormatter.format(history[ticker][108].price)) : (`$0.00`)} </div>
               <div id="stock-show-graph-return">$100.00</div>
               <GraphContainer ticker={ticker}/>
             </div>

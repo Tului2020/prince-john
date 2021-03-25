@@ -4,6 +4,12 @@ import * as d3 from 'd3';
 import { updatePortfolioValue } from './../../actions/portfolio_actions'
 
 
+const currencyFormatter = new Intl.NumberFormat('en-US', {
+	style: 'currency',
+	currency: 'USD',
+	minimumFractionDigits: 2
+})
+
 class Graph extends React.Component {
   constructor(props) {
     super(props);
@@ -215,7 +221,7 @@ class Graph extends React.Component {
           .attr("transform", function (d, i) {
             // let { date, price } = d.values[(data.length - 1) - Math.round(mouse[0] / width * (data.length - 1))]
             // debugger
-            let { date } = d.values[Math.round(mouse[0] / width * (data.length - 1))]
+            let { date, price } = d.values[Math.round(mouse[0] / width * (data.length - 1))]
 
             var beginning = 0,
               end = lines[i].getTotalLength(),
@@ -231,6 +237,11 @@ class Graph extends React.Component {
               else if (pos.x < mouse[0]) beginning = target;
               else break; //position found
             }
+
+            // debugger
+            // this.props.updateDisplayValue(price)
+            let priceEl = document.getElementById('stock-show-graph-price')
+            if (priceEl) priceEl.innerHTML = currencyFormatter.format(price)
 
             d3.select(this).select('#price-indicator')
               // .text(`${date.getHours()}:${date.getMinutes()} ${price}`)
@@ -256,7 +267,8 @@ const mSTP = ({entities, session}) => {
 }
 
 const mDTP = (dispatch) => ({
-  updatePortfolioValue: (portfolioValue) => dispatch(updatePortfolioValue(portfolioValue))
+  updatePortfolioValue: (portfolioValue) => dispatch(updatePortfolioValue(portfolioValue)),
+  // updateDisplayValue: (displayValue) => dispatch(updateDisplayValue(displayValue))
 })
 
 const GraphContainer = connect(mSTP, mDTP)(Graph);

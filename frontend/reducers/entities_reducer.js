@@ -4,12 +4,12 @@ import portfolioValueReducer from './portfolio_reducer';
 import stocksReducer from './stocks_reducer';
 import usersReducer from './users_reducer';
 
-
+// displayValueReducer
 const entitiesReducer = combineReducers({
   users: usersReducer,
   stocks: stocksReducer,
   history: historyReducer,
-  portfolioValue: portfolioValueReducer
+  portfolioValue: portfolioValueReducer,
 })
 
 export default entitiesReducer;

@@ -3,10 +3,11 @@ import { connect } from 'react-redux';
 import { fetchUserStockInfo } from '../../actions/stock_actions';
 
 
-const mSTP = (state, ownParams) => ({
+const mSTP = ({entities, session}, ownParams) => ({
     ticker: ownParams.match.params.ticker,
-    current_stocks: state.entities.stocks.current_stocks,
-    currentUser: state.entities.users[state.session.currentUserId],
+    current_stocks: entities.stocks.current_stocks,
+    currentUser: entities.users[session.currentUserId],
+    history: entities.history
 })
 
 const mDTP = (dispatch) => ({
