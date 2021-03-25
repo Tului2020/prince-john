@@ -1,4 +1,5 @@
 import bigData from './search_data'
+// const bigData = require('./search_data')
 
 
 // only searching by ticker right now, will add search by name feature
@@ -15,5 +16,7 @@ const searchByTicker = (phrase) => {
 const searchFunction = (phrase) => {
     return searchByTicker(phrase)
 }
+
+// console.log(searchFunction('QYLD')[0]['QYLD'])
 
 export default searchFunction;

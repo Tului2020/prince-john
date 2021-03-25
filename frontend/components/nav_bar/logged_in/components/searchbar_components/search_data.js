@@ -37320,4 +37320,5 @@ const bigData = {
   }
   // console.log(bigData.A)
   export default bigData;
+//   module.exports = bigData
   

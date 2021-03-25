@@ -36,7 +36,8 @@ body {
   height: 51%;
   width: 100%;
   display: flex;
-  align-items: center;
+  // justify-content: center;
+  flex-direction: column;
 }
 
 #stock-show-graph {
@@ -45,6 +46,12 @@ body {
   width: 100%;
   // overflow: hidden;
 }
+
+#stock-show-graph-info, #stock-show-graph-price {
+  font-size: 35px;
+  width: 90%
+}
+
 
 .stock-show-user-info {
   height: 29%;
