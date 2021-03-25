@@ -132,8 +132,11 @@ body {
   // border: 1px solid red;
 }
 
-#stock-show-market-bar-button > * {
+#stock-show-market-bar-button > div {
   width: 80%;
+  min-height: 50px;
+  display: flex;
+  justify-content: center;
 }
 
 
