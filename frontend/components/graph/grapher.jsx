@@ -241,7 +241,9 @@ class Graph extends React.Component {
             // debugger
             // this.props.updateDisplayValue(price)
             let priceEl = document.getElementById('stock-show-graph-price')
-            if (priceEl) priceEl.innerHTML = currencyFormatter.format(price)
+            if (priceEl) {
+              priceEl.innerHTML = currencyFormatter.format(price)
+            }
 
             d3.select(this).select('#price-indicator')
               // .text(`${date.getHours()}:${date.getMinutes()} ${price}`)

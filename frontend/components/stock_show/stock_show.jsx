@@ -15,7 +15,25 @@ const currencyFormatter = new Intl.NumberFormat('en-US', {
 class StockShow extends React.Component {
   render() {
     let { ticker, history } = this.props
-    // debugger
+
+    let displayPrice;// = (history[ticker])? (currencyFormatter.format(endPrice)) : (`$0.00`)
+    let displayReturn;// = (history[ticker])? (currencyFormatter.format(beginningPrice)) : (`$0.00`)
+    let endPrice;
+    let beginningPrice;
+
+    if (history[ticker]) {
+      endPrice = history[ticker][108].price;
+      beginningPrice = history[ticker][0].price;
+
+      displayPrice = currencyFormatter.format(endPrice)
+      displayReturn = ((endPrice - beginningPrice) / beginningPrice * 100).toFixed(2)
+
+    } else {
+      displayPrice = '$0.00'
+      displayReturn = 0
+    }
+
+
     return (
       <div id="stock-show-page">
         <LoggedInNavBarContainer ticker={ticker} />
@@ -23,8 +41,12 @@ class StockShow extends React.Component {
           <div id="stock-show-left">
             <div id="stock-show-graph-div" className='bottom-border'>
               <div id="stock-show-graph-info">{(ticker)? searchFunction(ticker)[0][ticker] : null}</div>
-              <div id="stock-show-graph-price">{(history[ticker])? (currencyFormatter.format(history[ticker][108].price)) : (`$0.00`)} </div>
-              <div id="stock-show-graph-return">$100.00</div>
+              <div id="stock-show-graph-price">{displayPrice}</div>
+              <div id="stock-show-graph-return">
+                <div id="stock-show-graph-return-money" className='bold-font'>{currencyFormatter.format(displayReturn * beginningPrice / 100)}</div>
+                <div id="stock-show-graph-return-percent" className='bold-font'>({displayReturn}%)</div>
+                <div className='light-font'>Today</div>
+              </div>
               <GraphContainer ticker={ticker}/>
             </div>
 

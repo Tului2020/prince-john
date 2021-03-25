@@ -8,6 +8,13 @@ body {
   cursor: default;
 }
 
+#stock-show-graph-return {
+  display: flex;
+}
+
+#stock-show-graph-return > div {
+  padding-right: 6px;
+}
 
 #stock-show-main {
   margin-top: 35px;
@@ -17,6 +24,10 @@ body {
   display: flex;
   justify-content: space-around;
   overflow: hidden;
+}
+
+.light-font {
+  color: #9c9c9c;
 }
 
 #stock-show-left {
