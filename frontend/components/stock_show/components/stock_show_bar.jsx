@@ -160,16 +160,35 @@ class StockShowBar extends React.Component {
 		} else if (!errors) {
 			return (
 				<>
-					<div>{`You are placing a good for day market order to ${trade} ${} shares of ${ticker}.`}</div>
+					<div>{`You are placing a good for day market order to ${trade.toLowerCase()} ${amountToTrade} shares of ${ticker}.`}</div>
+					<button id="stock-show-market-review-order-button" onClick={this.buySellStock}>{trade}</button>
+					<button id="stock-show-market-review-order-button" onClick={() => this.setState({errors: null})}>Edit</button>
 				</>
 			)
+		} else {
 
+			let firstMessage;
+			let secondMessage;
+			let depositFundsButton;
 
-
-
-
-
-		} 
+			if (trade === 'Sell') {
+				firstMessage = 'Not Enough Shares'
+				secondMessage = `You can only sell up to ${stockAmountOwned.toFixed(3)} shares of ${ticker}.`
+				depositFundsButton = null
+			} else {
+				firstMessage = 'Not Enough Buying Power'
+				secondMessage = `Please Deposit More Funds`
+				depositFundsButton = <button id="stock-show-market-review-order-button" onClick={() => console.log('Deposit Mo Money')}>Deposit Funds</button>
+			}
+			return (
+				<>
+					<div className='bold-font'>{firstMessage}</div>
+					<div>{secondMessage}</div>
+					{depositFundsButton}
+					<button id="stock-show-market-review-order-button" onClick={() => this.setState({errors: null})}>Back</button>
+				</>
+			)
+		}
 	}
 
 	componentSeven() {
@@ -207,6 +226,10 @@ class StockShowBar extends React.Component {
 			}
 		}
 		// debugger
+	}
+
+	buySellStock() {
+		debugger
 	}
 
 
