@@ -1,5 +1,5 @@
 import React from 'react';
-import { Redirect, useHistory } from 'react-router';
+import { Redirect } from 'react-router';
 import { tripleDots } from './stock_bar_icon'
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -31,7 +31,7 @@ class StockBar extends React.Component {
               {name}
             </div>
             <div className='stock-amount'>
-              {amount.toFixed(3)} Shares
+              {amount.toFixed(2)} Shares
             </div>
           </div>
 

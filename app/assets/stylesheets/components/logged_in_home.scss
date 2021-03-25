@@ -4,7 +4,7 @@
   height: 91vh;
   display: flex;
   flex-direction: row;
-  margin-top: 10px;
+  margin-top: 50px;
 }
 
 #logged-in-left {
@@ -24,6 +24,17 @@
   height: 45px;
   // border: 1px solid red;
 }
+
+
+#home-stock-show-graph-div{
+  // border: 1px solid red;
+  height: 35%;
+  width: 100%;
+  display: flex;
+  // justify-content: center;
+  flex-direction: column;
+}
+
 
 #buying-power {
   // border: 1px solid blue;
