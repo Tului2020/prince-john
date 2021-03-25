@@ -69,6 +69,19 @@ class Graph extends React.Component {
     return []
   }
 
+  getPortfilioValue() {
+    let { history, current_stocks } = this.props
+    let currentStocksLength = Object.keys(current_stocks).length
+    let portfolioValue = 0;
+
+    if (currentStocksLength > 0 && currentStocksLength <= Object.keys(history).length) {
+      Object.keys(current_stocks).forEach(ticker => {
+        // debugger
+        portfolioValue += history[ticker][108].price * current_stocks[ticker]
+      })
+    }
+    return portfolioValue;
+  }
 
 
 
@@ -78,16 +91,11 @@ class Graph extends React.Component {
     let data;
     let width;
     let height;
-    // debugger
-    let userPortfolioHistory = this.userHistoryCalculator();
-    if (userPortfolioHistory.length > 0) {
-      // debugger
-      console.log(userPortfolioHistory[108].price - this.props.balance)
-      this.props.updatePortfolioValue(userPortfolioHistory[108].price - this.props.balance)
-    }
+
+    this.props.updatePortfolioValue(this.getPortfilioValue())
 
     if (ticker === 'homePage') {
-      data = userPortfolioHistory
+      data = this.userHistoryCalculator();
     } else {
       data = history[ticker]
     }
