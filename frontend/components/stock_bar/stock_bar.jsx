@@ -31,7 +31,7 @@ class StockBar extends React.Component {
               {name}
             </div>
             <div className='stock-amount'>
-              {amount} Shares
+              {amount.toFixed(3)} Shares
             </div>
           </div>
 

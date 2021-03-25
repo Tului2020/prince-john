@@ -15,13 +15,14 @@ const currencyFormatter = new Intl.NumberFormat('en-US', {
 class StockShowBar extends React.Component {
 	constructor(props) {
 		super(props);
-		this.state = { value: 'Shares', trade: 'Buy', amountToTrade: '' };
+		// declaring state
+		this.state = { value: 'Shares', trade: 'Buy', amountToTrade: '', stockUnitPrice: 0, stockAmountOwned: 0, infoSet: false };
+
+
+		// all bindings
 		this.updateTradeAmount = this.updateTradeAmount.bind(this);
 		this.valueChange = this.valueChange.bind(this);
 		this.changeTransactionType = this.changeTransactionType.bind(this);
-		this.reviewOrderAction = this.reviewOrderAction.bind(this)
-		this.buySellStock = this.buySellStock.bind(this)
-		
 	}
 
 	valueChange(event) {
@@ -38,6 +39,22 @@ class StockShowBar extends React.Component {
 		}
 	}
 
+
+	componentDidUpdate() {
+		let { current_stocks, ticker, history } = this.props
+		// debugger
+
+
+		if (history[ticker] && !this.state.infoSet) {
+			this.setState({
+				stockUnitPrice: history[ticker][108].price,
+				stockAmountOwned: current_stocks[ticker],
+				infoSet: true
+			})
+		}
+	}
+
+
 	UNSAFE_componentWillMount() {
 		this.userId = this.props.currentUser.id
 		this.props.fetchUserStockInfo(this.userId);
@@ -47,7 +64,8 @@ class StockShowBar extends React.Component {
 		this.setState({ amountToTrade: e.target.value })
 	}
 
-	componentOne(current_stocks, ticker) {
+	componentOne() {
+		let { current_stocks, ticker } = this.props
 		return (
 			<>
 				<div className={`${(this.state.trade === 'Buy')? ('stock-show-chosen-transaction ') : (null)}cursor-pointer`} onClick={this.changeTransactionType} value="Buy" >
@@ -90,7 +108,9 @@ class StockShowBar extends React.Component {
 		)
 	}
 
-	componentFour(stockPrice) {
+	componentFour() {
+		let { stockUnitPrice } = this.state
+
 		return (
 			<>
 				{(this.state.value === 'Shares') ?
@@ -98,14 +118,15 @@ class StockShowBar extends React.Component {
 						<div className='stock-show-market-bar-comp'>
 							<div id="stock-show-market-price">
 								<div id="stock-show-market-price-sub">Market Price</div>
-								<div>{currencyFormatter.format(stockPrice)}</div>
+								<div>{currencyFormatter.format(stockUnitPrice)}</div>
 							</div></div>) : (null)
 				}
 			</>
 		)
 	}
 
-	componentFive(stockPrice) {
+	componentFive() {
+		let { stockUnitPrice } = this.state
 		return (
 			<div id="stock-show-market-estimated-cost">
 				<div>
@@ -116,8 +137,8 @@ class StockShowBar extends React.Component {
 				</div>
 				<div>
 					{(this.state.value === 'Shares') ?
-						(currencyFormatter.format(stockPrice * this.state.amountToTrade)) :
-						(this.state.amountToTrade / stockPrice).toFixed(3)}
+						(currencyFormatter.format(stockUnitPrice * this.state.amountToTrade)) :
+						(this.state.amountToTrade / stockUnitPrice).toFixed(3)}
 
 				</div>
 			</div>
@@ -125,250 +146,36 @@ class StockShowBar extends React.Component {
 
 	}
 
-	componentSix(stockPrice, stockAmountOwned) {
+	componentSix() {
 		return (
-			<button id="stock-show-market-review-order-button" onClick={() => this.reviewOrderAction(stockPrice, stockAmountOwned)}>Review Order</button>
+			<button id="stock-show-market-review-order-button">Review Order</button>
 		)
 	}
 
-	componentSeven(stockAmountOwned) {
+	componentSeven() {
+		let { stockAmountOwned } = this.state
 		return (
 			<div id="stock-show-market-bar-buy-power">
 				{(this.state.trade === 'Sell') ?
-					(`${stockAmountOwned ? stockAmountOwned : 0} Shares Available -  Sell All`) :
+					(`${stockAmountOwned} Shares Available -  Sell All`) :
 					(`${currencyFormatter.format(this.props.currentUser.balance)} Buying Power Available`)}
 			</div>)
 	}
 
 
 
-	reviewOrderAction(stockPrice, stockAmountOwned) {
-		switch (this.state.trade) {
-			case 'Buy':
-				let estimatedCost;
-				let balance = parseFloat(this.props.currentUser.balance)
-
-				if (this.state.value === 'Shares') {
-					estimatedCost = parseFloat((stockPrice * this.state.amountToTrade).toFixed(2))
-				} else {
-					estimatedCost = parseFloat(this.state.amountToTrade)
-				}
-				
-				if (estimatedCost > balance) {
-					this.displayBuyError(stockPrice, stockAmountOwned);				
-				} else {
-					this.displaySuccessBuy(stockPrice);
-				}
-				return
-
-
-			case 'Sell':
-				let sharesToSell;
-
-				if (this.state.value === 'Shares') {
-					sharesToSell = this.state.amountToTrade;
-				} else {
-					sharesToSell = this.state.amountToTrade / stockPrice
-				}
-
-				let creditBack = sharesToSell * stockPrice
-				if (stockAmountOwned < sharesToSell) {
-					this.displaySellError(stockAmountOwned, stockPrice, creditBack);
-				} else {
-					this.displaySuccessSell(stockPrice, stockAmountOwned);
-				}
-		}
-	}
-	
-
-	displaySuccessBuy(stockPrice) {
-		let htmlElement = document.getElementById('stock-show-market-bar-button')
-		while (htmlElement.firstChild) htmlElement.firstChild.remove()
-
-		let firstMessage = document.createElement('div')
-
-		let buyButton = document.createElement('button')
-		buyButton.id = 'stock-show-market-review-order-button'
-		buyButton.innerHTML = 'Buy'
-		buyButton.onclick = () => this.buySellStock(stockPrice)
-
-		let editButton = document.createElement('button')
-		editButton.id = 'stock-show-market-review-order-button'
-		editButton.innerHTML = 'Edit'
-
-		editButton.onclick = () => {
-			while (htmlElement.firstChild) htmlElement.firstChild.remove()
-			let reviewOrderButton = document.createElement('button')
-			reviewOrderButton.id = 'stock-show-market-review-order-button'
-			reviewOrderButton.innerHTML = 'Review Order'
-			reviewOrderButton.onclick = () => {this.reviewOrderAction(stockPrice, stockAmountOwned)}
-			htmlElement.appendChild(reviewOrderButton)
-		}
-
-		if (this.state.value === 'Shares') {
-			firstMessage.innerHTML = `You are placing a good for day limit order to buy ${this.props.amountToTrade} shares of ${this.props.ticker}. Your pending order will execute at ${currencyFormatter.format(stockPrice)} per share`
-
-		} else {
-			let shares = (this.state.amountToTrade / stockPrice).toFixed(4)
-			firstMessage.innerHTML = `You are placing a good for day market order to buy ${this.state.amountToTrade} of ${this.props.ticker} based on the current market price of ${currencyFormatter.format(stockPrice)}. You will sell approximately ${shares} shares.`
-		}
-
-		htmlElement.appendChild(firstMessage)
-		htmlElement.appendChild(buyButton)
-		htmlElement.appendChild(editButton)
-
-	}
-
-
-
-
-
-	displaySellError(stockAmountOwned, stockPrice, creditBack) {
-		let htmlElement = document.getElementById('stock-show-market-bar-button')
-		while (htmlElement.firstChild) htmlElement.firstChild.remove()
-
-		let firstMessage = document.createElement('div')
-		firstMessage.classList.add('bold-font')
-
-		let secondMessage = document.createElement('div')
-
-		let backButton = document.createElement('button')
-		backButton.id = 'stock-show-market-review-order-button'
-		backButton.innerHTML = 'Back'
-		backButton.onclick = () => {
-			while (htmlElement.firstChild) htmlElement.firstChild.remove()
-			let reviewOrderButton = document.createElement('button')
-			reviewOrderButton.id = 'stock-show-market-review-order-button'
-			reviewOrderButton.innerHTML = 'Review Order'
-			reviewOrderButton.onclick = () => {this.reviewOrderAction(stockPrice, stockAmountOwned)}
-			htmlElement.appendChild(reviewOrderButton)
-		}
-
-		if (this.state.value === 'Shares') {
-			firstMessage.innerHTML = 'Not Enough Shares'
-			secondMessage.innerHTML = `You can only sell up to ${stockAmountOwned} shares of ${this.props.ticker}`
-		} else {
-			firstMessage.innerHTML = 'Not Enough Invested'
-			secondMessage.innerHTML = `You currently only own ${currencyFormatter.format(stockPrice * stockAmountOwned)} of ${this.props.ticker} which means you cannot sell ${currencyFormatter.format(creditBack)}. Instead, you can sell all your shares.`
-		}
-
-		htmlElement.appendChild(firstMessage)
-		htmlElement.appendChild(secondMessage)
-		htmlElement.appendChild(backButton)
-	}
-
-
-	displayBuyError(stockPrice, stockAmountOwned) {
-		let htmlElement = document.getElementById('stock-show-market-bar-button')
-		while (htmlElement.firstChild) htmlElement.firstChild.remove()
-		
-		let firstMessage = document.createElement('div')
-		firstMessage.classList.add('bold-font')
-
-		let secondMessage = document.createElement('div')
-
-		let depositFundsButton = document.createElement('button')
-		depositFundsButton.id = 'stock-show-market-review-order-button'
-		depositFundsButton.innerHTML = 'Deposit Funds'
-
-		let dismissButton = document.createElement('button')
-		dismissButton.id = 'stock-show-market-review-order-button'
-		dismissButton.innerHTML = 'Dismiss'
-
-		dismissButton.onclick = () => {
-			while (htmlElement.firstChild) htmlElement.firstChild.remove()
-			let reviewOrderButton = document.createElement('button')
-			reviewOrderButton.id = 'stock-show-market-review-order-button'
-			reviewOrderButton.innerHTML = 'Review Order'
-			reviewOrderButton.onclick = () => {this.reviewOrderAction(stockPrice, stockAmountOwned)}
-			htmlElement.appendChild(reviewOrderButton)
-		}
-
-		firstMessage.innerHTML = 'Not Enough Buying Power'
-		secondMessage.innerHTML = `You don’t have enough buying power for this order.`
-
-		htmlElement.appendChild(firstMessage)
-		htmlElement.appendChild(secondMessage)
-		htmlElement.appendChild(depositFundsButton)
-		htmlElement.appendChild(dismissButton)
-	}
-
-	buySellStock(stockPrice, stockAmountOwned) {
-		let userId = this.props.currentUser.id
-		let { ticker } = this.props
-		let tradeAmount = (this.state.trade === 'Buy') ? (parseFloat(this.state.amountToTrade)) : (-parseFloat(this.state.amountToTrade))
-		if (this.state.value === 'Dollars') {
-			tradeAmount /= stockPrice
-		}
-		// debugger
-
-		this.props.updateUserStockInfo(userId, ticker, tradeAmount, stockPrice)
-		// de
-		if (this.state.trade === 'Sell' && (stockAmountOwned === this.state.amountToTrade)) this.setState({ trade: 'Buy' })
-	}
-
-
-	displaySuccessSell(stockPrice, stockAmountOwned) {
-		let htmlElement = document.getElementById('stock-show-market-bar-button')
-		while (htmlElement.firstChild) htmlElement.firstChild.remove()
-
-		let firstMessage = document.createElement('div')
-
-		let sellButton = document.createElement('button')
-		sellButton.id = 'stock-show-market-review-order-button'
-		sellButton.innerHTML = 'Sell'
-		sellButton.onclick = () => this.buySellStock(stockPrice, stockAmountOwned)
-
-		let editButton = document.createElement('button')
-		editButton.id = 'stock-show-market-review-order-button'
-		editButton.innerHTML = 'Edit'
-
-		editButton.onclick = () => {
-			while (htmlElement.firstChild) htmlElement.firstChild.remove()
-			let reviewOrderButton = document.createElement('button')
-			reviewOrderButton.id = 'stock-show-market-review-order-button'
-			reviewOrderButton.innerHTML = 'Review Order'
-			reviewOrderButton.onclick = () => {this.reviewOrderAction(stockPrice, stockAmountOwned)}
-			htmlElement.appendChild(reviewOrderButton)
-		}
-
-		if (this.state.value === 'Shares') {
-			firstMessage.innerHTML = `You are placing a good for day limit order to sell ${this.props.amountToTrade} shares of ${this.props.ticker}. Your pending order will execute at ${currencyFormatter.format(stockPrice)} per share`
-
-		} else {
-			let shares = (this.state.amountToTrade / stockPrice).toFixed(4)
-			firstMessage.innerHTML = `You are placing a good for day market order to sell ${this.state.amountToTrade} of ${this.props.ticker} based on the current market price of ${currencyFormatter.format(stockPrice)}. You will sell approximately ${shares} shares.`
-		}
-
-		htmlElement.appendChild(firstMessage)
-		htmlElement.appendChild(sellButton)
-		htmlElement.appendChild(editButton)
-	}
-
 
 
 	render() {
-		let stockAmountOwned = 0;
-		let stockPrice = 0;
-		let { current_stocks, ticker, history } = this.props
-		// debugger
-
-
-		if (history[ticker]) {
-			stockAmountOwned = current_stocks[ticker];
-			stockPrice = history[ticker][108].price
-			// debugger
-		}
-
 		return (
 			<div id="stock-show-market-bar">
-				<div className='stock-show-market-bar-comp bottom-border bold-font'>{this.componentOne(current_stocks, ticker)}</div>
+				<div className='stock-show-market-bar-comp bottom-border bold-font'>{this.componentOne()}</div>
 				<div className='stock-show-market-bar-comp'>{this.componentTwo()}</div>
 				<div className='stock-show-market-bar-comp'>{this.componentThree()}</div>
-				{this.componentFour(stockPrice)}
-				<div className='stock-show-market-bar-comp top-border bold-font'>{this.componentFive(stockPrice)}</div>
-				<div id='stock-show-market-bar-button'>{this.componentSix(stockPrice, stockAmountOwned)}</div>
-				<div className='stock-show-market-bar-comp top-border'>{this.componentSeven(stockAmountOwned)}</div>
+				{this.componentFour()}
+				<div className='stock-show-market-bar-comp top-border bold-font'>{this.componentFive()}</div>
+				<div id='stock-show-market-bar-button'>{this.componentSix()}</div>
+				<div className='stock-show-market-bar-comp top-border'>{this.componentSeven()}</div>
 			</div>
 		)
 	}
