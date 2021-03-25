@@ -69,11 +69,11 @@ class StockShowBar extends React.Component {
 		let { current_stocks, ticker } = this.props
 		return (
 			<>
-				<div className={`${(this.state.trade === 'Buy')? ('stock-show-chosen-transaction ') : (null)}cursor-pointer`} onClick={this.changeTransactionType} value="Buy" >
+				<div className={`${(this.state.trade === 'Buy') ? ('stock-show-chosen-transaction ') : (null)}cursor-pointer`} onClick={this.changeTransactionType} value="Buy" >
 					Buy {ticker}
 				</div >
 				{Object.keys(current_stocks).includes(ticker) ?
-					(<div className={`${(this.state.trade === 'Sell')? ('stock-show-chosen-transaction ') : (null)}cursor-pointer`} onClick={this.changeTransactionType} value="Sell"> Sell {ticker}</div>) : (<div></div>)}
+					(<div className={`${(this.state.trade === 'Sell') ? ('stock-show-chosen-transaction ') : (null)}cursor-pointer`} onClick={this.changeTransactionType} value="Sell"> Sell {ticker}</div>) : (<div></div>)}
 
 				<div className="cursor-pointer">
 					{downArrow}
@@ -148,17 +148,28 @@ class StockShowBar extends React.Component {
 
 	componentSix() {
 		let { amountToTrade, stockAmountOwned, stockUnitPrice, trade, value, errors } = this.state
+		let { ticker } = this.props
 		let balance = parseFloat(this.props.currentUser.balance)
 		amountToTrade = parseFloat(amountToTrade)
 		// debugger
 
-		if (this.state.errors === null)	{
+		if (errors === null) {
 			return (
 				<button id="stock-show-market-review-order-button" onClick={this.reviewOrderAction}>Review Order</button>
 			)
-		} else {
-			return ('Woohoo')
-		}
+		} else if (!errors) {
+			return (
+				<>
+					<div>{`You are placing a good for day market order to ${trade} ${} shares of ${ticker}.`}</div>
+				</>
+			)
+
+
+
+
+
+
+		} 
 	}
 
 	componentSeven() {
@@ -182,17 +193,17 @@ class StockShowBar extends React.Component {
 
 		if (trade === 'Buy') {
 			if (value === 'Shares') {
-				(stockUnitPrice * amountToTrade <= balance) ? this.setState({errors: false}) : this.setState({errors: true})
+				(stockUnitPrice * amountToTrade <= balance) ? this.setState({ errors: false }) : this.setState({ errors: true })
 			} else {
-				(amountToTrade <= balance) ? this.setState({errors: false}) : this.setState({errors: true})
+				(amountToTrade <= balance) ? this.setState({ errors: false }) : this.setState({ errors: true })
 			}
 
 
 		} else {
 			if (value === 'Shares') {
-				(amountToTrade <= stockAmountOwned) ? this.setState({errors: false}) : this.setState({errors: true})
+				(amountToTrade <= stockAmountOwned) ? this.setState({ errors: false }) : this.setState({ errors: true })
 			} else {
-				(amountToTrade / stockUnitPrice <= stockAmountOwned) ? this.setState({errors: false}) : this.setState({errors: true})
+				(amountToTrade / stockUnitPrice <= stockAmountOwned) ? this.setState({ errors: false }) : this.setState({ errors: true })
 			}
 		}
 		// debugger
