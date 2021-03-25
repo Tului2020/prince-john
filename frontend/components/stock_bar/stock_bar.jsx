@@ -3,6 +3,7 @@ import { Redirect } from 'react-router';
 import { tripleDots } from './stock_bar_icon'
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import MiniGraphContainer from '../graph/mini_grapher';
 
 
 
@@ -20,26 +21,26 @@ class StockBar extends React.Component {
     // this.props.history.push(`/dashboard`);
   };
 
-  displayStock(name, amount) {
+  displayStock(ticker, amount) {
     // debugger
     return (
-      <Link to={`/stocks/${name}`} key={name} className='link-to-stock-show'>
+      <Link to={`/stocks/${ticker}`} key={ticker} className='link-to-stock-show'>
     
         <div className='display-stock' >
           <div className='stock-name-amount' >
             <div className='stock-name'>
-              {name}
+              {ticker}
             </div>
             <div className='stock-amount'>
               {amount.toFixed(2)} Shares
             </div>
           </div>
 
-          <div className='stock-graph' id={'stock-graph-' + name}>
-
+          <div className='stock-graph' id={'stock-graph-' + ticker}>
+            <MiniGraphContainer ticker={ticker}/>
           </div>
 
-          <div className='stock-price' id={'stock-price-' + name}>
+          <div className='stock-price' id={'stock-price-' + ticker}>
 
           </div>
 
@@ -51,8 +52,8 @@ class StockBar extends React.Component {
 
 
   render() {
-    if (this.props.stocks.current_stocks) {
-      const { current_stocks } = this.props.stocks
+    const { current_stocks } = this.props
+    if (current_stocks) {
       return (
         <div id='stock-bar'>
           <div className='bottom-border'>
@@ -69,8 +70,8 @@ class StockBar extends React.Component {
 
 
           <div id='owned-stocks' className='bottom-border'>
-            {Object.keys(current_stocks).map(name => (
-              this.displayStock(name, current_stocks[name])
+            {Object.keys(current_stocks).map(ticker => (
+              this.displayStock(ticker, current_stocks[ticker])
             ))}
 
 
@@ -91,8 +92,9 @@ class StockBar extends React.Component {
 }
 
 
-const mSTP = (state) =>  ({
-    stocks: state.entities.stocks
+const mSTP = ({entities}) =>  ({
+    current_stocks: entities.stocks.current_stocks,
+    history: entities.history,
   })
 
 
