@@ -24,7 +24,12 @@
   width: 50px;
   font-size: 13px;
 }
-
+.stock-price {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
 
 #stock-bar > div {
   // border: 1px solid blue;
