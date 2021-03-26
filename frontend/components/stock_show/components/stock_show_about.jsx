@@ -21,13 +21,13 @@ class StockShowAbout extends React.Component {
 
         <div id='company-short-info'>
           {/* <div id='compay-info-name'><div>Name</div><div>{name}</div></div> */}
-          <div id='compay-info-ceo'><div>CEO</div><div>{ceo}</div></div>
-          <div id='compay-info-employees'><div>Number of Employees</div><div>{employees}</div></div>
-          <div id='compay-info-marketcap'><div>Market Cap</div><div>{marketcap}</div></div>
+          <div id='compay-info-ceo'><div className='bottom-padding'>CEO</div><div>{ceo}</div></div>
+          <div id='compay-info-employees'><div className='bottom-padding'>Number of Employees</div><div>{employees}</div></div>
+          <div id='compay-info-marketcap'><div className='bottom-padding'>Market Cap</div><div>{marketcap}</div></div>
 
-          <div id='compay-info-hq_address'><div>Address</div><div>{hq_address}</div></div>
-          <div id='compay-info-industry'><div>Industry</div><div>{industry}</div></div>
-          <div id='compay-info-sector'><div>Sector</div><div>{sector}</div></div>
+          <div id='compay-info-hq_address'><div className='bottom-padding'>Address</div><div>{hq_address}</div></div>
+          <div id='compay-info-industry'><div className='bottom-padding'>Industry</div><div>{industry}</div></div>
+          <div id='compay-info-sector'><div className='bottom-padding'>Sector</div><div>{sector}</div></div>
         </div>
       </div>
 
