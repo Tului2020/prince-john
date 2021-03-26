@@ -13,7 +13,7 @@ class MiniGraph extends React.Component {
 
 
   render() {
-    return <div id={`mini-graph-${this.props.ticker}`}></div>;
+    return <div id={`mini-graph-${this.props.ticker}`} className='mini-graphs'></div>;
   }
 
   componentDidMount() {
