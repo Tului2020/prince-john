@@ -5,41 +5,67 @@ import { getCompanyInfo } from '../../../util/polygon_api';
 class StockShowAbout extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {ceo: '', employees: '', description: '', marketcap: 0, hq_address: '', industry: '', sector: '', name:'', requestedInfo: false}
+    this.state = { ceo: '', employees: '', description: '', marketcap: 0, hq_country: '', hq_state: '', industry: '', sector: '', name: '', requestedInfo: false }
     this.processCompanyInfo = this.processCompanyInfo.bind(this)
     getCompanyInfo(this.props.ticker, this.processCompanyInfo)
   }
 
   render() {
-    let { ceo, employees, description, marketcap, hq_address, industry, sector, name } = this.state
-    return (
-    <div id='company-info'>
-      <div id='company-info-about' className='bottom-border'>About</div>
-      <div id='compay-info-description'>{description}</div>
+    let { ceo, employees, description, marketcap, hq_country, hq_state, industry, sector } = this.state
+    let hq_address = `${hq_state}, ${hq_country}`
 
-      <div id='company-short-info'>
-        <div id='compay-info-name'>Name: {name}</div>
-        <div id='compay-info-ceo'>CEO: {ceo}</div>
-        <div id='compay-info-employees'>Number of Employyes: {employees}</div>
-        <div id='compay-info-marketcap'>MarketCap: {marketcap}</div>
-        <div id='compay-info-hq_address'>Address: {hq_address}</div>
-        <div id='compay-info-industry'>Industry: {industry}</div>
-        <div id='compay-info-sector'>Sector: {sector}</div>
+    return (
+      <div id='company-info'>
+        <div id='company-info-about' className='bottom-border'>About</div>
+        <div id='compay-info-description'>{description}</div>
+
+        <div id='company-short-info'>
+          {/* <div id='compay-info-name'><div>Name</div><div>{name}</div></div> */}
+          <div id='compay-info-ceo'><div>CEO</div><div>{ceo}</div></div>
+          <div id='compay-info-employees'><div>Number of Employees</div><div>{employees}</div></div>
+          <div id='compay-info-marketcap'><div>Market Cap</div><div>{marketcap}</div></div>
+
+          <div id='compay-info-hq_address'><div>Address</div><div>{hq_address}</div></div>
+          <div id='compay-info-industry'><div>Industry</div><div>{industry}</div></div>
+          <div id='compay-info-sector'><div>Sector</div><div>{sector}</div></div>
+        </div>
       </div>
-    </div>
-    
+
     )
   }
 
 
+  moneyConverter(labelValue) {
+    // Nine Zeroes for Billions
+    return Number(labelValue) >= 1.0e9
+      ? '$' + ((Number(labelValue)) / 1.0e9).toFixed(1) + "B"
+      : // Six Zeroes for Millions
+      Math.round(Number(labelValue)) >= 1.0e6
+      ? '$' + (Number(labelValue) / 1.0e6).toFixed(1)  + "M"
+      : // Three Zeroes for Thousands
+      Math.round(Number(labelValue)) >= 1.0e3
+      ? '$' + ((Number(labelValue)) / 1.0e3).toFixed(1)  + "K"
+      : (Number(labelValue));
+  }
 
   processCompanyInfo(data) {
     if (this.state.requestedInfo) return
-    let { ceo, employees, description, marketcap, hq_address, industry, sector, name } = data
-    this.setState({ ceo, employees, description, marketcap, hq_address, industry, sector, name, requestedInfo: true})
+
+    let { ceo, employees, description, marketcap, hq_country, hq_state, industry, sector } = data
+    marketcap = this.moneyConverter(marketcap)
+
+    let info = { ceo, employees, description, marketcap, hq_country, hq_state, industry, sector }
+    Object.keys(info).forEach(el => {
+      if (!info[el]) info[el] = 'N/A'
+    })
+    
+
+    Object.assign(info, {requestedInfo: true})
+    console.log(info)
+    this.setState(info)
   }
 
- 
+
 }
 
 

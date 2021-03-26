@@ -1,7 +1,7 @@
 const axios = require('axios');
 const apiKey = 'bfF_zzUFmQX9mksRil15wBibzlNnOvWY';
 
-export const getCompanyInfo = (ticker, callBackFunc) => {
+export const getCompanyInfo = (ticker, callBackFunc=console.log) => {
   return axios.get(`https://api.polygon.io/v1/meta/symbols/${ticker}/company`,
     {
       params: {

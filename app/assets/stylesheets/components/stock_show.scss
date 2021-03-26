@@ -37,11 +37,25 @@ body {
   overflow: scroll;
 }
 
-#company-short-info{
+#compay-info-description {
+  padding-top: 14px;
+}
+
+#company-short-info {
   padding-top: 20px;
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
+  // flex-direction: column;
   flex-wrap: wrap;
+}
+
+#company-short-info > div {
+  width: 33%;
+  min-height: 40px;
+  padding-bottom: 15px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 }
 
 #company-info {
