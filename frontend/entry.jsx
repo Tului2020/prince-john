@@ -4,6 +4,7 @@ import configureStore from './store/store'
 import Root from './components/root'
 import { updateUserStockInfo } from './actions/stock_actions'
 import { getIntraDayThunk } from './actions/history_actions'
+import { getCompanyInfo, getStockNews } from './util/polygon_api'
 
 
 
@@ -29,7 +30,8 @@ document.addEventListener('DOMContentLoaded', () => {
   window.getState = store.getState;
   window.dispatch = store.dispatch; 
   window.getIntraDayThunk = getIntraDayThunk;
-  // debugger
+  window.getStockNews = getStockNews;
+  window.getCompanyInfo = getCompanyInfo;
   window.updateUserStockInfo = updateUserStockInfo;
 
   const rootEl = document.getElementById('root');

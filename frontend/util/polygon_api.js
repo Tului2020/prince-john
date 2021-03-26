@@ -1,49 +1,34 @@
-// const fs = require('fs')
-// const axios = require('axios')
+const axios = require('axios');
+const apiKey = 'bfF_zzUFmQX9mksRil15wBibzlNnOvWY';
 
-// const writeToFile = page => data => {
-//   fs.writeFile(`frontend/util/stock_info/stock_info_${page}.js`, `${JSON.stringify(data, null, 2)}`, "utf8", function (error, data) {
-//     if (error) console.log(error);
-//   });
-// }
-
-
-
-// const getAllStocks = (page = 1) => {
-//   let writer = writeToFile(page)
-//   return axios.get('https://api.polygon.io/v2/reference/tickers',
-//     {
-//       params: {
-//         locale: 'us',
-//         sort: 'ticker',
-//         perpage: 50,
-//         apiKey: 'bfF_zzUFmQX9mksRil15wBibzlNnOvWY',
-//         page
-//       }
-//     }
-//   ).then(payload => {
-//     let tickers = payload.data.tickers;
-//     let stockInfo = [];
-
-//     tickers.forEach(({ ticker, name, active }) => {
-//       if (active) {
-//         stockInfo.push({ ticker, name })
-//       }
-//     });
-//     writer(stockInfo)
-
-//   })
-//     .catch(error => { console.log(error) })
-// }
+export const getCompanyInfo = (ticker, callBackFunc) => {
+  return axios.get(`https://api.polygon.io/v1/meta/symbols/${ticker}/company`,
+    {
+      params: {
+        apiKey: 'bfF_zzUFmQX9mksRil15wBibzlNnOvWY'
+      }
+    }
+  )
+  .then(({data}) => callBackFunc(data))
+}
 
 
 
 
-// // for (let i = 1; i <= 2; i++) { // 790 is the last one
-// //   getAllStocks(i);
-// // }
+export const getStockNews = (ticker, callBackFunc, perpage = 20, page=1) => {
+  return axios.get(`https://api.polygon.io/v1/meta/symbols/${ticker}/news`,
+    {
+      params: {
+        perpage,
+        page,
+        apiKey: 'bfF_zzUFmQX9mksRil15wBibzlNnOvWY',
+      }
+    }
+  ).then(({data}) => {
+    callBackFunc(data)
+  })
+  .catch(err => console.log(err))
+}
 
-
-
-
+// getStockNews('AAPL')
 

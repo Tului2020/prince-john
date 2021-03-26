@@ -4,7 +4,7 @@ const newsapi = new NewsAPI('74713eba594a45e1a80088bc78668995');
 
 newsapi.v2.topHeadlines({
   // sources: 'bbc-news,the-verge',
-  q: 'Apple',
+  q: 'TSLA',
   // category: 'business',
   language: 'en',
   // country: 'us'

@@ -34,7 +34,19 @@ body {
   // border: 1px solid red;
   height: 100%;
   width: 60%;
+  overflow: scroll;
 }
+
+
+// this hides the scrollbar
+::-webkit-scrollbar {
+  width: 0;  /* Remove scrollbar space */
+  background: transparent;  /* Optional: just make scrollbar invisible */
+}
+
+// .stock-show-left::-webkit-scrollbar {
+//   display: none;
+// }
 
 #stock-show-right {
   // border: 1px solid red;
