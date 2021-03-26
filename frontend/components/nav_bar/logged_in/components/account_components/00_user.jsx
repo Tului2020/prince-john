@@ -29,8 +29,7 @@ class UserInfo extends React.Component {
             </span>
           </div>
 
-          <div id="buying-power">
-            {/* ${balance.toLocaleString()} */}
+          <div id="account-buying-power">
             {formatter.format(balance)}
             <br/>
             <span className="balance-status-description">
