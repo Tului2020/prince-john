@@ -20,7 +20,7 @@ body {
   margin-top: 35px;
   // border: 1px solid red;
   height: 90vh;
-  width: 60vw;
+  width: 70vw;
   display: flex;
   justify-content: space-around;
   overflow: hidden;
@@ -37,6 +37,26 @@ body {
   overflow: scroll;
 }
 
+#company-short-info{
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+#company-info {
+  display: flex;
+  flex-direction: column;
+  padding-top: 30px;
+  font-size: 14px;
+}
+
+#company-info-about {
+  font-family: 'Rubik', sans-serif;
+  font-size: 24px;
+  font-weight: bold;
+  padding-bottom: 27px;
+}
 
 // this hides the scrollbar
 ::-webkit-scrollbar {
@@ -44,9 +64,6 @@ body {
   background: transparent;  /* Optional: just make scrollbar invisible */
 }
 
-// .stock-show-left::-webkit-scrollbar {
-//   display: none;
-// }
 
 #stock-show-right {
   // border: 1px solid red;

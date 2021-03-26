@@ -14,14 +14,18 @@ class StockShowAbout extends React.Component {
     let { ceo, employees, description, marketcap, hq_address, industry, sector, name } = this.state
     return (
     <div id='company-info'>
-      <div id='compay-info-name'>{name}</div>
-      <div id='compay-info-ceo'>{ceo}</div>
-      <div id='compay-info-employees'>{employees}</div>
+      <div id='company-info-about' className='bottom-border'>About</div>
       <div id='compay-info-description'>{description}</div>
-      <div id='compay-info-marketcap'>{marketcap}</div>
-      <div id='compay-info-hq_address'>{hq_address}</div>
-      <div id='compay-info-industry'>{industry}</div>
-      <div id='compay-info-sector'>{sector}</div>
+
+      <div id='company-short-info'>
+        <div id='compay-info-name'>Name: {name}</div>
+        <div id='compay-info-ceo'>CEO: {ceo}</div>
+        <div id='compay-info-employees'>Number of Employyes: {employees}</div>
+        <div id='compay-info-marketcap'>MarketCap: {marketcap}</div>
+        <div id='compay-info-hq_address'>Address: {hq_address}</div>
+        <div id='compay-info-industry'>Industry: {industry}</div>
+        <div id='compay-info-sector'>Sector: {sector}</div>
+      </div>
     </div>
     
     )
