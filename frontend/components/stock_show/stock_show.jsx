@@ -2,6 +2,7 @@ import React from 'react';
 import GraphContainer from '../graph/grapher';
 import searchFunction from '../nav_bar/logged_in/components/searchbar_components/search_function';
 import LoggedInNavBarContainer from '../nav_bar/logged_in/nav_bar_logged_in_container';
+import NewsContainer from './components/news';
 import StockShowAboutContainer from './components/stock_show_about';
 import StockShowBarCotainer from './components/stock_show_bar';
 import StockShowUserInfoContainer from './components/stock_show_user_info';
@@ -62,19 +63,18 @@ class StockShow extends React.Component {
               <StockShowAboutContainer ticker={ticker}/>
             </div>
 
-            <div id="stock-show-upcoming-activity">
+            {/* <div id="stock-show-upcoming-activity">
               Upcoming Activity
-            </div>
+            </div> */}
 
             <div id="stock-show-news">
-
+              <NewsContainer ticker={ticker}/>
             </div>
 
           </div>
 
           <div id="stock-show-right">
             <StockShowBarCotainer ticker={ticker}/>
-
           </div>
         </div>
 
