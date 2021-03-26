@@ -10,6 +10,7 @@ export const getCompanyInfo = (ticker, callBackFunc=console.log) => {
     }
   )
   .then(({data}) => callBackFunc(data))
+  .catch(err => console.log(err))
 }
 
 
