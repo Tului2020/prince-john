@@ -17,7 +17,7 @@ class News extends React.Component {
 
   render() {
     let { ticker } = this.props
-    debugger
+    
     if (!ticker) {
       return (
         <div id='news-div'>
@@ -52,7 +52,7 @@ class News extends React.Component {
       getGeneralNews(this.processNews)
     }
     else {
-      getStockNews(this.ticker, this.processNews)
+      getStockNews(ticker, this.processNews)
     }
   }
 
