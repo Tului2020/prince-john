@@ -26,8 +26,12 @@ body {
   overflow: hidden;
 }
 
-.light-font {
-  color: #9c9c9c;
+
+#stock-show-right {
+  // border: 1px solid red;
+  height: 100%;
+  width: 30%;
+  max-width: 300px;
 }
 
 #stock-show-left {
@@ -35,6 +39,14 @@ body {
   height: 100%;
   width: 60%;
   overflow: scroll;
+
+}
+
+
+
+
+.light-font {
+  color: #9c9c9c;
 }
 
 #compay-info-description {
@@ -83,11 +95,7 @@ body {
 }
 
 
-#stock-show-right {
-  // border: 1px solid red;
-  height: 100%;
-  width: 30%;
-}
+
 
 #stock-show-graph-div {
   // border: 1px solid red;
