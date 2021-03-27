@@ -7,6 +7,8 @@ import NotFound from './errors/404';
 import HomeLoggedOut from './home/logged_out/homeloggedout';
 import HomeLoggedIn from './home/logged_in/homeloggedin';
 import StockShowContainer from './stock_show/stock_show_container';
+import NewsContainer from './stock_show/components/news';
+
 
 
 
@@ -17,6 +19,7 @@ const App = () => (
       <AuthRoute exact path="/login" component={LoginFormContainer} />
       <AuthRoute exact path="/signup" component={SignupFormContainer} />
       <ProtectedRoute path="/stocks/:ticker" component={StockShowContainer} />
+      <ProtectedRoute path="/news" component={NewsContainer} />
       <Route exact path='/404' component={NotFound}/>
       <ErrorRoute />
     </Switch>

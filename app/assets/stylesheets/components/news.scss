@@ -1,0 +1,31 @@
+.news {
+  padding-top: 20px;
+  display: flex;
+  // width: 100%;
+  width: 679px;
+  height: 156px;
+  overflow: hidden;
+}
+
+.news:hover {
+  background-color: rgb(228, 228, 228);
+}
+
+.news > div{
+  width: 50%;
+}
+
+.news-image {
+  // max-width: 100%;
+  height: 156px;
+}
+
+.news-title {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+
+.news-right {
+  padding-left: 15px;
+}
