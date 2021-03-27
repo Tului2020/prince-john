@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import getGeneralNews from '../../../util/newsapi';
 import { getStockNews } from '../../../util/polygon_api';
 
-// getStockNews
 
 
 class News extends React.Component {
@@ -10,9 +10,9 @@ class News extends React.Component {
     super(props)
     this.state = { data: [] }
     this.processNews = this.processNews.bind(this)
-    this.ticker = this.props.ticker || 'TSLA'
+    this.ticker = this.props.ticker || 'General'
     this.dateNow = new Date()
-    getStockNews(this.ticker, this.processNews)
+    this.getNews();
   }
 
   render() {
@@ -25,8 +25,18 @@ class News extends React.Component {
     )
   }
 
+  getNews() {
+    if (this.ticker === 'General') {
+      getGeneralNews(this.processNews)
+    }
+    else {
+      getStockNews(this.ticker, this.processNews)
+    }
+  }
+
+
   componentDidUpdate() {
-    getStockNews(this.ticker, this.processNews)
+    getNews()
   }
 
   processNews(data) {
@@ -34,12 +44,11 @@ class News extends React.Component {
   }
 
   hoursSince(postedDate) {
-    // debugger
     let secondsSince = (this.dateNow - new Date(postedDate)) / 1000;
     let hoursSince = secondsSince / 3600;
     let daysSince = hoursSince / 24;
     let monthsSince = daysSince / 30;
-    let yearsSince = monthsSince / 12;
+
     
     if (hoursSince <= 24) {
       return Math.round(hoursSince) + 'h'

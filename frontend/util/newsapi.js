@@ -1,20 +1,31 @@
-const NewsAPI = require('newsapi');
-const newsapi = new NewsAPI('74713eba594a45e1a80088bc78668995');
+const axios = require('axios');
+const apiKey = '74713eba594a45e1a80088bc78668995'
 
-
-newsapi.v2.topHeadlines({
-  // sources: 'bbc-news,the-verge',
-  q: 'TSLA',
-  // category: 'business',
-  language: 'en',
-  // country: 'us'
-}).then(response => {
-  console.log(response.articles);
-  debugger
-  /*
+const getGeneralNews = (callBackFunc=console.log) => {
+  // // debugger
+  // return newsapi.v2.topHeadlines({
+  //   category: 'business',
+  //   language: 'en',
+  // }).then(response => {
+  //   callBackFunc(response.articles);
+  // }).catch(err => console.log(err))
+  return axios.get(`https://newsapi.org/v2/top-headlines`,
     {
-      status: "ok",
-      articles: [...]
+      params: {
+        apiKey,
+        category: 'business',
+        language: 'en'
+      }
     }
-  */
-}).catch(err => console.log(err))
+  )
+  .then(({data: {articles}}) => {
+    debugger
+    callBackFunc(articles)})
+  .catch(err => console.log(err))
+
+}
+
+// getGeneralNews();
+
+export default getGeneralNews;
+
