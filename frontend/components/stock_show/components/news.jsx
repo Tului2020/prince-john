@@ -25,6 +25,10 @@ class News extends React.Component {
     )
   }
 
+  componentDidUpdate() {
+    getStockNews(this.ticker, this.processNews)
+  }
+
   processNews(data) {
     this.setState({ data })
   }
