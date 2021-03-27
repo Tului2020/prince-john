@@ -18,9 +18,7 @@ const getGeneralNews = (callBackFunc=console.log) => {
       }
     }
   )
-  .then(({data: {articles}}) => {
-    debugger
-    callBackFunc(articles)})
+  .then(({data: {articles}}) => callBackFunc(articles))
   .catch(err => console.log(err))
 
 }

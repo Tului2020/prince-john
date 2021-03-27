@@ -9,24 +9,46 @@ class News extends React.Component {
   constructor(props) {
     super(props)
     this.state = { data: [] }
+    // this.ticker = this.props.ticker || 'General'
     this.processNews = this.processNews.bind(this)
-    this.ticker = this.props.ticker || 'General'
     this.dateNow = new Date()
     this.getNews();
   }
 
   render() {
-    // debugger
-    return (
-      <div id='news-div'>
-        <div className='stock-show-title bottom-border'>News</div>
-        {this.state.data.map((news, idx) => this.displayNewsArticle(news, idx))}
-      </div>
-    )
+    let { ticker } = this.props
+    debugger
+    if (!ticker) {
+      return (
+        <div id='news-div'>
+          <div className='stock-show-title bottom-border'>News</div>
+          {this.state.data.map((news, idx) => {
+            let newsInfo = {};
+            //timestamp, source, summary, title, url, image
+            newsInfo.timestamp = news.publishedAt;
+            newsInfo.source = news.source.name;
+            newsInfo.summary = news.content;
+            newsInfo.title = news.description;
+            newsInfo.url = news.url;
+            newsInfo.image = news.urlToImage;
+
+            return this.displayNewsArticle(newsInfo, idx)
+          })}
+        </div>
+      )
+    } else {
+      return (
+        <div id='news-div'>
+          <div className='stock-show-title bottom-border'>News</div>
+          {this.state.data.map((news, idx) => this.displayNewsArticle(news, idx))}
+        </div>
+      )
+    }
   }
 
   getNews() {
-    if (this.ticker === 'General') {
+    let { ticker } = this.props
+    if (!ticker) {
       getGeneralNews(this.processNews)
     }
     else {
@@ -36,7 +58,7 @@ class News extends React.Component {
 
 
   componentDidUpdate() {
-    getNews()
+    this.getNews()
   }
 
   processNews(data) {
