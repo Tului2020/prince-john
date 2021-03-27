@@ -16,7 +16,7 @@ export const getCompanyInfo = (ticker, callBackFunc=console.log) => {
 
 
 
-export const getStockNews = (ticker, callBackFunc, perpage = 20, page=1) => {
+export const getStockNews = (ticker, callBackFunc, page=1, perpage = 5) => {
   return axios.get(`https://api.polygon.io/v1/meta/symbols/${ticker}/news`,
     {
       params: {

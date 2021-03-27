@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 class LoggedInLogo extends React.Component {
   render() {
     return (
-      <div>
+      <div id='logo-img-link'>
         <Link to="/">
           <img src={window.logo} className="logo-pic"/>
         </Link>

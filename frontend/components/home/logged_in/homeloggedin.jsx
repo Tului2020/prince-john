@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import StockBar from '../../stock_bar/stock_bar';
 import { fetchUserStockInfo } from '../../../actions/stock_actions';
 import GraphContainer from '../../graph/grapher';
+import NewsContainer from '../../stock_show/components/news';
 
 
 const currencyFormatter = new Intl.NumberFormat('en-US', {
@@ -67,6 +68,9 @@ class HomeLoggedIn extends React.Component {
             <div id='buying-power' className='bottom-border'>
               <div>Buying Power</div>
               <div>{currencyFormatter.format(balance)}</div>
+            </div>
+            <div>
+              <NewsContainer/>
             </div>
 
 

@@ -20,7 +20,7 @@ class StockShowAbout extends React.Component {
 
     return (
       <div id='company-info'>
-        <div id='company-info-about' className='bottom-border'>About</div>
+        <div className='bottom-border stock-show-title'>About</div>
         <div id='compay-info-description'>{description}</div>
 
         <div id='company-short-info'>
