@@ -110,7 +110,9 @@ class Graph extends React.Component {
 
     
     width = document.getElementById(graphDivId).clientWidth;
-    height = 250;
+    height = document.getElementById(graphDivId).clientHeight - 100;
+    console.log(height, Math.min(height, 250))
+    height = Math.min(250, height);
     let factor = 0.2;
 
 
