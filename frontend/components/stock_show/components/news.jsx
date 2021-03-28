@@ -105,7 +105,7 @@ class News extends React.Component {
           </div>
 
           <div className='news-title'>{title.slice(0, 100)}</div>
-          <div className='news-summary'>{summary.slice(0, 200)}</div>
+          <div className='news-summary'>{summary.slice(0, 200) + '...'}</div>
         </div>
 
         <div className='news-right'>
