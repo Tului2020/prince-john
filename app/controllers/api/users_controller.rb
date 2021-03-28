@@ -14,9 +14,25 @@ class Api::UsersController < ApplicationController
     @user = User.find_by(id: params[:id])
   end
   
+  def update 
+    @user = User.find_by(id: params[:id])
+    ingrease_amount = Integer(user_deposit_params['deposit_amount'])
+    if @user.balance + ingrease_amount < 0
+      render json: 'Not enough money to take out from'
+    else
+      @user.update(balance: @user.balance + ingrease_amount)
+    end
+  end
+
 
   private
   def user_params
     params.require(:user).permit(:username, :password, :first_name, :last_name, :balance)
   end
+
+  def user_deposit_params
+    params.require(:user).permit(:deposit_amount)
+  end
+
+
 end
