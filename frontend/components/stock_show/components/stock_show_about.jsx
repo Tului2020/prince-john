@@ -5,12 +5,15 @@ import { getCompanyInfo } from '../../../util/polygon_api';
 class StockShowAbout extends React.Component {
   constructor(props) {
     super(props)
-    this.state = { ceo: '', employees: '', description: '', marketcap: 0, hq_country: '', hq_state: '', industry: '', sector: '', name: '', requestedInfo: '' }
+    this.lastRequested = ''
+    this.state = { ceo: '', employees: '', description: '', marketcap: 0, hq_country: '', hq_state: '', industry: '', sector: '', name: ''}
+    this.requestedInfo = ''
     this.processCompanyInfo = this.processCompanyInfo.bind(this)
     getCompanyInfo(this.props.ticker, this.processCompanyInfo)
   }
 
   componentDidUpdate() {
+    if (this.requestedInfo === this.props.ticker) return
     getCompanyInfo(this.props.ticker, this.processCompanyInfo)
   }
 
@@ -53,7 +56,6 @@ class StockShowAbout extends React.Component {
   }
 
   processCompanyInfo(data) {
-    if (this.state.requestedInfo === this.props.ticker) return
 
     let { ceo, employees, description, marketcap, hq_country, hq_state, industry, sector } = data
     marketcap = this.moneyConverter(marketcap)
@@ -64,8 +66,7 @@ class StockShowAbout extends React.Component {
     })
     
 
-    Object.assign(info, {requestedInfo: this.props.ticker})
-    // console.log(info)
+    this.requestedInfo = this.props.ticker
     this.setState(info)
   }
 

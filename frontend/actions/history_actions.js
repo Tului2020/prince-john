@@ -10,6 +10,7 @@ const receiveStockHistory = (stockHistory, ticker) => ({
   ticker
 })
 
-export const getIntraDayThunk = ticker => dispatch => (
-  getIntraDay(ticker).then(({data, config}) => dispatch(receiveStockHistory(data, config.params.symbol)))
-)
+export const getIntraDayThunk = ticker => dispatch => {
+  return getIntraDay(ticker)
+    .then(({data, config}) => dispatch(receiveStockHistory(data, config.params.symbol)))
+}

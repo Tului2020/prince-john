@@ -9,7 +9,7 @@ class News extends React.Component {
   constructor(props) {
     super(props)
     this.state = { data: [] }
-    // this.ticker = this.props.ticker || 'General'
+    this.lastRequested = ''
     this.processNews = this.processNews.bind(this)
     this.dateNow = new Date()
     this.getNews();
@@ -49,10 +49,16 @@ class News extends React.Component {
   getNews() {
     let { ticker } = this.props
     if (!ticker) {
-      getGeneralNews(this.processNews)
+      if (this.lastRequested !== 'General') {
+        getGeneralNews(this.processNews)
+        this.lastRequested = 'General'
+      }
     }
     else {
-      getStockNews(ticker, this.processNews)
+      if (this.lastRequested !== ticker) {
+        getStockNews(ticker, this.processNews)
+        this.lastRequested = ticker
+      }
     }
   }
 
@@ -88,6 +94,7 @@ class News extends React.Component {
 
 
   displayNewsArticle({ timestamp, source, summary, title, url, image }, idx) {
+    // console.log(summary)
     // debugger
     return (
       <a href={url} className='news bottom-border' key={idx}>
@@ -97,8 +104,8 @@ class News extends React.Component {
             <div className='news-time'>{this.hoursSince(timestamp)}</div>
           </div>
 
-          <div className='news-title'>{title}</div>
-          <div className='news-summary'>{summary}</div>
+          <div className='news-title'>{title.slice(0, 100)}</div>
+          <div className='news-summary'>{summary.slice(0, 200)}</div>
         </div>
 
         <div className='news-right'>
