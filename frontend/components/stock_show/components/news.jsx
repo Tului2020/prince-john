@@ -94,6 +94,7 @@ class News extends React.Component {
 
 
   displayNewsArticle({ timestamp, source, summary, title, url, image }, idx) {
+    // console.log(summary)
     // debugger
     return (
       <a href={url} className='news bottom-border' key={idx}>
@@ -103,8 +104,8 @@ class News extends React.Component {
             <div className='news-time'>{this.hoursSince(timestamp)}</div>
           </div>
 
-          <div className='news-title'>{title}</div>
-          <div className='news-summary'>{summary}</div>
+          <div className='news-title'>{title.slice(0, 100)}</div>
+          <div className='news-summary'>{summary.slice(0, 200)}</div>
         </div>
 
         <div className='news-right'>

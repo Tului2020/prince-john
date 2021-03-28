@@ -1,10 +1,10 @@
 const axios = require('axios');
 
 const apiKeys = {
-  key1: '74713eba594a45e1a80088bc78668995',
+  // key1: '74713eba594a45e1a80088bc78668995',
   key2: '7c1f92b6684a4cbc9a81af00ebee4425',
   key3: 'aea6e8e1d5ec46c59ab66304da74d5d1',
-  key4: '13ffcb13c7e7470793810587b3c84cfa'
+  key1: '13ffcb13c7e7470793810587b3c84cfa'
 }
 
 const getGeneralNews = (callBackFunc=console.log) => {

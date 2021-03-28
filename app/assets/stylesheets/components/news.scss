@@ -17,13 +17,15 @@
 
 
 .news-image {
-  // max-width: 100%;
-  height: 156px;
+  height: 120px;
+  width: 200px;
 }
 
 .news-title {
   font-size: 20px;
   font-weight: bold;
+  height: 50%;
+  overflow: hidden;
 }
 
 .news-source-time {
