@@ -9,7 +9,7 @@ class News extends React.Component {
   constructor(props) {
     super(props)
     this.state = { data: [] }
-    // this.ticker = this.props.ticker || 'General'
+    this.lastRequested = ''
     this.processNews = this.processNews.bind(this)
     this.dateNow = new Date()
     this.getNews();
@@ -52,7 +52,10 @@ class News extends React.Component {
       getGeneralNews(this.processNews)
     }
     else {
-      getStockNews(ticker, this.processNews)
+      if (this.lastRequested !== ticker) {
+        getStockNews(ticker, this.processNews)
+        this.lastRequested = ticker
+      }
     }
   }
 

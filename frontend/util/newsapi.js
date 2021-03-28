@@ -16,7 +16,6 @@ const getGeneralNews = (callBackFunc=console.log) => {
 
 }
 
-// getGeneralNews();
 
 export default getGeneralNews;
 
