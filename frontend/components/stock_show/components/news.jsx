@@ -49,7 +49,10 @@ class News extends React.Component {
   getNews() {
     let { ticker } = this.props
     if (!ticker) {
-      getGeneralNews(this.processNews)
+      if (this.lastRequested !== 'General') {
+        getGeneralNews(this.processNews)
+        this.lastRequested = 'General'
+      }
     }
     else {
       if (this.lastRequested !== ticker) {

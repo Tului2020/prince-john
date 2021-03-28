@@ -10,13 +10,11 @@ class StockShowAbout extends React.Component {
     this.requestedInfo = ''
     this.processCompanyInfo = this.processCompanyInfo.bind(this)
     getCompanyInfo(this.props.ticker, this.processCompanyInfo)
-    console.log('running constructor')
   }
 
   componentDidUpdate() {
     if (this.requestedInfo === this.props.ticker) return
     getCompanyInfo(this.props.ticker, this.processCompanyInfo)
-    console.log('running componentDidUpdate')
   }
 
   render() {
