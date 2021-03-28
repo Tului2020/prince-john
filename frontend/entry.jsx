@@ -6,6 +6,7 @@ import { updateUserStockInfo } from './actions/stock_actions'
 import { getIntraDayThunk } from './actions/history_actions'
 import { getCompanyInfo, getStockNews } from './util/polygon_api'
 import getGeneralNews from './util/newsapi'
+import { addBalance } from './util/session_api_util'
 
 
 
@@ -35,6 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
   window.getCompanyInfo = getCompanyInfo;
   window.updateUserStockInfo = updateUserStockInfo;
   window.getGeneralNews = getGeneralNews;
+  window.addBalance = addBalance
 
   const rootEl = document.getElementById('root');
   ReactDom.render(<Root store={store} />, rootEl)

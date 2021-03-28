@@ -21,6 +21,7 @@ class Api::UsersController < ApplicationController
       render json: 'Not enough money to take out from'
     else
       @user.update(balance: @user.balance + ingrease_amount)
+      render json: @user.balance
     end
   end
 
