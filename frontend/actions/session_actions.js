@@ -60,3 +60,10 @@ export const signout = () => dispatch => (
     .fail((errors) => dispatch(receiveErrors(errors.responseJSON)))
 )
 
+export const addBalance = (userId, depositAmount) => dispatch => {
+  SessionApiUtil.addBalance(userId, depositAmount)
+    .then(updatedUserInfo => {
+      // debugger
+      dispatch(receiveCurrentUser(updatedUserInfo))})
+}
+

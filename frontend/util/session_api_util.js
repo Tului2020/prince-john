@@ -51,7 +51,7 @@ export const updateUserStockInfo = (userId, ticker, amount, unit_price) => (
   })
 )
 
-export const addBalance = (userId, depositAmount) => {
+export const addBalance = (userId, depositAmount) => (
   $.ajax({
     method: 'PATCH',
     url: `/api/users/${userId}`,
@@ -61,10 +61,7 @@ export const addBalance = (userId, depositAmount) => {
       }
     }
   })
-  .then(data => {
-    debugger
-  })
-}
+)
 
 
 
