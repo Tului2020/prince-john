@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { getCompanyInfoThunk } from '../../../actions/companyinfo_action';
+import { getCompanyInfoThunk, deleteCompanyInfoThunk } from '../../../actions/companyinfo_action';
 
 
 
@@ -13,17 +13,40 @@ class StockShowAbout extends React.Component {
     this.requestedInfo = ''
     // this.processCompanyInfo = this.processCompanyInfo.bind(this)
     this.props.getCompanyInfo(this.props.ticker)
+    this.requestedInfo = this.props.ticker
   }
 
   componentDidUpdate() {
     if (this.requestedInfo === this.props.ticker) return
+    this.props.deleteCompanyInfo()
     this.props.getCompanyInfo(this.props.ticker)
+    this.requestedInfo = this.props.ticker
   }
+
+  // componentWillUpdate() {
+  //   this.props.deleteCompanyInfo()
+  // }
+
+  
+
+
 
   render() {
     // debugger
     let { ceo, employees, description, marketcap, hq_country, hq_state, industry, sector } = this.props.companyInfo
+    ceo = ceo || 'N/A'
+    employees = employees || 'N/A'
+    description = description || ''
+    marketcap = marketcap || 'N/A'
+    hq_country = hq_country || 'N/A'
+    hq_state = hq_state || 'N/A'
+    industry = industry || 'N/A'
+    sector = sector || 'N/A'
+
+
     let hq_address = `${hq_state}, ${hq_country}`
+    if (hq_country === 'N/A' || hq_state === 'N/A') hq_address = 'N/A'
+
 
     return (
       <div id='company-info'>
@@ -75,7 +98,8 @@ const mSTP = ({entities}) => ({
 })
 
 const mDTP = (dispatch) => ({
-  getCompanyInfo: (ticker) => dispatch(getCompanyInfoThunk(ticker))
+  getCompanyInfo: (ticker) => dispatch(getCompanyInfoThunk(ticker)),
+  deleteCompanyInfo: () => dispatch(deleteCompanyInfoThunk())
 })
 
 const StockShowAboutContainer = connect(mSTP, mDTP)(StockShowAbout);
