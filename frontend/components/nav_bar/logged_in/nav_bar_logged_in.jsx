@@ -50,7 +50,7 @@ class LoggedInNavBar extends React.Component {
           <FreeStocks/>
           <Portfolio/>
           <Cash/>
-          <Messages/>
+          {/* <Messages/> */}
           <Account signout={signout} currentUser={currentUser}/>
         </div>
       </div>

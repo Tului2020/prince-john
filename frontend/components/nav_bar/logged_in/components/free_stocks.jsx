@@ -5,7 +5,8 @@ class FreeStocks extends React.Component {
   render() {
     return (
       <div>
-        <Link className="normal-link" to='/referal'>Free Stocks</Link>
+        {/* <Link className="normal-link" to='/referal'>Free Stocks</Link> */}
+        <a className="normal-link" href='https://github.com/Tului2020'>Github</a>
       </div>
     )
   }
