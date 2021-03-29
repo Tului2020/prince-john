@@ -25,6 +25,7 @@ class StockShowBar extends React.Component {
 		this.changeTransactionType = this.changeTransactionType.bind(this);
 		this.reviewOrderAction = this.reviewOrderAction.bind(this);
 		this.depositMissingFunds = this.depositMissingFunds.bind(this);
+		this.sellAllAction = this.sellAllAction.bind(this);
 	}
 
 	// valueChange(event) {
@@ -166,7 +167,7 @@ class StockShowBar extends React.Component {
 				<>
 					<div>{`You are placing a good for day market order to ${trade.toLowerCase()} ${Math.abs(shares.toFixed(3))} shares of ${ticker}.`}</div>
 					<div><button id="stock-show-market-review-order-button" onClick={() => this.buySellStock(shares)}>{trade}</button></div>
-					<div><button id="stock-show-market-review-order-button" onClick={() => this.setState({errors: null})}>Edit</button></div>
+					<div><button id="stock-show-market-review-order-button" onClick={() => this.setState({errors: null, amountToTrade: ''})}>Edit</button></div>
 				</>
 			)
 		} else {
@@ -205,19 +206,43 @@ class StockShowBar extends React.Component {
 		let missingFunds = moneyNeeded - parseFloat(currentUser.balance)
 		debugger
 		this.props.addBalance(currentUser.id, missingFunds)
-		this.setState({errors: null})
+		this.setState({errors: null, amountToTrade: ''})
 	}
 
 
 	componentSeven() {
-		let { ticker, current_stocks} = this.props
+		let { ticker, current_stocks, currentUser} = this.props
+		let { trade } = this.state
 		let stockAmountOwned = current_stocks[ticker]
-		return (
-			<div id="stock-show-market-bar-buy-power">
-				{(this.state.trade === 'Sell') ?
-					(`${stockAmountOwned.toFixed(3)} Shares Available -  Sell All`) :
-					(`${currencyFormatter.format(this.props.currentUser.balance)} Buying Power Available`)}
-			</div>)
+
+		if (trade === 'Sell') {
+			return (
+				<div id="stock-show-market-bar-buy-power">
+					{`${stockAmountOwned.toFixed(3)} Shares Available - `}
+					<div className='cursor-pointer' onClick={this.sellAllAction}>Sell All</div>
+				</div>
+			)
+		} else {
+			return (
+				<div id="stock-show-market-bar-buy-power">
+					{`${currencyFormatter.format(currentUser.balance)} Buying Power Available`}
+				</div>
+			)
+		}
+
+	}
+
+	sellAllAction() {
+		// debugger
+		let { value, stockUnitPrice } = this.state;
+		let { current_stocks, ticker } = this.props;
+		let sharesAmount = current_stocks[ticker]
+
+		if (value === 'Shares') {
+			this.setState({amountToTrade: sharesAmount})
+		} else {
+			this.setState({amountToTrade: sharesAmount * stockUnitPrice})
+		}
 	}
 
 
@@ -255,15 +280,14 @@ class StockShowBar extends React.Component {
 		let { stockUnitPrice } = this.state
 
 		this.props.updateUserStockInfo(userId, ticker, shares, stockUnitPrice)
-		this.setState({errors: null})
+		this.setState({errors: null, amountToTrade: ''})
 		if (shares + current_stocks[ticker] === 0) {
 			this.setState({trade: 'Buy'})
 		}
 	}
 
+
 	render() {
-
-
 		// console.log(this.state.errors)
 		return (
 			<div id="stock-show-market-bar">

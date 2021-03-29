@@ -178,7 +178,7 @@ body {
   transition-property: height;
 }
 
-.cursor-pointer{
+.cursor-pointer {
   cursor: pointer;
 }
 
@@ -308,6 +308,10 @@ input::-webkit-inner-spin-button {
   align-items: center;
   color: #00C805;
   font-size: 13px;
+}
+
+#stock-show-market-bar-buy-power > div {
+  margin-left: 5px;
 }
 
 #stock-show-market-bar-order-top {
