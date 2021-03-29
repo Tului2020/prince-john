@@ -25,12 +25,12 @@ class News extends React.Component {
           {this.state.data.map((news, idx) => {
             let newsInfo = {};
             //timestamp, source, summary, title, url, image
-            newsInfo.timestamp = news.publishedAt;
-            newsInfo.source = news.source.name;
-            newsInfo.summary = news.content;
-            newsInfo.title = news.description;
+            newsInfo.timestamp = news.published_date;
+            newsInfo.source = 'NY Times';
+            newsInfo.summary = news.abstract;
+            newsInfo.title = news.title;
             newsInfo.url = news.url;
-            newsInfo.image = news.urlToImage;
+            newsInfo.image = news.multimedia[0].url;
 
             return this.displayNewsArticle(newsInfo, idx)
           })}

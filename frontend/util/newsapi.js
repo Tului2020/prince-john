@@ -8,23 +8,40 @@ const apiKeys = {
 }
 
 const getGeneralNews = (callBackFunc=console.log) => {
-  const apiKeyToUse = Math.ceil(Math.random() * Object.keys(apiKeys).length)
-  console.log(`getGeneralNews ${apiKeyToUse}`)
-  let apiKey = apiKeys[`key${apiKeyToUse}`]
+  // const apiKeyToUse = Math.ceil(Math.random() * Object.keys(apiKeys).length)
+  // console.log(`getGeneralNews ${apiKeyToUse}`)
+  // let apiKey = apiKeys[`key${apiKeyToUse}`]
 
-  return axios.get(`https://newsapi.org/v2/top-headlines`,
-    {
-      params: {
-        apiKey,
-        category: 'business',
-        language: 'en'
-      }
-    }
-  )
-  .then(({data: {articles}}) => callBackFunc(articles))
+  // return axios.get(`https://newsapi.org/v2/top-headlines`,
+  //   {
+  //     params: {
+  //       apiKey,
+  //       category: 'business',
+  //       language: 'en'
+  //     }
+  //   }
+  // )
+
+  
+
+  // return $.ajax({
+  //   method: 'get',
+  //   url: 'https://newsapi.org/v2/top-headlines',
+  //   params: {
+  //     apiKey,
+  //     category: 'business',
+  //     language: 'en'
+  //   }
+  // })
+  // .then(({data: {articles}}) => callBackFunc(articles))
+  return axios.get('https://api.nytimes.com/svc/topstories/v2/politics.json?api-key=uNS4n69yrCa7KWhTetHlla46DXTZkVg2')
+  .then(({data: {results}}) => callBackFunc(results))
   .catch(err => console.log(err))
-
 }
+
+// getGeneralNews()
+
+
 
 
 export default getGeneralNews;
