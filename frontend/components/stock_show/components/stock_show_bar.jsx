@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { addBalance } from '../../../actions/session_actions';
 import { fetchUserStockInfo, updateUserStockInfo } from '../../../actions/stock_actions';
 import { downArrow } from './../stock_show_icons';
 
@@ -23,6 +24,7 @@ class StockShowBar extends React.Component {
 		this.updateTradeAmount = this.updateTradeAmount.bind(this);
 		this.changeTransactionType = this.changeTransactionType.bind(this);
 		this.reviewOrderAction = this.reviewOrderAction.bind(this);
+		this.depositMissingFunds = this.depositMissingFunds.bind(this);
 	}
 
 	// valueChange(event) {
@@ -42,11 +44,9 @@ class StockShowBar extends React.Component {
 
 
 	componentDidUpdate() {
-		let { current_stocks, ticker, history } = this.props
-
+		let { ticker, history } = this.props
 
 		if (history[ticker] && !this.state.infoSet) {
-			// debugger
 			this.setState({
 				stockUnitPrice: history[ticker][108].price,
 				infoSet: true
@@ -182,8 +182,10 @@ class StockShowBar extends React.Component {
 			} else {
 				firstMessage = 'Not Enough Buying Power'
 				secondMessage = `Please Deposit More Funds`
-				depositFundsButton = <div><button id="stock-show-market-review-order-button" onClick={() => console.log('Deposit Mo Money')}>Deposit Funds</button></div>
+				depositFundsButton = (<div><button id="stock-show-market-review-order-button" onClick={this.depositMissingFunds}>Deposit Missing Funds</button></div>)
 			}
+
+
 			return (
 				<>
 					<div className='bold-font'>{firstMessage}</div>
@@ -194,6 +196,18 @@ class StockShowBar extends React.Component {
 			)
 		}
 	}
+
+	depositMissingFunds() {
+		let { currentUser } = this.props
+		let { amountToTrade, value, stockUnitPrice } = this.state
+
+		let moneyNeeded = (value==='Dollars') ? (amountToTrade) : (amountToTrade * stockUnitPrice)
+		let missingFunds = moneyNeeded - parseFloat(currentUser.balance)
+		debugger
+		this.props.addBalance(currentUser.id, missingFunds)
+		this.setState({errors: null})
+	}
+
 
 	componentSeven() {
 		let { ticker, current_stocks} = this.props
@@ -280,8 +294,10 @@ const mSTP = ({ entities, session }) => ({
 
 const mDTP = (dispatch) => ({
 	fetchUserStockInfo: (userId) => dispatch(fetchUserStockInfo(userId)),
-	updateUserStockInfo: (userId, ticker, amount, unitPrice) => dispatch(updateUserStockInfo(userId, ticker, amount, unitPrice))
+	updateUserStockInfo: (userId, ticker, amount, unitPrice) => dispatch(updateUserStockInfo(userId, ticker, amount, unitPrice)),
+	addBalance: (userId, depositAmount) => dispatch(addBalance(userId, depositAmount))
 })
+
 
 const StockShowBarCotainer = connect(mSTP, mDTP)(StockShowBar);
 
