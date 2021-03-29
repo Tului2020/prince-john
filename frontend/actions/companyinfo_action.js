@@ -2,6 +2,7 @@ import { getCompanyInfo } from "../util/polygon_api";
 
 
 export const RECEIVE_COMPANY_INFO = 'RECEIVE_COMPANY_INFO';
+export const DELETE_COMPANY_INFO = 'DELETE_COMPANY_INFO';
 
 function moneyConverter(labelValue) {
   // Nine Zeroes for Billions
@@ -21,10 +22,18 @@ function numberFormatter(x) {
 }
 
 
+
+
+
 const receiveCompanyInfo = (companyInfo) => ({
   type: RECEIVE_COMPANY_INFO,
   companyInfo
 })
+
+const deleteCompanyInfo = () => ({
+  type: DELETE_COMPANY_INFO
+})
+
 
 export const getCompanyInfoThunk = ticker => dispatch => (
   getCompanyInfo(ticker)
@@ -32,4 +41,8 @@ export const getCompanyInfoThunk = ticker => dispatch => (
       dispatch(receiveCompanyInfo({ ceo, employees: numberFormatter(employees), description, marketcap: moneyConverter(marketcap), hq_country, hq_state, industry, sector }))
     })
     .catch(err => console.log(err))
+)
+
+export const deleteCompanyInfoThunk = () => dispatch => (
+  dispatch(deleteCompanyInfo())
 )
