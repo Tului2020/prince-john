@@ -13,6 +13,7 @@ export const getCompanyInfo = (ticker, callBackFunc=console.log) => {
   const apiKeyToUse = Math.ceil(Math.random() * Object.keys(apiKeys).length)
   console.log(`getCompanyInfo ${apiKeyToUse}`)
   let apiKey = apiKeys[`key${apiKeyToUse}`]
+  debugger
   return axios.get(`https://api.polygon.io/v1/meta/symbols/${ticker}/company`,
     {
       params: {
@@ -21,6 +22,7 @@ export const getCompanyInfo = (ticker, callBackFunc=console.log) => {
     }
   )
   .then(({data}) => {
+    debugger
     console.log(data)
     callBackFunc(data)})
   .catch(err => console.log(err))
