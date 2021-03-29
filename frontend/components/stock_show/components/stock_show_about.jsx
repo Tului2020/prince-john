@@ -1,29 +1,28 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { getCompanyInfo } from '../../../util/polygon_api';
+import { getCompanyInfoThunk } from '../../../actions/companyinfo_action';
 
-function numberFormatter(x) {
-  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-}
+
 
 
 class StockShowAbout extends React.Component {
   constructor(props) {
     super(props)
     this.lastRequested = ''
-    this.state = { ceo: '', employees: '', description: '', marketcap: 0, hq_country: '', hq_state: '', industry: '', sector: '', name: ''}
+    // this.state = { ceo: '', employees: '', description: '', marketcap: 0, hq_country: '', hq_state: '', industry: '', sector: '', name: ''}
     this.requestedInfo = ''
-    this.processCompanyInfo = this.processCompanyInfo.bind(this)
-    getCompanyInfo(this.props.ticker, this.processCompanyInfo)
+    // this.processCompanyInfo = this.processCompanyInfo.bind(this)
+    this.props.getCompanyInfo(this.props.ticker)
   }
 
   componentDidUpdate() {
     if (this.requestedInfo === this.props.ticker) return
-    getCompanyInfo(this.props.ticker, this.processCompanyInfo)
+    this.props.getCompanyInfo(this.props.ticker)
   }
 
   render() {
-    let { ceo, employees, description, marketcap, hq_country, hq_state, industry, sector } = this.state
+    // debugger
+    let { ceo, employees, description, marketcap, hq_country, hq_state, industry, sector } = this.props.companyInfo
     let hq_address = `${hq_state}, ${hq_country}`
 
     return (
@@ -47,33 +46,22 @@ class StockShowAbout extends React.Component {
   }
 
 
-  moneyConverter(labelValue) {
-    // Nine Zeroes for Billions
-    return Number(labelValue) >= 1.0e9
-      ? '$' + ((Number(labelValue)) / 1.0e9).toFixed(1) + "B"
-      : // Six Zeroes for Millions
-      Math.round(Number(labelValue)) >= 1.0e6
-      ? '$' + (Number(labelValue) / 1.0e6).toFixed(1)  + "M"
-      : // Three Zeroes for Thousands
-      Math.round(Number(labelValue)) >= 1.0e3
-      ? '$' + ((Number(labelValue)) / 1.0e3).toFixed(1)  + "K"
-      : (Number(labelValue));
-  }
 
-  processCompanyInfo(data) {
 
-    let { ceo, employees, description, marketcap, hq_country, hq_state, industry, sector } = data
-    marketcap = this.moneyConverter(marketcap)
+  // processCompanyInfo(data) {
 
-    let info = { ceo, employees: numberFormatter(employees), description, marketcap, hq_country, hq_state, industry, sector }
-    Object.keys(info).forEach(el => {
-      if (!info[el]) info[el] = 'N/A'
-    })
+  //   let { ceo, employees, description, marketcap, hq_country, hq_state, industry, sector } = data
+  //   marketcap = this.moneyConverter(marketcap)
+
+  //   let info = { ceo, employees: numberFormatter(employees), description, marketcap, hq_country, hq_state, industry, sector }
+  //   Object.keys(info).forEach(el => {
+  //     if (!info[el]) info[el] = 'N/A'
+  //   })
     
 
-    this.requestedInfo = this.props.ticker
-    this.setState(info)
-  }
+  //   this.requestedInfo = this.props.ticker
+  //   this.setState(info)
+  // }
 
 
 }
@@ -82,9 +70,13 @@ class StockShowAbout extends React.Component {
 
 
 
-const mSTP = (state) => ({})
+const mSTP = ({entities}) => ({
+  companyInfo: entities.companyInfo
+})
 
-const mDTP = (dispatch) => ({})
+const mDTP = (dispatch) => ({
+  getCompanyInfo: (ticker) => dispatch(getCompanyInfoThunk(ticker))
+})
 
 const StockShowAboutContainer = connect(mSTP, mDTP)(StockShowAbout);
 export default StockShowAboutContainer;
