@@ -11,6 +11,11 @@ const currencyFormatter = new Intl.NumberFormat('en-US', {
   minimumFractionDigits: 2
 })
 
+function numberFormatter(x) {
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
+
 
 class StockBar extends React.Component {
   constructor(props) {
@@ -31,11 +36,15 @@ class StockBar extends React.Component {
     let price = 0;
     let percentChange = 0;
 
+    let amountString = `${numberFormatter(amount.toFixed(2))} Shares`.slice(0, 12) + '..'
+
     if (Object.keys(history).includes(ticker)) {
       price = history[ticker][108].price
       let beginningPrice = history[ticker][0].price
       percentChange = (price - beginningPrice) / beginningPrice * 100 
     }
+
+
 
 
     return (
@@ -47,7 +56,7 @@ class StockBar extends React.Component {
               {ticker}
             </div>
             <div className='stock-amount'>
-              {amount.toFixed(2)} Shares
+              {amountString}
             </div>
           </div>
 

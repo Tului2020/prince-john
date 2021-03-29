@@ -21,7 +21,7 @@
 
 .stock-amount {
   height: 16px;
-  width: 50px;
+  width: 100%;
   font-size: 13px;
 }
 .stock-price {
@@ -67,7 +67,7 @@
   display: flex;
 }
 
-.stock-name-amount> div{
+.stock-name-amount > div {
   // border: 1px solid red;
   height: 16px;
   width: 100%;

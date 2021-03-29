@@ -2,6 +2,11 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { getCompanyInfo } from '../../../util/polygon_api';
 
+function numberFormatter(x) {
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
+
 class StockShowAbout extends React.Component {
   constructor(props) {
     super(props)
@@ -60,7 +65,7 @@ class StockShowAbout extends React.Component {
     let { ceo, employees, description, marketcap, hq_country, hq_state, industry, sector } = data
     marketcap = this.moneyConverter(marketcap)
 
-    let info = { ceo, employees, description, marketcap, hq_country, hq_state, industry, sector }
+    let info = { ceo, employees: numberFormatter(employees), description, marketcap, hq_country, hq_state, industry, sector }
     Object.keys(info).forEach(el => {
       if (!info[el]) info[el] = 'N/A'
     })
