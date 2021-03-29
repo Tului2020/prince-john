@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux';
+import companyInfoReducer from './companyinfo_reducer';
 import historyReducer from './history_reducer';
 import portfolioValueReducer from './portfolio_reducer';
 import stocksReducer from './stocks_reducer';
@@ -10,6 +11,7 @@ const entitiesReducer = combineReducers({
   stocks: stocksReducer,
   history: historyReducer,
   portfolioValue: portfolioValueReducer,
+  companyInfo: companyInfoReducer
 })
 
 export default entitiesReducer;
