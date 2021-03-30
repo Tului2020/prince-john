@@ -3809,3 +3809,138 @@ Processing by Api::StocksController#index as JSON
 Completed 200 OK in 7ms (Views: 5.0ms | ActiveRecord: 0.7ms)
 
 
+Started GET "/api/users/1/stocks" for 127.0.0.1 at 2021-03-30 15:54:37 -0700
+Processing by Api::StocksController#index as JSON
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/stocks_controller.rb:3
+  Rendering api/stocks/index.json.jbuilder
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT SUM("stocks"."amount") AS sum_amount, "stocks"."ticker" AS stocks_ticker FROM "stocks" WHERE "stocks"."user_id" = $1 GROUP BY "stocks"."ticker"[0m  [["user_id", 1]]
+  ↳ app/models/user.rb:40
+  [1m[36mStock Load (0.2ms)[0m  [1m[34mSELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/api/stocks/index.json.jbuilder:2
+  Rendered api/stocks/index.json.jbuilder (7.7ms)
+Completed 200 OK in 13ms (Views: 10.3ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/api/users/1/stocks" for 127.0.0.1 at 2021-03-30 15:54:42 -0700
+Processing by Api::StocksController#index as JSON
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/stocks_controller.rb:3
+  Rendering api/stocks/index.json.jbuilder
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT SUM("stocks"."amount") AS sum_amount, "stocks"."ticker" AS stocks_ticker FROM "stocks" WHERE "stocks"."user_id" = $1 GROUP BY "stocks"."ticker"[0m  [["user_id", 1]]
+  ↳ app/models/user.rb:40
+  [1m[36mStock Load (0.2ms)[0m  [1m[34mSELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/api/stocks/index.json.jbuilder:2
+  Rendered api/stocks/index.json.jbuilder (4.2ms)
+Completed 200 OK in 6ms (Views: 4.6ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/api/users/1/stocks" for 127.0.0.1 at 2021-03-30 15:55:54 -0700
+Processing by Api::StocksController#index as JSON
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/stocks_controller.rb:3
+  Rendering api/stocks/index.json.jbuilder
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT SUM("stocks"."amount") AS sum_amount, "stocks"."ticker" AS stocks_ticker FROM "stocks" WHERE "stocks"."user_id" = $1 GROUP BY "stocks"."ticker"[0m  [["user_id", 1]]
+  ↳ app/models/user.rb:40
+  [1m[36mStock Load (0.2ms)[0m  [1m[34mSELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/api/stocks/index.json.jbuilder:2
+  Rendered api/stocks/index.json.jbuilder (4.6ms)
+Completed 200 OK in 7ms (Views: 5.0ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/api/users/1/stocks" for 127.0.0.1 at 2021-03-30 16:01:03 -0700
+Processing by Api::StocksController#index as JSON
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/stocks_controller.rb:3
+  Rendering api/stocks/index.json.jbuilder
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT SUM("stocks"."amount") AS sum_amount, "stocks"."ticker" AS stocks_ticker FROM "stocks" WHERE "stocks"."user_id" = $1 GROUP BY "stocks"."ticker"[0m  [["user_id", 1]]
+  ↳ app/models/user.rb:40
+  [1m[36mStock Load (0.2ms)[0m  [1m[34mSELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/api/stocks/index.json.jbuilder:2
+  Rendered api/stocks/index.json.jbuilder (6.1ms)
+Completed 200 OK in 8ms (Views: 6.7ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/api/users/1/stocks" for 127.0.0.1 at 2021-03-30 16:01:10 -0700
+Processing by Api::StocksController#index as JSON
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/stocks_controller.rb:3
+  Rendering api/stocks/index.json.jbuilder
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT SUM("stocks"."amount") AS sum_amount, "stocks"."ticker" AS stocks_ticker FROM "stocks" WHERE "stocks"."user_id" = $1 GROUP BY "stocks"."ticker"[0m  [["user_id", 1]]
+  ↳ app/models/user.rb:40
+  [1m[36mStock Load (0.3ms)[0m  [1m[34mSELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/api/stocks/index.json.jbuilder:2
+  Rendered api/stocks/index.json.jbuilder (12.6ms)
+Completed 200 OK in 17ms (Views: 14.0ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/api/users/1/stocks" for 127.0.0.1 at 2021-03-30 16:01:16 -0700
+Processing by Api::StocksController#index as JSON
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/stocks_controller.rb:3
+  Rendering api/stocks/index.json.jbuilder
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT SUM("stocks"."amount") AS sum_amount, "stocks"."ticker" AS stocks_ticker FROM "stocks" WHERE "stocks"."user_id" = $1 GROUP BY "stocks"."ticker"[0m  [["user_id", 1]]
+  ↳ app/models/user.rb:40
+  [1m[36mStock Load (0.3ms)[0m  [1m[34mSELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/api/stocks/index.json.jbuilder:2
+  Rendered api/stocks/index.json.jbuilder (5.9ms)
+Completed 200 OK in 8ms (Views: 6.5ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/api/users/1/stocks" for 127.0.0.1 at 2021-03-30 16:03:26 -0700
+Processing by Api::StocksController#index as JSON
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/stocks_controller.rb:3
+  Rendering api/stocks/index.json.jbuilder
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT SUM("stocks"."amount") AS sum_amount, "stocks"."ticker" AS stocks_ticker FROM "stocks" WHERE "stocks"."user_id" = $1 GROUP BY "stocks"."ticker"[0m  [["user_id", 1]]
+  ↳ app/models/user.rb:40
+  [1m[36mStock Load (0.2ms)[0m  [1m[34mSELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/api/stocks/index.json.jbuilder:2
+  Rendered api/stocks/index.json.jbuilder (5.0ms)
+Completed 200 OK in 7ms (Views: 5.4ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2021-03-30 16:03:28 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "1-DVBw5YLQVNmnXjIZo-bA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:12
+  Rendered static_pages/root.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 771ms (Views: 770.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/api/users/1/stocks" for 127.0.0.1 at 2021-03-30 16:03:29 -0700
+Processing by Api::StocksController#index as JSON
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/stocks_controller.rb:3
+  Rendering api/stocks/index.json.jbuilder
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT SUM("stocks"."amount") AS sum_amount, "stocks"."ticker" AS stocks_ticker FROM "stocks" WHERE "stocks"."user_id" = $1 GROUP BY "stocks"."ticker"[0m  [["user_id", 1]]
+  ↳ app/models/user.rb:40
+  [1m[36mStock Load (0.3ms)[0m  [1m[34mSELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/api/stocks/index.json.jbuilder:2
+  Rendered api/stocks/index.json.jbuilder (5.3ms)
+Completed 200 OK in 8ms (Views: 5.4ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/api/users/1/stocks" for 127.0.0.1 at 2021-03-30 16:03:33 -0700
+Processing by Api::StocksController#index as JSON
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/stocks_controller.rb:3
+  Rendering api/stocks/index.json.jbuilder
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT SUM("stocks"."amount") AS sum_amount, "stocks"."ticker" AS stocks_ticker FROM "stocks" WHERE "stocks"."user_id" = $1 GROUP BY "stocks"."ticker"[0m  [["user_id", 1]]
+  ↳ app/models/user.rb:40
+  [1m[36mStock Load (0.2ms)[0m  [1m[34mSELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/api/stocks/index.json.jbuilder:2
+  Rendered api/stocks/index.json.jbuilder (4.0ms)
+Completed 200 OK in 6ms (Views: 4.5ms | ActiveRecord: 0.7ms)
+
+
