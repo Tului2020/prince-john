@@ -47,17 +47,17 @@ class Account extends React.Component {
 
         <div className="dropdown-content">
           <UserInfo/>
-          <PrinceJohnGold/>
-          <FreeStocks/>
-          <AccountDrop />
-          <Banking/>
-          <Recurring/>
-          <History/>
-          <Documents/>
-          <Settings/>
-          <HelpCenter/>
-          <ContactUs/>
-          <Disclosures/>
+          {/* <PrinceJohnGold/> */}
+          {/* <FreeStocks/> */}
+          {/* <AccountDrop /> */}
+          {/* <Banking/> */}
+          {/* <Recurring/> */}
+          {/* <History/> */}
+          {/* <Documents/> */}
+          {/* <Settings/> */}
+          {/* <HelpCenter/> */}
+          {/* <ContactUs/> */}
+          {/* <Disclosures/> */}
           <Signout signout={signout}/>
         </div>
       </div>
