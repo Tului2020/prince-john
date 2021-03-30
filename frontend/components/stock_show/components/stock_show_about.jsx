@@ -16,6 +16,12 @@ class StockShowAbout extends React.Component {
     this.requestedInfo = this.props.ticker
   }
 
+  componentWillUnmount() {
+    this.props.deleteCompanyInfo()
+    this.requestedInfo = ''
+  }
+
+
   componentDidUpdate() {
     if (this.requestedInfo === this.props.ticker) return
     this.props.deleteCompanyInfo()

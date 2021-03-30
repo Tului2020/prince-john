@@ -154,6 +154,11 @@ class StockShowBar extends React.Component {
 		// let balance = parseFloat(this.props.currentUser.balance)
 		amountToTrade = parseFloat(amountToTrade)
 
+		if (!current_stocks[ticker]) {
+			return (<div>{`${ticker} is not supported by PrinceJohn`}</div>)
+		}
+
+
 
 		if (errors === null) {
 			return (
@@ -206,7 +211,7 @@ class StockShowBar extends React.Component {
 		let missingFunds = moneyNeeded - parseFloat(currentUser.balance)
 		debugger
 		this.props.addBalance(currentUser.id, missingFunds)
-		this.setState({errors: null, amountToTrade: ''})
+		this.setState({errors: null})
 	}
 
 
