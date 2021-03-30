@@ -6,7 +6,7 @@ const getPortfolioValue = (portfolioValue) => ({
 })
 
 export const updatePortfolioValue = (portfolioValue) => dispatch => {
-  console.log('updating portfolioValue')
+  // console.log('updating portfolioValue')
   dispatch(getPortfolioValue(portfolioValue))
 }
 

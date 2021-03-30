@@ -11,7 +11,7 @@ const apiKeys = {
 
 export const getCompanyInfo = (ticker) => {
   const apiKeyToUse = Math.ceil(Math.random() * Object.keys(apiKeys).length)
-  console.log(`getCompanyInfo ${apiKeyToUse}`)
+  // console.log(`getCompanyInfo ${apiKeyToUse}`)
   let apiKey = apiKeys[`key${apiKeyToUse}`]
   // debugger
   return axios.get(`https://api.polygon.io/v1/meta/symbols/${ticker}/company`,
@@ -28,7 +28,7 @@ export const getCompanyInfo = (ticker) => {
 
 export const getStockNews = (ticker, callBackFunc=console.log, page=1, perpage=5) => {
   const apiKeyToUse = Math.ceil(Math.random() * Object.keys(apiKeys).length)
-  console.log(`getStockNews ${apiKeyToUse}`)
+  // console.log(`getStockNews ${apiKeyToUse}`)
   let apiKey = apiKeys[`key${apiKeyToUse}`]
   return axios.get(`https://api.polygon.io/v1/meta/symbols/${ticker}/news`,
     {
@@ -41,7 +41,7 @@ export const getStockNews = (ticker, callBackFunc=console.log, page=1, perpage=5
   ).then(({data}) => {
     callBackFunc(data)
   })
-  .catch(err => console.log(err))
+  // .catch(err => console.log(err))
 }
 
 

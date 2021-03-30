@@ -18,7 +18,7 @@ const apiKey = Math.floor(Math.random() * Object.keys(apiKeys).length + 1)
 
 const getIntraDay = (symbol, keyNum=apiKey) => {
 	if (keyNum > Object.keys(apiKeys).length) return
-	console.log(`getIntraDay ${keyNum}`)
+	// console.log(`getIntraDay ${keyNum}`)
 	return axios.get('https://www.alphavantage.co/query',
 		{
 			params: {

@@ -36,7 +36,7 @@ const getGeneralNews = (callBackFunc=console.log) => {
   // .then(({data: {articles}}) => callBackFunc(articles))
   return axios.get('https://api.nytimes.com/svc/topstories/v2/politics.json?api-key=uNS4n69yrCa7KWhTetHlla46DXTZkVg2')
   .then(({data: {results}}) => callBackFunc(results))
-  .catch(err => console.log(err))
+  // .catch(err => console.log(err))
 }
 
 // getGeneralNews()
