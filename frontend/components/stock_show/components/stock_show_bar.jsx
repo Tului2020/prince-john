@@ -206,7 +206,7 @@ class StockShowBar extends React.Component {
 		let missingFunds = moneyNeeded - parseFloat(currentUser.balance)
 		debugger
 		this.props.addBalance(currentUser.id, missingFunds)
-		this.setState({errors: null, amountToTrade: ''})
+		this.setState({errors: null})
 	}
 
 
