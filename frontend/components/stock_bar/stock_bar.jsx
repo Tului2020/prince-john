@@ -25,7 +25,7 @@ class StockBar extends React.Component {
 
   handleOnSubmit() {
     // debugger
-    console.log('clicked')
+    // console.log('clicked')
     return <Redirect to='/stocks/TSLA'/>
     // this.props.history.push(`/dashboard`);
   };
