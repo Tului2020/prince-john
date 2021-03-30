@@ -13,23 +13,24 @@ const apiKeys = {
 	key9: 'SSA3C3DIPBBVK9QZ',
 	key10:'8O3VZSH2CNOEQTR1'}
 
-const apiKey = Math.floor(Math.random() * Object.keys(apiKeys).length + 1)
 
 
-const getIntraDay = (symbol, keyNum=apiKey) => {
-	if (keyNum > Object.keys(apiKeys).length) return
-	// console.log(`getIntraDay ${keyNum}`)
+
+const getIntraDay = (symbol) => {
+	let keyNum = Math.floor(Math.random() * Object.keys(apiKeys).length + 1)
+	console.log(`getIntraDay ${keyNum}`)
+	let apiKey = apiKeys[`key${keyNum}`]
+
 	return axios.get('https://www.alphavantage.co/query',
 		{
 			params: {
 				function: 'TIME_SERIES_INTRADAY',
 				symbol,
 				interval: '5min',
-				apikey: apiKeys[`key${keyNum}`],
+				apikey: apiKey,
 				datatype: 'csv'
 			}
 		})
-
 
 	}
 
