@@ -148,13 +148,13 @@ class StockShowBar extends React.Component {
 
 	componentSix() {
 		let { amountToTrade, stockUnitPrice, trade, value, errors } = this.state
-		let { ticker, current_stocks} = this.props
+		let { ticker, current_stocks, history} = this.props
 		let stockAmountOwned = current_stocks[ticker]
 
 		// let balance = parseFloat(this.props.currentUser.balance)
 		amountToTrade = parseFloat(amountToTrade)
 
-		if (!current_stocks[ticker]) {
+		if (!history[ticker]) {
 			return (<div>{`${ticker} is not supported by PrinceJohn`}</div>)
 		}
 

@@ -73,12 +73,14 @@ class News extends React.Component {
 
   hoursSince(postedDate) {
     let secondsSince = (this.dateNow - new Date(postedDate)) / 1000;
-    let hoursSince = secondsSince / 3600;
+    let minutesSince = secondsSince / 60;
+    let hoursSince = minutesSince / 60;
     let daysSince = hoursSince / 24;
     let monthsSince = daysSince / 30;
 
-    
-    if (hoursSince <= 24) {
+    if (minutesSince < 60) {
+      return Math.round(minutesSince) + 'min'
+    } else if (hoursSince <= 24) {
       return Math.round(hoursSince) + 'h'
     } else if  (daysSince <= 30) {
       return Math.round(daysSince) + 'd'
