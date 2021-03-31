@@ -4976,3 +4976,148 @@ Processing by Api::HistoriesController#show as JSON
 Completed 200 OK in 10ms (Views: 1.7ms | ActiveRecord: 2.3ms)
 
 
+Started POST "/api/histories/" for 127.0.0.1 at 2021-03-30 17:04:26 -0700
+Processing by Api::HistoriesController#create as JSON
+  Parameters: {"history"=>{"date"=>"45615631616", "history"=>"213,21,3,12,3,123,12,321,3,12,3,12,213"}}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/histories_controller.rb:8
+  [1m[36mHistory Create (6.8ms)[0m  [1m[32mINSERT INTO "histories" ("date", "history", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["date", "45615631616"], ["history", "213,21,3,12,3,123,12,321,3,12,3,12,213"], ["created_at", "2021-03-31 00:04:26.319672"], ["updated_at", "2021-03-31 00:04:26.319672"]]
+  ↳ app/controllers/api/histories_controller.rb:8
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/histories_controller.rb:8
+Completed 500 Internal Server Error in 17ms (ActiveRecord: 10.5ms)
+
+
+
+ActiveRecord::NotNullViolation - PG::NotNullViolation: ERROR:  null value in column "ticker" violates not-null constraint
+DETAIL:  Failing row contains (2, null, 45615631616, 213,21,3,12,3,123,12,321,3,12,3,12,213, 2021-03-31 00:04:26.319672, 2021-03-31 00:04:26.319672).
+: INSERT INTO "histories" ("date", "history", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id":
+  app/controllers/api/histories_controller.rb:8:in `create'
+
+Started POST "/api/histories/" for 127.0.0.1 at 2021-03-30 17:04:43 -0700
+Processing by Api::HistoriesController#create as JSON
+  Parameters: {"history"=>{"date"=>"45615631616", "history"=>"213,21,3,12,3,123,12,321,3,12,3,12,213", "ticker"=>"AAPL"}}
+Unpermitted parameter: :ticker
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/histories_controller.rb:8
+  [1m[36mHistory Create (0.8ms)[0m  [1m[32mINSERT INTO "histories" ("date", "history", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["date", "45615631616"], ["history", "213,21,3,12,3,123,12,321,3,12,3,12,213"], ["created_at", "2021-03-31 00:04:43.013277"], ["updated_at", "2021-03-31 00:04:43.013277"]]
+  ↳ app/controllers/api/histories_controller.rb:8
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/histories_controller.rb:8
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 1.2ms)
+
+
+
+ActiveRecord::NotNullViolation - PG::NotNullViolation: ERROR:  null value in column "ticker" violates not-null constraint
+DETAIL:  Failing row contains (3, null, 45615631616, 213,21,3,12,3,123,12,321,3,12,3,12,213, 2021-03-31 00:04:43.013277, 2021-03-31 00:04:43.013277).
+: INSERT INTO "histories" ("date", "history", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id":
+  app/controllers/api/histories_controller.rb:8:in `create'
+
+Started POST "/api/histories/" for 127.0.0.1 at 2021-03-30 17:05:00 -0700
+Processing by Api::HistoriesController#create as JSON
+  Parameters: {"history"=>{"date"=>"45615631616", "history"=>"213,21,3,12,3,123,12,321,3,12,3,12,213", "ticker"=>"AAPL"}}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/histories_controller.rb:8
+  [1m[36mHistory Create (0.2ms)[0m  [1m[32mINSERT INTO "histories" ("ticker", "date", "history", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["ticker", "AAPL"], ["date", "45615631616"], ["history", "213,21,3,12,3,123,12,321,3,12,3,12,213"], ["created_at", "2021-03-31 00:05:00.579802"], ["updated_at", "2021-03-31 00:05:00.579802"]]
+  ↳ app/controllers/api/histories_controller.rb:8
+  [1m[35m (1.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/histories_controller.rb:8
+No template found for Api::HistoriesController#create, rendering head :no_content
+Completed 204 No Content in 18ms (ActiveRecord: 3.3ms)
+
+
+Started POST "/api/histories/" for 127.0.0.1 at 2021-03-30 17:05:21 -0700
+Processing by Api::HistoriesController#create as JSON
+  Parameters: {"history"=>{"date"=>"45615631616", "history"=>"213,21,3,12,3,123,12,321,3,12,3,12,213", "ticker"=>"AAPL"}}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/histories_controller.rb:8
+  [1m[36mHistory Create (1.1ms)[0m  [1m[32mINSERT INTO "histories" ("ticker", "date", "history", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["ticker", "AAPL"], ["date", "45615631616"], ["history", "213,21,3,12,3,123,12,321,3,12,3,12,213"], ["created_at", "2021-03-31 00:05:21.162527"], ["updated_at", "2021-03-31 00:05:21.162527"]]
+  ↳ app/controllers/api/histories_controller.rb:8
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/histories_controller.rb:8
+Completed 500 Internal Server Error in 10ms (ActiveRecord: 3.5ms)
+
+
+
+ActiveRecord::RecordNotUnique - PG::UniqueViolation: ERROR:  duplicate key value violates unique constraint "index_histories_on_ticker"
+DETAIL:  Key (ticker)=(AAPL) already exists.
+: INSERT INTO "histories" ("ticker", "date", "history", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id":
+  app/controllers/api/histories_controller.rb:8:in `create'
+
+Started POST "/api/histories/" for 127.0.0.1 at 2021-03-30 17:05:25 -0700
+Processing by Api::HistoriesController#create as JSON
+  Parameters: {"history"=>{"date"=>"45615631616", "history"=>"213,21,3,12,3,123,12,321,3,12,3,12,213", "ticker"=>"AAPL1"}}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/histories_controller.rb:8
+  [1m[36mHistory Create (0.3ms)[0m  [1m[32mINSERT INTO "histories" ("ticker", "date", "history", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["ticker", "AAPL1"], ["date", "45615631616"], ["history", "213,21,3,12,3,123,12,321,3,12,3,12,213"], ["created_at", "2021-03-31 00:05:25.934275"], ["updated_at", "2021-03-31 00:05:25.934275"]]
+  ↳ app/controllers/api/histories_controller.rb:8
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/histories_controller.rb:8
+Completed 200 OK in 4ms (Views: 0.1ms | ActiveRecord: 1.7ms)
+
+
+Started PATCH "/api/histories/" for 127.0.0.1 at 2021-03-30 17:06:29 -0700
+  
+ActionController::RoutingError (No route matches [PATCH] "/api/histories"):
+  
+actionpack (5.2.5) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.5) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.5) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.5) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.5) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.5) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.5) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.5) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.5) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.5) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.5) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.5) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.5) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+railties (5.2.5) lib/rails/engine.rb:524:in `call'
+puma (3.12.6) lib/puma/configuration.rb:227:in `call'
+puma (3.12.6) lib/puma/server.rb:706:in `handle_request'
+puma (3.12.6) lib/puma/server.rb:476:in `process_client'
+puma (3.12.6) lib/puma/server.rb:334:in `block in run'
+puma (3.12.6) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started PATCH "/api/histories/AAPL" for 127.0.0.1 at 2021-03-30 17:07:04 -0700
+Processing by Api::HistoriesController#update as JSON
+  Parameters: {"history"=>{"date"=>"45615631616", "history"=>"213,21,3,12,3,123,12,321,3,12,3,12,213,312,321,312", "ticker"=>"AAPL1"}, "id"=>"AAPL"}
+  [1m[36mHistory Load (0.2ms)[0m  [1m[34mSELECT  "histories".* FROM "histories" WHERE "histories"."ticker" = $1 LIMIT $2[0m  [["ticker", "AAPL"], ["LIMIT", 1]]
+  ↳ app/controllers/api/histories_controller.rb:16
+Unpermitted parameter: :ticker
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/histories_controller.rb:17
+  [1m[36mHistory Update (0.3ms)[0m  [1m[33mUPDATE "histories" SET "history" = $1, "updated_at" = $2 WHERE "histories"."id" = $3[0m  [["history", "213,21,3,12,3,123,12,321,3,12,3,12,213,312,321,312"], ["updated_at", "2021-03-31 00:07:04.416959"], ["id", 4]]
+  ↳ app/controllers/api/histories_controller.rb:17
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/histories_controller.rb:17
+No template found for Api::HistoriesController#update, rendering head :no_content
+Completed 204 No Content in 23ms (ActiveRecord: 5.6ms)
+
+
+Started PATCH "/api/histories/AAPL" for 127.0.0.1 at 2021-03-30 17:07:21 -0700
+Processing by Api::HistoriesController#update as JSON
+  Parameters: {"history"=>{"date"=>"45615631616", "history"=>"213,21,3,12,3,123,12,321,3,12,3,12,213,312,321,312,3123,213,12", "ticker"=>"AAPL1"}, "id"=>"AAPL"}
+  [1m[36mHistory Load (0.2ms)[0m  [1m[34mSELECT  "histories".* FROM "histories" WHERE "histories"."ticker" = $1 LIMIT $2[0m  [["ticker", "AAPL"], ["LIMIT", 1]]
+  ↳ app/controllers/api/histories_controller.rb:16
+Unpermitted parameter: :ticker
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/histories_controller.rb:17
+  [1m[36mHistory Update (0.2ms)[0m  [1m[33mUPDATE "histories" SET "history" = $1, "updated_at" = $2 WHERE "histories"."id" = $3[0m  [["history", "213,21,3,12,3,123,12,321,3,12,3,12,213,312,321,312,3123,213,12"], ["updated_at", "2021-03-31 00:07:21.646866"], ["id", 4]]
+  ↳ app/controllers/api/histories_controller.rb:17
+  [1m[35m (1.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/histories_controller.rb:17
+No template found for Api::HistoriesController#update, rendering head :no_content
+Completed 204 No Content in 14ms (ActiveRecord: 1.6ms)
+
+
+  [1m[36mHistory Load (0.3ms)[0m  [1m[34mSELECT "histories".* FROM "histories"[0m
+  [1m[36mHistory Load (0.7ms)[0m  [1m[34mSELECT  "histories".* FROM "histories" WHERE "histories"."ticker" = $1 LIMIT $2[0m  [["ticker", "AAPL"], ["LIMIT", 1]]
