@@ -18,7 +18,7 @@ const apiKeys = {
 
 const getIntraDay = (symbol) => {
 	let keyNum = Math.floor(Math.random() * Object.keys(apiKeys).length + 1)
-	console.log(`getIntraDay ${keyNum}`)
+	// console.log(`getIntraDay ${keyNum}`)
 	let apiKey = apiKeys[`key${keyNum}`]
 
 	return axios.get('https://www.alphavantage.co/query',
