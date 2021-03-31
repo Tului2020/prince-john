@@ -63,5 +63,40 @@ export const addBalance = (userId, depositAmount) => (
   })
 )
 
+export const getIntraDayFromDB = (ticker) => (
+  $.ajax({
+    method: 'GET',
+    url: `/api/histories/${ticker}`,
+  })
+)
+
+export const createIntraDayDB = (ticker, date, history) => (
+  $.ajax({
+    method: 'POST',
+    url: `/api/histories/`,
+    data: {
+      history: {
+        ticker,
+        history,
+        date
+      }
+    }
+  })
+)
+
+
+export const updateIntraDayDB = (ticker, date, history) => (
+  $.ajax({
+    method: 'PATCH',
+    url: `/api/histories/${ticker}`,
+    data: {
+      history: {
+        history,
+        date
+      }
+    }
+  })
+)
+
 
 

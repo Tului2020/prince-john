@@ -38,7 +38,8 @@ const deleteCompanyInfo = () => ({
 export const getCompanyInfoThunk = ticker => dispatch => (
   getCompanyInfo(ticker)
     .then(({ data: { ceo, employees, description, marketcap, hq_country, hq_state, industry, sector } }) => {
-      dispatch(receiveCompanyInfo({ ceo, employees: numberFormatter(employees), description, marketcap: moneyConverter(marketcap), hq_country, hq_state, industry, sector }))
+      let emp = employees || 0
+      dispatch(receiveCompanyInfo({ ceo, employees: numberFormatter(emp), description, marketcap: moneyConverter(marketcap), hq_country, hq_state, industry, sector }))
     })
     // .catch(err => console.log(err))
 )

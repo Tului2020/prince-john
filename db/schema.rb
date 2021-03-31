@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_18_222042) do
+ActiveRecord::Schema.define(version: 2021_03_30_233005) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "histories", force: :cascade do |t|
+    t.string "ticker", null: false
+    t.string "date", null: false
+    t.text "history", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["ticker"], name: "index_histories_on_ticker", unique: true
+  end
 
   create_table "stocks", force: :cascade do |t|
     t.integer "user_id", null: false

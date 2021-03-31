@@ -1,5 +1,5 @@
 import * as d3 from 'd3';
-import { STOCK_HISTORY } from "../actions/history_actions";
+import { STOCK_HISTORY, STOCK_HISTORY_LOCAL } from "../actions/history_actions";
 
 const dataParser = (myData) => {
   let parsedData = d3.csv.parse(myData);
@@ -56,6 +56,20 @@ const dataParser = (myData) => {
   return retArr
 }
 
+const localDataParser = ({ticker, date, history}) => {
+  console.log(`${ticker} Local`)
+  let baseDate = new Date(date.split(' ').slice(0, 4).join(' ') + ' 09:30:00')
+  let returnData = []
+  history.split(',').forEach((price, idx) => {
+    let currentDate = new Date(baseDate);
+    currentDate = new Date(currentDate.setMinutes(currentDate.getMinutes() + 5 * idx))
+    returnData.push({date: currentDate, price: parseFloat(price)})
+  })
+
+  return {[ticker]: returnData}
+}
+
+
 
 
 const historyReducer = (state = {}, action) => {
@@ -64,6 +78,10 @@ const historyReducer = (state = {}, action) => {
   switch (action.type) {
     case STOCK_HISTORY:
       return Object.assign({}, state, { [action.ticker]: dataParser(action.stockHistory) })
+    case STOCK_HISTORY_LOCAL:
+      
+      return Object.assign({}, state, localDataParser(action.stockHistory))
+
     default:
       return state
   }

@@ -42,10 +42,14 @@ class StockShowUserInfo extends React.Component {
 		stockTodayReturn = `${((currentUnitPrice - beginningUnitPrice) / beginningUnitPrice * 100).toFixed(2)}%`
 
 		if (Object.keys(current_stocks).length > 0) {
+			// debugger
 			let portfolioValue = Object.keys(current_stocks)
-				.map(ticker => history[ticker][108].price * current_stocks[ticker])
+				.map(ticker => {
+					if (!history[ticker]) return 0
+					// debugger
+					return history[ticker][108].price * current_stocks[ticker]})
 				.reduce((acc, el) => acc + el)
-	
+
 			stockPortDiversity = (stockMarketValue / portfolioValue * 100).toFixed(2)
 		}
 
@@ -146,9 +150,9 @@ class StockShowUserInfo extends React.Component {
 
 const mSTP = ({entities, session}) => ({
 	current_stocks: entities.stocks.current_stocks,
-	// current_user: entities.users[session.currentUserId],
 	stock_history: entities.stocks.stock_history,
 	history: entities.history,
+	// ticker: ownParams.ticker
 })
 
 const mDTP = (dispatch) => ({

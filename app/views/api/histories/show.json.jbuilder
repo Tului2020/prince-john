@@ -1,0 +1,1 @@
+json.extract! @history, :ticker, :date, :history
