@@ -57,7 +57,7 @@ const dataParser = (myData) => {
 }
 
 const localDataParser = ({ticker, date, history}) => {
-  console.log(`${ticker} Local`)
+  // console.log(`${ticker} Local`)
   let baseDate = new Date(date.split(' ').slice(0, 4).join(' ') + ' 09:30:00')
   let returnData = []
   history.split(',').forEach((price, idx) => {
