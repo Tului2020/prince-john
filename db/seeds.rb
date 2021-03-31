@@ -10,7 +10,7 @@ User.destroy_all
 user1 = User.create(password: "123456", username: "demolicious@demo.com", first_name: 'Demo', last_name: 'Feature', balance: 10000)
 
 Stock.destroy_all
-user1stock1 = Stock.create(user_id: user1.id, ticker: 'QYLD', amount: 100, unit_price: 23)
+# user1stock1 = Stock.create(user_id: user1.id, ticker: 'QYLD', amount: 100, unit_price: 23)
 user1stock2 = Stock.create(user_id: user1.id, ticker: 'TSLA', amount: 100, unit_price: 350)
 
 History.destroy_all

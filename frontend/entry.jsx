@@ -8,6 +8,7 @@ import { getCompanyInfo, getStockNews } from './util/polygon_api'
 import getGeneralNews from './util/newsapi'
 import { addBalance } from './actions/session_actions'
 import { deleteCompanyInfoThunk, getCompanyInfoThunk } from './actions/companyinfo_action'
+import { createIntraDayDB, getIntraDayFromDB, updateIntraDayDB } from './util/session_api_util'
 
 
 
@@ -33,14 +34,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
   window.getState = store.getState;
   window.dispatch = store.dispatch; 
-  window.getIntraDayThunk = getIntraDayThunk;
-  window.getStockNews = getStockNews;
-  window.getCompanyInfo = getCompanyInfo;
-  window.updateUserStockInfo = updateUserStockInfo;
-  window.getGeneralNews = getGeneralNews;
-  window.addBalance = addBalance
-  window.getCompanyInfo = getCompanyInfoThunk
-  window.deleteCompanyInfoThunk = deleteCompanyInfoThunk
+  window.getIntraDayFromDB = getIntraDayFromDB
+  window.createIntraDayDB = createIntraDayDB
+  window.updateIntraDayDB = updateIntraDayDB
+  window.getIntraDayThunk = getIntraDayThunk
+
 
   const rootEl = document.getElementById('root');
   ReactDom.render(<Root store={store} />, rootEl)

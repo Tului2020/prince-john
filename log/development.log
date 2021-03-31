@@ -5121,3 +5121,2949 @@ Completed 204 No Content in 14ms (ActiveRecord: 1.6ms)
 
   [1m[36mHistory Load (0.3ms)[0m  [1m[34mSELECT "histories".* FROM "histories"[0m
   [1m[36mHistory Load (0.7ms)[0m  [1m[34mSELECT  "histories".* FROM "histories" WHERE "histories"."ticker" = $1 LIMIT $2[0m  [["ticker", "AAPL"], ["LIMIT", 1]]
+Started GET "/" for 127.0.0.1 at 2021-03-30 17:16:46 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "Tu-Jg6SaQ8VknmGqgfnALQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:12
+  Rendered static_pages/root.html.erb within layouts/application (21.3ms)
+Completed 200 OK in 700ms (Views: 691.6ms | ActiveRecord: 6.6ms)
+
+
+Started GET "/api/users/1/stocks" for 127.0.0.1 at 2021-03-30 17:16:47 -0700
+Processing by Api::StocksController#index as JSON
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/stocks_controller.rb:3
+  Rendering api/stocks/index.json.jbuilder
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT SUM("stocks"."amount") AS sum_amount, "stocks"."ticker" AS stocks_ticker FROM "stocks" WHERE "stocks"."user_id" = $1 GROUP BY "stocks"."ticker"[0m  [["user_id", 1]]
+  ↳ app/models/user.rb:40
+  [1m[36mStock Load (0.4ms)[0m  [1m[34mSELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/api/stocks/index.json.jbuilder:2
+  Rendered api/stocks/index.json.jbuilder (13.2ms)
+Completed 200 OK in 17ms (Views: 11.9ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/api/histories/TSLA" for 127.0.0.1 at 2021-03-30 17:16:54 -0700
+Processing by Api::HistoriesController#show as JSON
+  Parameters: {"id"=>"TSLA"}
+  [1m[36mHistory Load (0.3ms)[0m  [1m[34mSELECT  "histories".* FROM "histories" WHERE "histories"."ticker" = $1 LIMIT $2[0m  [["ticker", "TSLA"], ["LIMIT", 1]]
+  ↳ app/controllers/api/histories_controller.rb:3
+  Rendering api/histories/show.json.jbuilder
+  Rendered api/histories/show.json.jbuilder (0.3ms)
+Completed 200 OK in 8ms (Views: 1.3ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/api/histories/TSLA" for 127.0.0.1 at 2021-03-30 17:17:18 -0700
+Processing by Api::HistoriesController#show as JSON
+  Parameters: {"id"=>"TSLA"}
+  [1m[36mHistory Load (0.2ms)[0m  [1m[34mSELECT  "histories".* FROM "histories" WHERE "histories"."ticker" = $1 LIMIT $2[0m  [["ticker", "TSLA"], ["LIMIT", 1]]
+  ↳ app/controllers/api/histories_controller.rb:3
+  Rendering api/histories/show.json.jbuilder
+  Rendered api/histories/show.json.jbuilder (0.3ms)
+Completed 200 OK in 2ms (Views: 1.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/api/histories/TSLA" for 127.0.0.1 at 2021-03-30 17:17:35 -0700
+Processing by Api::HistoriesController#show as JSON
+  Parameters: {"id"=>"TSLA"}
+  [1m[36mHistory Load (0.2ms)[0m  [1m[34mSELECT  "histories".* FROM "histories" WHERE "histories"."ticker" = $1 LIMIT $2[0m  [["ticker", "TSLA"], ["LIMIT", 1]]
+  ↳ app/controllers/api/histories_controller.rb:3
+  Rendering api/histories/show.json.jbuilder
+  Rendered api/histories/show.json.jbuilder (0.3ms)
+Completed 200 OK in 2ms (Views: 1.3ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/api/histories/" for 127.0.0.1 at 2021-03-30 17:17:55 -0700
+Processing by Api::HistoriesController#create as JSON
+  Parameters: {"history"=>{"ticker"=>"tului", "history"=>"23123321", "date"=>"231231"}}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/histories_controller.rb:8
+  [1m[36mHistory Create (0.3ms)[0m  [1m[32mINSERT INTO "histories" ("ticker", "date", "history", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["ticker", "tului"], ["date", "231231"], ["history", "23123321"], ["created_at", "2021-03-31 00:17:55.223720"], ["updated_at", "2021-03-31 00:17:55.223720"]]
+  ↳ app/controllers/api/histories_controller.rb:8
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/histories_controller.rb:8
+Completed 200 OK in 3ms (Views: 0.1ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/api/histories/tului" for 127.0.0.1 at 2021-03-30 17:18:12 -0700
+Processing by Api::HistoriesController#show as JSON
+  Parameters: {"id"=>"tului"}
+  [1m[36mHistory Load (0.3ms)[0m  [1m[34mSELECT  "histories".* FROM "histories" WHERE "histories"."ticker" = $1 LIMIT $2[0m  [["ticker", "tului"], ["LIMIT", 1]]
+  ↳ app/controllers/api/histories_controller.rb:3
+  Rendering api/histories/show.json.jbuilder
+  Rendered api/histories/show.json.jbuilder (0.3ms)
+Completed 200 OK in 2ms (Views: 1.2ms | ActiveRecord: 0.3ms)
+
+
+Started PATCH "/api/histories/tului" for 127.0.0.1 at 2021-03-30 17:18:23 -0700
+Processing by Api::HistoriesController#update as JSON
+  Parameters: {"history"=>{"history"=>"23123321", "date"=>"23123121321"}, "id"=>"tului"}
+  [1m[36mHistory Load (0.4ms)[0m  [1m[34mSELECT  "histories".* FROM "histories" WHERE "histories"."ticker" = $1 LIMIT $2[0m  [["ticker", "tului"], ["LIMIT", 1]]
+  ↳ app/controllers/api/histories_controller.rb:16
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/histories_controller.rb:17
+  [1m[36mHistory Update (0.3ms)[0m  [1m[33mUPDATE "histories" SET "date" = $1, "updated_at" = $2 WHERE "histories"."id" = $3[0m  [["date", "23123121321"], ["updated_at", "2021-03-31 00:18:23.402546"], ["id", 7]]
+  ↳ app/controllers/api/histories_controller.rb:17
+  [1m[35m (7.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/histories_controller.rb:17
+No template found for Api::HistoriesController#update, rendering head :no_content
+Completed 204 No Content in 21ms (ActiveRecord: 8.2ms)
+
+
+Started GET "/api/histories/tului" for 127.0.0.1 at 2021-03-30 17:18:26 -0700
+Processing by Api::HistoriesController#show as JSON
+  Parameters: {"id"=>"tului"}
+  [1m[36mHistory Load (0.3ms)[0m  [1m[34mSELECT  "histories".* FROM "histories" WHERE "histories"."ticker" = $1 LIMIT $2[0m  [["ticker", "tului"], ["LIMIT", 1]]
+  ↳ app/controllers/api/histories_controller.rb:3
+  Rendering api/histories/show.json.jbuilder
+  Rendered api/histories/show.json.jbuilder (0.3ms)
+Completed 200 OK in 2ms (Views: 1.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2021-03-30 17:20:56 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "Tu-Jg6SaQ8VknmGqgfnALQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:12
+  Rendered static_pages/root.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 672ms (Views: 671.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/api/histories/TSLA" for 127.0.0.1 at 2021-03-30 17:20:57 -0700
+Processing by Api::HistoriesController#show as JSON
+  Parameters: {"id"=>"TSLA"}
+  [1m[36mHistory Load (0.1ms)[0m  [1m[34mSELECT  "histories".* FROM "histories" WHERE "histories"."ticker" = $1 LIMIT $2[0m  [["ticker", "TSLA"], ["LIMIT", 1]]
+  ↳ app/controllers/api/histories_controller.rb:3
+  Rendering api/histories/show.json.jbuilder
+  Rendered api/histories/show.json.jbuilder (0.3ms)
+Completed 200 OK in 2ms (Views: 1.2ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/api/users/1/stocks" for 127.0.0.1 at 2021-03-30 17:20:57 -0700
+Processing by Api::StocksController#index as JSON
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/stocks_controller.rb:3
+  Rendering api/stocks/index.json.jbuilder
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT SUM("stocks"."amount") AS sum_amount, "stocks"."ticker" AS stocks_ticker FROM "stocks" WHERE "stocks"."user_id" = $1 GROUP BY "stocks"."ticker"[0m  [["user_id", 1]]
+  ↳ app/models/user.rb:40
+  [1m[36mStock Load (0.2ms)[0m  [1m[34mSELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/api/stocks/index.json.jbuilder:2
+  Rendered api/stocks/index.json.jbuilder (2.4ms)
+Completed 200 OK in 5ms (Views: 2.8ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/api/histories/QYLD" for 127.0.0.1 at 2021-03-30 17:20:57 -0700
+Processing by Api::HistoriesController#show as JSON
+  Parameters: {"id"=>"QYLD"}
+  [1m[36mHistory Load (0.2ms)[0m  [1m[34mSELECT  "histories".* FROM "histories" WHERE "histories"."ticker" = $1 LIMIT $2[0m  [["ticker", "QYLD"], ["LIMIT", 1]]
+  ↳ app/controllers/api/histories_controller.rb:3
+  Rendering api/histories/show.json.jbuilder
+  Rendered api/histories/show.json.jbuilder (1.6ms)
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.2ms)
+
+
+
+NoMethodError - undefined method `ticker' for nil:NilClass:
+  app/views/api/histories/show.json.jbuilder:1:in `_app_views_api_histories_show_json_jbuilder___2338579168485494217_70133733637740'
+
+Started GET "/api/histories/TSLA" for 127.0.0.1 at 2021-03-30 17:21:13 -0700
+Processing by Api::HistoriesController#show as JSON
+  Parameters: {"id"=>"TSLA"}
+  [1m[36mHistory Load (0.3ms)[0m  [1m[34mSELECT  "histories".* FROM "histories" WHERE "histories"."ticker" = $1 LIMIT $2[0m  [["ticker", "TSLA"], ["LIMIT", 1]]
+  ↳ app/controllers/api/histories_controller.rb:3
+  Rendering api/histories/show.json.jbuilder
+  Rendered api/histories/show.json.jbuilder (0.4ms)
+Completed 200 OK in 3ms (Views: 1.3ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/api/histories/TSLA2" for 127.0.0.1 at 2021-03-30 17:28:53 -0700
+Processing by Api::HistoriesController#show as JSON
+  Parameters: {"id"=>"TSLA2"}
+  [1m[36mHistory Load (0.2ms)[0m  [1m[34mSELECT  "histories".* FROM "histories" WHERE "histories"."ticker" = $1 LIMIT $2[0m  [["ticker", "TSLA2"], ["LIMIT", 1]]
+  ↳ app/controllers/api/histories_controller.rb:3
+  Rendering api/histories/show.json.jbuilder
+  Rendered api/histories/show.json.jbuilder (2.5ms)
+Completed 500 Internal Server Error in 9ms (ActiveRecord: 1.9ms)
+
+
+
+NoMethodError - undefined method `ticker' for nil:NilClass:
+  app/views/api/histories/show.json.jbuilder:1:in `_app_views_api_histories_show_json_jbuilder___2338579168485494217_70133743256600'
+
+Started GET "/api/histories/TSLA2" for 127.0.0.1 at 2021-03-30 17:29:12 -0700
+Processing by Api::HistoriesController#show as JSON
+  Parameters: {"id"=>"TSLA2"}
+  [1m[36mHistory Load (0.2ms)[0m  [1m[34mSELECT  "histories".* FROM "histories" WHERE "histories"."ticker" = $1 LIMIT $2[0m  [["ticker", "TSLA2"], ["LIMIT", 1]]
+  ↳ app/controllers/api/histories_controller.rb:3
+  Rendering api/histories/show.json.jbuilder
+  Rendered api/histories/show.json.jbuilder (2.5ms)
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.2ms)
+
+
+
+NoMethodError - undefined method `ticker' for nil:NilClass:
+  app/views/api/histories/show.json.jbuilder:1:in `_app_views_api_histories_show_json_jbuilder___2338579168485494217_70133747664460'
+
+Started GET "/" for 127.0.0.1 at 2021-03-30 17:29:22 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "Tu-Jg6SaQ8VknmGqgfnALQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:12
+  Rendered static_pages/root.html.erb within layouts/application (10.5ms)
+Completed 200 OK in 712ms (Views: 708.6ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/api/histories/TSLA" for 127.0.0.1 at 2021-03-30 17:29:23 -0700
+Processing by Api::HistoriesController#show as JSON
+  Parameters: {"id"=>"TSLA"}
+  [1m[36mHistory Load (0.6ms)[0m  [1m[34mSELECT  "histories".* FROM "histories" WHERE "histories"."ticker" = $1 LIMIT $2[0m  [["ticker", "TSLA"], ["LIMIT", 1]]
+  ↳ app/controllers/api/histories_controller.rb:3
+  Rendering api/histories/show.json.jbuilder
+  Rendered api/histories/show.json.jbuilder (0.4ms)
+Completed 200 OK in 7ms (Views: 1.4ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/api/users/1/stocks" for 127.0.0.1 at 2021-03-30 17:29:23 -0700
+Processing by Api::StocksController#index as JSON
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/stocks_controller.rb:3
+  Rendering api/stocks/index.json.jbuilder
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT SUM("stocks"."amount") AS sum_amount, "stocks"."ticker" AS stocks_ticker FROM "stocks" WHERE "stocks"."user_id" = $1 GROUP BY "stocks"."ticker"[0m  [["user_id", 1]]
+  ↳ app/models/user.rb:40
+  [1m[36mStock Load (0.2ms)[0m  [1m[34mSELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/api/stocks/index.json.jbuilder:2
+  Rendered api/stocks/index.json.jbuilder (11.0ms)
+Completed 200 OK in 14ms (Views: 9.7ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/api/histories/QYLD" for 127.0.0.1 at 2021-03-30 17:29:35 -0700
+Processing by Api::HistoriesController#show as JSON
+  Parameters: {"id"=>"QYLD"}
+  [1m[36mHistory Load (0.2ms)[0m  [1m[34mSELECT  "histories".* FROM "histories" WHERE "histories"."ticker" = $1 LIMIT $2[0m  [["ticker", "QYLD"], ["LIMIT", 1]]
+  ↳ app/controllers/api/histories_controller.rb:3
+  Rendering api/histories/show.json.jbuilder
+  Rendered api/histories/show.json.jbuilder (3.1ms)
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.2ms)
+
+
+
+NoMethodError - undefined method `ticker' for nil:NilClass:
+  app/views/api/histories/show.json.jbuilder:1:in `_app_views_api_histories_show_json_jbuilder___2338579168485494217_70133747523480'
+
+Started GET "/api/histories/TSLA2" for 127.0.0.1 at 2021-03-30 17:29:40 -0700
+Processing by Api::HistoriesController#show as JSON
+  Parameters: {"id"=>"TSLA2"}
+  [1m[36mHistory Load (0.2ms)[0m  [1m[34mSELECT  "histories".* FROM "histories" WHERE "histories"."ticker" = $1 LIMIT $2[0m  [["ticker", "TSLA2"], ["LIMIT", 1]]
+  ↳ app/controllers/api/histories_controller.rb:3
+  Rendering api/histories/show.json.jbuilder
+  Rendered api/histories/show.json.jbuilder (1.4ms)
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.2ms)
+
+
+
+NoMethodError - undefined method `ticker' for nil:NilClass:
+  app/views/api/histories/show.json.jbuilder:1:in `_app_views_api_histories_show_json_jbuilder___2338579168485494217_70133746991800'
+
+Started GET "/api/histories/TSLA2" for 127.0.0.1 at 2021-03-30 17:29:56 -0700
+Processing by Api::HistoriesController#show as JSON
+  Parameters: {"id"=>"TSLA2"}
+  [1m[36mHistory Load (0.2ms)[0m  [1m[34mSELECT  "histories".* FROM "histories" WHERE "histories"."ticker" = $1 LIMIT $2[0m  [["ticker", "TSLA2"], ["LIMIT", 1]]
+  ↳ app/controllers/api/histories_controller.rb:3
+  Rendering api/histories/show.json.jbuilder
+  Rendered api/histories/show.json.jbuilder (1.6ms)
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.2ms)
+
+
+
+NoMethodError - undefined method `ticker' for nil:NilClass:
+  app/views/api/histories/show.json.jbuilder:1:in `_app_views_api_histories_show_json_jbuilder___2338579168485494217_70133741863460'
+
+Started GET "/api/histories/TSLA" for 127.0.0.1 at 2021-03-30 17:30:47 -0700
+Processing by Api::HistoriesController#show as JSON
+  Parameters: {"id"=>"TSLA"}
+  [1m[36mHistory Load (0.2ms)[0m  [1m[34mSELECT  "histories".* FROM "histories" WHERE "histories"."ticker" = $1 LIMIT $2[0m  [["ticker", "TSLA"], ["LIMIT", 1]]
+  ↳ app/controllers/api/histories_controller.rb:3
+  Rendering api/histories/show.json.jbuilder
+  Rendered api/histories/show.json.jbuilder (0.4ms)
+Completed 200 OK in 2ms (Views: 1.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2021-03-30 17:31:10 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "Tu-Jg6SaQ8VknmGqgfnALQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:12
+  Rendered static_pages/root.html.erb within layouts/application (1.8ms)
+Completed 200 OK in 687ms (Views: 686.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/api/histories/TSLA" for 127.0.0.1 at 2021-03-30 17:31:11 -0700
+Processing by Api::HistoriesController#show as JSON
+  Parameters: {"id"=>"TSLA"}
+  [1m[36mHistory Load (0.2ms)[0m  [1m[34mSELECT  "histories".* FROM "histories" WHERE "histories"."ticker" = $1 LIMIT $2[0m  [["ticker", "TSLA"], ["LIMIT", 1]]
+  ↳ app/controllers/api/histories_controller.rb:3
+  Rendering api/histories/show.json.jbuilder
+  Rendered api/histories/show.json.jbuilder (0.3ms)
+Completed 200 OK in 3ms (Views: 1.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/api/histories/TSLA" for 127.0.0.1 at 2021-03-30 17:31:11 -0700
+Processing by Api::HistoriesController#show as JSON
+  Parameters: {"id"=>"TSLA"}
+  [1m[36mHistory Load (0.4ms)[0m  [1m[34mSELECT  "histories".* FROM "histories" WHERE "histories"."ticker" = $1 LIMIT $2[0m  [["ticker", "TSLA"], ["LIMIT", 1]]
+  ↳ app/controllers/api/histories_controller.rb:3
+  Rendering api/histories/show.json.jbuilder
+  Rendered api/histories/show.json.jbuilder (0.3ms)
+Completed 200 OK in 3ms (Views: 1.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/api/users/1/stocks" for 127.0.0.1 at 2021-03-30 17:31:11 -0700
+Processing by Api::StocksController#index as JSON
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/stocks_controller.rb:3
+  Rendering api/stocks/index.json.jbuilder
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT SUM("stocks"."amount") AS sum_amount, "stocks"."ticker" AS stocks_ticker FROM "stocks" WHERE "stocks"."user_id" = $1 GROUP BY "stocks"."ticker"[0m  [["user_id", 1]]
+  ↳ app/models/user.rb:40
+  [1m[36mStock Load (0.6ms)[0m  [1m[34mSELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/api/stocks/index.json.jbuilder:2
+  Rendered api/stocks/index.json.jbuilder (4.1ms)
+Completed 200 OK in 7ms (Views: 4.2ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/api/histories/TSLA" for 127.0.0.1 at 2021-03-30 17:31:22 -0700
+Processing by Api::HistoriesController#show as JSON
+  Parameters: {"id"=>"TSLA"}
+  [1m[36mHistory Load (0.2ms)[0m  [1m[34mSELECT  "histories".* FROM "histories" WHERE "histories"."ticker" = $1 LIMIT $2[0m  [["ticker", "TSLA"], ["LIMIT", 1]]
+  ↳ app/controllers/api/histories_controller.rb:3
+  Rendering api/histories/show.json.jbuilder
+  Rendered api/histories/show.json.jbuilder (0.5ms)
+Completed 200 OK in 3ms (Views: 1.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2021-03-30 17:31:31 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "Tu-Jg6SaQ8VknmGqgfnALQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:12
+  Rendered static_pages/root.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 30ms (Views: 28.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/api/histories/TSLA" for 127.0.0.1 at 2021-03-30 17:31:31 -0700
+Processing by Api::HistoriesController#show as JSON
+  Parameters: {"id"=>"TSLA"}
+  [1m[36mHistory Load (0.2ms)[0m  [1m[34mSELECT  "histories".* FROM "histories" WHERE "histories"."ticker" = $1 LIMIT $2[0m  [["ticker", "TSLA"], ["LIMIT", 1]]
+  ↳ app/controllers/api/histories_controller.rb:3
+  Rendering api/histories/show.json.jbuilder
+  Rendered api/histories/show.json.jbuilder (0.5ms)
+Completed 200 OK in 3ms (Views: 1.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/api/users/1/stocks" for 127.0.0.1 at 2021-03-30 17:31:31 -0700
+Processing by Api::StocksController#index as JSON
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/stocks_controller.rb:3
+  Rendering api/stocks/index.json.jbuilder
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT SUM("stocks"."amount") AS sum_amount, "stocks"."ticker" AS stocks_ticker FROM "stocks" WHERE "stocks"."user_id" = $1 GROUP BY "stocks"."ticker"[0m  [["user_id", 1]]
+  ↳ app/models/user.rb:40
+  [1m[36mStock Load (1.0ms)[0m  [1m[34mSELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/api/stocks/index.json.jbuilder:2
+  Rendered api/stocks/index.json.jbuilder (3.9ms)
+Completed 200 OK in 7ms (Views: 3.6ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/api/histories/QYLD" for 127.0.0.1 at 2021-03-30 17:31:43 -0700
+Processing by Api::HistoriesController#show as JSON
+  Parameters: {"id"=>"QYLD"}
+  [1m[36mHistory Load (0.1ms)[0m  [1m[34mSELECT  "histories".* FROM "histories" WHERE "histories"."ticker" = $1 LIMIT $2[0m  [["ticker", "QYLD"], ["LIMIT", 1]]
+  ↳ app/controllers/api/histories_controller.rb:3
+  Rendering api/histories/show.json.jbuilder
+  Rendered api/histories/show.json.jbuilder (1.7ms)
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.1ms)
+
+
+
+NoMethodError - undefined method `ticker' for nil:NilClass:
+  app/views/api/histories/show.json.jbuilder:1:in `_app_views_api_histories_show_json_jbuilder___2338579168485494217_46973096839960'
+
+Started GET "/api/histories/TSLA2" for 127.0.0.1 at 2021-03-30 17:31:50 -0700
+Processing by Api::HistoriesController#show as JSON
+  Parameters: {"id"=>"TSLA2"}
+  [1m[36mHistory Load (0.2ms)[0m  [1m[34mSELECT  "histories".* FROM "histories" WHERE "histories"."ticker" = $1 LIMIT $2[0m  [["ticker", "TSLA2"], ["LIMIT", 1]]
+  ↳ app/controllers/api/histories_controller.rb:3
+  Rendering api/histories/show.json.jbuilder
+  Rendered api/histories/show.json.jbuilder (2.9ms)
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.2ms)
+
+
+
+NoMethodError - undefined method `ticker' for nil:NilClass:
+  app/views/api/histories/show.json.jbuilder:1:in `_app_views_api_histories_show_json_jbuilder___2338579168485494217_70133731074400'
+
+Started GET "/api/histories/AAPL" for 127.0.0.1 at 2021-03-30 17:31:53 -0700
+Processing by Api::HistoriesController#show as JSON
+  Parameters: {"id"=>"AAPL"}
+  [1m[36mHistory Load (0.6ms)[0m  [1m[34mSELECT  "histories".* FROM "histories" WHERE "histories"."ticker" = $1 LIMIT $2[0m  [["ticker", "AAPL"], ["LIMIT", 1]]
+  ↳ app/controllers/api/histories_controller.rb:3
+  Rendering api/histories/show.json.jbuilder
+  Rendered api/histories/show.json.jbuilder (0.7ms)
+Completed 200 OK in 4ms (Views: 2.1ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/api/histories/TSLA2" for 127.0.0.1 at 2021-03-30 17:31:58 -0700
+Processing by Api::HistoriesController#show as JSON
+  Parameters: {"id"=>"TSLA2"}
+  [1m[36mHistory Load (0.2ms)[0m  [1m[34mSELECT  "histories".* FROM "histories" WHERE "histories"."ticker" = $1 LIMIT $2[0m  [["ticker", "TSLA2"], ["LIMIT", 1]]
+  ↳ app/controllers/api/histories_controller.rb:3
+  Rendering api/histories/show.json.jbuilder
+  Rendered api/histories/show.json.jbuilder (3.0ms)
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.2ms)
+
+
+
+NoMethodError - undefined method `ticker' for nil:NilClass:
+  app/views/api/histories/show.json.jbuilder:1:in `_app_views_api_histories_show_json_jbuilder___2338579168485494217_70133741252640'
+
+Started GET "/" for 127.0.0.1 at 2021-03-30 17:32:54 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "Tu-Jg6SaQ8VknmGqgfnALQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:12
+  Rendered static_pages/root.html.erb within layouts/application (8.7ms)
+Completed 200 OK in 706ms (Views: 703.0ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/api/histories/TSLA" for 127.0.0.1 at 2021-03-30 17:32:55 -0700
+Processing by Api::HistoriesController#show as JSON
+  Parameters: {"id"=>"TSLA"}
+  [1m[36mHistory Load (0.2ms)[0m  [1m[34mSELECT  "histories".* FROM "histories" WHERE "histories"."ticker" = $1 LIMIT $2[0m  [["ticker", "TSLA"], ["LIMIT", 1]]
+  ↳ app/controllers/api/histories_controller.rb:3
+  Rendering api/histories/show.json.jbuilder
+  Rendered api/histories/show.json.jbuilder (0.4ms)
+Completed 200 OK in 3ms (Views: 1.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/api/users/1/stocks" for 127.0.0.1 at 2021-03-30 17:32:55 -0700
+Processing by Api::StocksController#index as JSON
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/stocks_controller.rb:3
+  Rendering api/stocks/index.json.jbuilder
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT SUM("stocks"."amount") AS sum_amount, "stocks"."ticker" AS stocks_ticker FROM "stocks" WHERE "stocks"."user_id" = $1 GROUP BY "stocks"."ticker"[0m  [["user_id", 1]]
+  ↳ app/models/user.rb:40
+  [1m[36mStock Load (0.2ms)[0m  [1m[34mSELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/api/stocks/index.json.jbuilder:2
+  Rendered api/stocks/index.json.jbuilder (3.5ms)
+Completed 200 OK in 6ms (Views: 4.1ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/api/histories/TSLA2" for 127.0.0.1 at 2021-03-30 17:33:17 -0700
+Processing by Api::HistoriesController#show as JSON
+  Parameters: {"id"=>"TSLA2"}
+  [1m[36mHistory Load (0.2ms)[0m  [1m[34mSELECT  "histories".* FROM "histories" WHERE "histories"."ticker" = $1 LIMIT $2[0m  [["ticker", "TSLA2"], ["LIMIT", 1]]
+  ↳ app/controllers/api/histories_controller.rb:3
+  Rendering api/histories/show.json.jbuilder
+  Rendered api/histories/show.json.jbuilder (1.6ms)
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.2ms)
+
+
+
+NoMethodError - undefined method `ticker' for nil:NilClass:
+  app/views/api/histories/show.json.jbuilder:1:in `_app_views_api_histories_show_json_jbuilder___2338579168485494217_70133748240980'
+
+Started GET "/" for 127.0.0.1 at 2021-03-30 17:34:05 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "Tu-Jg6SaQ8VknmGqgfnALQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:12
+  Rendered static_pages/root.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 12ms (Views: 11.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/api/histories/TSLA" for 127.0.0.1 at 2021-03-30 17:34:05 -0700
+Processing by Api::HistoriesController#show as JSON
+  Parameters: {"id"=>"TSLA"}
+  [1m[36mHistory Load (0.1ms)[0m  [1m[34mSELECT  "histories".* FROM "histories" WHERE "histories"."ticker" = $1 LIMIT $2[0m  [["ticker", "TSLA"], ["LIMIT", 1]]
+  ↳ app/controllers/api/histories_controller.rb:3
+  Rendering api/histories/show.json.jbuilder
+  Rendered api/histories/show.json.jbuilder (0.3ms)
+Completed 200 OK in 2ms (Views: 1.2ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/api/users/1/stocks" for 127.0.0.1 at 2021-03-30 17:34:05 -0700
+Processing by Api::StocksController#index as JSON
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/stocks_controller.rb:3
+  Rendering api/stocks/index.json.jbuilder
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT SUM("stocks"."amount") AS sum_amount, "stocks"."ticker" AS stocks_ticker FROM "stocks" WHERE "stocks"."user_id" = $1 GROUP BY "stocks"."ticker"[0m  [["user_id", 1]]
+  ↳ app/models/user.rb:40
+  [1m[36mStock Load (0.2ms)[0m  [1m[34mSELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/api/stocks/index.json.jbuilder:2
+  Rendered api/stocks/index.json.jbuilder (2.8ms)
+Completed 200 OK in 5ms (Views: 3.2ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2021-03-30 17:34:14 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "Tu-Jg6SaQ8VknmGqgfnALQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:12
+  Rendered static_pages/root.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 13ms (Views: 12.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/api/histories/TSLA" for 127.0.0.1 at 2021-03-30 17:34:20 -0700
+Processing by Api::HistoriesController#show as JSON
+  Parameters: {"id"=>"TSLA"}
+  [1m[36mHistory Load (0.6ms)[0m  [1m[34mSELECT  "histories".* FROM "histories" WHERE "histories"."ticker" = $1 LIMIT $2[0m  [["ticker", "TSLA"], ["LIMIT", 1]]
+  ↳ app/controllers/api/histories_controller.rb:3
+  Rendering api/histories/show.json.jbuilder
+  Rendered api/histories/show.json.jbuilder (0.4ms)
+Completed 200 OK in 3ms (Views: 1.6ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/api/histories/TSLA1" for 127.0.0.1 at 2021-03-30 17:34:22 -0700
+Processing by Api::HistoriesController#show as JSON
+  Parameters: {"id"=>"TSLA1"}
+  [1m[36mHistory Load (1.0ms)[0m  [1m[34mSELECT  "histories".* FROM "histories" WHERE "histories"."ticker" = $1 LIMIT $2[0m  [["ticker", "TSLA1"], ["LIMIT", 1]]
+  ↳ app/controllers/api/histories_controller.rb:3
+  Rendering api/histories/show.json.jbuilder
+  Rendered api/histories/show.json.jbuilder (6.1ms)
+Completed 500 Internal Server Error in 15ms (ActiveRecord: 1.0ms)
+
+
+
+NoMethodError - undefined method `ticker' for nil:NilClass:
+  app/views/api/histories/show.json.jbuilder:1:in `_app_views_api_histories_show_json_jbuilder___2338579168485494217_70133741037640'
+
+Started POST "/__better_errors/27ea7b6c260f8da2/variables" for 127.0.0.1 at 2021-03-30 17:34:23 -0700
+Started GET "/api/histories/TSLAA" for 127.0.0.1 at 2021-03-30 17:34:30 -0700
+Processing by Api::HistoriesController#show as JSON
+  Parameters: {"id"=>"TSLAA"}
+  [1m[36mHistory Load (0.6ms)[0m  [1m[34mSELECT  "histories".* FROM "histories" WHERE "histories"."ticker" = $1 LIMIT $2[0m  [["ticker", "TSLAA"], ["LIMIT", 1]]
+  ↳ app/controllers/api/histories_controller.rb:3
+  Rendering api/histories/show.json.jbuilder
+  Rendered api/histories/show.json.jbuilder (8.0ms)
+Completed 500 Internal Server Error in 17ms (ActiveRecord: 0.6ms)
+
+
+
+NoMethodError - undefined method `ticker' for nil:NilClass:
+  app/views/api/histories/show.json.jbuilder:1:in `_app_views_api_histories_show_json_jbuilder___2338579168485494217_70133748401820'
+
+Started POST "/__better_errors/a3bf478640e97176/variables" for 127.0.0.1 at 2021-03-30 17:34:30 -0700
+Started GET "/api/histories/QYLD" for 127.0.0.1 at 2021-03-30 17:34:47 -0700
+Processing by Api::HistoriesController#show as JSON
+  Parameters: {"id"=>"QYLD"}
+  [1m[36mHistory Load (0.2ms)[0m  [1m[34mSELECT  "histories".* FROM "histories" WHERE "histories"."ticker" = $1 LIMIT $2[0m  [["ticker", "QYLD"], ["LIMIT", 1]]
+  ↳ app/controllers/api/histories_controller.rb:3
+  Rendering api/histories/show.json.jbuilder
+  Rendered api/histories/show.json.jbuilder (1.6ms)
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.2ms)
+
+
+
+NoMethodError - undefined method `ticker' for nil:NilClass:
+  app/views/api/histories/show.json.jbuilder:1:in `_app_views_api_histories_show_json_jbuilder___2338579168485494217_70133742250900'
+
+  [1m[36mHistory Load (0.3ms)[0m  [1m[34mSELECT  "histories".* FROM "histories" WHERE "histories"."ticker" = $1 LIMIT $2[0m  [["ticker", "AAPL"], ["LIMIT", 1]]
+  [1m[36mHistory Load (0.3ms)[0m  [1m[34mSELECT  "histories".* FROM "histories" WHERE "histories"."ticker" = $1 LIMIT $2[0m  [["ticker", "AAPL2"], ["LIMIT", 1]]
+  [1m[36mHistory Load (0.3ms)[0m  [1m[34mSELECT  "histories".* FROM "histories" WHERE "histories"."ticker" = $1 LIMIT $2[0m  [["ticker", "AAPL2"], ["LIMIT", 1]]
+Started GET "/api/histories/TSLAA" for 127.0.0.1 at 2021-03-30 17:35:28 -0700
+Processing by Api::HistoriesController#show as JSON
+  Parameters: {"id"=>"TSLAA"}
+  [1m[36mHistory Load (0.2ms)[0m  [1m[34mSELECT  "histories".* FROM "histories" WHERE "histories"."ticker" = $1 LIMIT $2[0m  [["ticker", "TSLAA"], ["LIMIT", 1]]
+  ↳ app/controllers/api/histories_controller.rb:3
+  Rendering api/histories/show.json.jbuilder
+  Rendered api/histories/show.json.jbuilder (1.2ms)
+Completed 500 Internal Server Error in 7ms (ActiveRecord: 1.1ms)
+
+
+
+KeyError - key not found: :ticker:
+  app/views/api/histories/show.json.jbuilder:1:in `_app_views_api_histories_show_json_jbuilder___2338579168485494217_70133731967600'
+
+Started POST "/__better_errors/e5c88f62347575e1/variables" for 127.0.0.1 at 2021-03-30 17:35:28 -0700
+Started GET "/api/histories/TSLAA" for 127.0.0.1 at 2021-03-30 17:36:14 -0700
+Processing by Api::HistoriesController#show as JSON
+  Parameters: {"id"=>"TSLAA"}
+  [1m[36mHistory Load (0.1ms)[0m  [1m[34mSELECT  "histories".* FROM "histories" WHERE "histories"."ticker" = $1 LIMIT $2[0m  [["ticker", "TSLAA"], ["LIMIT", 1]]
+  ↳ app/controllers/api/histories_controller.rb:3
+  Rendering api/histories/show.json.jbuilder
+  Rendered api/histories/show.json.jbuilder (0.2ms)
+Completed 200 OK in 2ms (Views: 1.1ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/api/histories/TSLA" for 127.0.0.1 at 2021-03-30 17:36:18 -0700
+Processing by Api::HistoriesController#show as JSON
+  Parameters: {"id"=>"TSLA"}
+  [1m[36mHistory Load (0.2ms)[0m  [1m[34mSELECT  "histories".* FROM "histories" WHERE "histories"."ticker" = $1 LIMIT $2[0m  [["ticker", "TSLA"], ["LIMIT", 1]]
+  ↳ app/controllers/api/histories_controller.rb:3
+  Rendering api/histories/show.json.jbuilder
+  Rendered api/histories/show.json.jbuilder (0.2ms)
+Completed 200 OK in 7ms (Views: 1.2ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/api/histories/TSLA" for 127.0.0.1 at 2021-03-30 17:36:20 -0700
+Processing by Api::HistoriesController#show as JSON
+  Parameters: {"id"=>"TSLA"}
+  [1m[36mHistory Load (0.5ms)[0m  [1m[34mSELECT  "histories".* FROM "histories" WHERE "histories"."ticker" = $1 LIMIT $2[0m  [["ticker", "TSLA"], ["LIMIT", 1]]
+  ↳ app/controllers/api/histories_controller.rb:3
+  Rendering api/histories/show.json.jbuilder
+  Rendered api/histories/show.json.jbuilder (0.3ms)
+Completed 200 OK in 6ms (Views: 1.4ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/api/histories/TSLA" for 127.0.0.1 at 2021-03-30 17:37:01 -0700
+Processing by Api::HistoriesController#show as JSON
+  Parameters: {"id"=>"TSLA"}
+  [1m[36mHistory Load (0.1ms)[0m  [1m[34mSELECT  "histories".* FROM "histories" WHERE "histories"."ticker" = $1 LIMIT $2[0m  [["ticker", "TSLA"], ["LIMIT", 1]]
+  ↳ app/controllers/api/histories_controller.rb:3
+  Rendering api/histories/show.json.jbuilder
+  Rendered api/histories/show.json.jbuilder (0.3ms)
+Completed 200 OK in 10ms (Views: 1.5ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/api/histories/TSLA1" for 127.0.0.1 at 2021-03-30 17:37:04 -0700
+Processing by Api::HistoriesController#show as JSON
+  Parameters: {"id"=>"TSLA1"}
+  [1m[36mHistory Load (0.2ms)[0m  [1m[34mSELECT  "histories".* FROM "histories" WHERE "histories"."ticker" = $1 LIMIT $2[0m  [["ticker", "TSLA1"], ["LIMIT", 1]]
+  ↳ app/controllers/api/histories_controller.rb:3
+  Rendering api/histories/show.json.jbuilder
+  Rendered api/histories/show.json.jbuilder (0.3ms)
+Completed 200 OK in 3ms (Views: 1.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2021-03-30 17:37:29 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "Tu-Jg6SaQ8VknmGqgfnALQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:12
+  Rendered static_pages/root.html.erb within layouts/application (40.9ms)
+Completed 200 OK in 747ms (Views: 737.5ms | ActiveRecord: 7.1ms)
+
+
+Started GET "/api/histories/TSLA" for 127.0.0.1 at 2021-03-30 17:37:30 -0700
+Processing by Api::HistoriesController#show as JSON
+  Parameters: {"id"=>"TSLA"}
+  [1m[36mHistory Load (0.2ms)[0m  [1m[34mSELECT  "histories".* FROM "histories" WHERE "histories"."ticker" = $1 LIMIT $2[0m  [["ticker", "TSLA"], ["LIMIT", 1]]
+  ↳ app/controllers/api/histories_controller.rb:3
+  Rendering api/histories/show.json.jbuilder
+  Rendered api/histories/show.json.jbuilder (0.4ms)
+Completed 200 OK in 3ms (Views: 1.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/api/users/1/stocks" for 127.0.0.1 at 2021-03-30 17:37:30 -0700
+Processing by Api::StocksController#index as JSON
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/stocks_controller.rb:3
+  Rendering api/stocks/index.json.jbuilder
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT SUM("stocks"."amount") AS sum_amount, "stocks"."ticker" AS stocks_ticker FROM "stocks" WHERE "stocks"."user_id" = $1 GROUP BY "stocks"."ticker"[0m  [["user_id", 1]]
+  ↳ app/models/user.rb:40
+  [1m[36mStock Load (0.9ms)[0m  [1m[34mSELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/api/stocks/index.json.jbuilder:2
+  Rendered api/stocks/index.json.jbuilder (12.2ms)
+Completed 200 OK in 18ms (Views: 11.9ms | ActiveRecord: 4.2ms)
+
+
+Started GET "/api/histories/QYLD" for 127.0.0.1 at 2021-03-30 17:38:04 -0700
+Processing by Api::HistoriesController#show as JSON
+  Parameters: {"id"=>"QYLD"}
+  [1m[36mHistory Load (0.5ms)[0m  [1m[34mSELECT  "histories".* FROM "histories" WHERE "histories"."ticker" = $1 LIMIT $2[0m  [["ticker", "QYLD"], ["LIMIT", 1]]
+  ↳ app/controllers/api/histories_controller.rb:3
+  Rendering api/histories/show.json.jbuilder
+  Rendered api/histories/show.json.jbuilder (0.4ms)
+Completed 200 OK in 4ms (Views: 1.7ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/api/histories/TSLA2" for 127.0.0.1 at 2021-03-30 17:38:16 -0700
+Processing by Api::HistoriesController#show as JSON
+  Parameters: {"id"=>"TSLA2"}
+  [1m[36mHistory Load (0.2ms)[0m  [1m[34mSELECT  "histories".* FROM "histories" WHERE "histories"."ticker" = $1 LIMIT $2[0m  [["ticker", "TSLA2"], ["LIMIT", 1]]
+  ↳ app/controllers/api/histories_controller.rb:3
+  Rendering api/histories/show.json.jbuilder
+  Rendered api/histories/show.json.jbuilder (0.4ms)
+Completed 200 OK in 3ms (Views: 1.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2021-03-30 17:40:08 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "Tu-Jg6SaQ8VknmGqgfnALQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:12
+  Rendered static_pages/root.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 734ms (Views: 733.0ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/api/histories/TSLA" for 127.0.0.1 at 2021-03-30 17:40:09 -0700
+Processing by Api::HistoriesController#show as JSON
+  Parameters: {"id"=>"TSLA"}
+  [1m[36mHistory Load (0.2ms)[0m  [1m[34mSELECT  "histories".* FROM "histories" WHERE "histories"."ticker" = $1 LIMIT $2[0m  [["ticker", "TSLA"], ["LIMIT", 1]]
+  ↳ app/controllers/api/histories_controller.rb:3
+  Rendering api/histories/show.json.jbuilder
+  Rendered api/histories/show.json.jbuilder (0.3ms)
+Completed 200 OK in 2ms (Views: 1.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/api/users/1/stocks" for 127.0.0.1 at 2021-03-30 17:40:09 -0700
+Processing by Api::StocksController#index as JSON
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/stocks_controller.rb:3
+  Rendering api/stocks/index.json.jbuilder
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT SUM("stocks"."amount") AS sum_amount, "stocks"."ticker" AS stocks_ticker FROM "stocks" WHERE "stocks"."user_id" = $1 GROUP BY "stocks"."ticker"[0m  [["user_id", 1]]
+  ↳ app/models/user.rb:40
+  [1m[36mStock Load (0.2ms)[0m  [1m[34mSELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/api/stocks/index.json.jbuilder:2
+  Rendered api/stocks/index.json.jbuilder (2.5ms)
+Completed 200 OK in 5ms (Views: 2.9ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/api/histories/QYLD" for 127.0.0.1 at 2021-03-30 17:40:12 -0700
+Processing by Api::HistoriesController#show as JSON
+  Parameters: {"id"=>"QYLD"}
+  [1m[36mHistory Load (0.1ms)[0m  [1m[34mSELECT  "histories".* FROM "histories" WHERE "histories"."ticker" = $1 LIMIT $2[0m  [["ticker", "QYLD"], ["LIMIT", 1]]
+  ↳ app/controllers/api/histories_controller.rb:3
+  Rendering api/histories/show.json.jbuilder
+  Rendered api/histories/show.json.jbuilder (0.3ms)
+Completed 200 OK in 2ms (Views: 1.2ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/api/histories/TSLA2" for 127.0.0.1 at 2021-03-30 17:40:22 -0700
+Processing by Api::HistoriesController#show as JSON
+  Parameters: {"id"=>"TSLA2"}
+  [1m[36mHistory Load (0.1ms)[0m  [1m[34mSELECT  "histories".* FROM "histories" WHERE "histories"."ticker" = $1 LIMIT $2[0m  [["ticker", "TSLA2"], ["LIMIT", 1]]
+  ↳ app/controllers/api/histories_controller.rb:3
+  Rendering api/histories/show.json.jbuilder
+  Rendered api/histories/show.json.jbuilder (1.2ms)
+Completed 200 OK in 3ms (Views: 2.0ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2021-03-30 17:40:43 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "Tu-Jg6SaQ8VknmGqgfnALQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:12
+  Rendered static_pages/root.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 664ms (Views: 663.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/api/histories/TSLA" for 127.0.0.1 at 2021-03-30 17:40:44 -0700
+Processing by Api::HistoriesController#show as JSON
+  Parameters: {"id"=>"TSLA"}
+  [1m[36mHistory Load (0.2ms)[0m  [1m[34mSELECT  "histories".* FROM "histories" WHERE "histories"."ticker" = $1 LIMIT $2[0m  [["ticker", "TSLA"], ["LIMIT", 1]]
+  ↳ app/controllers/api/histories_controller.rb:3
+  Rendering api/histories/show.json.jbuilder
+  Rendered api/histories/show.json.jbuilder (0.3ms)
+Completed 200 OK in 2ms (Views: 1.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/api/users/1/stocks" for 127.0.0.1 at 2021-03-30 17:40:44 -0700
+Processing by Api::StocksController#index as JSON
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/stocks_controller.rb:3
+  Rendering api/stocks/index.json.jbuilder
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT SUM("stocks"."amount") AS sum_amount, "stocks"."ticker" AS stocks_ticker FROM "stocks" WHERE "stocks"."user_id" = $1 GROUP BY "stocks"."ticker"[0m  [["user_id", 1]]
+  ↳ app/models/user.rb:40
+  [1m[36mStock Load (0.2ms)[0m  [1m[34mSELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/api/stocks/index.json.jbuilder:2
+  Rendered api/stocks/index.json.jbuilder (3.0ms)
+Completed 200 OK in 6ms (Views: 3.4ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/api/histories/TSLA2" for 127.0.0.1 at 2021-03-30 17:40:55 -0700
+Processing by Api::HistoriesController#show as JSON
+  Parameters: {"id"=>"TSLA2"}
+  [1m[36mHistory Load (0.2ms)[0m  [1m[34mSELECT  "histories".* FROM "histories" WHERE "histories"."ticker" = $1 LIMIT $2[0m  [["ticker", "TSLA2"], ["LIMIT", 1]]
+  ↳ app/controllers/api/histories_controller.rb:3
+  Rendering api/histories/show.json.jbuilder
+  Rendered api/histories/show.json.jbuilder (0.3ms)
+Completed 200 OK in 3ms (Views: 1.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2021-03-30 17:42:27 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "Tu-Jg6SaQ8VknmGqgfnALQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:12
+  Rendered static_pages/root.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 662ms (Views: 661.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/api/histories/TSLA" for 127.0.0.1 at 2021-03-30 17:42:28 -0700
+Processing by Api::HistoriesController#show as JSON
+  Parameters: {"id"=>"TSLA"}
+  [1m[36mHistory Load (0.2ms)[0m  [1m[34mSELECT  "histories".* FROM "histories" WHERE "histories"."ticker" = $1 LIMIT $2[0m  [["ticker", "TSLA"], ["LIMIT", 1]]
+  ↳ app/controllers/api/histories_controller.rb:3
+  Rendering api/histories/show.json.jbuilder
+  Rendered api/histories/show.json.jbuilder (0.4ms)
+Completed 200 OK in 3ms (Views: 1.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/api/users/1/stocks" for 127.0.0.1 at 2021-03-30 17:42:28 -0700
+Processing by Api::StocksController#index as JSON
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/stocks_controller.rb:3
+  Rendering api/stocks/index.json.jbuilder
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT SUM("stocks"."amount") AS sum_amount, "stocks"."ticker" AS stocks_ticker FROM "stocks" WHERE "stocks"."user_id" = $1 GROUP BY "stocks"."ticker"[0m  [["user_id", 1]]
+  ↳ app/models/user.rb:40
+  [1m[36mStock Load (0.1ms)[0m  [1m[34mSELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/api/stocks/index.json.jbuilder:2
+  Rendered api/stocks/index.json.jbuilder (2.6ms)
+Completed 200 OK in 5ms (Views: 3.1ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/api/histories/QYLD" for 127.0.0.1 at 2021-03-30 17:46:49 -0700
+Processing by Api::HistoriesController#show as JSON
+  Parameters: {"id"=>"QYLD"}
+  [1m[36mHistory Load (0.2ms)[0m  [1m[34mSELECT  "histories".* FROM "histories" WHERE "histories"."ticker" = $1 LIMIT $2[0m  [["ticker", "QYLD"], ["LIMIT", 1]]
+  ↳ app/controllers/api/histories_controller.rb:3
+  Rendering api/histories/show.json.jbuilder
+  Rendered api/histories/show.json.jbuilder (0.3ms)
+Completed 200 OK in 2ms (Views: 1.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2021-03-30 17:46:54 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "Tu-Jg6SaQ8VknmGqgfnALQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:12
+  Rendered static_pages/root.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 714ms (Views: 713.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/api/histories/TSLA" for 127.0.0.1 at 2021-03-30 17:46:55 -0700
+Processing by Api::HistoriesController#show as JSON
+  Parameters: {"id"=>"TSLA"}
+  [1m[36mHistory Load (0.2ms)[0m  [1m[34mSELECT  "histories".* FROM "histories" WHERE "histories"."ticker" = $1 LIMIT $2[0m  [["ticker", "TSLA"], ["LIMIT", 1]]
+  ↳ app/controllers/api/histories_controller.rb:3
+  Rendering api/histories/show.json.jbuilder
+  Rendered api/histories/show.json.jbuilder (0.4ms)
+Completed 200 OK in 3ms (Views: 1.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/api/users/1/stocks" for 127.0.0.1 at 2021-03-30 17:46:55 -0700
+Processing by Api::StocksController#index as JSON
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/stocks_controller.rb:3
+  Rendering api/stocks/index.json.jbuilder
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT SUM("stocks"."amount") AS sum_amount, "stocks"."ticker" AS stocks_ticker FROM "stocks" WHERE "stocks"."user_id" = $1 GROUP BY "stocks"."ticker"[0m  [["user_id", 1]]
+  ↳ app/models/user.rb:40
+  [1m[36mStock Load (0.3ms)[0m  [1m[34mSELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/api/stocks/index.json.jbuilder:2
+  Rendered api/stocks/index.json.jbuilder (2.9ms)
+Completed 200 OK in 5ms (Views: 3.4ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/api/histories/QYLD" for 127.0.0.1 at 2021-03-30 17:46:55 -0700
+Processing by Api::HistoriesController#show as JSON
+  Parameters: {"id"=>"QYLD"}
+  [1m[36mHistory Load (0.2ms)[0m  [1m[34mSELECT  "histories".* FROM "histories" WHERE "histories"."ticker" = $1 LIMIT $2[0m  [["ticker", "QYLD"], ["LIMIT", 1]]
+  ↳ app/controllers/api/histories_controller.rb:3
+  Rendering api/histories/show.json.jbuilder
+  Rendered api/histories/show.json.jbuilder (0.2ms)
+Completed 200 OK in 2ms (Views: 1.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2021-03-30 17:47:22 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "Tu-Jg6SaQ8VknmGqgfnALQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:12
+  Rendered static_pages/root.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 698ms (Views: 697.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/api/histories/TSLA" for 127.0.0.1 at 2021-03-30 17:47:23 -0700
+Processing by Api::HistoriesController#show as JSON
+  Parameters: {"id"=>"TSLA"}
+  [1m[36mHistory Load (0.2ms)[0m  [1m[34mSELECT  "histories".* FROM "histories" WHERE "histories"."ticker" = $1 LIMIT $2[0m  [["ticker", "TSLA"], ["LIMIT", 1]]
+  ↳ app/controllers/api/histories_controller.rb:3
+  Rendering api/histories/show.json.jbuilder
+  Rendered api/histories/show.json.jbuilder (0.3ms)
+Completed 200 OK in 2ms (Views: 1.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/api/users/1/stocks" for 127.0.0.1 at 2021-03-30 17:47:23 -0700
+Processing by Api::StocksController#index as JSON
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (3.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/stocks_controller.rb:3
+  Rendering api/stocks/index.json.jbuilder
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT SUM("stocks"."amount") AS sum_amount, "stocks"."ticker" AS stocks_ticker FROM "stocks" WHERE "stocks"."user_id" = $1 GROUP BY "stocks"."ticker"[0m  [["user_id", 1]]
+  ↳ app/models/user.rb:40
+  [1m[36mStock Load (0.2ms)[0m  [1m[34mSELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/api/stocks/index.json.jbuilder:2
+  Rendered api/stocks/index.json.jbuilder (2.3ms)
+Completed 200 OK in 7ms (Views: 2.8ms | ActiveRecord: 3.6ms)
+
+
+Started GET "/api/histories/QYLD" for 127.0.0.1 at 2021-03-30 17:50:26 -0700
+Processing by Api::HistoriesController#show as JSON
+  Parameters: {"id"=>"QYLD"}
+  [1m[36mHistory Load (0.2ms)[0m  [1m[34mSELECT  "histories".* FROM "histories" WHERE "histories"."ticker" = $1 LIMIT $2[0m  [["ticker", "QYLD"], ["LIMIT", 1]]
+  ↳ app/controllers/api/histories_controller.rb:3
+  Rendering api/histories/show.json.jbuilder
+  Rendered api/histories/show.json.jbuilder (0.3ms)
+Completed 200 OK in 2ms (Views: 1.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2021-03-30 17:50:29 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "Tu-Jg6SaQ8VknmGqgfnALQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:12
+  Rendered static_pages/root.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 661ms (Views: 660.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/api/histories/TSLA" for 127.0.0.1 at 2021-03-30 17:50:30 -0700
+Processing by Api::HistoriesController#show as JSON
+  Parameters: {"id"=>"TSLA"}
+  [1m[36mHistory Load (0.3ms)[0m  [1m[34mSELECT  "histories".* FROM "histories" WHERE "histories"."ticker" = $1 LIMIT $2[0m  [["ticker", "TSLA"], ["LIMIT", 1]]
+  ↳ app/controllers/api/histories_controller.rb:3
+  Rendering api/histories/show.json.jbuilder
+  Rendered api/histories/show.json.jbuilder (0.3ms)
+Completed 200 OK in 2ms (Views: 1.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/api/users/1/stocks" for 127.0.0.1 at 2021-03-30 17:50:30 -0700
+Processing by Api::StocksController#index as JSON
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/stocks_controller.rb:3
+  Rendering api/stocks/index.json.jbuilder
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT SUM("stocks"."amount") AS sum_amount, "stocks"."ticker" AS stocks_ticker FROM "stocks" WHERE "stocks"."user_id" = $1 GROUP BY "stocks"."ticker"[0m  [["user_id", 1]]
+  ↳ app/models/user.rb:40
+  [1m[36mStock Load (0.7ms)[0m  [1m[34mSELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/api/stocks/index.json.jbuilder:2
+  Rendered api/stocks/index.json.jbuilder (3.0ms)
+Completed 200 OK in 5ms (Views: 3.0ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2021-03-30 18:00:02 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "Tu-Jg6SaQ8VknmGqgfnALQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:12
+  Rendered static_pages/root.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 718ms (Views: 716.7ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/api/histories/TSLA" for 127.0.0.1 at 2021-03-30 18:00:03 -0700
+Processing by Api::HistoriesController#show as JSON
+  Parameters: {"id"=>"TSLA"}
+  [1m[36mHistory Load (0.3ms)[0m  [1m[34mSELECT  "histories".* FROM "histories" WHERE "histories"."ticker" = $1 LIMIT $2[0m  [["ticker", "TSLA"], ["LIMIT", 1]]
+  ↳ app/controllers/api/histories_controller.rb:3
+  Rendering api/histories/show.json.jbuilder
+  Rendered api/histories/show.json.jbuilder (0.4ms)
+Completed 200 OK in 3ms (Views: 1.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/api/users/1/stocks" for 127.0.0.1 at 2021-03-30 18:00:03 -0700
+Processing by Api::StocksController#index as JSON
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/stocks_controller.rb:3
+  Rendering api/stocks/index.json.jbuilder
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT SUM("stocks"."amount") AS sum_amount, "stocks"."ticker" AS stocks_ticker FROM "stocks" WHERE "stocks"."user_id" = $1 GROUP BY "stocks"."ticker"[0m  [["user_id", 1]]
+  ↳ app/models/user.rb:40
+  [1m[36mStock Load (0.2ms)[0m  [1m[34mSELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/api/stocks/index.json.jbuilder:2
+  Rendered api/stocks/index.json.jbuilder (3.9ms)
+Completed 200 OK in 6ms (Views: 3.8ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2021-03-30 18:04:23 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "Tu-Jg6SaQ8VknmGqgfnALQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:12
+  Rendered static_pages/root.html.erb within layouts/application (4.4ms)
+Completed 200 OK in 721ms (Views: 718.8ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/api/histories/TSLA" for 127.0.0.1 at 2021-03-30 18:04:24 -0700
+Processing by Api::HistoriesController#show as JSON
+  Parameters: {"id"=>"TSLA"}
+  [1m[36mHistory Load (0.2ms)[0m  [1m[34mSELECT  "histories".* FROM "histories" WHERE "histories"."ticker" = $1 LIMIT $2[0m  [["ticker", "TSLA"], ["LIMIT", 1]]
+  ↳ app/controllers/api/histories_controller.rb:3
+  Rendering api/histories/show.json.jbuilder
+  Rendered api/histories/show.json.jbuilder (0.3ms)
+Completed 200 OK in 3ms (Views: 1.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/api/users/1/stocks" for 127.0.0.1 at 2021-03-30 18:04:24 -0700
+Processing by Api::StocksController#index as JSON
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/stocks_controller.rb:3
+  Rendering api/stocks/index.json.jbuilder
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT SUM("stocks"."amount") AS sum_amount, "stocks"."ticker" AS stocks_ticker FROM "stocks" WHERE "stocks"."user_id" = $1 GROUP BY "stocks"."ticker"[0m  [["user_id", 1]]
+  ↳ app/models/user.rb:40
+  [1m[36mStock Load (0.3ms)[0m  [1m[34mSELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/api/stocks/index.json.jbuilder:2
+  Rendered api/stocks/index.json.jbuilder (3.6ms)
+Completed 200 OK in 6ms (Views: 3.7ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/api/histories/QYLD" for 127.0.0.1 at 2021-03-30 18:05:17 -0700
+Processing by Api::HistoriesController#show as JSON
+  Parameters: {"id"=>"QYLD"}
+  [1m[36mHistory Load (0.3ms)[0m  [1m[34mSELECT  "histories".* FROM "histories" WHERE "histories"."ticker" = $1 LIMIT $2[0m  [["ticker", "QYLD"], ["LIMIT", 1]]
+  ↳ app/controllers/api/histories_controller.rb:3
+  Rendering api/histories/show.json.jbuilder
+  Rendered api/histories/show.json.jbuilder (0.6ms)
+Completed 200 OK in 4ms (Views: 2.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2021-03-30 18:05:20 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "Tu-Jg6SaQ8VknmGqgfnALQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:12
+  Rendered static_pages/root.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 668ms (Views: 667.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/api/histories/TSLA" for 127.0.0.1 at 2021-03-30 18:05:21 -0700
+Processing by Api::HistoriesController#show as JSON
+  Parameters: {"id"=>"TSLA"}
+  [1m[36mHistory Load (0.3ms)[0m  [1m[34mSELECT  "histories".* FROM "histories" WHERE "histories"."ticker" = $1 LIMIT $2[0m  [["ticker", "TSLA"], ["LIMIT", 1]]
+  ↳ app/controllers/api/histories_controller.rb:3
+  Rendering api/histories/show.json.jbuilder
+  Rendered api/histories/show.json.jbuilder (0.5ms)
+Completed 200 OK in 4ms (Views: 1.9ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/api/users/1/stocks" for 127.0.0.1 at 2021-03-30 18:05:21 -0700
+Processing by Api::StocksController#index as JSON
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/stocks_controller.rb:3
+  Rendering api/stocks/index.json.jbuilder
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT SUM("stocks"."amount") AS sum_amount, "stocks"."ticker" AS stocks_ticker FROM "stocks" WHERE "stocks"."user_id" = $1 GROUP BY "stocks"."ticker"[0m  [["user_id", 1]]
+  ↳ app/models/user.rb:40
+  [1m[36mStock Load (0.4ms)[0m  [1m[34mSELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/api/stocks/index.json.jbuilder:2
+  Rendered api/stocks/index.json.jbuilder (3.4ms)
+Completed 200 OK in 10ms (Views: 4.0ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/api/histories/QYLD" for 127.0.0.1 at 2021-03-30 18:05:21 -0700
+Processing by Api::HistoriesController#show as JSON
+  Parameters: {"id"=>"QYLD"}
+  [1m[36mHistory Load (0.3ms)[0m  [1m[34mSELECT  "histories".* FROM "histories" WHERE "histories"."ticker" = $1 LIMIT $2[0m  [["ticker", "QYLD"], ["LIMIT", 1]]
+  ↳ app/controllers/api/histories_controller.rb:3
+  Rendering api/histories/show.json.jbuilder
+  Rendered api/histories/show.json.jbuilder (0.3ms)
+Completed 200 OK in 3ms (Views: 1.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2021-03-30 18:06:53 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "Tu-Jg6SaQ8VknmGqgfnALQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:12
+  Rendered static_pages/root.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 732ms (Views: 731.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/api/histories/TSLA" for 127.0.0.1 at 2021-03-30 18:06:53 -0700
+Processing by Api::HistoriesController#show as JSON
+  Parameters: {"id"=>"TSLA"}
+  [1m[36mHistory Load (0.3ms)[0m  [1m[34mSELECT  "histories".* FROM "histories" WHERE "histories"."ticker" = $1 LIMIT $2[0m  [["ticker", "TSLA"], ["LIMIT", 1]]
+  ↳ app/controllers/api/histories_controller.rb:3
+  Rendering api/histories/show.json.jbuilder
+  Rendered api/histories/show.json.jbuilder (0.8ms)
+Completed 200 OK in 3ms (Views: 1.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/api/users/1/stocks" for 127.0.0.1 at 2021-03-30 18:06:53 -0700
+Processing by Api::StocksController#index as JSON
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/stocks_controller.rb:3
+  Rendering api/stocks/index.json.jbuilder
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT SUM("stocks"."amount") AS sum_amount, "stocks"."ticker" AS stocks_ticker FROM "stocks" WHERE "stocks"."user_id" = $1 GROUP BY "stocks"."ticker"[0m  [["user_id", 1]]
+  ↳ app/models/user.rb:40
+  [1m[36mStock Load (0.2ms)[0m  [1m[34mSELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/api/stocks/index.json.jbuilder:2
+  Rendered api/stocks/index.json.jbuilder (2.2ms)
+Completed 200 OK in 4ms (Views: 2.8ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/api/histories/QYLD" for 127.0.0.1 at 2021-03-30 18:06:54 -0700
+Processing by Api::HistoriesController#show as JSON
+  Parameters: {"id"=>"QYLD"}
+  [1m[36mHistory Load (0.2ms)[0m  [1m[34mSELECT  "histories".* FROM "histories" WHERE "histories"."ticker" = $1 LIMIT $2[0m  [["ticker", "QYLD"], ["LIMIT", 1]]
+  ↳ app/controllers/api/histories_controller.rb:3
+  Rendering api/histories/show.json.jbuilder
+  Rendered api/histories/show.json.jbuilder (0.3ms)
+Completed 200 OK in 2ms (Views: 1.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2021-03-30 18:07:15 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "Tu-Jg6SaQ8VknmGqgfnALQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:12
+  Rendered static_pages/root.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 681ms (Views: 680.6ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/api/histories/TSLA" for 127.0.0.1 at 2021-03-30 18:07:16 -0700
+Processing by Api::HistoriesController#show as JSON
+  Parameters: {"id"=>"TSLA"}
+  [1m[36mHistory Load (0.2ms)[0m  [1m[34mSELECT  "histories".* FROM "histories" WHERE "histories"."ticker" = $1 LIMIT $2[0m  [["ticker", "TSLA"], ["LIMIT", 1]]
+  ↳ app/controllers/api/histories_controller.rb:3
+  Rendering api/histories/show.json.jbuilder
+  Rendered api/histories/show.json.jbuilder (0.4ms)
+Completed 200 OK in 3ms (Views: 1.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/api/users/1/stocks" for 127.0.0.1 at 2021-03-30 18:07:16 -0700
+Processing by Api::StocksController#index as JSON
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/stocks_controller.rb:3
+  Rendering api/stocks/index.json.jbuilder
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT SUM("stocks"."amount") AS sum_amount, "stocks"."ticker" AS stocks_ticker FROM "stocks" WHERE "stocks"."user_id" = $1 GROUP BY "stocks"."ticker"[0m  [["user_id", 1]]
+  ↳ app/models/user.rb:40
+  [1m[36mStock Load (0.2ms)[0m  [1m[34mSELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/api/stocks/index.json.jbuilder:2
+  Rendered api/stocks/index.json.jbuilder (2.5ms)
+Completed 200 OK in 5ms (Views: 2.9ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/api/histories/QYLD" for 127.0.0.1 at 2021-03-30 18:07:16 -0700
+Processing by Api::HistoriesController#show as JSON
+  Parameters: {"id"=>"QYLD"}
+  [1m[36mHistory Load (0.3ms)[0m  [1m[34mSELECT  "histories".* FROM "histories" WHERE "histories"."ticker" = $1 LIMIT $2[0m  [["ticker", "QYLD"], ["LIMIT", 1]]
+  ↳ app/controllers/api/histories_controller.rb:3
+  Rendering api/histories/show.json.jbuilder
+  Rendered api/histories/show.json.jbuilder (0.3ms)
+Completed 200 OK in 2ms (Views: 1.2ms | ActiveRecord: 0.3ms)
+
+
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  ↳ bin/rails:9
+  [1m[35m (5009.3ms)[0m  [1m[35mDROP DATABASE IF EXISTS "princejohn_development"[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  ↳ bin/rails:9
+  [1m[35m (29.6ms)[0m  [1m[35mDROP DATABASE IF EXISTS "princejohn_development"[0m
+  ↳ bin/rails:9
+  [1m[35m (34.7ms)[0m  [1m[35mDROP DATABASE IF EXISTS "princejohn_test"[0m
+  ↳ bin/rails:9
+  [1m[35m (70.9ms)[0m  [1m[35mCREATE DATABASE "princejohn_development" ENCODING = 'unicode'[0m
+  ↳ bin/rails:9
+  [1m[35m (86.1ms)[0m  [1m[35mCREATE DATABASE "princejohn_test" ENCODING = 'unicode'[0m
+  ↳ bin/rails:9
+  [1m[35mSQL (0.2ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  ↳ db/schema.rb:16
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "histories" CASCADE[0m
+  ↳ db/schema.rb:18
+  [1m[35m (9.1ms)[0m  [1m[35mCREATE TABLE "histories" ("id" bigserial primary key, "ticker" character varying NOT NULL, "date" character varying NOT NULL, "history" text NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:18
+  [1m[35m (3.9ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_histories_on_ticker" ON "histories"  ("ticker")[0m
+  ↳ db/schema.rb:18
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "stocks" CASCADE[0m
+  ↳ db/schema.rb:27
+  [1m[35m (8.1ms)[0m  [1m[35mCREATE TABLE "stocks" ("id" bigserial primary key, "user_id" integer NOT NULL, "ticker" character varying NOT NULL, "amount" float NOT NULL, "unit_price" float NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:27
+  [1m[35m (5.6ms)[0m  [1m[35mCREATE  INDEX  "index_stocks_on_ticker" ON "stocks"  ("ticker")[0m
+  ↳ db/schema.rb:27
+  [1m[35m (5.4ms)[0m  [1m[35mCREATE  INDEX  "index_stocks_on_user_id" ON "stocks"  ("user_id")[0m
+  ↳ db/schema.rb:27
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  ↳ db/schema.rb:38
+  [1m[35m (10.7ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "first_name" character varying NOT NULL, "last_name" character varying NOT NULL, "username" character varying NOT NULL, "password_digest" character varying NOT NULL, "session_token" character varying NOT NULL, "balance" float NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:38
+  [1m[35m (4.4ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_username_and_session_token" ON "users"  ("username", "session_token")[0m
+  ↳ db/schema.rb:38
+  [1m[35m (7.6ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  ↳ db/schema.rb:13
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ db/schema.rb:13
+  [1m[35m (1.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20210330233005)[0m
+  ↳ db/schema.rb:13
+  [1m[35m (1.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20210218222042),
+(20210208223233);
+
+[0m
+  ↳ db/schema.rb:13
+  [1m[35m (7.4ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ db/schema.rb:13
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Create (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2021-03-31 01:08:51.206625"], ["updated_at", "2021-03-31 01:08:51.206625"]]
+  ↳ db/schema.rb:13
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[35mSQL (0.2ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  ↳ db/schema.rb:16
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "histories" CASCADE[0m
+  ↳ db/schema.rb:18
+  [1m[35m (8.7ms)[0m  [1m[35mCREATE TABLE "histories" ("id" bigserial primary key, "ticker" character varying NOT NULL, "date" character varying NOT NULL, "history" text NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:18
+  [1m[35m (3.9ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_histories_on_ticker" ON "histories"  ("ticker")[0m
+  ↳ db/schema.rb:18
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "stocks" CASCADE[0m
+  ↳ db/schema.rb:27
+  [1m[35m (7.4ms)[0m  [1m[35mCREATE TABLE "stocks" ("id" bigserial primary key, "user_id" integer NOT NULL, "ticker" character varying NOT NULL, "amount" float NOT NULL, "unit_price" float NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:27
+  [1m[35m (3.8ms)[0m  [1m[35mCREATE  INDEX  "index_stocks_on_ticker" ON "stocks"  ("ticker")[0m
+  ↳ db/schema.rb:27
+  [1m[35m (4.1ms)[0m  [1m[35mCREATE  INDEX  "index_stocks_on_user_id" ON "stocks"  ("user_id")[0m
+  ↳ db/schema.rb:27
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  ↳ db/schema.rb:38
+  [1m[35m (7.4ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "first_name" character varying NOT NULL, "last_name" character varying NOT NULL, "username" character varying NOT NULL, "password_digest" character varying NOT NULL, "session_token" character varying NOT NULL, "balance" float NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:38
+  [1m[35m (4.0ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_username_and_session_token" ON "users"  ("username", "session_token")[0m
+  ↳ db/schema.rb:38
+  [1m[35m (7.2ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  ↳ db/schema.rb:13
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ db/schema.rb:13
+  [1m[35m (1.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20210330233005)[0m
+  ↳ db/schema.rb:13
+  [1m[35m (1.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20210218222042),
+(20210208223233);
+
+[0m
+  ↳ db/schema.rb:13
+  [1m[35m (7.3ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ db/schema.rb:13
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Create (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2021-03-31 01:08:51.283312"], ["updated_at", "2021-03-31 01:08:51.283312"]]
+  ↳ db/schema.rb:13
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Update (0.1ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = $1, "updated_at" = $2 WHERE "ar_internal_metadata"."key" = $3[0m  [["value", "test"], ["updated_at", "2021-03-31 01:08:51.286302"], ["key", "environment"]]
+  ↳ bin/rails:9
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:10
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "demolicious@demo.com"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:10
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "ShEBJ3cPtoJ8bzVbSsuBbA"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:10
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "username", "password_digest", "session_token", "balance", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["first_name", "Demo"], ["last_name", "Feature"], ["username", "demolicious@demo.com"], ["password_digest", "$2a$12$5ADRrTbfzBnCULhcOufsPeGbNCVEsTziGEgaN3pUg29WaEV6yA1Nm"], ["session_token", "ShEBJ3cPtoJ8bzVbSsuBbA"], ["balance", 10000.0], ["created_at", "2021-03-31 01:08:51.477325"], ["updated_at", "2021-03-31 01:08:51.477325"]]
+  ↳ db/seeds.rb:10
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:10
+  [1m[36mStock Load (0.4ms)[0m  [1m[34mSELECT "stocks".* FROM "stocks"[0m
+  ↳ db/seeds.rb:12
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:14
+  [1m[36mStock Create (0.3ms)[0m  [1m[32mINSERT INTO "stocks" ("user_id", "ticker", "amount", "unit_price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["user_id", 1], ["ticker", "TSLA"], ["amount", 100.0], ["unit_price", 350.0], ["created_at", "2021-03-31 01:08:51.486616"], ["updated_at", "2021-03-31 01:08:51.486616"]]
+  ↳ db/seeds.rb:14
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:14
+  [1m[36mHistory Load (0.2ms)[0m  [1m[34mSELECT "histories".* FROM "histories"[0m
+  ↳ db/seeds.rb:16
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:17
+  [1m[36mHistory Create (0.3ms)[0m  [1m[32mINSERT INTO "histories" ("ticker", "date", "history", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["ticker", "TSLA"], ["date", "Mon Mar 29 2021 18:30:00 GMT-0700 (Pacific Daylight Time)"], ["history", "601.085,601.085,601.085,601.085,601.085,601.085,601.085,601.085,601.085,601.085,601.085,601.085,601.085,601.085,601.085,601.085,601.085,601.085,601.085,601.085,601.085,601.085,600.675,601.695,602.695,602.91,601.78,601.315,601.525,604.655,607.88,606.955,605.035,604.035,603.185,602.485,603.165,603.77,603.705,604.73,605.125,606.25,608.505,611.025,611.76,612.51,613.34,612.425,610.93,609.985,609.955,609.015,607.735,607.22,606.935,607.5,607.795,607.94,608.215,608.99,609.68,608.235,606.42,606.35,607.625,608.905,608.59,609.25,610.43,611.25,611.815,611.66,611.505,610.515,611.495,611.04,609.605,609.77,610.55,611.185,610.795,611.08,610.795,610.87,610.33,609.725,609.5,609.89,610.065,610.19,610.015,609.725,609.56,609.625,610.075,609.525,609.04,609.095,609.12,608.925,608.825,608.525,608.79,608.985,609.155,608.755,608.8,608.8,608.8"], ["created_at", "2021-03-31 01:08:51.494459"], ["updated_at", "2021-03-31 01:08:51.494459"]]
+  ↳ db/seeds.rb:17
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:17
+Started GET "/" for 127.0.0.1 at 2021-03-30 18:09:00 -0700
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/tului/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.5/lib/active_record/log_subscriber.rb:98
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "Tu-Jg6SaQ8VknmGqgfnALQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:12
+  Rendered static_pages/root.html.erb within layouts/application (7.9ms)
+Completed 200 OK in 801ms (Views: 799.0ms | ActiveRecord: 1.1ms)
+
+
+Started POST "/api/session" for 127.0.0.1 at 2021-03-30 18:09:04 -0700
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"user"=>{"username"=>"demolicious@demo.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "demolicious@demo.com"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:13
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:28
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["username", "demolicious@demo.com"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:28
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "kpNMuMbEA79DA3QkQ0br2A"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:28
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "kpNMuMbEA79DA3QkQ0br2A"], ["updated_at", "2021-03-31 01:09:04.497291"], ["id", 1]]
+  ↳ app/models/user.rb:28
+  [1m[35m (3.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:28
+  Rendering api/users/show.json.jbuilder
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT SUM("stocks"."amount") AS sum_amount, "stocks"."ticker" AS stocks_ticker FROM "stocks" WHERE "stocks"."user_id" = $1 GROUP BY "stocks"."ticker"[0m  [["user_id", 1]]
+  ↳ app/models/user.rb:40
+  Rendered api/users/_user.json.jbuilder (6.1ms)
+  [1m[36mStock Load (0.2ms)[0m  [1m[34mSELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:2
+  Rendered api/users/show.json.jbuilder (11.7ms)
+Completed 200 OK in 197ms (Views: 11.0ms | ActiveRecord: 8.0ms)
+
+
+Started GET "/api/users/1/stocks" for 127.0.0.1 at 2021-03-30 18:09:04 -0700
+Processing by Api::StocksController#index as JSON
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/stocks_controller.rb:3
+  Rendering api/stocks/index.json.jbuilder
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT SUM("stocks"."amount") AS sum_amount, "stocks"."ticker" AS stocks_ticker FROM "stocks" WHERE "stocks"."user_id" = $1 GROUP BY "stocks"."ticker"[0m  [["user_id", 1]]
+  ↳ app/models/user.rb:40
+  [1m[36mStock Load (0.2ms)[0m  [1m[34mSELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/api/stocks/index.json.jbuilder:2
+  Rendered api/stocks/index.json.jbuilder (2.7ms)
+Completed 200 OK in 6ms (Views: 3.3ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/api/histories/TSLA" for 127.0.0.1 at 2021-03-30 18:09:04 -0700
+Processing by Api::HistoriesController#show as JSON
+  Parameters: {"id"=>"TSLA"}
+  [1m[36mHistory Load (0.2ms)[0m  [1m[34mSELECT  "histories".* FROM "histories" WHERE "histories"."ticker" = $1 LIMIT $2[0m  [["ticker", "TSLA"], ["LIMIT", 1]]
+  ↳ app/controllers/api/histories_controller.rb:3
+  Rendering api/histories/show.json.jbuilder
+  Rendered api/histories/show.json.jbuilder (0.3ms)
+Completed 200 OK in 9ms (Views: 1.3ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2021-03-30 18:09:19 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "kpNMuMbEA79DA3QkQ0br2A"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:12
+  Rendered static_pages/root.html.erb within layouts/application (3.3ms)
+Completed 200 OK in 42ms (Views: 40.3ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/api/users/1/stocks" for 127.0.0.1 at 2021-03-30 18:09:20 -0700
+Processing by Api::StocksController#index as JSON
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/stocks_controller.rb:3
+  Rendering api/stocks/index.json.jbuilder
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT SUM("stocks"."amount") AS sum_amount, "stocks"."ticker" AS stocks_ticker FROM "stocks" WHERE "stocks"."user_id" = $1 GROUP BY "stocks"."ticker"[0m  [["user_id", 1]]
+  ↳ app/models/user.rb:40
+  [1m[36mStock Load (0.6ms)[0m  [1m[34mSELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/api/stocks/index.json.jbuilder:2
+  Rendered api/stocks/index.json.jbuilder (2.7ms)
+Completed 200 OK in 5ms (Views: 2.6ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/api/histories/TSLA" for 127.0.0.1 at 2021-03-30 18:09:20 -0700
+Processing by Api::HistoriesController#show as JSON
+  Parameters: {"id"=>"TSLA"}
+  [1m[36mHistory Load (0.7ms)[0m  [1m[34mSELECT  "histories".* FROM "histories" WHERE "histories"."ticker" = $1 LIMIT $2[0m  [["ticker", "TSLA"], ["LIMIT", 1]]
+  ↳ app/controllers/api/histories_controller.rb:3
+  Rendering api/histories/show.json.jbuilder
+  Rendered api/histories/show.json.jbuilder (0.4ms)
+Completed 200 OK in 4ms (Views: 1.7ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/api/histories/QYLD" for 127.0.0.1 at 2021-03-30 18:09:30 -0700
+Processing by Api::HistoriesController#show as JSON
+  Parameters: {"id"=>"QYLD"}
+  [1m[36mHistory Load (0.2ms)[0m  [1m[34mSELECT  "histories".* FROM "histories" WHERE "histories"."ticker" = $1 LIMIT $2[0m  [["ticker", "QYLD"], ["LIMIT", 1]]
+  ↳ app/controllers/api/histories_controller.rb:3
+  Rendering api/histories/show.json.jbuilder
+  Rendered api/histories/show.json.jbuilder (0.3ms)
+Completed 200 OK in 2ms (Views: 1.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/api/users/1/stocks" for 127.0.0.1 at 2021-03-30 18:09:30 -0700
+Processing by Api::StocksController#index as JSON
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/stocks_controller.rb:3
+  Rendering api/stocks/index.json.jbuilder
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT SUM("stocks"."amount") AS sum_amount, "stocks"."ticker" AS stocks_ticker FROM "stocks" WHERE "stocks"."user_id" = $1 GROUP BY "stocks"."ticker"[0m  [["user_id", 1]]
+  ↳ app/models/user.rb:40
+  [1m[36mStock Load (0.2ms)[0m  [1m[34mSELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/api/stocks/index.json.jbuilder:2
+  Rendered api/stocks/index.json.jbuilder (2.1ms)
+Completed 200 OK in 4ms (Views: 2.6ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/api/users/1/stocks" for 127.0.0.1 at 2021-03-30 18:09:37 -0700
+Processing by Api::StocksController#index as JSON
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/stocks_controller.rb:3
+  Rendering api/stocks/index.json.jbuilder
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT SUM("stocks"."amount") AS sum_amount, "stocks"."ticker" AS stocks_ticker FROM "stocks" WHERE "stocks"."user_id" = $1 GROUP BY "stocks"."ticker"[0m  [["user_id", 1]]
+  ↳ app/models/user.rb:40
+  [1m[36mStock Load (0.2ms)[0m  [1m[34mSELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/api/stocks/index.json.jbuilder:2
+  Rendered api/stocks/index.json.jbuilder (2.5ms)
+Completed 200 OK in 5ms (Views: 2.9ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2021-03-30 18:11:43 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "kpNMuMbEA79DA3QkQ0br2A"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:12
+  Rendered static_pages/root.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 697ms (Views: 696.6ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/api/users/1/stocks" for 127.0.0.1 at 2021-03-30 18:11:44 -0700
+Processing by Api::StocksController#index as JSON
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/stocks_controller.rb:3
+  Rendering api/stocks/index.json.jbuilder
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT SUM("stocks"."amount") AS sum_amount, "stocks"."ticker" AS stocks_ticker FROM "stocks" WHERE "stocks"."user_id" = $1 GROUP BY "stocks"."ticker"[0m  [["user_id", 1]]
+  ↳ app/models/user.rb:40
+  [1m[36mStock Load (0.2ms)[0m  [1m[34mSELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/api/stocks/index.json.jbuilder:2
+  Rendered api/stocks/index.json.jbuilder (2.8ms)
+Completed 200 OK in 5ms (Views: 3.2ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/api/histories/TSLA" for 127.0.0.1 at 2021-03-30 18:11:44 -0700
+Processing by Api::HistoriesController#show as JSON
+  Parameters: {"id"=>"TSLA"}
+  [1m[36mHistory Load (0.4ms)[0m  [1m[34mSELECT  "histories".* FROM "histories" WHERE "histories"."ticker" = $1 LIMIT $2[0m  [["ticker", "TSLA"], ["LIMIT", 1]]
+  ↳ app/controllers/api/histories_controller.rb:3
+  Rendering api/histories/show.json.jbuilder
+  Rendered api/histories/show.json.jbuilder (0.3ms)
+Completed 200 OK in 3ms (Views: 1.9ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2021-03-30 18:11:45 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "kpNMuMbEA79DA3QkQ0br2A"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:12
+  Rendered static_pages/root.html.erb within layouts/application (3.2ms)
+Completed 200 OK in 26ms (Views: 23.7ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/api/users/1/stocks" for 127.0.0.1 at 2021-03-30 18:11:46 -0700
+Processing by Api::StocksController#index as JSON
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/stocks_controller.rb:3
+  Rendering api/stocks/index.json.jbuilder
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT SUM("stocks"."amount") AS sum_amount, "stocks"."ticker" AS stocks_ticker FROM "stocks" WHERE "stocks"."user_id" = $1 GROUP BY "stocks"."ticker"[0m  [["user_id", 1]]
+  ↳ app/models/user.rb:40
+  [1m[36mStock Load (0.2ms)[0m  [1m[34mSELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/api/stocks/index.json.jbuilder:2
+  Rendered api/stocks/index.json.jbuilder (2.4ms)
+Completed 200 OK in 5ms (Views: 2.9ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/api/histories/TSLA" for 127.0.0.1 at 2021-03-30 18:11:46 -0700
+Processing by Api::HistoriesController#show as JSON
+  Parameters: {"id"=>"TSLA"}
+  [1m[36mHistory Load (0.2ms)[0m  [1m[34mSELECT  "histories".* FROM "histories" WHERE "histories"."ticker" = $1 LIMIT $2[0m  [["ticker", "TSLA"], ["LIMIT", 1]]
+  ↳ app/controllers/api/histories_controller.rb:3
+  Rendering api/histories/show.json.jbuilder
+  Rendered api/histories/show.json.jbuilder (0.3ms)
+Completed 200 OK in 2ms (Views: 1.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/api/histories/QYLD" for 127.0.0.1 at 2021-03-30 18:11:49 -0700
+Processing by Api::HistoriesController#show as JSON
+  Parameters: {"id"=>"QYLD"}
+  [1m[36mHistory Load (0.2ms)[0m  [1m[34mSELECT  "histories".* FROM "histories" WHERE "histories"."ticker" = $1 LIMIT $2[0m  [["ticker", "QYLD"], ["LIMIT", 1]]
+  ↳ app/controllers/api/histories_controller.rb:3
+  Rendering api/histories/show.json.jbuilder
+  Rendered api/histories/show.json.jbuilder (0.3ms)
+Completed 200 OK in 2ms (Views: 1.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/api/users/1/stocks" for 127.0.0.1 at 2021-03-30 18:11:49 -0700
+Processing by Api::StocksController#index as JSON
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/stocks_controller.rb:3
+  Rendering api/stocks/index.json.jbuilder
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT SUM("stocks"."amount") AS sum_amount, "stocks"."ticker" AS stocks_ticker FROM "stocks" WHERE "stocks"."user_id" = $1 GROUP BY "stocks"."ticker"[0m  [["user_id", 1]]
+  ↳ app/models/user.rb:40
+  [1m[36mStock Load (0.1ms)[0m  [1m[34mSELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/api/stocks/index.json.jbuilder:2
+  Rendered api/stocks/index.json.jbuilder (1.8ms)
+Completed 200 OK in 4ms (Views: 2.3ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2021-03-30 18:12:23 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "kpNMuMbEA79DA3QkQ0br2A"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:12
+  Rendered static_pages/root.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 703ms (Views: 702.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/api/users/1/stocks" for 127.0.0.1 at 2021-03-30 18:12:24 -0700
+Processing by Api::StocksController#index as JSON
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/stocks_controller.rb:3
+  Rendering api/stocks/index.json.jbuilder
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT SUM("stocks"."amount") AS sum_amount, "stocks"."ticker" AS stocks_ticker FROM "stocks" WHERE "stocks"."user_id" = $1 GROUP BY "stocks"."ticker"[0m  [["user_id", 1]]
+  ↳ app/models/user.rb:40
+  [1m[36mStock Load (0.3ms)[0m  [1m[34mSELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/api/stocks/index.json.jbuilder:2
+  Rendered api/stocks/index.json.jbuilder (2.4ms)
+Completed 200 OK in 5ms (Views: 2.7ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/api/histories/TSLA" for 127.0.0.1 at 2021-03-30 18:12:24 -0700
+Processing by Api::HistoriesController#show as JSON
+  Parameters: {"id"=>"TSLA"}
+  [1m[36mHistory Load (0.2ms)[0m  [1m[34mSELECT  "histories".* FROM "histories" WHERE "histories"."ticker" = $1 LIMIT $2[0m  [["ticker", "TSLA"], ["LIMIT", 1]]
+  ↳ app/controllers/api/histories_controller.rb:3
+  Rendering api/histories/show.json.jbuilder
+  Rendered api/histories/show.json.jbuilder (0.3ms)
+Completed 200 OK in 2ms (Views: 1.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/api/histories/QYLD" for 127.0.0.1 at 2021-03-30 18:12:29 -0700
+Processing by Api::HistoriesController#show as JSON
+  Parameters: {"id"=>"QYLD"}
+  [1m[36mHistory Load (0.2ms)[0m  [1m[34mSELECT  "histories".* FROM "histories" WHERE "histories"."ticker" = $1 LIMIT $2[0m  [["ticker", "QYLD"], ["LIMIT", 1]]
+  ↳ app/controllers/api/histories_controller.rb:3
+  Rendering api/histories/show.json.jbuilder
+  Rendered api/histories/show.json.jbuilder (0.3ms)
+Completed 200 OK in 3ms (Views: 1.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/api/users/1/stocks" for 127.0.0.1 at 2021-03-30 18:12:29 -0700
+Processing by Api::StocksController#index as JSON
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/stocks_controller.rb:3
+  Rendering api/stocks/index.json.jbuilder
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT SUM("stocks"."amount") AS sum_amount, "stocks"."ticker" AS stocks_ticker FROM "stocks" WHERE "stocks"."user_id" = $1 GROUP BY "stocks"."ticker"[0m  [["user_id", 1]]
+  ↳ app/models/user.rb:40
+  [1m[36mStock Load (0.3ms)[0m  [1m[34mSELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/api/stocks/index.json.jbuilder:2
+  Rendered api/stocks/index.json.jbuilder (2.7ms)
+Completed 200 OK in 5ms (Views: 3.1ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2021-03-30 18:12:36 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "kpNMuMbEA79DA3QkQ0br2A"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:12
+  Rendered static_pages/root.html.erb within layouts/application (4.5ms)
+Completed 200 OK in 35ms (Views: 32.6ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/api/histories/QYLD" for 127.0.0.1 at 2021-03-30 18:12:37 -0700
+Processing by Api::HistoriesController#show as JSON
+  Parameters: {"id"=>"QYLD"}
+  [1m[36mHistory Load (0.2ms)[0m  [1m[34mSELECT  "histories".* FROM "histories" WHERE "histories"."ticker" = $1 LIMIT $2[0m  [["ticker", "QYLD"], ["LIMIT", 1]]
+  ↳ app/controllers/api/histories_controller.rb:3
+  Rendering api/histories/show.json.jbuilder
+  Rendered api/histories/show.json.jbuilder (0.3ms)
+Completed 200 OK in 2ms (Views: 1.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/api/users/1/stocks" for 127.0.0.1 at 2021-03-30 18:12:37 -0700
+Processing by Api::StocksController#index as JSON
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/stocks_controller.rb:3
+  Rendering api/stocks/index.json.jbuilder
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT SUM("stocks"."amount") AS sum_amount, "stocks"."ticker" AS stocks_ticker FROM "stocks" WHERE "stocks"."user_id" = $1 GROUP BY "stocks"."ticker"[0m  [["user_id", 1]]
+  ↳ app/models/user.rb:40
+  [1m[36mStock Load (0.1ms)[0m  [1m[34mSELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/api/stocks/index.json.jbuilder:2
+  Rendered api/stocks/index.json.jbuilder (2.2ms)
+Completed 200 OK in 4ms (Views: 2.6ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/api/histories/TSLA" for 127.0.0.1 at 2021-03-30 18:12:37 -0700
+Processing by Api::HistoriesController#show as JSON
+  Parameters: {"id"=>"TSLA"}
+  [1m[36mHistory Load (0.2ms)[0m  [1m[34mSELECT  "histories".* FROM "histories" WHERE "histories"."ticker" = $1 LIMIT $2[0m  [["ticker", "TSLA"], ["LIMIT", 1]]
+  ↳ app/controllers/api/histories_controller.rb:3
+  Rendering api/histories/show.json.jbuilder
+  Rendered api/histories/show.json.jbuilder (0.4ms)
+Completed 200 OK in 2ms (Views: 1.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2021-03-30 18:14:47 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "kpNMuMbEA79DA3QkQ0br2A"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:12
+  Rendered static_pages/root.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 674ms (Views: 673.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/api/histories/QYLD" for 127.0.0.1 at 2021-03-30 18:14:48 -0700
+Processing by Api::HistoriesController#show as JSON
+  Parameters: {"id"=>"QYLD"}
+  [1m[36mHistory Load (0.1ms)[0m  [1m[34mSELECT  "histories".* FROM "histories" WHERE "histories"."ticker" = $1 LIMIT $2[0m  [["ticker", "QYLD"], ["LIMIT", 1]]
+  ↳ app/controllers/api/histories_controller.rb:3
+  Rendering api/histories/show.json.jbuilder
+  Rendered api/histories/show.json.jbuilder (0.3ms)
+Completed 200 OK in 2ms (Views: 1.2ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/api/users/1/stocks" for 127.0.0.1 at 2021-03-30 18:14:48 -0700
+Processing by Api::StocksController#index as JSON
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/stocks_controller.rb:3
+  Rendering api/stocks/index.json.jbuilder
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT SUM("stocks"."amount") AS sum_amount, "stocks"."ticker" AS stocks_ticker FROM "stocks" WHERE "stocks"."user_id" = $1 GROUP BY "stocks"."ticker"[0m  [["user_id", 1]]
+  ↳ app/models/user.rb:40
+  [1m[36mStock Load (0.2ms)[0m  [1m[34mSELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/api/stocks/index.json.jbuilder:2
+  Rendered api/stocks/index.json.jbuilder (3.0ms)
+Completed 200 OK in 5ms (Views: 3.4ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/api/histories/TSLA" for 127.0.0.1 at 2021-03-30 18:14:48 -0700
+Processing by Api::HistoriesController#show as JSON
+  Parameters: {"id"=>"TSLA"}
+  [1m[36mHistory Load (0.2ms)[0m  [1m[34mSELECT  "histories".* FROM "histories" WHERE "histories"."ticker" = $1 LIMIT $2[0m  [["ticker", "TSLA"], ["LIMIT", 1]]
+  ↳ app/controllers/api/histories_controller.rb:3
+  Rendering api/histories/show.json.jbuilder
+  Rendered api/histories/show.json.jbuilder (0.4ms)
+Completed 200 OK in 3ms (Views: 1.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2021-03-30 18:18:57 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "kpNMuMbEA79DA3QkQ0br2A"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:12
+  Rendered static_pages/root.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 687ms (Views: 686.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/api/histories/QYLD" for 127.0.0.1 at 2021-03-30 18:18:58 -0700
+Processing by Api::HistoriesController#show as JSON
+  Parameters: {"id"=>"QYLD"}
+  [1m[36mHistory Load (1.0ms)[0m  [1m[34mSELECT  "histories".* FROM "histories" WHERE "histories"."ticker" = $1 LIMIT $2[0m  [["ticker", "QYLD"], ["LIMIT", 1]]
+  ↳ app/controllers/api/histories_controller.rb:3
+  Rendering api/histories/show.json.jbuilder
+  Rendered api/histories/show.json.jbuilder (0.2ms)
+Completed 200 OK in 3ms (Views: 1.2ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/api/users/1/stocks" for 127.0.0.1 at 2021-03-30 18:18:58 -0700
+Processing by Api::StocksController#index as JSON
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/stocks_controller.rb:3
+  Rendering api/stocks/index.json.jbuilder
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT SUM("stocks"."amount") AS sum_amount, "stocks"."ticker" AS stocks_ticker FROM "stocks" WHERE "stocks"."user_id" = $1 GROUP BY "stocks"."ticker"[0m  [["user_id", 1]]
+  ↳ app/models/user.rb:40
+  [1m[36mStock Load (0.1ms)[0m  [1m[34mSELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/api/stocks/index.json.jbuilder:2
+  Rendered api/stocks/index.json.jbuilder (2.5ms)
+Completed 200 OK in 5ms (Views: 3.2ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/api/histories/TSLA" for 127.0.0.1 at 2021-03-30 18:18:58 -0700
+Processing by Api::HistoriesController#show as JSON
+  Parameters: {"id"=>"TSLA"}
+  [1m[36mHistory Load (0.2ms)[0m  [1m[34mSELECT  "histories".* FROM "histories" WHERE "histories"."ticker" = $1 LIMIT $2[0m  [["ticker", "TSLA"], ["LIMIT", 1]]
+  ↳ app/controllers/api/histories_controller.rb:3
+  Rendering api/histories/show.json.jbuilder
+  Rendered api/histories/show.json.jbuilder (0.4ms)
+Completed 200 OK in 3ms (Views: 1.4ms | ActiveRecord: 0.2ms)
+
+
+  [1m[36mHistory Load (0.2ms)[0m  [1m[34mSELECT  "histories".* FROM "histories" WHERE "histories"."ticker" = $1 LIMIT $2[0m  [["ticker", "TSLA"], ["LIMIT", 1]]
+  [1m[36mHistory Load (0.8ms)[0m  [1m[34mSELECT  "histories".* FROM "histories" WHERE "histories"."ticker" = $1 LIMIT $2[0m  [["ticker", "TSLA21"], ["LIMIT", 1]]
+  [1m[36mHistory Load (0.7ms)[0m  [1m[34mSELECT  "histories".* FROM "histories" WHERE "histories"."ticker" = $1 LIMIT $2[0m  [["ticker", "TSLA21"], ["LIMIT", 1]]
+  [1m[36mHistory Load (0.7ms)[0m  [1m[34mSELECT  "histories".* FROM "histories" WHERE "histories"."ticker" = $1 LIMIT $2[0m  [["ticker", "TSLA21"], ["LIMIT", 1]]
+  [1m[36mHistory Load (0.8ms)[0m  [1m[34mSELECT "histories".* FROM "histories"[0m
+Started PATCH "/api/histories/AAPL" for 127.0.0.1 at 2021-03-30 18:27:06 -0700
+Processing by Api::HistoriesController#update as JSON
+  Parameters: {"history"=>{"date"=>"45615631616", "history"=>"213,21,3,12,3,123,12,321,3,12,3,12,213,312,321,312,3123,213,12"}, "id"=>"AAPL"}
+  [1m[36mHistory Load (0.2ms)[0m  [1m[34mSELECT  "histories".* FROM "histories" WHERE "histories"."ticker" = $1 LIMIT $2[0m  [["ticker", "AAPL"], ["LIMIT", 1]]
+  ↳ app/controllers/api/histories_controller.rb:16
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/histories_controller.rb:20
+  [1m[36mHistory Create (0.9ms)[0m  [1m[32mINSERT INTO "histories" ("date", "history", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["date", "45615631616"], ["history", "213,21,3,12,3,123,12,321,3,12,3,12,213,312,321,312,3123,213,12"], ["created_at", "2021-03-31 01:27:06.537680"], ["updated_at", "2021-03-31 01:27:06.537680"]]
+  ↳ app/controllers/api/histories_controller.rb:20
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/histories_controller.rb:20
+Completed 500 Internal Server Error in 11ms (ActiveRecord: 4.5ms)
+
+
+
+ActiveRecord::NotNullViolation - PG::NotNullViolation: ERROR:  null value in column "ticker" violates not-null constraint
+DETAIL:  Failing row contains (2, null, 45615631616, 213,21,3,12,3,123,12,321,3,12,3,12,213,312,321,312,3123,213,12, 2021-03-31 01:27:06.53768, 2021-03-31 01:27:06.53768).
+: INSERT INTO "histories" ("date", "history", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id":
+  app/controllers/api/histories_controller.rb:20:in `update'
+
+Started PATCH "/api/histories/AAPL" for 127.0.0.1 at 2021-03-30 18:27:29 -0700
+Processing by Api::HistoriesController#update as JSON
+  Parameters: {"history"=>{"date"=>"45615631616", "history"=>"213,21,3,12,3,123,12,321,3,12,3,12,213,312,321,312,3123,213,12", "ticker"=>"AAPL"}, "id"=>"AAPL"}
+  [1m[36mHistory Load (0.3ms)[0m  [1m[34mSELECT  "histories".* FROM "histories" WHERE "histories"."ticker" = $1 LIMIT $2[0m  [["ticker", "AAPL"], ["LIMIT", 1]]
+  ↳ app/controllers/api/histories_controller.rb:16
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/histories_controller.rb:20
+  [1m[36mHistory Create (0.2ms)[0m  [1m[32mINSERT INTO "histories" ("ticker", "date", "history", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["ticker", "AAPL"], ["date", "45615631616"], ["history", "213,21,3,12,3,123,12,321,3,12,3,12,213,312,321,312,3123,213,12"], ["created_at", "2021-03-31 01:27:29.187506"], ["updated_at", "2021-03-31 01:27:29.187506"]]
+  ↳ app/controllers/api/histories_controller.rb:20
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/histories_controller.rb:20
+Completed 200 OK in 5ms (Views: 0.1ms | ActiveRecord: 2.0ms)
+
+
+Started PATCH "/api/histories/QYLD" for 127.0.0.1 at 2021-03-30 18:29:21 -0700
+Processing by Api::HistoriesController#update as JSON
+  Parameters: {"history"=>{"date"=>"45615631616", "history"=>"213,21,3,12,3,123,12,321,3,12,3,12,213,312,321,312,3123,213,12"}, "id"=>"QYLD"}
+  [1m[36mHistory Load (0.1ms)[0m  [1m[34mSELECT  "histories".* FROM "histories" WHERE "histories"."ticker" = $1 LIMIT $2[0m  [["ticker", "QYLD"], ["LIMIT", 1]]
+  ↳ app/controllers/api/histories_controller.rb:16
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/histories_controller.rb:22
+  [1m[36mHistory Create (0.8ms)[0m  [1m[32mINSERT INTO "histories" ("ticker", "date", "history", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["ticker", "QYLD"], ["date", "45615631616"], ["history", "213,21,3,12,3,123,12,321,3,12,3,12,213,312,321,312,3123,213,12"], ["created_at", "2021-03-31 01:29:47.102705"], ["updated_at", "2021-03-31 01:29:47.102705"]]
+  ↳ app/controllers/api/histories_controller.rb:22
+  [1m[35m (2.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/histories_controller.rb:22
+Completed 200 OK in 25794ms (Views: 0.4ms | ActiveRecord: 5.6ms)
+
+
+Started PATCH "/api/histories/QYLD" for 127.0.0.1 at 2021-03-30 18:30:06 -0700
+Processing by Api::HistoriesController#update as JSON
+  Parameters: {"history"=>{"date"=>"45615631616", "history"=>"213,21,3,12,3,123,12,321,3,12,3,12,213,312,321,312,3123,213,12,13"}, "id"=>"QYLD"}
+  [1m[36mHistory Load (0.2ms)[0m  [1m[34mSELECT  "histories".* FROM "histories" WHERE "histories"."ticker" = $1 LIMIT $2[0m  [["ticker", "QYLD"], ["LIMIT", 1]]
+  ↳ app/controllers/api/histories_controller.rb:16
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/histories_controller.rb:28
+  [1m[36mHistory Update (0.3ms)[0m  [1m[33mUPDATE "histories" SET "history" = $1, "updated_at" = $2 WHERE "histories"."id" = $3[0m  [["history", "213,21,3,12,3,123,12,321,3,12,3,12,213,312,321,312,3123,213,12,13"], ["updated_at", "2021-03-31 01:30:06.112000"], ["id", 4]]
+  ↳ app/controllers/api/histories_controller.rb:28
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/histories_controller.rb:28
+No template found for Api::HistoriesController#update, rendering head :no_content
+Completed 204 No Content in 20ms (ActiveRecord: 3.9ms)
+
+
+  [1m[36mHistory Load (0.2ms)[0m  [1m[34mSELECT  "histories".* FROM "histories" WHERE "histories"."ticker" = $1 LIMIT $2[0m  [["ticker", "QYLD"], ["LIMIT", 1]]
+Started GET "/" for 127.0.0.1 at 2021-03-30 18:31:15 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "kpNMuMbEA79DA3QkQ0br2A"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:12
+  Rendered static_pages/root.html.erb within layouts/application (10.9ms)
+Completed 200 OK in 729ms (Views: 726.4ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/api/histories/QYLD" for 127.0.0.1 at 2021-03-30 18:31:15 -0700
+Processing by Api::HistoriesController#show as JSON
+  Parameters: {"id"=>"QYLD"}
+  [1m[36mHistory Load (0.2ms)[0m  [1m[34mSELECT  "histories".* FROM "histories" WHERE "histories"."ticker" = $1 LIMIT $2[0m  [["ticker", "QYLD"], ["LIMIT", 1]]
+  ↳ app/controllers/api/histories_controller.rb:3
+  Rendering api/histories/show.json.jbuilder
+  Rendered api/histories/show.json.jbuilder (0.3ms)
+Completed 200 OK in 7ms (Views: 1.3ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/api/users/1/stocks" for 127.0.0.1 at 2021-03-30 18:31:15 -0700
+Processing by Api::StocksController#index as JSON
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/stocks_controller.rb:3
+  Rendering api/stocks/index.json.jbuilder
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT SUM("stocks"."amount") AS sum_amount, "stocks"."ticker" AS stocks_ticker FROM "stocks" WHERE "stocks"."user_id" = $1 GROUP BY "stocks"."ticker"[0m  [["user_id", 1]]
+  ↳ app/models/user.rb:40
+  [1m[36mStock Load (0.2ms)[0m  [1m[34mSELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/api/stocks/index.json.jbuilder:2
+  Rendered api/stocks/index.json.jbuilder (14.2ms)
+Completed 200 OK in 18ms (Views: 13.7ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/api/histories/TSLA" for 127.0.0.1 at 2021-03-30 18:31:16 -0700
+Processing by Api::HistoriesController#show as JSON
+  Parameters: {"id"=>"TSLA"}
+  [1m[36mHistory Load (0.2ms)[0m  [1m[34mSELECT  "histories".* FROM "histories" WHERE "histories"."ticker" = $1 LIMIT $2[0m  [["ticker", "TSLA"], ["LIMIT", 1]]
+  ↳ app/controllers/api/histories_controller.rb:3
+  Rendering api/histories/show.json.jbuilder
+  Rendered api/histories/show.json.jbuilder (0.3ms)
+Completed 200 OK in 2ms (Views: 1.3ms | ActiveRecord: 0.2ms)
+
+
+Started PATCH "/api/histories/QYLD" for 127.0.0.1 at 2021-03-30 18:31:16 -0700
+Processing by Api::HistoriesController#update as JSON
+  Parameters: {"history"=>{"history"=>"22.415,22.415,22.425,22.405,22.39,22.38,22.35,22.32,22.305,22.3,22.315,22.32,22.31,22.315,22.345,22.36,22.35,22.345,22.335,22.315,22.32,22.32,22.305,22.32,22.34,22.345,22.35,22.335,22.345,22.35,22.36,22.37,22.35,22.345,22.335,22.35,22.345,22.35,22.37,22.38,22.385,22.385,22.385,22.415,22.425,22.425,22.425,22.425,22.425,22.43,22.44,22.43,22.425,22.425,22.415,22.415,22.405,22.4,22.4,22.39,22.395,22.39,22.37,22.37,22.38,22.4,22.375,22.39,22.4,22.4,22.405,22.405,22.415,22.415,22.41,22.405,22.4,22.405,22.4,22.42,22.45,22.48,22.48,22.45,22.49,22.49,22.46,22.46,22.46,22.4,22.405,22.415,22.405,22.405,22.42,22.48,22.45,22.49,22.46,22.4,22.415,22.405,22.48,22.49,22.4,22.405,22.49,22.405,22.405", "date"=>"Mon Mar 29 2021 18:30:00 GMT-0700 (Pacific Daylight Time)"}, "id"=>"QYLD"}
+  [1m[36mHistory Load (0.3ms)[0m  [1m[34mSELECT  "histories".* FROM "histories" WHERE "histories"."ticker" = $1 LIMIT $2[0m  [["ticker", "QYLD"], ["LIMIT", 1]]
+  ↳ app/controllers/api/histories_controller.rb:8
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/histories_controller.rb:20
+  [1m[36mHistory Update (0.2ms)[0m  [1m[33mUPDATE "histories" SET "date" = $1, "history" = $2, "updated_at" = $3 WHERE "histories"."id" = $4[0m  [["date", "Mon Mar 29 2021 18:30:00 GMT-0700 (Pacific Daylight Time)"], ["history", "22.415,22.415,22.425,22.405,22.39,22.38,22.35,22.32,22.305,22.3,22.315,22.32,22.31,22.315,22.345,22.36,22.35,22.345,22.335,22.315,22.32,22.32,22.305,22.32,22.34,22.345,22.35,22.335,22.345,22.35,22.36,22.37,22.35,22.345,22.335,22.35,22.345,22.35,22.37,22.38,22.385,22.385,22.385,22.415,22.425,22.425,22.425,22.425,22.425,22.43,22.44,22.43,22.425,22.425,22.415,22.415,22.405,22.4,22.4,22.39,22.395,22.39,22.37,22.37,22.38,22.4,22.375,22.39,22.4,22.4,22.405,22.405,22.415,22.415,22.41,22.405,22.4,22.405,22.4,22.42,22.45,22.48,22.48,22.45,22.49,22.49,22.46,22.46,22.46,22.4,22.405,22.415,22.405,22.405,22.42,22.48,22.45,22.49,22.46,22.4,22.415,22.405,22.48,22.49,22.4,22.405,22.49,22.405,22.405"], ["updated_at", "2021-03-31 01:31:16.825402"], ["id", 4]]
+  ↳ app/controllers/api/histories_controller.rb:20
+  [1m[35m (7.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/histories_controller.rb:20
+No template found for Api::HistoriesController#update, rendering head :no_content
+Completed 204 No Content in 19ms (ActiveRecord: 8.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2021-03-30 18:31:23 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "kpNMuMbEA79DA3QkQ0br2A"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:12
+  Rendered static_pages/root.html.erb within layouts/application (4.4ms)
+Completed 200 OK in 40ms (Views: 37.6ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/api/histories/QYLD" for 127.0.0.1 at 2021-03-30 18:31:23 -0700
+Processing by Api::HistoriesController#show as JSON
+  Parameters: {"id"=>"QYLD"}
+  [1m[36mHistory Load (0.2ms)[0m  [1m[34mSELECT  "histories".* FROM "histories" WHERE "histories"."ticker" = $1 LIMIT $2[0m  [["ticker", "QYLD"], ["LIMIT", 1]]
+  ↳ app/controllers/api/histories_controller.rb:3
+  Rendering api/histories/show.json.jbuilder
+  Rendered api/histories/show.json.jbuilder (0.3ms)
+Completed 200 OK in 3ms (Views: 1.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/api/users/1/stocks" for 127.0.0.1 at 2021-03-30 18:31:23 -0700
+Processing by Api::StocksController#index as JSON
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/stocks_controller.rb:3
+  Rendering api/stocks/index.json.jbuilder
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT SUM("stocks"."amount") AS sum_amount, "stocks"."ticker" AS stocks_ticker FROM "stocks" WHERE "stocks"."user_id" = $1 GROUP BY "stocks"."ticker"[0m  [["user_id", 1]]
+  ↳ app/models/user.rb:40
+  [1m[36mStock Load (0.2ms)[0m  [1m[34mSELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/api/stocks/index.json.jbuilder:2
+  Rendered api/stocks/index.json.jbuilder (2.4ms)
+Completed 200 OK in 5ms (Views: 2.8ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/api/histories/TSLA" for 127.0.0.1 at 2021-03-30 18:31:24 -0700
+Processing by Api::HistoriesController#show as JSON
+  Parameters: {"id"=>"TSLA"}
+  [1m[36mHistory Load (0.2ms)[0m  [1m[34mSELECT  "histories".* FROM "histories" WHERE "histories"."ticker" = $1 LIMIT $2[0m  [["ticker", "TSLA"], ["LIMIT", 1]]
+  ↳ app/controllers/api/histories_controller.rb:3
+  Rendering api/histories/show.json.jbuilder
+  Rendered api/histories/show.json.jbuilder (0.4ms)
+Completed 200 OK in 2ms (Views: 1.4ms | ActiveRecord: 0.2ms)
+
+
+  [1m[36mHistory Load (0.7ms)[0m  [1m[34mSELECT  "histories".* FROM "histories" WHERE "histories"."ticker" = $1 LIMIT $2[0m  [["ticker", "QYLD"], ["LIMIT", 1]]
+  [1m[36mHistory Load (0.1ms)[0m  [1m[34mSELECT  "histories".* FROM "histories" WHERE "histories"."ticker" = $1 LIMIT $2[0m  [["ticker", "QYLD"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  ↳ bin/rails:9
+  [1m[35m (28.1ms)[0m  [1m[35mDROP DATABASE IF EXISTS "princejohn_development"[0m
+  ↳ bin/rails:9
+  [1m[35m (21.9ms)[0m  [1m[35mDROP DATABASE IF EXISTS "princejohn_test"[0m
+  ↳ bin/rails:9
+  [1m[35m (98.6ms)[0m  [1m[35mCREATE DATABASE "princejohn_development" ENCODING = 'unicode'[0m
+  ↳ bin/rails:9
+  [1m[35m (55.6ms)[0m  [1m[35mCREATE DATABASE "princejohn_test" ENCODING = 'unicode'[0m
+  ↳ bin/rails:9
+  [1m[35mSQL (0.2ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  ↳ db/schema.rb:16
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "histories" CASCADE[0m
+  ↳ db/schema.rb:18
+  [1m[35m (10.9ms)[0m  [1m[35mCREATE TABLE "histories" ("id" bigserial primary key, "ticker" character varying NOT NULL, "date" character varying NOT NULL, "history" text NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:18
+  [1m[35m (5.1ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_histories_on_ticker" ON "histories"  ("ticker")[0m
+  ↳ db/schema.rb:18
+  [1m[35m (0.8ms)[0m  [1m[35mDROP TABLE IF EXISTS "stocks" CASCADE[0m
+  ↳ db/schema.rb:27
+  [1m[35m (10.7ms)[0m  [1m[35mCREATE TABLE "stocks" ("id" bigserial primary key, "user_id" integer NOT NULL, "ticker" character varying NOT NULL, "amount" float NOT NULL, "unit_price" float NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:27
+  [1m[35m (4.8ms)[0m  [1m[35mCREATE  INDEX  "index_stocks_on_ticker" ON "stocks"  ("ticker")[0m
+  ↳ db/schema.rb:27
+  [1m[35m (5.2ms)[0m  [1m[35mCREATE  INDEX  "index_stocks_on_user_id" ON "stocks"  ("user_id")[0m
+  ↳ db/schema.rb:27
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  ↳ db/schema.rb:38
+  [1m[35m (10.8ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "first_name" character varying NOT NULL, "last_name" character varying NOT NULL, "username" character varying NOT NULL, "password_digest" character varying NOT NULL, "session_token" character varying NOT NULL, "balance" float NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:38
+  [1m[35m (5.0ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_username_and_session_token" ON "users"  ("username", "session_token")[0m
+  ↳ db/schema.rb:38
+  [1m[35m (9.5ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  ↳ db/schema.rb:13
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ db/schema.rb:13
+  [1m[35m (1.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20210330233005)[0m
+  ↳ db/schema.rb:13
+  [1m[35m (1.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20210218222042),
+(20210208223233);
+
+[0m
+  ↳ db/schema.rb:13
+  [1m[35m (9.6ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Load (0.8ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ db/schema.rb:13
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Create (0.8ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2021-03-31 01:32:23.108510"], ["updated_at", "2021-03-31 01:32:23.108510"]]
+  ↳ db/schema.rb:13
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Load (0.6ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[35mSQL (0.3ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  ↳ db/schema.rb:16
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "histories" CASCADE[0m
+  ↳ db/schema.rb:18
+  [1m[35m (10.8ms)[0m  [1m[35mCREATE TABLE "histories" ("id" bigserial primary key, "ticker" character varying NOT NULL, "date" character varying NOT NULL, "history" text NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:18
+  [1m[35m (4.4ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_histories_on_ticker" ON "histories"  ("ticker")[0m
+  ↳ db/schema.rb:18
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "stocks" CASCADE[0m
+  ↳ db/schema.rb:27
+  [1m[35m (8.8ms)[0m  [1m[35mCREATE TABLE "stocks" ("id" bigserial primary key, "user_id" integer NOT NULL, "ticker" character varying NOT NULL, "amount" float NOT NULL, "unit_price" float NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:27
+  [1m[35m (4.4ms)[0m  [1m[35mCREATE  INDEX  "index_stocks_on_ticker" ON "stocks"  ("ticker")[0m
+  ↳ db/schema.rb:27
+  [1m[35m (4.2ms)[0m  [1m[35mCREATE  INDEX  "index_stocks_on_user_id" ON "stocks"  ("user_id")[0m
+  ↳ db/schema.rb:27
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  ↳ db/schema.rb:38
+  [1m[35m (8.3ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "first_name" character varying NOT NULL, "last_name" character varying NOT NULL, "username" character varying NOT NULL, "password_digest" character varying NOT NULL, "session_token" character varying NOT NULL, "balance" float NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:38
+  [1m[35m (3.8ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_username_and_session_token" ON "users"  ("username", "session_token")[0m
+  ↳ db/schema.rb:38
+  [1m[35m (7.5ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  ↳ db/schema.rb:13
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ db/schema.rb:13
+  [1m[35m (1.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20210330233005)[0m
+  ↳ db/schema.rb:13
+  [1m[35m (0.9ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20210218222042),
+(20210208223233);
+
+[0m
+  ↳ db/schema.rb:13
+  [1m[35m (6.6ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ db/schema.rb:13
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2021-03-31 01:32:23.212122"], ["updated_at", "2021-03-31 01:32:23.212122"]]
+  ↳ db/schema.rb:13
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Update (0.2ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = $1, "updated_at" = $2 WHERE "ar_internal_metadata"."key" = $3[0m  [["value", "test"], ["updated_at", "2021-03-31 01:32:23.214800"], ["key", "environment"]]
+  ↳ bin/rails:9
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:10
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "demolicious@demo.com"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:10
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "UvXAmzyUHi69pMqgZoUx4g"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:10
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "username", "password_digest", "session_token", "balance", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["first_name", "Demo"], ["last_name", "Feature"], ["username", "demolicious@demo.com"], ["password_digest", "$2a$12$pSTpRzFCTahfgeDD7QsBGeq/gbO3Kk74seaP0ypVnMIBfBMtRWimW"], ["session_token", "UvXAmzyUHi69pMqgZoUx4g"], ["balance", 10000.0], ["created_at", "2021-03-31 01:32:23.399054"], ["updated_at", "2021-03-31 01:32:23.399054"]]
+  ↳ db/seeds.rb:10
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:10
+  [1m[36mStock Load (0.2ms)[0m  [1m[34mSELECT "stocks".* FROM "stocks"[0m
+  ↳ db/seeds.rb:12
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:14
+  [1m[36mStock Create (0.3ms)[0m  [1m[32mINSERT INTO "stocks" ("user_id", "ticker", "amount", "unit_price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["user_id", 1], ["ticker", "TSLA"], ["amount", 100.0], ["unit_price", 350.0], ["created_at", "2021-03-31 01:32:23.406662"], ["updated_at", "2021-03-31 01:32:23.406662"]]
+  ↳ db/seeds.rb:14
+  [1m[35m (4.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:14
+  [1m[36mHistory Load (0.2ms)[0m  [1m[34mSELECT "histories".* FROM "histories"[0m
+  ↳ db/seeds.rb:16
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:17
+  [1m[36mHistory Create (0.3ms)[0m  [1m[32mINSERT INTO "histories" ("ticker", "date", "history", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["ticker", "TSLA"], ["date", "Mon Mar 29 2021 18:30:00 GMT-0700 (Pacific Daylight Time)"], ["history", "601.085,601.085,601.085,601.085,601.085,601.085,601.085,601.085,601.085,601.085,601.085,601.085,601.085,601.085,601.085,601.085,601.085,601.085,601.085,601.085,601.085,601.085,600.675,601.695,602.695,602.91,601.78,601.315,601.525,604.655,607.88,606.955,605.035,604.035,603.185,602.485,603.165,603.77,603.705,604.73,605.125,606.25,608.505,611.025,611.76,612.51,613.34,612.425,610.93,609.985,609.955,609.015,607.735,607.22,606.935,607.5,607.795,607.94,608.215,608.99,609.68,608.235,606.42,606.35,607.625,608.905,608.59,609.25,610.43,611.25,611.815,611.66,611.505,610.515,611.495,611.04,609.605,609.77,610.55,611.185,610.795,611.08,610.795,610.87,610.33,609.725,609.5,609.89,610.065,610.19,610.015,609.725,609.56,609.625,610.075,609.525,609.04,609.095,609.12,608.925,608.825,608.525,608.79,608.985,609.155,608.755,608.8,608.8,608.8"], ["created_at", "2021-03-31 01:32:23.416725"], ["updated_at", "2021-03-31 01:32:23.416725"]]
+  ↳ db/seeds.rb:17
+  [1m[35m (4.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:17
+Started GET "/" for 127.0.0.1 at 2021-03-30 18:32:33 -0700
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/tului/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.5/lib/active_record/log_subscriber.rb:98
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "kpNMuMbEA79DA3QkQ0br2A"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:12
+  Rendered static_pages/root.html.erb within layouts/application (7.8ms)
+Completed 200 OK in 839ms (Views: 837.2ms | ActiveRecord: 1.2ms)
+
+
+Started POST "/api/session" for 127.0.0.1 at 2021-03-30 18:32:36 -0700
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"user"=>{"username"=>"demolicious@demo.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "demolicious@demo.com"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:13
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:28
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["username", "demolicious@demo.com"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:28
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "S5vFvsdpka20f8FCKvuq_A"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:28
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "S5vFvsdpka20f8FCKvuq_A"], ["updated_at", "2021-03-31 01:32:36.926068"], ["id", 1]]
+  ↳ app/models/user.rb:28
+  [1m[35m (7.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:28
+  Rendering api/users/show.json.jbuilder
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT SUM("stocks"."amount") AS sum_amount, "stocks"."ticker" AS stocks_ticker FROM "stocks" WHERE "stocks"."user_id" = $1 GROUP BY "stocks"."ticker"[0m  [["user_id", 1]]
+  ↳ app/models/user.rb:40
+  Rendered api/users/_user.json.jbuilder (7.1ms)
+  [1m[36mStock Load (0.2ms)[0m  [1m[34mSELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/api/users/show.json.jbuilder:2
+  Rendered api/users/show.json.jbuilder (13.1ms)
+Completed 200 OK in 204ms (Views: 12.1ms | ActiveRecord: 12.1ms)
+
+
+Started GET "/api/users/1/stocks" for 127.0.0.1 at 2021-03-30 18:32:36 -0700
+Processing by Api::StocksController#index as JSON
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/stocks_controller.rb:3
+  Rendering api/stocks/index.json.jbuilder
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT SUM("stocks"."amount") AS sum_amount, "stocks"."ticker" AS stocks_ticker FROM "stocks" WHERE "stocks"."user_id" = $1 GROUP BY "stocks"."ticker"[0m  [["user_id", 1]]
+  ↳ app/models/user.rb:40
+  [1m[36mStock Load (0.3ms)[0m  [1m[34mSELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/api/stocks/index.json.jbuilder:2
+  Rendered api/stocks/index.json.jbuilder (2.9ms)
+Completed 200 OK in 6ms (Views: 3.4ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/api/histories/TSLA" for 127.0.0.1 at 2021-03-30 18:32:36 -0700
+Processing by Api::HistoriesController#show as JSON
+  Parameters: {"id"=>"TSLA"}
+  [1m[36mHistory Load (0.2ms)[0m  [1m[34mSELECT  "histories".* FROM "histories" WHERE "histories"."ticker" = $1 LIMIT $2[0m  [["ticker", "TSLA"], ["LIMIT", 1]]
+  ↳ app/controllers/api/histories_controller.rb:3
+  Rendering api/histories/show.json.jbuilder
+  Rendered api/histories/show.json.jbuilder (0.4ms)
+Completed 200 OK in 9ms (Views: 1.7ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/api/histories/QYLD" for 127.0.0.1 at 2021-03-30 18:32:48 -0700
+Processing by Api::HistoriesController#show as JSON
+  Parameters: {"id"=>"QYLD"}
+  [1m[36mHistory Load (0.3ms)[0m  [1m[34mSELECT  "histories".* FROM "histories" WHERE "histories"."ticker" = $1 LIMIT $2[0m  [["ticker", "QYLD"], ["LIMIT", 1]]
+  ↳ app/controllers/api/histories_controller.rb:3
+  Rendering api/histories/show.json.jbuilder
+  Rendered api/histories/show.json.jbuilder (0.3ms)
+Completed 200 OK in 3ms (Views: 1.6ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/api/users/1/stocks" for 127.0.0.1 at 2021-03-30 18:32:48 -0700
+Processing by Api::StocksController#index as JSON
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/stocks_controller.rb:3
+  Rendering api/stocks/index.json.jbuilder
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT SUM("stocks"."amount") AS sum_amount, "stocks"."ticker" AS stocks_ticker FROM "stocks" WHERE "stocks"."user_id" = $1 GROUP BY "stocks"."ticker"[0m  [["user_id", 1]]
+  ↳ app/models/user.rb:40
+  [1m[36mStock Load (0.2ms)[0m  [1m[34mSELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/api/stocks/index.json.jbuilder:2
+  Rendered api/stocks/index.json.jbuilder (2.9ms)
+Completed 200 OK in 5ms (Views: 3.1ms | ActiveRecord: 1.0ms)
+
+
+Started PATCH "/api/histories/QYLD" for 127.0.0.1 at 2021-03-30 18:32:49 -0700
+Processing by Api::HistoriesController#update as JSON
+  Parameters: {"history"=>{"history"=>"22.415,22.415,22.425,22.405,22.39,22.38,22.35,22.32,22.305,22.3,22.315,22.32,22.31,22.315,22.345,22.36,22.35,22.345,22.335,22.315,22.32,22.32,22.305,22.32,22.34,22.345,22.35,22.335,22.345,22.35,22.36,22.37,22.35,22.345,22.335,22.35,22.345,22.35,22.37,22.38,22.385,22.385,22.385,22.415,22.425,22.425,22.425,22.425,22.425,22.43,22.44,22.43,22.425,22.425,22.415,22.415,22.405,22.4,22.4,22.39,22.395,22.39,22.37,22.37,22.38,22.4,22.375,22.39,22.4,22.4,22.405,22.405,22.415,22.415,22.41,22.405,22.4,22.405,22.4,22.42,22.45,22.48,22.48,22.45,22.49,22.49,22.46,22.46,22.46,22.4,22.405,22.415,22.405,22.405,22.42,22.48,22.45,22.49,22.46,22.4,22.415,22.405,22.48,22.49,22.4,22.405,22.49,22.405,22.405", "date"=>"Mon Mar 29 2021 18:30:00 GMT-0700 (Pacific Daylight Time)"}, "id"=>"QYLD"}
+  [1m[36mHistory Load (0.3ms)[0m  [1m[34mSELECT  "histories".* FROM "histories" WHERE "histories"."ticker" = $1 LIMIT $2[0m  [["ticker", "QYLD"], ["LIMIT", 1]]
+  ↳ app/controllers/api/histories_controller.rb:8
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/histories_controller.rb:14
+  [1m[36mHistory Create (0.3ms)[0m  [1m[32mINSERT INTO "histories" ("ticker", "date", "history", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["ticker", "QYLD"], ["date", "Mon Mar 29 2021 18:30:00 GMT-0700 (Pacific Daylight Time)"], ["history", "22.415,22.415,22.425,22.405,22.39,22.38,22.35,22.32,22.305,22.3,22.315,22.32,22.31,22.315,22.345,22.36,22.35,22.345,22.335,22.315,22.32,22.32,22.305,22.32,22.34,22.345,22.35,22.335,22.345,22.35,22.36,22.37,22.35,22.345,22.335,22.35,22.345,22.35,22.37,22.38,22.385,22.385,22.385,22.415,22.425,22.425,22.425,22.425,22.425,22.43,22.44,22.43,22.425,22.425,22.415,22.415,22.405,22.4,22.4,22.39,22.395,22.39,22.37,22.37,22.38,22.4,22.375,22.39,22.4,22.4,22.405,22.405,22.415,22.415,22.41,22.405,22.4,22.405,22.4,22.42,22.45,22.48,22.48,22.45,22.49,22.49,22.46,22.46,22.46,22.4,22.405,22.415,22.405,22.405,22.42,22.48,22.45,22.49,22.46,22.4,22.415,22.405,22.48,22.49,22.4,22.405,22.49,22.405,22.405"], ["created_at", "2021-03-31 01:32:49.382331"], ["updated_at", "2021-03-31 01:32:49.382331"]]
+  ↳ app/controllers/api/histories_controller.rb:14
+  [1m[35m (7.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/histories_controller.rb:14
+Completed 200 OK in 11ms (Views: 0.2ms | ActiveRecord: 8.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2021-03-30 18:32:52 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "S5vFvsdpka20f8FCKvuq_A"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:12
+  Rendered static_pages/root.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 18ms (Views: 17.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/api/histories/QYLD" for 127.0.0.1 at 2021-03-30 18:32:52 -0700
+Processing by Api::HistoriesController#show as JSON
+  Parameters: {"id"=>"QYLD"}
+  [1m[36mHistory Load (0.3ms)[0m  [1m[34mSELECT  "histories".* FROM "histories" WHERE "histories"."ticker" = $1 LIMIT $2[0m  [["ticker", "QYLD"], ["LIMIT", 1]]
+  ↳ app/controllers/api/histories_controller.rb:3
+  Rendering api/histories/show.json.jbuilder
+  Rendered api/histories/show.json.jbuilder (0.3ms)
+Completed 200 OK in 2ms (Views: 1.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/api/users/1/stocks" for 127.0.0.1 at 2021-03-30 18:32:52 -0700
+Processing by Api::StocksController#index as JSON
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/stocks_controller.rb:3
+  Rendering api/stocks/index.json.jbuilder
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT SUM("stocks"."amount") AS sum_amount, "stocks"."ticker" AS stocks_ticker FROM "stocks" WHERE "stocks"."user_id" = $1 GROUP BY "stocks"."ticker"[0m  [["user_id", 1]]
+  ↳ app/models/user.rb:40
+  [1m[36mStock Load (0.3ms)[0m  [1m[34mSELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/api/stocks/index.json.jbuilder:2
+  Rendered api/stocks/index.json.jbuilder (2.3ms)
+Completed 200 OK in 5ms (Views: 2.6ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/api/histories/TSLA" for 127.0.0.1 at 2021-03-30 18:32:52 -0700
+Processing by Api::HistoriesController#show as JSON
+  Parameters: {"id"=>"TSLA"}
+  [1m[36mHistory Load (0.3ms)[0m  [1m[34mSELECT  "histories".* FROM "histories" WHERE "histories"."ticker" = $1 LIMIT $2[0m  [["ticker", "TSLA"], ["LIMIT", 1]]
+  ↳ app/controllers/api/histories_controller.rb:3
+  Rendering api/histories/show.json.jbuilder
+  Rendered api/histories/show.json.jbuilder (0.4ms)
+Completed 200 OK in 3ms (Views: 1.4ms | ActiveRecord: 0.3ms)
+
+
+  [1m[36mHistory Load (0.3ms)[0m  [1m[34mSELECT  "histories".* FROM "histories" WHERE "histories"."ticker" = $1 LIMIT $2[0m  [["ticker", "QYLD"], ["LIMIT", 1]]
+  [1m[36mHistory Load (0.3ms)[0m  [1m[34mSELECT  "histories".* FROM "histories" WHERE "histories"."ticker" = $1 LIMIT $2[0m  [["ticker", "QYLD"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mHistory Destroy (0.3ms)[0m  [1m[31mDELETE FROM "histories" WHERE "histories"."id" = $1[0m  [["id", 2]]
+  [1m[35m (3.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mHistory Load (0.8ms)[0m  [1m[34mSELECT  "histories".* FROM "histories" WHERE "histories"."ticker" = $1 LIMIT $2[0m  [["ticker", "QYLD"], ["LIMIT", 1]]
+Started GET "/" for 127.0.0.1 at 2021-03-30 18:34:06 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "S5vFvsdpka20f8FCKvuq_A"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:12
+  Rendered static_pages/root.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 31ms (Views: 29.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/api/histories/QYLD" for 127.0.0.1 at 2021-03-30 18:34:06 -0700
+Processing by Api::HistoriesController#show as JSON
+  Parameters: {"id"=>"QYLD"}
+  [1m[36mHistory Load (0.3ms)[0m  [1m[34mSELECT  "histories".* FROM "histories" WHERE "histories"."ticker" = $1 LIMIT $2[0m  [["ticker", "QYLD"], ["LIMIT", 1]]
+  ↳ app/controllers/api/histories_controller.rb:3
+  Rendering api/histories/show.json.jbuilder
+  Rendered api/histories/show.json.jbuilder (0.3ms)
+Completed 200 OK in 3ms (Views: 1.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/api/users/1/stocks" for 127.0.0.1 at 2021-03-30 18:34:06 -0700
+Processing by Api::StocksController#index as JSON
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/stocks_controller.rb:3
+  Rendering api/stocks/index.json.jbuilder
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT SUM("stocks"."amount") AS sum_amount, "stocks"."ticker" AS stocks_ticker FROM "stocks" WHERE "stocks"."user_id" = $1 GROUP BY "stocks"."ticker"[0m  [["user_id", 1]]
+  ↳ app/models/user.rb:40
+  [1m[36mStock Load (0.2ms)[0m  [1m[34mSELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/api/stocks/index.json.jbuilder:2
+  Rendered api/stocks/index.json.jbuilder (2.2ms)
+Completed 200 OK in 4ms (Views: 2.6ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/api/histories/TSLA" for 127.0.0.1 at 2021-03-30 18:34:06 -0700
+Processing by Api::HistoriesController#show as JSON
+  Parameters: {"id"=>"TSLA"}
+  [1m[36mHistory Load (0.2ms)[0m  [1m[34mSELECT  "histories".* FROM "histories" WHERE "histories"."ticker" = $1 LIMIT $2[0m  [["ticker", "TSLA"], ["LIMIT", 1]]
+  ↳ app/controllers/api/histories_controller.rb:3
+  Rendering api/histories/show.json.jbuilder
+  Rendered api/histories/show.json.jbuilder (0.3ms)
+Completed 200 OK in 2ms (Views: 1.2ms | ActiveRecord: 0.2ms)
+
+
+Started PATCH "/api/histories/QYLD" for 127.0.0.1 at 2021-03-30 18:34:07 -0700
+Processing by Api::HistoriesController#update as JSON
+  Parameters: {"history"=>{"history"=>"22.415,22.415,22.425,22.405,22.39,22.38,22.35,22.32,22.305,22.3,22.315,22.32,22.31,22.315,22.345,22.36,22.35,22.345,22.335,22.315,22.32,22.32,22.305,22.32,22.34,22.345,22.35,22.335,22.345,22.35,22.36,22.37,22.35,22.345,22.335,22.35,22.345,22.35,22.37,22.38,22.385,22.385,22.385,22.415,22.425,22.425,22.425,22.425,22.425,22.43,22.44,22.43,22.425,22.425,22.415,22.415,22.405,22.4,22.4,22.39,22.395,22.39,22.37,22.37,22.38,22.4,22.375,22.39,22.4,22.4,22.405,22.405,22.415,22.415,22.41,22.405,22.4,22.405,22.4,22.42,22.45,22.48,22.48,22.45,22.49,22.49,22.46,22.46,22.46,22.4,22.405,22.415,22.405,22.405,22.42,22.48,22.45,22.49,22.46,22.4,22.415,22.405,22.48,22.49,22.4,22.405,22.49,22.405,22.405", "date"=>"Mon Mar 29 2021 18:30:00 GMT-0700 (Pacific Daylight Time)"}, "id"=>"QYLD"}
+  [1m[36mHistory Load (0.2ms)[0m  [1m[34mSELECT  "histories".* FROM "histories" WHERE "histories"."ticker" = $1 LIMIT $2[0m  [["ticker", "QYLD"], ["LIMIT", 1]]
+  ↳ app/controllers/api/histories_controller.rb:8
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/histories_controller.rb:14
+  [1m[36mHistory Create (0.2ms)[0m  [1m[32mINSERT INTO "histories" ("ticker", "date", "history", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["ticker", "QYLD"], ["date", "Mon Mar 29 2021 18:30:00 GMT-0700 (Pacific Daylight Time)"], ["history", "22.415,22.415,22.425,22.405,22.39,22.38,22.35,22.32,22.305,22.3,22.315,22.32,22.31,22.315,22.345,22.36,22.35,22.345,22.335,22.315,22.32,22.32,22.305,22.32,22.34,22.345,22.35,22.335,22.345,22.35,22.36,22.37,22.35,22.345,22.335,22.35,22.345,22.35,22.37,22.38,22.385,22.385,22.385,22.415,22.425,22.425,22.425,22.425,22.425,22.43,22.44,22.43,22.425,22.425,22.415,22.415,22.405,22.4,22.4,22.39,22.395,22.39,22.37,22.37,22.38,22.4,22.375,22.39,22.4,22.4,22.405,22.405,22.415,22.415,22.41,22.405,22.4,22.405,22.4,22.42,22.45,22.48,22.48,22.45,22.49,22.49,22.46,22.46,22.46,22.4,22.405,22.415,22.405,22.405,22.42,22.48,22.45,22.49,22.46,22.4,22.415,22.405,22.48,22.49,22.4,22.405,22.49,22.405,22.405"], ["created_at", "2021-03-31 01:34:07.751020"], ["updated_at", "2021-03-31 01:34:07.751020"]]
+  ↳ app/controllers/api/histories_controller.rb:14
+  [1m[35m (7.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/histories_controller.rb:14
+Completed 200 OK in 10ms (Views: 0.1ms | ActiveRecord: 7.8ms)
+
+
+Started GET "/api/users/1/stocks" for 127.0.0.1 at 2021-03-30 18:34:16 -0700
+Processing by Api::StocksController#index as JSON
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/stocks_controller.rb:3
+  Rendering api/stocks/index.json.jbuilder
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT SUM("stocks"."amount") AS sum_amount, "stocks"."ticker" AS stocks_ticker FROM "stocks" WHERE "stocks"."user_id" = $1 GROUP BY "stocks"."ticker"[0m  [["user_id", 1]]
+  ↳ app/models/user.rb:40
+  [1m[36mStock Load (0.2ms)[0m  [1m[34mSELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/api/stocks/index.json.jbuilder:2
+  Rendered api/stocks/index.json.jbuilder (2.6ms)
+Completed 200 OK in 5ms (Views: 2.9ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2021-03-30 18:34:47 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "S5vFvsdpka20f8FCKvuq_A"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:12
+  Rendered static_pages/root.html.erb within layouts/application (4.1ms)
+Completed 200 OK in 37ms (Views: 35.3ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/api/users/1/stocks" for 127.0.0.1 at 2021-03-30 18:34:47 -0700
+Processing by Api::StocksController#index as JSON
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/stocks_controller.rb:3
+  Rendering api/stocks/index.json.jbuilder
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT SUM("stocks"."amount") AS sum_amount, "stocks"."ticker" AS stocks_ticker FROM "stocks" WHERE "stocks"."user_id" = $1 GROUP BY "stocks"."ticker"[0m  [["user_id", 1]]
+  ↳ app/models/user.rb:40
+  [1m[36mStock Load (0.2ms)[0m  [1m[34mSELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/api/stocks/index.json.jbuilder:2
+  Rendered api/stocks/index.json.jbuilder (2.3ms)
+Completed 200 OK in 5ms (Views: 2.8ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/api/histories/TSLA" for 127.0.0.1 at 2021-03-30 18:34:47 -0700
+Processing by Api::HistoriesController#show as JSON
+  Parameters: {"id"=>"TSLA"}
+  [1m[36mHistory Load (0.5ms)[0m  [1m[34mSELECT  "histories".* FROM "histories" WHERE "histories"."ticker" = $1 LIMIT $2[0m  [["ticker", "TSLA"], ["LIMIT", 1]]
+  ↳ app/controllers/api/histories_controller.rb:3
+  Rendering api/histories/show.json.jbuilder
+  Rendered api/histories/show.json.jbuilder (0.3ms)
+Completed 200 OK in 3ms (Views: 1.2ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/api/histories/QYLD" for 127.0.0.1 at 2021-03-30 18:34:54 -0700
+Processing by Api::HistoriesController#show as JSON
+  Parameters: {"id"=>"QYLD"}
+  [1m[36mHistory Load (0.2ms)[0m  [1m[34mSELECT  "histories".* FROM "histories" WHERE "histories"."ticker" = $1 LIMIT $2[0m  [["ticker", "QYLD"], ["LIMIT", 1]]
+  ↳ app/controllers/api/histories_controller.rb:3
+  Rendering api/histories/show.json.jbuilder
+  Rendered api/histories/show.json.jbuilder (0.4ms)
+Completed 200 OK in 3ms (Views: 1.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/api/users/1/stocks" for 127.0.0.1 at 2021-03-30 18:34:54 -0700
+Processing by Api::StocksController#index as JSON
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/stocks_controller.rb:3
+  Rendering api/stocks/index.json.jbuilder
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT SUM("stocks"."amount") AS sum_amount, "stocks"."ticker" AS stocks_ticker FROM "stocks" WHERE "stocks"."user_id" = $1 GROUP BY "stocks"."ticker"[0m  [["user_id", 1]]
+  ↳ app/models/user.rb:40
+  [1m[36mStock Load (0.1ms)[0m  [1m[34mSELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/api/stocks/index.json.jbuilder:2
+  Rendered api/stocks/index.json.jbuilder (1.9ms)
+Completed 200 OK in 4ms (Views: 2.5ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2021-03-30 18:35:03 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "S5vFvsdpka20f8FCKvuq_A"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:12
+  Rendered static_pages/root.html.erb within layouts/application (4.1ms)
+Completed 200 OK in 36ms (Views: 34.2ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/api/histories/QYLD" for 127.0.0.1 at 2021-03-30 18:35:03 -0700
+Processing by Api::HistoriesController#show as JSON
+  Parameters: {"id"=>"QYLD"}
+  [1m[36mHistory Load (0.1ms)[0m  [1m[34mSELECT  "histories".* FROM "histories" WHERE "histories"."ticker" = $1 LIMIT $2[0m  [["ticker", "QYLD"], ["LIMIT", 1]]
+  ↳ app/controllers/api/histories_controller.rb:3
+  Rendering api/histories/show.json.jbuilder
+  Rendered api/histories/show.json.jbuilder (0.4ms)
+Completed 200 OK in 3ms (Views: 1.5ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/api/users/1/stocks" for 127.0.0.1 at 2021-03-30 18:35:03 -0700
+Processing by Api::StocksController#index as JSON
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/stocks_controller.rb:3
+  Rendering api/stocks/index.json.jbuilder
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT SUM("stocks"."amount") AS sum_amount, "stocks"."ticker" AS stocks_ticker FROM "stocks" WHERE "stocks"."user_id" = $1 GROUP BY "stocks"."ticker"[0m  [["user_id", 1]]
+  ↳ app/models/user.rb:40
+  [1m[36mStock Load (0.2ms)[0m  [1m[34mSELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/api/stocks/index.json.jbuilder:2
+  Rendered api/stocks/index.json.jbuilder (3.4ms)
+Completed 200 OK in 6ms (Views: 3.8ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/api/histories/TSLA" for 127.0.0.1 at 2021-03-30 18:35:03 -0700
+Processing by Api::HistoriesController#show as JSON
+  Parameters: {"id"=>"TSLA"}
+  [1m[36mHistory Load (0.1ms)[0m  [1m[34mSELECT  "histories".* FROM "histories" WHERE "histories"."ticker" = $1 LIMIT $2[0m  [["ticker", "TSLA"], ["LIMIT", 1]]
+  ↳ app/controllers/api/histories_controller.rb:3
+  Rendering api/histories/show.json.jbuilder
+  Rendered api/histories/show.json.jbuilder (0.3ms)
+Completed 200 OK in 2ms (Views: 1.1ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2021-03-30 18:35:54 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "S5vFvsdpka20f8FCKvuq_A"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:12
+  Rendered static_pages/root.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 703ms (Views: 702.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/api/histories/QYLD" for 127.0.0.1 at 2021-03-30 18:35:54 -0700
+Processing by Api::HistoriesController#show as JSON
+  Parameters: {"id"=>"QYLD"}
+  [1m[36mHistory Load (0.2ms)[0m  [1m[34mSELECT  "histories".* FROM "histories" WHERE "histories"."ticker" = $1 LIMIT $2[0m  [["ticker", "QYLD"], ["LIMIT", 1]]
+  ↳ app/controllers/api/histories_controller.rb:3
+  Rendering api/histories/show.json.jbuilder
+  Rendered api/histories/show.json.jbuilder (0.3ms)
+Completed 200 OK in 2ms (Views: 1.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/api/users/1/stocks" for 127.0.0.1 at 2021-03-30 18:35:54 -0700
+Processing by Api::StocksController#index as JSON
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/stocks_controller.rb:3
+  Rendering api/stocks/index.json.jbuilder
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT SUM("stocks"."amount") AS sum_amount, "stocks"."ticker" AS stocks_ticker FROM "stocks" WHERE "stocks"."user_id" = $1 GROUP BY "stocks"."ticker"[0m  [["user_id", 1]]
+  ↳ app/models/user.rb:40
+  [1m[36mStock Load (0.1ms)[0m  [1m[34mSELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/api/stocks/index.json.jbuilder:2
+  Rendered api/stocks/index.json.jbuilder (1.9ms)
+Completed 200 OK in 4ms (Views: 2.4ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/api/histories/TSLA" for 127.0.0.1 at 2021-03-30 18:35:55 -0700
+Processing by Api::HistoriesController#show as JSON
+  Parameters: {"id"=>"TSLA"}
+  [1m[36mHistory Load (0.2ms)[0m  [1m[34mSELECT  "histories".* FROM "histories" WHERE "histories"."ticker" = $1 LIMIT $2[0m  [["ticker", "TSLA"], ["LIMIT", 1]]
+  ↳ app/controllers/api/histories_controller.rb:3
+  Rendering api/histories/show.json.jbuilder
+  Rendered api/histories/show.json.jbuilder (0.3ms)
+Completed 200 OK in 2ms (Views: 1.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2021-03-30 18:38:56 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "S5vFvsdpka20f8FCKvuq_A"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:12
+  Rendered static_pages/root.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 11ms (Views: 10.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/api/histories/QYLD" for 127.0.0.1 at 2021-03-30 18:38:56 -0700
+Processing by Api::HistoriesController#show as JSON
+  Parameters: {"id"=>"QYLD"}
+  [1m[36mHistory Load (0.2ms)[0m  [1m[34mSELECT  "histories".* FROM "histories" WHERE "histories"."ticker" = $1 LIMIT $2[0m  [["ticker", "QYLD"], ["LIMIT", 1]]
+  ↳ app/controllers/api/histories_controller.rb:3
+  Rendering api/histories/show.json.jbuilder
+  Rendered api/histories/show.json.jbuilder (0.3ms)
+Completed 200 OK in 2ms (Views: 1.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/api/users/1/stocks" for 127.0.0.1 at 2021-03-30 18:38:56 -0700
+Processing by Api::StocksController#index as JSON
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/stocks_controller.rb:3
+  Rendering api/stocks/index.json.jbuilder
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT SUM("stocks"."amount") AS sum_amount, "stocks"."ticker" AS stocks_ticker FROM "stocks" WHERE "stocks"."user_id" = $1 GROUP BY "stocks"."ticker"[0m  [["user_id", 1]]
+  ↳ app/models/user.rb:40
+  [1m[36mStock Load (0.2ms)[0m  [1m[34mSELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/api/stocks/index.json.jbuilder:2
+  Rendered api/stocks/index.json.jbuilder (2.1ms)
+Completed 200 OK in 4ms (Views: 2.4ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/api/histories/TSLA" for 127.0.0.1 at 2021-03-30 18:38:56 -0700
+Processing by Api::HistoriesController#show as JSON
+  Parameters: {"id"=>"TSLA"}
+  [1m[36mHistory Load (0.1ms)[0m  [1m[34mSELECT  "histories".* FROM "histories" WHERE "histories"."ticker" = $1 LIMIT $2[0m  [["ticker", "TSLA"], ["LIMIT", 1]]
+  ↳ app/controllers/api/histories_controller.rb:3
+  Rendering api/histories/show.json.jbuilder
+  Rendered api/histories/show.json.jbuilder (0.3ms)
+Completed 200 OK in 2ms (Views: 1.1ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2021-03-30 18:39:04 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "S5vFvsdpka20f8FCKvuq_A"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:12
+  Rendered static_pages/root.html.erb within layouts/application (3.8ms)
+Completed 200 OK in 774ms (Views: 771.7ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/api/histories/QYLD" for 127.0.0.1 at 2021-03-30 18:39:05 -0700
+Processing by Api::HistoriesController#show as JSON
+  Parameters: {"id"=>"QYLD"}
+  [1m[36mHistory Load (0.2ms)[0m  [1m[34mSELECT  "histories".* FROM "histories" WHERE "histories"."ticker" = $1 LIMIT $2[0m  [["ticker", "QYLD"], ["LIMIT", 1]]
+  ↳ app/controllers/api/histories_controller.rb:3
+  Rendering api/histories/show.json.jbuilder
+  Rendered api/histories/show.json.jbuilder (0.3ms)
+Completed 200 OK in 2ms (Views: 1.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/api/users/1/stocks" for 127.0.0.1 at 2021-03-30 18:39:05 -0700
+Processing by Api::StocksController#index as JSON
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/stocks_controller.rb:3
+  Rendering api/stocks/index.json.jbuilder
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT SUM("stocks"."amount") AS sum_amount, "stocks"."ticker" AS stocks_ticker FROM "stocks" WHERE "stocks"."user_id" = $1 GROUP BY "stocks"."ticker"[0m  [["user_id", 1]]
+  ↳ app/models/user.rb:40
+  [1m[36mStock Load (0.2ms)[0m  [1m[34mSELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/api/stocks/index.json.jbuilder:2
+  Rendered api/stocks/index.json.jbuilder (2.8ms)
+Completed 200 OK in 5ms (Views: 2.8ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/api/histories/TSLA" for 127.0.0.1 at 2021-03-30 18:39:05 -0700
+Processing by Api::HistoriesController#show as JSON
+  Parameters: {"id"=>"TSLA"}
+  [1m[36mHistory Load (0.2ms)[0m  [1m[34mSELECT  "histories".* FROM "histories" WHERE "histories"."ticker" = $1 LIMIT $2[0m  [["ticker", "TSLA"], ["LIMIT", 1]]
+  ↳ app/controllers/api/histories_controller.rb:3
+  Rendering api/histories/show.json.jbuilder
+  Rendered api/histories/show.json.jbuilder (0.3ms)
+Completed 200 OK in 4ms (Views: 2.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2021-03-30 18:39:12 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "S5vFvsdpka20f8FCKvuq_A"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:12
+  Rendered static_pages/root.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 12ms (Views: 11.3ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/api/histories/QYLD" for 127.0.0.1 at 2021-03-30 18:39:12 -0700
+Processing by Api::HistoriesController#show as JSON
+  Parameters: {"id"=>"QYLD"}
+  [1m[36mHistory Load (0.2ms)[0m  [1m[34mSELECT  "histories".* FROM "histories" WHERE "histories"."ticker" = $1 LIMIT $2[0m  [["ticker", "QYLD"], ["LIMIT", 1]]
+  ↳ app/controllers/api/histories_controller.rb:3
+  Rendering api/histories/show.json.jbuilder
+  Rendered api/histories/show.json.jbuilder (0.3ms)
+Completed 200 OK in 2ms (Views: 1.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/api/users/1/stocks" for 127.0.0.1 at 2021-03-30 18:39:12 -0700
+Processing by Api::StocksController#index as JSON
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/stocks_controller.rb:3
+  Rendering api/stocks/index.json.jbuilder
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT SUM("stocks"."amount") AS sum_amount, "stocks"."ticker" AS stocks_ticker FROM "stocks" WHERE "stocks"."user_id" = $1 GROUP BY "stocks"."ticker"[0m  [["user_id", 1]]
+  ↳ app/models/user.rb:40
+  [1m[36mStock Load (0.4ms)[0m  [1m[34mSELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/api/stocks/index.json.jbuilder:2
+  Rendered api/stocks/index.json.jbuilder (2.3ms)
+Completed 200 OK in 6ms (Views: 2.5ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/api/histories/TSLA" for 127.0.0.1 at 2021-03-30 18:39:12 -0700
+Processing by Api::HistoriesController#show as JSON
+  Parameters: {"id"=>"TSLA"}
+  [1m[36mHistory Load (0.6ms)[0m  [1m[34mSELECT  "histories".* FROM "histories" WHERE "histories"."ticker" = $1 LIMIT $2[0m  [["ticker", "TSLA"], ["LIMIT", 1]]
+  ↳ app/controllers/api/histories_controller.rb:3
+  Rendering api/histories/show.json.jbuilder
+  Rendered api/histories/show.json.jbuilder (0.3ms)
+Completed 200 OK in 3ms (Views: 1.2ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2021-03-30 18:39:21 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "S5vFvsdpka20f8FCKvuq_A"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:12
+  Rendered static_pages/root.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 25ms (Views: 24.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/api/users/1/stocks" for 127.0.0.1 at 2021-03-30 18:39:21 -0700
+Processing by Api::StocksController#index as JSON
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/stocks_controller.rb:3
+  Rendering api/stocks/index.json.jbuilder
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT SUM("stocks"."amount") AS sum_amount, "stocks"."ticker" AS stocks_ticker FROM "stocks" WHERE "stocks"."user_id" = $1 GROUP BY "stocks"."ticker"[0m  [["user_id", 1]]
+  ↳ app/models/user.rb:40
+  [1m[36mStock Load (0.4ms)[0m  [1m[34mSELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/api/stocks/index.json.jbuilder:2
+  Rendered api/stocks/index.json.jbuilder (2.8ms)
+Completed 200 OK in 5ms (Views: 3.0ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/api/histories/TSLA" for 127.0.0.1 at 2021-03-30 18:39:21 -0700
+Processing by Api::HistoriesController#show as JSON
+  Parameters: {"id"=>"TSLA"}
+  [1m[36mHistory Load (0.3ms)[0m  [1m[34mSELECT  "histories".* FROM "histories" WHERE "histories"."ticker" = $1 LIMIT $2[0m  [["ticker", "TSLA"], ["LIMIT", 1]]
+  ↳ app/controllers/api/histories_controller.rb:3
+  Rendering api/histories/show.json.jbuilder
+  Rendered api/histories/show.json.jbuilder (0.3ms)
+Completed 200 OK in 2ms (Views: 1.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/api/histories/QYLD" for 127.0.0.1 at 2021-03-30 18:40:12 -0700
+Processing by Api::HistoriesController#show as JSON
+  Parameters: {"id"=>"QYLD"}
+  [1m[36mHistory Load (0.1ms)[0m  [1m[34mSELECT  "histories".* FROM "histories" WHERE "histories"."ticker" = $1 LIMIT $2[0m  [["ticker", "QYLD"], ["LIMIT", 1]]
+  ↳ app/controllers/api/histories_controller.rb:3
+  Rendering api/histories/show.json.jbuilder
+  Rendered api/histories/show.json.jbuilder (0.3ms)
+Completed 200 OK in 2ms (Views: 1.2ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/api/users/1/stocks" for 127.0.0.1 at 2021-03-30 18:40:12 -0700
+Processing by Api::StocksController#index as JSON
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/stocks_controller.rb:3
+  Rendering api/stocks/index.json.jbuilder
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT SUM("stocks"."amount") AS sum_amount, "stocks"."ticker" AS stocks_ticker FROM "stocks" WHERE "stocks"."user_id" = $1 GROUP BY "stocks"."ticker"[0m  [["user_id", 1]]
+  ↳ app/models/user.rb:40
+  [1m[36mStock Load (0.2ms)[0m  [1m[34mSELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/api/stocks/index.json.jbuilder:2
+  Rendered api/stocks/index.json.jbuilder (2.1ms)
+Completed 200 OK in 4ms (Views: 2.5ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2021-03-30 18:40:25 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "S5vFvsdpka20f8FCKvuq_A"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:12
+  Rendered static_pages/root.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 678ms (Views: 677.5ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/api/histories/QYLD" for 127.0.0.1 at 2021-03-30 18:40:26 -0700
+Processing by Api::HistoriesController#show as JSON
+  Parameters: {"id"=>"QYLD"}
+  [1m[36mHistory Load (0.7ms)[0m  [1m[34mSELECT  "histories".* FROM "histories" WHERE "histories"."ticker" = $1 LIMIT $2[0m  [["ticker", "QYLD"], ["LIMIT", 1]]
+  ↳ app/controllers/api/histories_controller.rb:3
+  Rendering api/histories/show.json.jbuilder
+  Rendered api/histories/show.json.jbuilder (0.3ms)
+Completed 200 OK in 4ms (Views: 1.2ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/api/users/1/stocks" for 127.0.0.1 at 2021-03-30 18:40:26 -0700
+Processing by Api::StocksController#index as JSON
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/stocks_controller.rb:3
+  Rendering api/stocks/index.json.jbuilder
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT SUM("stocks"."amount") AS sum_amount, "stocks"."ticker" AS stocks_ticker FROM "stocks" WHERE "stocks"."user_id" = $1 GROUP BY "stocks"."ticker"[0m  [["user_id", 1]]
+  ↳ app/models/user.rb:40
+  [1m[36mStock Load (0.2ms)[0m  [1m[34mSELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/api/stocks/index.json.jbuilder:2
+  Rendered api/stocks/index.json.jbuilder (2.1ms)
+Completed 200 OK in 4ms (Views: 2.6ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/api/histories/TSLA" for 127.0.0.1 at 2021-03-30 18:40:26 -0700
+Processing by Api::HistoriesController#show as JSON
+  Parameters: {"id"=>"TSLA"}
+  [1m[36mHistory Load (0.1ms)[0m  [1m[34mSELECT  "histories".* FROM "histories" WHERE "histories"."ticker" = $1 LIMIT $2[0m  [["ticker", "TSLA"], ["LIMIT", 1]]
+  ↳ app/controllers/api/histories_controller.rb:3
+  Rendering api/histories/show.json.jbuilder
+  Rendered api/histories/show.json.jbuilder (0.4ms)
+Completed 200 OK in 2ms (Views: 1.3ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2021-03-30 18:43:22 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "S5vFvsdpka20f8FCKvuq_A"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:12
+  Rendered static_pages/root.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 687ms (Views: 686.3ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/api/histories/QYLD" for 127.0.0.1 at 2021-03-30 18:43:22 -0700
+Processing by Api::HistoriesController#show as JSON
+  Parameters: {"id"=>"QYLD"}
+  [1m[36mHistory Load (0.1ms)[0m  [1m[34mSELECT  "histories".* FROM "histories" WHERE "histories"."ticker" = $1 LIMIT $2[0m  [["ticker", "QYLD"], ["LIMIT", 1]]
+  ↳ app/controllers/api/histories_controller.rb:3
+  Rendering api/histories/show.json.jbuilder
+  Rendered api/histories/show.json.jbuilder (0.3ms)
+Completed 200 OK in 2ms (Views: 1.2ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/api/users/1/stocks" for 127.0.0.1 at 2021-03-30 18:43:23 -0700
+Processing by Api::StocksController#index as JSON
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/stocks_controller.rb:3
+  Rendering api/stocks/index.json.jbuilder
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT SUM("stocks"."amount") AS sum_amount, "stocks"."ticker" AS stocks_ticker FROM "stocks" WHERE "stocks"."user_id" = $1 GROUP BY "stocks"."ticker"[0m  [["user_id", 1]]
+  ↳ app/models/user.rb:40
+  [1m[36mStock Load (0.1ms)[0m  [1m[34mSELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/api/stocks/index.json.jbuilder:2
+  Rendered api/stocks/index.json.jbuilder (2.1ms)
+Completed 200 OK in 4ms (Views: 2.5ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2021-03-30 18:44:04 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "S5vFvsdpka20f8FCKvuq_A"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:12
+  Rendered static_pages/root.html.erb within layouts/application (4.1ms)
+Completed 200 OK in 713ms (Views: 710.9ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/api/histories/QYLD" for 127.0.0.1 at 2021-03-30 18:44:05 -0700
+Processing by Api::HistoriesController#show as JSON
+  Parameters: {"id"=>"QYLD"}
+  [1m[36mHistory Load (0.1ms)[0m  [1m[34mSELECT  "histories".* FROM "histories" WHERE "histories"."ticker" = $1 LIMIT $2[0m  [["ticker", "QYLD"], ["LIMIT", 1]]
+  ↳ app/controllers/api/histories_controller.rb:3
+  Rendering api/histories/show.json.jbuilder
+  Rendered api/histories/show.json.jbuilder (0.3ms)
+Completed 200 OK in 2ms (Views: 1.1ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/api/users/1/stocks" for 127.0.0.1 at 2021-03-30 18:44:05 -0700
+Processing by Api::StocksController#index as JSON
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/stocks_controller.rb:3
+  Rendering api/stocks/index.json.jbuilder
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT SUM("stocks"."amount") AS sum_amount, "stocks"."ticker" AS stocks_ticker FROM "stocks" WHERE "stocks"."user_id" = $1 GROUP BY "stocks"."ticker"[0m  [["user_id", 1]]
+  ↳ app/models/user.rb:40
+  [1m[36mStock Load (0.1ms)[0m  [1m[34mSELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/api/stocks/index.json.jbuilder:2
+  Rendered api/stocks/index.json.jbuilder (2.1ms)
+Completed 200 OK in 4ms (Views: 2.5ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/api/histories/TSLA" for 127.0.0.1 at 2021-03-30 18:44:05 -0700
+Processing by Api::HistoriesController#show as JSON
+  Parameters: {"id"=>"TSLA"}
+  [1m[36mHistory Load (0.2ms)[0m  [1m[34mSELECT  "histories".* FROM "histories" WHERE "histories"."ticker" = $1 LIMIT $2[0m  [["ticker", "TSLA"], ["LIMIT", 1]]
+  ↳ app/controllers/api/histories_controller.rb:3
+  Rendering api/histories/show.json.jbuilder
+  Rendered api/histories/show.json.jbuilder (0.4ms)
+Completed 200 OK in 2ms (Views: 1.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2021-03-30 18:44:20 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "S5vFvsdpka20f8FCKvuq_A"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:12
+  Rendered static_pages/root.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 762ms (Views: 761.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/api/histories/QYLD" for 127.0.0.1 at 2021-03-30 18:44:21 -0700
+Processing by Api::HistoriesController#show as JSON
+  Parameters: {"id"=>"QYLD"}
+  [1m[36mHistory Load (0.1ms)[0m  [1m[34mSELECT  "histories".* FROM "histories" WHERE "histories"."ticker" = $1 LIMIT $2[0m  [["ticker", "QYLD"], ["LIMIT", 1]]
+  ↳ app/controllers/api/histories_controller.rb:3
+  Rendering api/histories/show.json.jbuilder
+  Rendered api/histories/show.json.jbuilder (0.3ms)
+Completed 200 OK in 2ms (Views: 1.1ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/api/users/1/stocks" for 127.0.0.1 at 2021-03-30 18:44:21 -0700
+Processing by Api::StocksController#index as JSON
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/stocks_controller.rb:3
+  Rendering api/stocks/index.json.jbuilder
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT SUM("stocks"."amount") AS sum_amount, "stocks"."ticker" AS stocks_ticker FROM "stocks" WHERE "stocks"."user_id" = $1 GROUP BY "stocks"."ticker"[0m  [["user_id", 1]]
+  ↳ app/models/user.rb:40
+  [1m[36mStock Load (0.1ms)[0m  [1m[34mSELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/api/stocks/index.json.jbuilder:2
+  Rendered api/stocks/index.json.jbuilder (2.0ms)
+Completed 200 OK in 4ms (Views: 2.4ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/api/histories/TSLA" for 127.0.0.1 at 2021-03-30 18:44:21 -0700
+Processing by Api::HistoriesController#show as JSON
+  Parameters: {"id"=>"TSLA"}
+  [1m[36mHistory Load (0.2ms)[0m  [1m[34mSELECT  "histories".* FROM "histories" WHERE "histories"."ticker" = $1 LIMIT $2[0m  [["ticker", "TSLA"], ["LIMIT", 1]]
+  ↳ app/controllers/api/histories_controller.rb:3
+  Rendering api/histories/show.json.jbuilder
+  Rendered api/histories/show.json.jbuilder (0.3ms)
+Completed 200 OK in 2ms (Views: 1.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2021-03-30 18:45:27 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "S5vFvsdpka20f8FCKvuq_A"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:12
+  Rendered static_pages/root.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 666ms (Views: 665.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/api/histories/QYLD" for 127.0.0.1 at 2021-03-30 18:45:27 -0700
+Processing by Api::HistoriesController#show as JSON
+  Parameters: {"id"=>"QYLD"}
+  [1m[36mHistory Load (0.2ms)[0m  [1m[34mSELECT  "histories".* FROM "histories" WHERE "histories"."ticker" = $1 LIMIT $2[0m  [["ticker", "QYLD"], ["LIMIT", 1]]
+  ↳ app/controllers/api/histories_controller.rb:3
+  Rendering api/histories/show.json.jbuilder
+  Rendered api/histories/show.json.jbuilder (0.3ms)
+Completed 200 OK in 2ms (Views: 1.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/api/users/1/stocks" for 127.0.0.1 at 2021-03-30 18:45:27 -0700
+Processing by Api::StocksController#index as JSON
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/stocks_controller.rb:3
+  Rendering api/stocks/index.json.jbuilder
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT SUM("stocks"."amount") AS sum_amount, "stocks"."ticker" AS stocks_ticker FROM "stocks" WHERE "stocks"."user_id" = $1 GROUP BY "stocks"."ticker"[0m  [["user_id", 1]]
+  ↳ app/models/user.rb:40
+  [1m[36mStock Load (0.1ms)[0m  [1m[34mSELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/api/stocks/index.json.jbuilder:2
+  Rendered api/stocks/index.json.jbuilder (2.3ms)
+Completed 200 OK in 4ms (Views: 2.8ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/api/histories/TSLA" for 127.0.0.1 at 2021-03-30 18:45:28 -0700
+Processing by Api::HistoriesController#show as JSON
+  Parameters: {"id"=>"TSLA"}
+  [1m[36mHistory Load (0.2ms)[0m  [1m[34mSELECT  "histories".* FROM "histories" WHERE "histories"."ticker" = $1 LIMIT $2[0m  [["ticker", "TSLA"], ["LIMIT", 1]]
+  ↳ app/controllers/api/histories_controller.rb:3
+  Rendering api/histories/show.json.jbuilder
+  Rendered api/histories/show.json.jbuilder (0.3ms)
+Completed 200 OK in 2ms (Views: 1.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2021-03-30 18:46:15 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "S5vFvsdpka20f8FCKvuq_A"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:12
+  Rendered static_pages/root.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 696ms (Views: 695.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/api/histories/QYLD" for 127.0.0.1 at 2021-03-30 18:46:16 -0700
+Processing by Api::HistoriesController#show as JSON
+  Parameters: {"id"=>"QYLD"}
+  [1m[36mHistory Load (0.2ms)[0m  [1m[34mSELECT  "histories".* FROM "histories" WHERE "histories"."ticker" = $1 LIMIT $2[0m  [["ticker", "QYLD"], ["LIMIT", 1]]
+  ↳ app/controllers/api/histories_controller.rb:3
+  Rendering api/histories/show.json.jbuilder
+  Rendered api/histories/show.json.jbuilder (0.3ms)
+Completed 200 OK in 2ms (Views: 1.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/api/users/1/stocks" for 127.0.0.1 at 2021-03-30 18:46:16 -0700
+Processing by Api::StocksController#index as JSON
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/stocks_controller.rb:3
+  Rendering api/stocks/index.json.jbuilder
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT SUM("stocks"."amount") AS sum_amount, "stocks"."ticker" AS stocks_ticker FROM "stocks" WHERE "stocks"."user_id" = $1 GROUP BY "stocks"."ticker"[0m  [["user_id", 1]]
+  ↳ app/models/user.rb:40
+  [1m[36mStock Load (0.1ms)[0m  [1m[34mSELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/api/stocks/index.json.jbuilder:2
+  Rendered api/stocks/index.json.jbuilder (2.0ms)
+Completed 200 OK in 4ms (Views: 2.4ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/api/histories/TSLA" for 127.0.0.1 at 2021-03-30 18:46:16 -0700
+Processing by Api::HistoriesController#show as JSON
+  Parameters: {"id"=>"TSLA"}
+  [1m[36mHistory Load (0.1ms)[0m  [1m[34mSELECT  "histories".* FROM "histories" WHERE "histories"."ticker" = $1 LIMIT $2[0m  [["ticker", "TSLA"], ["LIMIT", 1]]
+  ↳ app/controllers/api/histories_controller.rb:3
+  Rendering api/histories/show.json.jbuilder
+  Rendered api/histories/show.json.jbuilder (0.3ms)
+Completed 200 OK in 2ms (Views: 1.2ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2021-03-30 18:46:57 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "S5vFvsdpka20f8FCKvuq_A"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:12
+  Rendered static_pages/root.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 679ms (Views: 678.8ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/api/histories/QYLD" for 127.0.0.1 at 2021-03-30 18:46:58 -0700
+Processing by Api::HistoriesController#show as JSON
+  Parameters: {"id"=>"QYLD"}
+  [1m[36mHistory Load (0.2ms)[0m  [1m[34mSELECT  "histories".* FROM "histories" WHERE "histories"."ticker" = $1 LIMIT $2[0m  [["ticker", "QYLD"], ["LIMIT", 1]]
+  ↳ app/controllers/api/histories_controller.rb:3
+  Rendering api/histories/show.json.jbuilder
+  Rendered api/histories/show.json.jbuilder (0.3ms)
+Completed 200 OK in 2ms (Views: 1.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/api/users/1/stocks" for 127.0.0.1 at 2021-03-30 18:46:58 -0700
+Processing by Api::StocksController#index as JSON
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/stocks_controller.rb:3
+  Rendering api/stocks/index.json.jbuilder
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT SUM("stocks"."amount") AS sum_amount, "stocks"."ticker" AS stocks_ticker FROM "stocks" WHERE "stocks"."user_id" = $1 GROUP BY "stocks"."ticker"[0m  [["user_id", 1]]
+  ↳ app/models/user.rb:40
+  [1m[36mStock Load (0.3ms)[0m  [1m[34mSELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/api/stocks/index.json.jbuilder:2
+  Rendered api/stocks/index.json.jbuilder (2.3ms)
+Completed 200 OK in 5ms (Views: 2.6ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/api/histories/TSLA" for 127.0.0.1 at 2021-03-30 18:46:58 -0700
+Processing by Api::HistoriesController#show as JSON
+  Parameters: {"id"=>"TSLA"}
+  [1m[36mHistory Load (0.2ms)[0m  [1m[34mSELECT  "histories".* FROM "histories" WHERE "histories"."ticker" = $1 LIMIT $2[0m  [["ticker", "TSLA"], ["LIMIT", 1]]
+  ↳ app/controllers/api/histories_controller.rb:3
+  Rendering api/histories/show.json.jbuilder
+  Rendered api/histories/show.json.jbuilder (0.3ms)
+Completed 200 OK in 3ms (Views: 1.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2021-03-30 18:48:01 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "S5vFvsdpka20f8FCKvuq_A"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:12
+  Rendered static_pages/root.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 757ms (Views: 756.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/api/histories/QYLD" for 127.0.0.1 at 2021-03-30 18:48:02 -0700
+Processing by Api::HistoriesController#show as JSON
+  Parameters: {"id"=>"QYLD"}
+  [1m[36mHistory Load (0.1ms)[0m  [1m[34mSELECT  "histories".* FROM "histories" WHERE "histories"."ticker" = $1 LIMIT $2[0m  [["ticker", "QYLD"], ["LIMIT", 1]]
+  ↳ app/controllers/api/histories_controller.rb:3
+  Rendering api/histories/show.json.jbuilder
+  Rendered api/histories/show.json.jbuilder (0.3ms)
+Completed 200 OK in 2ms (Views: 1.1ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/api/users/1/stocks" for 127.0.0.1 at 2021-03-30 18:48:02 -0700
+Processing by Api::StocksController#index as JSON
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/stocks_controller.rb:3
+  Rendering api/stocks/index.json.jbuilder
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT SUM("stocks"."amount") AS sum_amount, "stocks"."ticker" AS stocks_ticker FROM "stocks" WHERE "stocks"."user_id" = $1 GROUP BY "stocks"."ticker"[0m  [["user_id", 1]]
+  ↳ app/models/user.rb:40
+  [1m[36mStock Load (0.4ms)[0m  [1m[34mSELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/api/stocks/index.json.jbuilder:2
+  Rendered api/stocks/index.json.jbuilder (2.3ms)
+Completed 200 OK in 4ms (Views: 2.5ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/api/histories/TSLA" for 127.0.0.1 at 2021-03-30 18:48:02 -0700
+Processing by Api::HistoriesController#show as JSON
+  Parameters: {"id"=>"TSLA"}
+  [1m[36mHistory Load (0.1ms)[0m  [1m[34mSELECT  "histories".* FROM "histories" WHERE "histories"."ticker" = $1 LIMIT $2[0m  [["ticker", "TSLA"], ["LIMIT", 1]]
+  ↳ app/controllers/api/histories_controller.rb:3
+  Rendering api/histories/show.json.jbuilder
+  Rendered api/histories/show.json.jbuilder (0.3ms)
+Completed 200 OK in 2ms (Views: 1.2ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2021-03-30 18:48:42 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "S5vFvsdpka20f8FCKvuq_A"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:12
+  Rendered static_pages/root.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 665ms (Views: 664.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/api/users/1/stocks" for 127.0.0.1 at 2021-03-30 18:48:43 -0700
+Processing by Api::StocksController#index as JSON
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/stocks_controller.rb:3
+  Rendering api/stocks/index.json.jbuilder
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT SUM("stocks"."amount") AS sum_amount, "stocks"."ticker" AS stocks_ticker FROM "stocks" WHERE "stocks"."user_id" = $1 GROUP BY "stocks"."ticker"[0m  [["user_id", 1]]
+  ↳ app/models/user.rb:40
+  [1m[36mStock Load (0.2ms)[0m  [1m[34mSELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/api/stocks/index.json.jbuilder:2
+  Rendered api/stocks/index.json.jbuilder (2.3ms)
+Completed 200 OK in 4ms (Views: 2.8ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/api/histories/TSLA" for 127.0.0.1 at 2021-03-30 18:48:43 -0700
+Processing by Api::HistoriesController#show as JSON
+  Parameters: {"id"=>"TSLA"}
+  [1m[36mHistory Load (0.6ms)[0m  [1m[34mSELECT  "histories".* FROM "histories" WHERE "histories"."ticker" = $1 LIMIT $2[0m  [["ticker", "TSLA"], ["LIMIT", 1]]
+  ↳ app/controllers/api/histories_controller.rb:3
+  Rendering api/histories/show.json.jbuilder
+  Rendered api/histories/show.json.jbuilder (0.4ms)
+Completed 200 OK in 3ms (Views: 1.4ms | ActiveRecord: 0.6ms)
+
+
