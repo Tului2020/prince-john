@@ -82,7 +82,7 @@ class Graph extends React.Component {
 
     if (currentStocksLength > 0 && currentStocksLength <= Object.keys(history).length) {
       Object.keys(current_stocks).forEach(ticker => {
-        // debugger
+        if (!history[ticker]) return
         portfolioValue += history[ticker][108].price * current_stocks[ticker]
       })
     }
