@@ -1,5 +1,9 @@
-# README PrinceJohn app
-  > PrinceJohn is a Robinhood clone created with Ruby on Rails, JS, React and Redux.
+# PrinceJOhn
+
+# Introduction
+
+
+
 
 ### Table of Contents
 * [General info](#general-info)
