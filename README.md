@@ -1,19 +1,19 @@
-# PrinceJOhn
+# PrinceJohn
 
 # Introduction
+Inspired by the American financial services company Robinhood, PrinceJohn is an online stock-trading platform. It allows you to look up, buy, and sell shares of publicly traded companies.
 
-
-
+# [Live demo](https://princejohn.herokuapp.com/)
 
 ### Table of Contents
 * [General info](#general-info)
 * [Technologies](#technologies)
 * [Setup](#setup)
-* [Live demo](https://princejohn.herokuapp.com/)
+* 
 * [Status](#setup)
 
 ### General info
- PrinceJohn is an online stock-trading platform, it allows you to look up, buy, and sell shares of publicly traded companies. 
+ PrinceJohn is an online stock-trading platform, it 
 
 ### Technologies
  * JavaScript
