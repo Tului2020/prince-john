@@ -4,6 +4,8 @@
 Inspired by the American financial services company Robinhood, PrinceJohn is an online stock-trading platform. It allows you to look up, buy, and sell shares of publicly traded companies.
 
 # [Live demo](https://princejohn.herokuapp.com/)
+![S](https://github.com/Tului2020/prince-john/blob/main/app/assets/images/PrinceJohn.gif)
+
 
 ### Table of Contents
 * [General info](#general-info)
