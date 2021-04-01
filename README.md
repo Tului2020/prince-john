@@ -1,41 +1,15 @@
 # PrinceJohn
 
-# Introduction
+## Introduction
 Inspired by the American financial services company Robinhood, PrinceJohn is an online stock-trading platform. It allows you to look up, buy, and sell shares of publicly traded companies.
 
-# [Live demo](https://princejohn.herokuapp.com/)
+## [Live demo](https://princejohn.herokuapp.com/)
 ![S](https://github.com/Tului2020/prince-john/blob/main/app/assets/images/PrinceJohn.gif)
 
-
-### Table of Contents
-* [General info](#general-info)
-* [Technologies](#technologies)
-* [Setup](#setup)
-* 
-* [Status](#setup)
-
-### General info
- PrinceJohn is an online stock-trading platform, it 
-
-### Technologies
- * JavaScript
- * React
- * Redux
- * Rails 5
- * Ruby 2.5.1
-
-### Setup
-To setup, please run the following commands:
-1. The commands below will install required gems and libraries used
- * bundle install
- * npm install
-
-2. The following commands will start the server and run webpack
- * rails server
- * npm start
-
-
-
-### Live demo
-You can check live demo. Click on this link [Live demo](https://princejohn.herokuapp.com/)
-
+## Technologies
+1. _Ruby on Rails_
+   * Ruby on Rails is a server-side web application framework written in Ruby. Rails is a model–view–controller framework, providing default structures for a database, a web service, and web pages.
+2. _PostgreSQL_
+   * PostgreSQL is a relational database management system emphasizing extensibility and SQL compliance. 
+3. _Ajax_
+   * web applications can send and retrieve data from a server asynchronously without interfering with the display and behaviour of the existing page.
