@@ -18,7 +18,7 @@ Inspired by the American financial services company Robinhood, PrinceJohn is an 
 
 ## Technologies
 1. _Ruby on Rails_
-   * Ruby on Rails is a server-side model–view–controller framework that provides default structures for databases, webservices, and webapps.
+   * Ruby on Rails is a server-side model–view–controller framework that provides default structures for databases, webservices, and web-apps.
 2. _PostgreSQL_
    * PostgreSQL is a relational database management system emphasizing extensibility and SQL compliance. 
 3. _Ajax_
