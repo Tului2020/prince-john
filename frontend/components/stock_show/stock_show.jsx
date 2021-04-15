@@ -42,7 +42,7 @@ class StockShow extends React.Component {
         <div id="stock-show-main">
           <div id="stock-show-left">
             <div id="stock-show-graph-div" className='bottom-border'>
-              <div id="stock-show-graph-info">{(ticker)? searchFunction(ticker)[0][ticker] : null}</div>
+              <div id="stock-show-graph-info">{(ticker)? searchFunction(ticker)[0][ticker].slice(0, 27) : null}</div>
               <div id="stock-show-graph-price">{displayPrice}</div>
               <div id="stock-show-graph-return">
                 <div id="stock-show-graph-return-money" className='bold-font'>{currencyFormatter.format(displayReturn * beginningPrice / 100)}</div>
